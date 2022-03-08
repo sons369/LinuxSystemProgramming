@@ -20,7 +20,7 @@ int main()
             if (usec < 0)
                 usec += 1000000;
             printf("Prompt End\nRuntime : %ld:%lld(sec:usec)", sec, usec);
-            break;
+            exit(1);
         }
         else if (select == 4)
         {
@@ -29,6 +29,12 @@ int main()
         else if (select == 1)
         {
             continue;
+        }
+        else if (select == 3)
+        {
+            char *ptr;
+            ptr = convert_path(g_info.path);
+            printf("real path : %s\n", ptr);
         }
     }
     return (0);

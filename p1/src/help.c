@@ -1,5 +1,6 @@
 #include "../includes/header.h"
 
+/* print manual page */
 void print_help()
 {
 	printf("Usage:\n");
