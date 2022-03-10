@@ -16,12 +16,18 @@ char *input_function()
     return (str);
 }
 
+/* put file's name and file's path to g_info struct*/
+/* put real path to g_info struct */
 void get_info(char *str[])
 {
     int i;
 
     strcpy(g_info.filename, str[1]);
     strcpy(g_info.path, str[2]);
+    if (convert_path(str[1]) != "-1")
+        strcpy(g_info.real_filename, convert_path(str[1]));
+    if (convert_path(str[2]) != "-1")
+        strcpy(g_info.real_path, convert_path(str[2]));
     for (i = 0; str[i]; i++)
     {
         free(str[i]);
@@ -39,7 +45,6 @@ int ft_case(char *str)
     j = 0;
     while (result[j])
         j++;
-    printf("j is %d\n", j);
     if (str[0] == '\n')
     {
         free(str);

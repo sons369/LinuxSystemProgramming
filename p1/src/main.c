@@ -32,9 +32,7 @@ int main()
         }
         else if (select == 3)
         {
-            char *ptr;
-            ptr = convert_path(g_info.path);
-            printf("real path : %s\n", ptr);
+            find_index_zero();
         }
     }
     return (0);
