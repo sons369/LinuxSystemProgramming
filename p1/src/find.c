@@ -9,6 +9,9 @@ char *convert_path(char *path)
     return real_path;
 }
 
+/* flag == 1 is conver st_atim  to date */
+/* flag == 2 is conver st_ctim  to date */
+/* flag == 3 is conver st_mtim  to date */
 char *get_string_time(t_stat st_t, int flag)
 {
     char *s;
@@ -16,42 +19,104 @@ char *get_string_time(t_stat st_t, int flag)
 
     s = (char *)malloc(sizeof(char) * 30);
     if (flag == 1)
-        t = localtime(&st_t.st_atim);
+        t = localtime(&st_t.st_atim.tv_sec);
     else if (flag == 2)
-        t = localtime(&st_t.st_ctim);
+        t = localtime(&st_t.st_ctim.tv_sec);
     else if (flag == 3)
-        t = localtime(&st_t.st_mtim);
-    // strftime(s, sizeof(s), "%y-%m-%d %H:%M", t);
+        t = localtime(&st_t.st_mtim.tv_sec);
+    // strftime(s, 30, "%y-%m-%d %H:%M", t);
     sprintf(s, "%02d-%02d-%02d %02d:%02d",
             t->tm_year - 100, t->tm_mon + 1, t->tm_mday,
-            t->tm_hour, t->tm_min, t->tm_sec);
+            t->tm_hour, t->tm_min);
     return s;
+}
+
+/* S_IFMT == bit mask for the file type */
+/* convert mode_t value to permission symbols */
+char *get_permission(mode_t mode)
+{
+    char *per = "xwr";
+    char *permission;
+    int i;
+
+    permission = (char *)malloc(sizeof(char) * 11);
+    memset(permission, '-', 10);
+    if ((mode & S_IFMT) == S_IFDIR)
+        permission[0] = 'd';
+    for (i = 0; i < 9; i++)
+    {
+        if (mode & (1 << i))
+            permission[10 - i - 1] = per[i % 3];
+    }
+    permission[10] = '\0';
+    return permission;
+}
+
+void get_info_file(t_stat st, t_myStat *myst)
+{
+    int i;
+    char **split_file_name;
+
+    i = 0;
+    myst->st_size = st.st_size;
+    myst->st_mode = st.st_mode;
+    myst->st_blocks = st.st_blocks;
+    myst->st_nlink = st.st_nlink;
+    myst->st_uid = st.st_uid;
+    myst->st_gid = st.st_gid;
+    myst->st_atim = st.st_atim;
+    myst->st_ctim = st.st_ctim;
+    myst->st_mtim = st.st_mtim;
+    split_file_name = ft_split(g_info.real_filename, "/");
+    while (split_file_name[i])
+    {
+        i++;
+    }
+    myst->filename = split_file_name[--i];
+    strcpy(myst->path_filename, myst->real_path);
+    strcat(myst->path_filename, "/");
+    strcat(myst->path_filename, myst->filename);
 }
 
 void print_first_line()
 {
-    printf("Index Size Mode\t\t Blocks Links UID\tGID\tAccess\t\t\tChange\t\t\tModify\t\t\tPath\n");
+    printf("Index Size   Mode       Blocks Links UID  GID    Access          Change          Modify          Path\n");
 }
 
-int find_index_zero()
+int find_file()
 {
     int cnt;
     int i;
     struct dirent **namelist;
+    struct dirent **pathlist;
     t_stat buf;
 
-    if ((cnt = scandir(g_info.real_filename, &namelist, NULL, alphasort)) == -1)
+    // input filename type is file
+    if ((cnt = scandir(g_info.real_filename, &namelist, filter, alphasort)) == -1)
     {
         index_zero_file();
+        index_same_file(g_info.real_path);
+        if (g_chk_find == 0)
+        {
+            printf("(None)\n");
+        }
+        else
+        {
+            print_node(g_head);
+            free_all_node(&g_head);
+            g_chk_find = 0;
+        }
         return 0;
     }
+    // input filename type is dir
     else
     {
         // print_first_line();
-        for (i = cnt - 1; i >= 0; i--)
+        /*for (i = cnt - 1; i >= 0; i--)
         {
             printf("%s\n", namelist[i]->d_name);
-        }
+        }*/
+        index_zero_file();
     }
     return 1;
 }
@@ -66,7 +131,75 @@ void index_zero_file()
     }
     else
     {
+        char *str;
+        str = strdup(g_info.real_filename);
+        strcpy(g_zero_file.real_path, dirname(str));
+        get_info_file(zero_file, &g_zero_file);
         print_first_line();
-        printf("0     %ld  %d\t %ld      %ld     %d\t%d\t%s\t\t%s\t\t%s\t\t%s\n", zero_file.st_size, zero_file.st_mode, zero_file.st_blocks, zero_file.st_nlink, zero_file.st_uid, zero_file.st_gid, get_string_time(zero_file, 1), get_string_time(zero_file, 2), get_string_time(zero_file, 3), g_info.real_filename);
+        g_zero_file.permission = get_permission(zero_file.st_mode);
+        g_zero_file.atim = get_string_time(zero_file, 1);
+        g_zero_file.ctim = get_string_time(zero_file, 2);
+        g_zero_file.mtim = get_string_time(zero_file, 3);
+        print_file(g_zero_file, 0);
     }
+}
+
+void index_same_file(char *name)
+{
+    int cnt;
+    struct dirent **namelist;
+    t_stat same_file;
+
+    if ((cnt = scandir(name, &namelist, filter, alphasort)) == -1 && g_chk_find == 0)
+    {
+        printf("enter valid path please\n");
+        g_chk_find = -1;
+        return;
+    }
+    else
+    {
+        if (cnt > 0)
+            cnt--;
+        else if (cnt <= 0)
+            cnt = 0;
+        while (cnt != -1)
+        {
+            if (!strcmp(g_zero_file.real_path, convert_path(namelist[cnt]->d_name)))
+            {
+                free(namelist[cnt]);
+                cnt--;
+                continue;
+            }
+            stat(namelist[cnt]->d_name, &g_tmp);
+            // printf("file name: %s\nconvert: %s\ncnt: %d\n", namelist[cnt]->d_name, name, cnt);
+            if (namelist[cnt]->d_type == 8 && !strcmp(g_zero_file.filename, namelist[cnt]->d_name) && strcmp(g_zero_file.real_path, name))
+            {
+                get_info_file(g_tmp, &g_mtmp);
+                strcpy(g_mtmp.real_path, convert_path(name));
+                if (strcmp(g_zero_file.filename, g_mtmp.filename) == 0 && g_zero_file.st_size == g_mtmp.st_size)
+                {
+                    insert(&g_head, g_mtmp.real_path);
+                    g_chk_find++;
+                }
+            }
+            else if (namelist[cnt]->d_type == 4)
+            {
+                index_same_file(convert_path(namelist[cnt]->d_name));
+            }
+            free(namelist[cnt]);
+            cnt--;
+        }
+        free(namelist);
+    }
+}
+
+int filter(const struct dirent *info)
+{
+    char *except;
+
+    strcpy(except, info->d_name);
+    if (!strcmp(except, ".") || !strcmp(except, ".."))
+        return 0;
+    else
+        return 1;
 }

@@ -5,6 +5,11 @@ void prompt()
     printf("20182624> ");
 }
 
+void index_prompt()
+{
+    printf(">> ");
+}
+
 /* Input Functions from User */
 char *input_function()
 {
@@ -13,7 +18,7 @@ char *input_function()
         exit(1);
     fgets(str, BUFF, stdin);
 
-    return (str);
+    return str;
 }
 
 /* put file's name and file's path to g_info struct*/
@@ -70,4 +75,9 @@ int ft_case(char *str)
         return 4;
     }
     return 0;
+}
+
+void print_file(t_myStat file, int i)
+{
+    printf("%-6d%-7ld%-11s%-7ld%-6ld%-5d%-7d%-16s%-16s%-16s%-2s\n", i, file.st_size, file.permission, file.st_blocks, file.st_nlink, file.st_uid, file.st_gid, file.atim, file.ctim, file.mtim, file.path_filename);
 }

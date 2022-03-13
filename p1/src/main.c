@@ -32,7 +32,7 @@ int main()
         }
         else if (select == 3)
         {
-            find_index_zero();
+            find_file();
         }
     }
     return (0);
