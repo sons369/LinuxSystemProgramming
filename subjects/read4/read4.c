@@ -8,10 +8,11 @@
 
 int main(int argc, char *argv[])
 {
-	static struct {
+	static struct
+	{
 		long offset;
 		int length;
-	} table [TABLE_SIZE];
+	} table[TABLE_SIZE];
 	char buf[BUFFER_SIZE];
 	long offset;
 	int entry;
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
 		for (i = 0; i < length; i++)
 		{
 			table[entry].length++;
-			offset;
+			offset++;
 
 			if (buf[i] == '\n')
 				table[++entry].offset = offset;
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
 
 		if (read(fd, buf, table[length].length) <= 0)
 			continue;
-		
+
 		buf[table[length].length] = '\0';
 		printf("%s", buf);
 	}

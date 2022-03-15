@@ -6,8 +6,8 @@
 
 #define CREAT_MODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 
-char buf1[] = "1234567890"
-char buf2[] = "ABCDEFGHIJ"
+char buf1[] = "1234567890";
+char buf2[] = "ABCDEFGHIJ";
 
 int main(void)
 {
@@ -32,7 +32,7 @@ int main(void)
 		exit(1);
 	}
 
-	if(write(fd, buf2, 12) != 12)
+	if (write(fd, buf2, 12) != 12)
 	{
 		fprintf(stderr, "buf2 write error\n");
 		exit(1);

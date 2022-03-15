@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    char *fname = "ssu_test.txt"
+    char *fname = "ssu_test.txt";
     int fd;
 
     if ((fd = creat(fname, 0666)) < 0)
