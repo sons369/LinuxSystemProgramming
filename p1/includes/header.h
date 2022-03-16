@@ -44,7 +44,7 @@ typedef struct s_myStat
     char *ctim;
     char *mtim;
     char *permission;
-    char *filename;
+    char filename[BUFF];
     char real_path[PATH_MAX];
     char path_filename[PATH_MAX];
     struct s_myStat *next;
@@ -94,5 +94,6 @@ int filter(const struct dirent *info);
 void insert(t_myStatptr *sPtr, char *path);
 void free_all_node(t_myStatptr *sPtr);
 void print_node(t_myStatptr sPtr);
+int sort_filter(char *s1, char *s2);
 
 #endif

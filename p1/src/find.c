@@ -72,7 +72,7 @@ void get_info_file(t_stat st, t_myStat *myst)
     {
         i++;
     }
-    myst->filename = split_file_name[--i];
+    strcpy(myst->filename, split_file_name[--i]);
     strcpy(myst->path_filename, myst->real_path);
     strcat(myst->path_filename, "/");
     strcat(myst->path_filename, myst->filename);
@@ -90,11 +90,13 @@ int find_file()
     struct dirent **namelist;
     struct dirent **pathlist;
     t_stat buf;
+    char buff[BUFF];
 
     // input filename type is file
     if ((cnt = scandir(g_info.real_filename, &namelist, filter, alphasort)) == -1)
     {
         index_zero_file();
+        chdir(g_info.real_path);
         index_same_file(g_info.real_path);
         if (g_chk_find == 0)
         {
@@ -141,6 +143,7 @@ void index_zero_file()
         g_zero_file.ctim = get_string_time(zero_file, 2);
         g_zero_file.mtim = get_string_time(zero_file, 3);
         print_file(g_zero_file, 0);
+        free(str);
     }
 }
 
@@ -149,10 +152,14 @@ void index_same_file(char *name)
     int cnt;
     struct dirent **namelist;
     t_stat same_file;
+    char buf[BUFF];
 
-    if ((cnt = scandir(name, &namelist, filter, alphasort)) == -1 && g_chk_find == 0)
+    realpath(name, buf);
+    if (chdir(buf) < 0)
+        perror("");
+    if ((cnt = scandir(name, &namelist, NULL, alphasort)) == -1 & g_chk_find == 0)
     {
-        printf("enter valid path please\n");
+        perror("scna");
         g_chk_find = -1;
         return;
     }
@@ -164,27 +171,41 @@ void index_same_file(char *name)
             cnt = 0;
         while (cnt != -1)
         {
-            if (!strcmp(g_zero_file.real_path, convert_path(namelist[cnt]->d_name)))
+            for (int i = 0; i < BUFF; i++)
+                buf[i] = 0;
+            realpath(namelist[cnt]->d_name, buf);
+            // printf("current buf(%p): %s\n", &buf, buf);
+            if (!strcmp(namelist[cnt]->d_name, ".") || !strcmp(namelist[cnt]->d_name, ".."))
             {
                 free(namelist[cnt]);
                 cnt--;
                 continue;
             }
-            stat(namelist[cnt]->d_name, &g_tmp);
-            // printf("file name: %s\nconvert: %s\ncnt: %d\n", namelist[cnt]->d_name, name, cnt);
-            if (namelist[cnt]->d_type == 8 && !strcmp(g_zero_file.filename, namelist[cnt]->d_name) && strcmp(g_zero_file.real_path, name))
+            lstat(namelist[cnt]->d_name, &g_tmp);
+            if (S_ISLNK(g_tmp.st_mode))
             {
+                free(namelist[cnt]);
+                cnt--;
+                continue;
+            }
+            // printf("file name: %s\nconvert: %s\nreal_path: %s\nfilepath: %s\n", namelist[cnt]->d_name, buf, g_zero_file.real_path, name);
+            //  printf("special: %o\n", S_ISDIR(g_tmp.st_mode));
+            if (namelist[cnt]->d_type == 8 && !strcmp(g_zero_file.filename, namelist[cnt]->d_name) && strcmp(name, g_zero_file.real_path))
+            {
+
                 get_info_file(g_tmp, &g_mtmp);
-                strcpy(g_mtmp.real_path, convert_path(name));
+                realpath(name, buf);
+                strcpy(g_mtmp.real_path, buf);
                 if (strcmp(g_zero_file.filename, g_mtmp.filename) == 0 && g_zero_file.st_size == g_mtmp.st_size)
                 {
                     insert(&g_head, g_mtmp.real_path);
                     g_chk_find++;
                 }
             }
-            else if (namelist[cnt]->d_type == 4)
+            else if (namelist[cnt]->d_type == 4 && (g_tmp.st_mode & S_ISVTX) != 01000 && (g_tmp.st_mode & S_ISUID) != 04000 && (g_tmp.st_mode & S_ISGID) != 02000)
             {
-                index_same_file(convert_path(namelist[cnt]->d_name));
+                index_same_file(buf);
+                chdir("..");
             }
             free(namelist[cnt]);
             cnt--;

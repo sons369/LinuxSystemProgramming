@@ -21,7 +21,7 @@ void insert(t_myStatptr *sPtr, char *path)
         previousPtr = NULL;
         currentPtr = *sPtr;
 
-        while (currentPtr != NULL && (strcmp(path, currentPtr->real_path) > 0))
+        while (currentPtr != NULL && (strcmp(path, currentPtr->real_path) > 0 && sort_filter(path, currentPtr->real_path) > 0))
         {
             previousPtr = currentPtr;
             currentPtr = currentPtr->next;
@@ -63,4 +63,30 @@ void print_node(t_myStatptr sPtr)
         i++;
         sPtr = sPtr->next;
     }
+}
+
+int sort_filter(char *s1, char *s2)
+{
+    int i;
+    int cnt1;
+    int cnt2;
+
+    i = 0;
+    cnt1 = 0;
+    cnt2 = 0;
+    while (s1[i])
+    {
+        if (s1[i] == '/')
+            cnt1++;
+        i++;
+    }
+    i = 0;
+    while (s2[i])
+    {
+        if (s2[i] == '/')
+            cnt2++;
+        i++;
+    }
+
+    return (cnt1 - cnt2);
 }

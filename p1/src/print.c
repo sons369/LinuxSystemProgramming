@@ -26,13 +26,20 @@ char *input_function()
 void get_info(char *str[])
 {
     int i;
+    char buf[BUFF];
 
     strcpy(g_info.filename, str[1]);
     strcpy(g_info.path, str[2]);
-    if (convert_path(str[1]) != "-1")
-        strcpy(g_info.real_filename, convert_path(str[1]));
-    if (convert_path(str[2]) != "-1")
-        strcpy(g_info.real_path, convert_path(str[2]));
+    chdir("/home/ubuntu/linux/p1");
+    if (realpath(str[1], buf))
+    {
+        strcpy(g_info.real_filename, buf);
+    }
+
+    if (realpath(str[2], buf))
+    {
+        strcpy(g_info.real_path, buf);
+    }
     for (i = 0; str[i]; i++)
     {
         free(str[i]);
