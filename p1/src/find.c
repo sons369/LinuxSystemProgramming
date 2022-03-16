@@ -96,7 +96,6 @@ int find_file()
     if ((cnt = scandir(g_info.real_filename, &namelist, filter, alphasort)) == -1)
     {
         index_zero_file();
-        chdir(g_info.real_path);
         index_same_file(g_info.real_path);
         if (g_chk_find == 0)
         {
@@ -105,6 +104,7 @@ int find_file()
         else
         {
             print_node(g_head);
+            index_prompt();
             free_all_node(&g_head);
             g_chk_find = 0;
         }
@@ -129,7 +129,8 @@ void index_zero_file()
 
     if (stat(g_info.real_filename, &zero_file) == -1)
     {
-        printf("enter valid file please\n");
+        perror("");
+        return;
     }
     else
     {
@@ -154,9 +155,17 @@ void index_same_file(char *name)
     t_stat same_file;
     char buf[BUFF];
 
-    realpath(name, buf);
-    if (chdir(buf) < 0)
+    if (!realpath(name, buf))
+    {
         perror("");
+        return;
+    }
+    if (chdir(buf) < 0)
+    {
+        perror("");
+        return;
+    }
+
     if ((cnt = scandir(name, &namelist, NULL, alphasort)) == -1 & g_chk_find == 0)
     {
         perror("scna");

@@ -34,6 +34,9 @@ int main()
         {
             find_file();
         }
+        memset(&g_mtmp, 0, sizeof(g_mtmp));
+        memset(&g_tmp, 0, sizeof(g_tmp));
+        memset(&g_info, 0, sizeof(g_info));
     }
     return (0);
 }

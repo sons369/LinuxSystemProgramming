@@ -26,20 +26,36 @@ char *input_function()
 void get_info(char *str[])
 {
     int i;
+    int fd;
     char buf[BUFF];
 
     strcpy(g_info.filename, str[1]);
     strcpy(g_info.path, str[2]);
-    chdir("/home/ubuntu/linux/p1");
-    if (realpath(str[1], buf))
+    if ((fd = open(str[2], O_RDONLY)) < 0 || (fd = open(str[1], O_RDONLY)) < 0)
     {
-        strcpy(g_info.real_filename, buf);
+        perror("");
+        return;
     }
+    else
+    {
+        chdir("/home/ubuntu/linux/p1");
 
-    if (realpath(str[2], buf))
-    {
-        strcpy(g_info.real_path, buf);
+        if (realpath(str[1], buf))
+        {
+            strcpy(g_info.real_filename, buf);
+        }
+
+        if (realpath(str[2], buf))
+        {
+
+            strcpy(g_info.real_path, buf);
+        }
+        else
+        {
+            strcpy(g_info.real_path, str[2]);
+        }
     }
+    close(fd);
     for (i = 0; str[i]; i++)
     {
         free(str[i]);

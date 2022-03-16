@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include <fcntl.h>
 #include <libgen.h>
 #include <errno.h>
 
