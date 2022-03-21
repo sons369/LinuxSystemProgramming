@@ -12,6 +12,10 @@ void insert(t_myStatptr *sPtr, char *path)
     {
         strcpy(newPtr->real_path, path);
         get_info_file(g_tmp, newPtr);
+        if (g_is_zero_dir_flag == 1)
+        {
+            newPtr->st_size = g_mtmp.st_size;
+        }
         newPtr->permission = get_permission(newPtr->st_mode);
         newPtr->atim = get_string_time(g_tmp, 1);
         newPtr->ctim = get_string_time(g_tmp, 2);
@@ -39,6 +43,7 @@ void insert(t_myStatptr *sPtr, char *path)
     }
 }
 
+/* free head and head point NULL */
 void free_all_node(t_myStatptr *sPtr)
 {
     t_myStatptr tmp;
@@ -50,6 +55,22 @@ void free_all_node(t_myStatptr *sPtr)
         free(tmp);
     }
     *sPtr = NULL;
+}
+
+/* if user input index then get idx's node */
+t_myStatptr get_idx_node(int idx)
+{
+    t_myStatptr sPtr;
+    int i;
+
+    i = 1;
+    sPtr = g_head;
+    while (i != idx)
+    {
+        sPtr = sPtr->next;
+        i++;
+    }
+    return sPtr;
 }
 
 void print_node(t_myStatptr sPtr)

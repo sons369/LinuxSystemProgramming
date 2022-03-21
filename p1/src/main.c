@@ -7,6 +7,8 @@ int main()
     long sec;
     long long usec;
 
+    realpath(".", g_home_dir);
+
     gettimeofday(&start, NULL);
     while (1)
     {

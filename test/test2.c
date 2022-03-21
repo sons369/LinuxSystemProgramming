@@ -1,7 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 
 int main()
 {
-    system("ls -l");
+    long i;
+    i = write(1, "bcd", 1);
+    printf("byte : %ld", i);
 }

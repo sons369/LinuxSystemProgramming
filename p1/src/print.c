@@ -31,18 +31,19 @@ void get_info(char *str[])
 
     strcpy(g_info.filename, str[1]);
     strcpy(g_info.path, str[2]);
+    chdir(g_home_dir);
     if ((fd = open(str[2], O_RDONLY)) < 0 || (fd = open(str[1], O_RDONLY)) < 0)
     {
-        perror("");
+        perror("open");
+
         return;
     }
     else
     {
-        chdir("/home/ubuntu/linux/p1");
-
         if (realpath(str[1], buf))
         {
             strcpy(g_info.real_filename, buf);
+            strcpy(g_dir_path_buf, buf);
         }
 
         if (realpath(str[2], buf))
@@ -69,7 +70,7 @@ int ft_case(char *str)
     int i;
     int j;
 
-    result = ft_split(str, " \n");
+    result = ft_split(str, " \n\t");
     j = 0;
     while (result[j])
         j++;
