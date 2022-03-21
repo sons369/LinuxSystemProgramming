@@ -25,7 +25,7 @@ void insert(t_myStatptr *sPtr, char *path)
         previousPtr = NULL;
         currentPtr = *sPtr;
 
-        while (currentPtr != NULL && (strcmp(path, currentPtr->real_path) > 0 && sort_filter(path, currentPtr->real_path) > 0))
+        while (currentPtr != NULL && (sort_filter(path, currentPtr->real_path) > 0 || strcmp(path, currentPtr->real_path) > 0))
         {
             previousPtr = currentPtr;
             currentPtr = currentPtr->next;

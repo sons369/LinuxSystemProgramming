@@ -171,7 +171,28 @@ int find_file()
                     find_same_line();
                     verification_arr();
                     make_result_arr();
-                    print_diff_result();
+                    if (g_option[0] == 1 && g_option[1] == 1)
+                    {
+                        print_diff_option_q();
+                        print_diff_option_s();
+                        g_option[0] = 0;
+                        g_option[1] = 0;
+                    }
+                    else if (g_option[0] == 1)
+                    {
+                        print_diff_option_q();
+                        g_option[0] = 0;
+                    }
+                    else if (g_option[1] == 1)
+                    {
+                        print_diff_option_s();
+                        g_option[1] = 0;
+                    }
+                    else if (!g_option[0] && !g_option[1] && !g_option[2] && !g_option[3])
+                    {
+                        print_diff_result();
+                    }
+
                     break;
                 }
             }

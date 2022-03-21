@@ -120,6 +120,8 @@ void print_diff_result();
 void print_diff_add(int idx, int start, int end);
 void print_diff_change(int n_start, int n_end, int p_start, int p_end);
 void print_diff_delete(int idx, int start, int end);
+void print_diff_option_q();
+void print_diff_option_s();
 
 /* list.c function */
 void insert(t_myStatptr *sPtr, char *path);

@@ -27,7 +27,7 @@ int input_index_option(char *str)
     }
     else
     {
-        printf("err\natoi: %d\n", atoi(result[0]));
+        printf("err\n");
         return 0;
     }
 
@@ -195,6 +195,7 @@ void find_same_line()
     }
     fclose(fp1);
     fclose(fp2);
+
     memset(&g_used_idx, 0, BUFF);
 }
 
@@ -220,13 +221,30 @@ void verification_arr()
             }
             else
             {
+
                 for (j = g_cnt_line_zero[i] - 2; j >= 0; j--)
                 {
                     if (strcmp(g_file2_content[j], "\n") && g_cnt_line_idx[j] > 0 && g_used_idx[j] == 0)
                     {
-                        flag = 1;
-                        g_cnt_line_idx[g_cnt_line_zero[i] - 1] = 0;
-                        break;
+                        if (g_cnt_line_zero[i] > g_cnt_line_zero[g_cnt_line_idx[j] - 1])
+                        {
+                            for (int l = g_cnt_line_idx[j] - 2; l > i; l--)
+                            {
+                                if (g_cnt_line_zero[g_cnt_line_idx[j] - 1] < g_cnt_line_zero[l])
+                                {
+                                    flag = 2;
+                                    g_cnt_line_zero[g_cnt_line_idx[j] - 1] = 0;
+                                    g_cnt_line_idx[j] = 0;
+                                    break;
+                                }
+                            }
+                        }
+                        if (flag == 0)
+                        {
+                            flag = 1;
+                            g_cnt_line_idx[g_cnt_line_zero[i] - 1] = 0;
+                            break;
+                        }
                     }
                 }
             }
@@ -247,7 +265,7 @@ void verification_arr()
         if (g_cnt_line_zero[i] > 0)
         {
             max = max < g_cnt_line_zero[i] ? g_cnt_line_zero[i] : max;
-            if (g_cnt_line_zero[i] < max && !strcmp(g_file1_content[i], "\n"))
+            if (g_cnt_line_zero[i] < max)
             {
                 g_cnt_line_idx[g_cnt_line_zero[i] - 1] = 0;
                 g_cnt_line_zero[i] = 0;
@@ -351,6 +369,7 @@ void memset_diff_global_variable()
 void print_diff_result()
 {
     int idx = 0;
+    int add_idx = 0;
     int n_min = 0;
     int n_max = 0;
     int p_min = 0;
@@ -376,10 +395,12 @@ void print_diff_result()
             flag = 2;
             n_max = g_diff_result_arr[i];
             n_min = g_diff_result_arr[i];
+            add_idx++;
         }
         else if (g_diff_result_arr[i] < 0 && flag == 2)
         {
             n_max = g_diff_result_arr[i];
+            add_idx++;
         }
         else if (g_diff_result_arr[i] > 0 && flag == 2)
         {
@@ -397,7 +418,7 @@ void print_diff_result()
         {
             if (flag == 1)
             {
-                print_diff_add(p_min - 1, p_min, p_max);
+                print_diff_add(add_idx, p_min, p_max);
             }
             else if (flag == 2)
             {
@@ -413,6 +434,7 @@ void print_diff_result()
             n_max = 0;
             n_min = 0;
             idx++;
+            add_idx++;
         }
     }
     if (flag != 0)
@@ -432,6 +454,7 @@ void print_diff_result()
     }
 }
 
+/* print add */
 void print_diff_add(int idx, int start, int end)
 {
     printf("%da%d,%d\n", idx, start, end);
@@ -534,4 +557,76 @@ void print_diff_delete(int idx, int start, int end)
             printf("\n\\ No newline at end of file\n");
         }
     }
+}
+
+void print_diff_option_q()
+{
+    t_myStatptr tmp;
+    char **path_split;
+    int flag;
+    int i;
+
+    tmp = get_idx_node(g_index);
+    i = 0;
+    flag = 0;
+    path_split = ft_split(tmp->real_path, "/");
+    while (path_split[i])
+    {
+        i++;
+    }
+    for (int k = 0; k < g_diff_result_arr_len; k++)
+    {
+        if (g_diff_result_arr[k] != 0)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 1)
+    {
+        printf("File %s and %s/%s differ\n", g_zero_file.filename, path_split[--i], tmp->filename);
+    }
+    i = 0;
+    while (path_split[i])
+    {
+        free(path_split[i]);
+        i++;
+    }
+    free(path_split);
+}
+
+void print_diff_option_s()
+{
+    t_myStatptr tmp;
+    char **path_split;
+    int flag;
+    int i;
+
+    tmp = get_idx_node(g_index);
+    i = 0;
+    flag = 0;
+    path_split = ft_split(tmp->real_path, "/");
+    while (path_split[i])
+    {
+        i++;
+    }
+    for (int k = 0; k < g_diff_result_arr_len; k++)
+    {
+        if (g_diff_result_arr[k] != 0)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 0)
+    {
+        printf("File %s and %s/%s are identical\n", g_zero_file.filename, path_split[--i], tmp->filename);
+    }
+    i = 0;
+    while (path_split[i])
+    {
+        free(path_split[i]);
+        i++;
+    }
+    free(path_split);
 }
