@@ -283,6 +283,7 @@ void index_same_dir(char *name)
     char buf[BUFF];
     long size;
     char **split_file_name;
+    char filename[BUFF];
     int i = 0;
 
     if ((dp = opendir(name)) != NULL)
@@ -303,7 +304,15 @@ void index_same_dir(char *name)
                 i++;
             }
             i--;
-            if (!strcmp(split_file_name[i], file->d_name))
+            strcpy(filename, split_file_name[i]);
+            i = 0;
+            while (split_file_name[i])
+            {
+                free(split_file_name[i]);
+                i++;
+            }
+            free(split_file_name);
+            if (!strcmp(filename, file->d_name))
             {
 
                 strcpy(g_dir_path_buf, buf);
