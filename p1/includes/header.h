@@ -108,6 +108,7 @@ void index_same_file(char *name);
 int filter(const struct dirent *info);
 void index_same_dir(char *name);
 long get_dir_size(char *path);
+void call_dir_diff();
 
 /* diff.c function */
 int input_index_option(char *str);
@@ -122,6 +123,8 @@ void print_diff_change(int n_start, int n_end, int p_start, int p_end);
 void print_diff_delete(int idx, int start, int end);
 void print_diff_option_q();
 void print_diff_option_s();
+void dir_make_arr_from_files(char *zero_path, char *idx_path);
+void dir_find_same_line(char *zero_path, char *idx_path);
 
 /* list.c function */
 void insert(t_myStatptr *sPtr, char *path);

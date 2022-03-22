@@ -669,3 +669,129 @@ void print_diff_option_s()
     }
     free(path_split);
 }
+
+/* Open the files, count the number of lines, and create array. */
+void dir_make_arr_from_files(char *zero_path, char *idx_path)
+{
+    t_myStatptr tmp;
+    FILE *fp1, *fp2;
+    int zero_line;
+    int idx_line;
+    int i;
+
+    tmp = get_idx_node(g_index);
+    zero_line = 0;
+    idx_line = 0;
+    i = 0;
+    if ((fp1 = fopen(zero_path, "r")) == NULL)
+    {
+        perror("fp1");
+        return;
+    }
+    if ((fp2 = fopen(idx_path, "r")) == NULL)
+    {
+        perror("fp2");
+        return;
+    }
+    else
+    {
+        /* count line */
+        while (fgets(g_file1_content[zero_line], BUFF, fp1))
+        {
+            zero_line++;
+        }
+        g_line_zero = zero_line;
+        while (fgets(g_file2_content[idx_line], BUFF, fp2))
+        {
+            idx_line++;
+        }
+        g_line_idx = idx_line;
+    }
+    fclose(fp1);
+    fclose(fp2);
+    if ((g_cnt_line_zero = (int *)calloc(zero_line, sizeof(int))) == NULL)
+    {
+        printf("malloc err!\n");
+        return;
+    }
+    if ((g_cnt_line_idx = (int *)calloc(idx_line, sizeof(int))) == NULL)
+    {
+        printf("malloc err!\n");
+        return;
+    }
+}
+
+/* Find the same line through strcmp() and write down the corresponding line number. */
+/* If there are multiple identical sentences, put them in the fastest order. */
+void dir_find_same_line(char *zero_path, char *idx_path)
+{
+    FILE *fp1, *fp2;
+    char buf1[BUFF], buf2[BUFF];
+    int cnt;
+    int i;
+    t_myStatptr tmp;
+
+    i = 0;
+    tmp = get_idx_node(g_index);
+    if ((fp1 = fopen(zero_path, "r")) == NULL)
+    {
+        perror("fp1");
+        return;
+    }
+    if ((fp2 = fopen(idx_path, "r")) == NULL)
+    {
+        perror("fp2");
+        return;
+    }
+
+    while (fgets(buf1, BUFF, fp1))
+    {
+        cnt = 1;
+        fseek(fp2, 0, SEEK_SET);
+        while (fgets(buf2, BUFF, fp2))
+        {
+            if (!strcmp(buf1, buf2) && g_used_idx[cnt] != 1)
+            {
+                g_cnt_line_zero[i] = cnt;
+                /* Check the used line */
+                g_used_idx[cnt] = 1;
+                break;
+            }
+            cnt++;
+        }
+        i++;
+    }
+    memset(&g_used_idx, 0, BUFF);
+    fclose(fp1);
+    fclose(fp2);
+    if ((fp1 = fopen(zero_path, "r")) == NULL)
+    {
+        perror("fp1");
+        return;
+    }
+    if ((fp2 = fopen(idx_path, "r")) == NULL)
+    {
+        perror("fp2");
+        return;
+    }
+    i = 0;
+    while (fgets(buf1, BUFF, fp2))
+    {
+        cnt = 1;
+        fseek(fp1, 0, SEEK_SET);
+        while (fgets(buf2, BUFF, fp1))
+        {
+            if (!strcmp(buf1, buf2) && g_used_idx[cnt] != 1)
+            {
+                g_cnt_line_idx[i] = cnt;
+                g_used_idx[cnt] = 1;
+                break;
+            }
+            cnt++;
+        }
+        i++;
+    }
+    fclose(fp1);
+    fclose(fp2);
+    memset(&g_used_idx, 0, BUFF);
+}

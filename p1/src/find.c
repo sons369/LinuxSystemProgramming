@@ -220,10 +220,25 @@ int find_file()
         else
         {
             print_node(g_head);
-            free_all_node(&g_head);
-            g_chk_find = 0;
+            while (1)
+            {
+                index_prompt(); // >>
+                select = input_index_option(input_function());
+                if (select == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    memset_diff_global_variable();
+                    call_dir_diff();
+                    break;
+                }
+            }
         }
+        g_chk_find = 0;
         g_is_zero_dir_flag = 0;
+        free_all_node(&g_head);
         return 0;
     }
     return 1;
@@ -267,6 +282,8 @@ void index_same_dir(char *name)
     t_stat same_file;
     char buf[BUFF];
     long size;
+    char **split_file_name;
+    int i = 0;
 
     if ((dp = opendir(name)) != NULL)
     {
@@ -279,8 +296,16 @@ void index_same_dir(char *name)
             strcat(buf, "/");
             strcat(buf, file->d_name);
             stat(buf, &g_tmp);
-            if (!strcmp(g_info.filename, file->d_name))
+
+            split_file_name = ft_split(g_info.real_filename, "/");
+            while (split_file_name[i])
             {
+                i++;
+            }
+            i--;
+            if (!strcmp(split_file_name[i], file->d_name))
+            {
+
                 strcpy(g_dir_path_buf, buf);
                 realpath(name, buf);
                 strcpy(g_mtmp.real_path, buf);
@@ -401,4 +426,240 @@ int filter(const struct dirent *info)
         return 0;
     else
         return 1;
+}
+
+/* dir diff function */
+void call_dir_diff()
+{
+    t_myStatptr tmp;
+    t_stat zero_file;
+    t_stat idx_file;
+    int zero_cnt;
+    int idx_cnt;
+    int i;
+    int j;
+    int m;
+    int n;
+    int diff_path1;
+    int diff_path2;
+    struct dirent **zero_namelist;
+    struct dirent **idx_namelist;
+    char buf[BUFF];
+    char buf2[BUFF];
+    char **path;
+    char **path2;
+
+    tmp = get_idx_node(g_index);
+
+    if ((zero_cnt = scandir(g_zero_file.path_filename, &zero_namelist, filter, alphasort)) == -1)
+    {
+        perror("zero_cnt");
+        return;
+    }
+    if ((idx_cnt = scandir(tmp->path_filename, &idx_namelist, filter, alphasort)) == -1)
+    {
+        perror("idx_cnt");
+        return;
+    }
+    if (zero_cnt > 0)
+        zero_cnt--;
+    else if (zero_cnt <= 0)
+        zero_cnt = 0;
+    if (idx_cnt > 0)
+        idx_cnt--;
+    else if (idx_cnt <= 0)
+        idx_cnt = 0;
+
+    path = ft_split(g_zero_file.path_filename, "/");
+    path2 = ft_split(tmp->path_filename, "/");
+    i = 0;
+    j = 0;
+    m = 0;
+    n = 0;
+    diff_path1 = 0;
+    diff_path2 = 0;
+    while (path[diff_path1])
+    {
+        m++;
+        diff_path1++;
+    }
+    diff_path1--;
+    while (path2[diff_path2])
+    {
+        n++;
+        diff_path2++;
+    }
+    diff_path2--;
+    /* 파일 경로 안겹치는 부분까지 반복문 돌리기 */
+    while (!strcmp(path[diff_path1], path2[diff_path2]))
+    {
+        diff_path1--;
+        diff_path2--;
+    }
+    while (i <= zero_cnt && j <= idx_cnt)
+    {
+        /* strcmp가 음수이면 index 0번 디렉토리에만 있는 파일이므로 i 값만 더해주고 정보 출력 */
+        if (strcmp(zero_namelist[i]->d_name, idx_namelist[j]->d_name) < 0)
+        {
+            printf("Olny in ");
+            for (int k = diff_path1; path[k]; k++)
+            {
+                printf("%s", path[k]);
+                if (k != m)
+                {
+                    printf("/");
+                }
+            }
+            printf(": %s\n", zero_namelist[i]->d_name);
+            i++;
+        }
+        /* strcmp가 양수이면 입력받은 index 디렉토리에만 있는 파일이므로 j 값만 더해주고 정보 출력 */
+        else if (strcmp(zero_namelist[i]->d_name, idx_namelist[j]->d_name) > 0)
+        {
+            printf("Olny in ");
+            for (int k = diff_path2; path2[k]; k++)
+            {
+                printf("%s", path2[k]);
+                if (k != n)
+                {
+                    printf("/");
+                }
+            }
+            printf(": %s\n", idx_namelist[j]->d_name);
+            j++;
+        }
+        /* 이름이 똑같을 때 비교하고 i값과 j값 동시에 증가*/
+        else
+        {
+            strcpy(buf, g_zero_file.path_filename);
+            strcat(buf, "/");
+            strcat(buf, zero_namelist[i]->d_name);
+            stat(buf, &zero_file);
+            strcpy(buf2, tmp->path_filename);
+            strcat(buf2, "/");
+            strcat(buf2, idx_namelist[j]->d_name);
+            stat(buf2, &idx_file);
+            /* 둘 다 디렉토리일 경우 */
+            if (S_ISDIR(zero_file.st_mode) && S_ISDIR(idx_file.st_mode))
+            {
+                printf("Common subdirectories : ");
+                for (int k = diff_path1; path[k]; k++)
+                {
+                    printf("%s", path[k]);
+                    if (k != m)
+                    {
+                        printf("/");
+                    }
+                }
+                printf("%s and ", zero_namelist[i]->d_name);
+                for (int k = diff_path2; path2[k]; k++)
+                {
+                    printf("%s", path2[k]);
+                    if (k != n)
+                    {
+                        printf("/");
+                    }
+                }
+                printf("%s\n", idx_namelist[j]->d_name);
+            }
+            /* 하나는 정규파일, 하나는 디렉토리일 경우 */
+            else if ((zero_namelist[i]->d_type == 4 && idx_namelist[j]->d_type == 8) || (zero_namelist[i]->d_type == 8 && idx_namelist[j]->d_type == 4))
+            {
+                printf("File ");
+                if (zero_namelist[i]->d_type == 4)
+                {
+                    for (int k = diff_path1; path[k]; k++)
+                    {
+                        printf("%s", path[k]);
+                        if (k != m)
+                        {
+                            printf("/");
+                        }
+                    }
+                    printf("%s is a directory ", zero_namelist[i]->d_name);
+                }
+                else if (zero_namelist[i]->d_type == 8)
+                {
+                    for (int k = diff_path1; path[k]; k++)
+                    {
+                        printf("%s", path[k]);
+                        if (k != m)
+                        {
+                            printf("/");
+                        }
+                    }
+                    printf("%s is a regular file ", zero_namelist[i]->d_name);
+                }
+                printf("while file ");
+                if (idx_namelist[j]->d_type == 4)
+                {
+                    for (int k = diff_path2; path2[k]; k++)
+                    {
+                        printf("%s", path2[k]);
+                        if (k != n)
+                        {
+                            printf("/");
+                        }
+                    }
+                    printf("%s is a directory\n", idx_namelist[j]->d_name);
+                }
+                else if (idx_namelist[j]->d_type == 8)
+                {
+                    for (int k = diff_path2; path2[k]; k++)
+                    {
+                        printf("%s", path2[k]);
+                        if (k != n)
+                        {
+                            printf("/");
+                        }
+                    }
+                    printf("%s is a regular file\n", idx_namelist[j]->d_name);
+                }
+            }
+            /* 둘 다 정규파일일 경우 diff 출력 */
+            if (zero_namelist[i]->d_type == 8 && idx_namelist[j]->d_type == 8)
+            {
+                int flag = 0;
+                memset_diff_global_variable();
+                dir_make_arr_from_files(buf, buf2);
+                dir_find_same_line(buf, buf2);
+                verification_arr();
+                make_result_arr();
+                for (int q = 0; q < g_diff_result_arr_len; q++)
+                {
+                    if (g_diff_result_arr[i] != 0)
+                    {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 1)
+                {
+                    printf("diff ");
+                    for (int k = diff_path1; path[k]; k++)
+                    {
+                        printf("%s", path[k]);
+                        if (k != m)
+                        {
+                            printf("/");
+                        }
+                    }
+                    printf("%s ", zero_namelist[i]->d_name);
+                    for (int k = diff_path2; path2[k]; k++)
+                    {
+                        printf("%s", path2[k]);
+                        if (k != n)
+                        {
+                            printf("/");
+                        }
+                    }
+                    printf("%s\n", idx_namelist[j]->d_name);
+                }
+                flag = 0;
+                print_diff_result();
+            }
+            i++;
+            j++;
+        }
+    }
 }
