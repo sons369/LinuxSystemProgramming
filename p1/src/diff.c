@@ -1,5 +1,10 @@
 #include "../includes/header.h"
 
+/* input index, options from user */
+/* with exception handling */
+/* Options are always separated by spaces. */
+/* Index value must be numeric */
+/* The number of input values must be 4 or less. */
 int input_index_option(char *str)
 {
     char **result;
@@ -15,6 +20,7 @@ int input_index_option(char *str)
 
     j = 0;
     digit = 1;
+    /* Index value must be numeric */
     while (result[0][j])
     {
         if (!isdigit(result[0][j]))
@@ -31,6 +37,7 @@ int input_index_option(char *str)
         return 0;
     }
 
+    /* processing options */
     if (i > 1)
     {
 
@@ -77,6 +84,7 @@ int input_index_option(char *str)
     return 1;
 }
 
+/* Open the files, count the number of lines, and create array. */
 void make_arr_from_files()
 {
     t_myStatptr tmp;
@@ -101,6 +109,7 @@ void make_arr_from_files()
     }
     else
     {
+        /* count line */
         while (fgets(g_file1_content[zero_line], BUFF, fp1))
         {
             zero_line++;
@@ -126,6 +135,8 @@ void make_arr_from_files()
     }
 }
 
+/* Find the same line through strcmp() and write down the corresponding line number. */
+/* If there are multiple identical sentences, put them in the fastest order. */
 void find_same_line()
 {
     FILE *fp1, *fp2;
@@ -156,6 +167,7 @@ void find_same_line()
             if (!strcmp(buf1, buf2) && g_used_idx[cnt] != 1)
             {
                 g_cnt_line_zero[i] = cnt;
+                /* Check the used line */
                 g_used_idx[cnt] = 1;
                 break;
             }
@@ -199,6 +211,16 @@ void find_same_line()
     memset(&g_used_idx, 0, BUFF);
 }
 
+/* 여기만 한글 주석 */
+/* 각 파일의 같은 줄 번호가 적혀있는 g_cnt_line_zero, g_cnt_line_idx 배열 이용 */
+/* 어떤 줄 번호를 0으로 지워줘야 할 지 검증해주는 함수 */
+/* zero의 0번부터 값을 읽어서 0이 아닌 숫자를 만나면 해당 숫자의 */
+/* idx 인덱스 번호로 이동 */
+/* idx 인덱스 번호로 이동했으면 인덱스번호 - 1 씩 하면서 체크가 안된 0이 아닌 숫자 */
+/* 를 만나면 0으로 바꾸고 zero에서도 0으로 바꿔줌 */
+/* 단 \n은 나중에 처리함으로 해당 줄이 \n이면 패스 */
+/* 또한 idx 인덱스-1 씩 이동하면서 만난 0이 아닌 숫자를 보고 다시 zero로 해당 번호로 가서 */
+/* 위로 올라가면서 자기보다 큰 숫자가 있으면 0 */
 void verification_arr()
 {
     int i;
@@ -210,7 +232,7 @@ void verification_arr()
     j = 0;
     flag = 0;
     max = 0;
-
+    /*필요한 인덱스 번호들만 남기게끔 검증하는 부분 */
     for (i = 0; i < g_line_zero; i++)
     {
         if (g_cnt_line_zero[i] > 0)
@@ -259,7 +281,7 @@ void verification_arr()
         }
         flag = 0;
     }
-
+    /* 처리안된 개행 처리 해주는 부분 */
     for (i = 0; i < g_line_zero; i++)
     {
         if (g_cnt_line_zero[i] > 0)
@@ -274,6 +296,13 @@ void verification_arr()
     }
 }
 
+/* Create an answer table using only verified index numbers. */
+/* The required size is g_cnt_line_zero's lines and cnt idx's zero value */
+/* Starting with number 0, if both are numbers, go down together, */
+/* and if both are zero, put zero first, stop when you meet a number, */
+/* and put the idx value in. */
+/* ex) zero: 0 0 1 2 3 0 idx: 3 4 5 0 0 */
+/* result arr: -1 -2 0 0 0 -6 4 5 */
 void make_result_arr()
 {
     int cnt_zero_from_file2;
@@ -366,6 +395,11 @@ void memset_diff_global_variable()
     }
 }
 
+/* Print result use g_diff_result_arr */
+/* meet a positive number first, print add */
+/* If there is only a negative number, print delete. */
+/* positive after a negative is a change. */
+/* Print when 0 is met. */
 void print_diff_result()
 {
     int idx = 0;
@@ -437,6 +471,7 @@ void print_diff_result()
             add_idx++;
         }
     }
+    /* If there is no zero at the end and the output is not possible, it will be output. */
     if (flag != 0)
     {
         if (flag == 1)
@@ -468,6 +503,7 @@ void print_diff_add(int idx, int start, int end)
     }
 }
 
+/* print change */
 void print_diff_change(int n_start, int n_end, int p_start, int p_end)
 {
     char *sep = "---\n";
@@ -546,6 +582,7 @@ void print_diff_change(int n_start, int n_end, int p_start, int p_end)
     }
 }
 
+/* print delete */
 void print_diff_delete(int idx, int start, int end)
 {
     printf("%d,%dd%d\n", start, end, idx);
@@ -559,6 +596,7 @@ void print_diff_delete(int idx, int start, int end)
     }
 }
 
+/* print option q */
 void print_diff_option_q()
 {
     t_myStatptr tmp;
@@ -595,6 +633,7 @@ void print_diff_option_q()
     free(path_split);
 }
 
+/* print option s */
 void print_diff_option_s()
 {
     t_myStatptr tmp;

@@ -1,5 +1,6 @@
 #include "../includes/header.h"
 
+/* insert node function */
 void insert(t_myStatptr *sPtr, char *path)
 {
     t_myStatptr newPtr;
@@ -24,7 +25,7 @@ void insert(t_myStatptr *sPtr, char *path)
 
         previousPtr = NULL;
         currentPtr = *sPtr;
-
+        /*find node position order to ASCII and PATH*/
         while (currentPtr != NULL && (sort_filter(path, currentPtr->real_path) > 0 || strcmp(path, currentPtr->real_path) > 0))
         {
             previousPtr = currentPtr;
@@ -86,6 +87,8 @@ void print_node(t_myStatptr sPtr)
     }
 }
 
+/* Linked list sort filter */
+/* sort by number of '/' */
 int sort_filter(char *s1, char *s2)
 {
     int i;

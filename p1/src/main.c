@@ -9,6 +9,7 @@ int main()
 
     realpath(".", g_home_dir);
 
+    /* start time check */
     gettimeofday(&start, NULL);
     while (1)
     {
@@ -16,6 +17,7 @@ int main()
         select = ft_case(input_function());
         if (select == 2)
         {
+            /* end time check */
             gettimeofday(&end, NULL);
             sec = (end.tv_sec - start.tv_sec);
             usec = (end.tv_usec - start.tv_usec);
@@ -36,6 +38,7 @@ int main()
         {
             find_file();
         }
+        /* Initialize to 0 */
         memset(&g_mtmp, 0, sizeof(g_mtmp));
         memset(&g_tmp, 0, sizeof(g_tmp));
         memset(&g_info, 0, sizeof(g_info));

@@ -23,6 +23,8 @@ char *input_function()
 
 /* put file's name and file's path to g_info struct*/
 /* put real path to g_info struct */
+/* if [FILENAME]'s path and [PATH]'s path aren't available */
+/* then print error */
 void get_info(char *str[])
 {
     int i;
@@ -64,6 +66,11 @@ void get_info(char *str[])
     free(str);
 }
 
+/* case return according user iput */
+/* exit => return 2 */
+/* help => return 4 */
+/* input enter with noting => return 1 */
+/* find [FILENAME] [PATH] => return 3 */
 int ft_case(char *str)
 {
     char **result;
@@ -101,6 +108,7 @@ int ft_case(char *str)
     return 0;
 }
 
+/* print file's infomation ex) UID, SIZE, CTIME... */
 void print_file(t_myStat file, int i)
 {
     printf("%-6d%-7ld%-11s%-7ld%-6ld%-5d%-7d%-16s%-16s%-16s%-2s\n", i, file.st_size, file.permission, file.st_blocks, file.st_nlink, file.st_uid, file.st_gid, file.atim, file.ctim, file.mtim, file.path_filename);

@@ -52,6 +52,9 @@ char *get_permission(mode_t mode)
     return permission;
 }
 
+/* find directory file size use to DFS(with opendir, readdir) */
+/* only regular file's size plus and total size return. */
+/* if file's type dircectory then skip */
 long get_dir_size(char *path)
 {
     long size;
@@ -96,6 +99,7 @@ long get_dir_size(char *path)
     return size;
 }
 
+/* copy information from struct stat to struct myStat */
 void get_info_file(t_stat st, t_myStat *myst)
 {
     int i;
@@ -134,6 +138,7 @@ void print_first_line()
     printf("Index Size   Mode       Blocks Links UID  GID    Access          Change          Modify          Path\n");
 }
 
+/* find same size, same name's files */
 int find_file()
 {
     int cnt;
@@ -147,8 +152,8 @@ int find_file()
     // input filename type is file
     if ((cnt = scandir(g_dir_path_buf, &namelist, filter, alphasort)) == -1)
     {
-        index_zero_file();
-        index_same_file(g_info.real_path);
+        index_zero_file();                 // find index zero
+        index_same_file(g_info.real_path); // find same file using idx zero file
         if (g_chk_find == 0)
         {
             printf("(None)\n");
@@ -158,7 +163,7 @@ int find_file()
             print_node(g_head);
             while (1)
             {
-                index_prompt();
+                index_prompt(); // >>
                 select = input_index_option(input_function());
                 if (select == 0)
                 {
@@ -166,6 +171,7 @@ int find_file()
                 }
                 else
                 {
+                    /* find diff and print */
                     memset_diff_global_variable();
                     make_arr_from_files();
                     find_same_line();
@@ -223,6 +229,8 @@ int find_file()
     return 1;
 }
 
+/* find index: 0 's file and get infomation. */
+/* idx 0 file save in g_zero_file */
 void index_zero_file()
 {
     t_stat zero_file;
@@ -250,6 +258,8 @@ void index_zero_file()
     }
 }
 
+/* find same size, same name directory from [PATH] */
+/* This function use DFS(with opendir, readdir) */
 void index_same_dir(char *name)
 {
     DIR *dp;
@@ -299,6 +309,9 @@ void index_same_dir(char *name)
     }
 }
 
+/* Find same size, same name files from [PATH] */
+/* This function use DFS(with scandir) */
+/* parameter is path */
 void index_same_file(char *name)
 {
     int cnt;
@@ -311,6 +324,7 @@ void index_same_file(char *name)
         perror("realpath");
         return;
     }
+    /* change work directory */
     if (chdir(buf) < 0)
     {
         perror("idx_same_chdir");
@@ -334,7 +348,6 @@ void index_same_file(char *name)
             for (int i = 0; i < BUFF; i++)
                 buf[i] = 0;
             realpath(namelist[cnt]->d_name, buf);
-            // printf("current buf(%p): %s\n", &buf, buf);
             if (!strcmp(namelist[cnt]->d_name, ".") || !strcmp(namelist[cnt]->d_name, ".."))
             {
                 free(namelist[cnt]);
@@ -348,23 +361,23 @@ void index_same_file(char *name)
                 cnt--;
                 continue;
             }
-            // printf("file name: %s\nconvert: %s\nreal_path: %s\nfilepath: %s\n", namelist[cnt]->d_name, buf, g_zero_file.real_path, name);
-            //  printf("zero mode: %d tmp mode: %d\n", g_zero_file.st_mode, g_tmp.st_mode);
+
+            /* if file type, file name are same, path diff, get the file's info */
             if (g_zero_file.st_mode == g_tmp.st_mode && !strcmp(g_zero_file.filename, namelist[cnt]->d_name) && strcmp(name, g_zero_file.real_path))
             {
                 strcpy(g_dir_path_buf, buf);
                 get_info_file(g_tmp, &g_mtmp);
                 realpath(name, buf);
                 strcpy(g_mtmp.real_path, buf);
-                // printf("zero size : %ld mtmp size: %ld\n", g_zero_file.st_size, g_mtmp.st_size);
+                /*if same size then input linked list node */
                 if (strcmp(g_zero_file.filename, g_mtmp.filename) == 0 && g_zero_file.st_size == g_mtmp.st_size)
                 {
 
                     insert(&g_head, g_mtmp.real_path);
-                    // memset(&g_mtmp, 0, sizeof(g_mtmp));
                     g_chk_find++;
                 }
             }
+            /* if namelist[cnt] type dir then DFS */
             else if (namelist[cnt]->d_type == 4 && (g_tmp.st_mode & S_ISVTX) != 01000 && (g_tmp.st_mode & S_ISUID) != 04000 && (g_tmp.st_mode & S_ISGID) != 02000)
             {
                 index_same_file(buf);
@@ -377,6 +390,8 @@ void index_same_file(char *name)
     }
 }
 
+/* scandir()'s filter function */
+/* exclude '.' and '..' */
 int filter(const struct dirent *info)
 {
     char *except;

@@ -62,8 +62,8 @@ t_stat g_tmp;
 t_myStat g_zero_file;
 t_myStat g_mtmp;
 t_myStatptr g_head;
-int g_chk_find;
-int g_index;
+int g_chk_find; /* if find same file, then increase g_chk_find */
+int g_index;    /* ipunt index value ex) >> 1 => g_index = 1 */
 int *g_cnt_line_zero;
 int g_line_zero;
 int *g_cnt_line_idx;
@@ -76,7 +76,7 @@ char g_file1_content[BUFF][BUFF];
 char g_file2_content[BUFF][BUFF];
 bool g_option[4]; /* 0: q, 1: s, 2: i, 3: r */
 bool g_used_idx[BUFF];
-bool g_is_zero_dir_flag;
+bool g_is_zero_dir_flag; /* if [FILENAME] is directory then g_is_zero_dir_flag = 1 */
 
 /* print.c function */
 void prompt();

@@ -1,5 +1,7 @@
 #include "../includes/header.h"
 
+/* check char c in sperator */
+/* if c is sep then return 1 */
 int in_sep(char c, char *charset)
 {
     int i;
@@ -14,6 +16,7 @@ int in_sep(char c, char *charset)
     return (0);
 }
 
+/* count number of word */
 int cnt_word(char *str, char *charset)
 {
     int i;
@@ -32,6 +35,7 @@ int cnt_word(char *str, char *charset)
     return (cnt);
 }
 
+/* Measure length of each word */
 int len_word(char *str, char *charset)
 {
     int i;
@@ -53,6 +57,7 @@ int len_word(char *str, char *charset)
     return (len);
 }
 
+/* fill word in array */
 void make_split(char **arr, char *str, char *charset, int word_cnt)
 {
     int i;
@@ -80,6 +85,9 @@ void make_split(char **arr, char *str, char *charset, int word_cnt)
     arr[j] = 0;
 }
 
+/* return char[][] */
+/* if input ft_split("hello new world!", " !") */
+/* return char[][] = {{hello}, {new}, {world}} */
 char **ft_split(char *str, char *charset)
 {
     char **voca;
