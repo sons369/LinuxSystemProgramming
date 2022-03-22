@@ -1,0 +1,85 @@
+\hypertarget{main_8c}{}\doxysection{src/main.c 파일 참조}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+{\ttfamily \#include \char`\"{}../includes/header.\+h\char`\"{}}\newline
+main.\+c에 대한 include 의존 그래프
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d10/main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{함수}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{함수 문서화}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main.\+c 파일의 3 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     \textcolor{keyword}{struct }timeval start, end;}
+\DoxyCodeLine{6     \textcolor{keywordtype}{int} select;}
+\DoxyCodeLine{7     \textcolor{keywordtype}{long} sec;}
+\DoxyCodeLine{8     \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} usec;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     realpath(\textcolor{stringliteral}{"."}, \mbox{\hyperlink{header_8h_a97e8f56fed89c549c4a39b9070671bd5}{g\_home\_dir}});}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{comment}{/* start time check */}}
+\DoxyCodeLine{13     gettimeofday(\&start, NULL);}
+\DoxyCodeLine{14     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16         \mbox{\hyperlink{header_8h_aa7e4fe1d0c843e02dfdba34edc69fe91}{prompt}}();}
+\DoxyCodeLine{17         select = \mbox{\hyperlink{header_8h_a6ff48a25efef7babdf1d9c387de10d4e}{ft\_case}}(\mbox{\hyperlink{header_8h_a8d270f1179408dcd00201a9822daa42c}{input\_function}}());}
+\DoxyCodeLine{18         \textcolor{keywordflow}{if} (select == 2)}
+\DoxyCodeLine{19         \{}
+\DoxyCodeLine{20             \textcolor{comment}{/* end time check */}}
+\DoxyCodeLine{21             gettimeofday(\&end, NULL);}
+\DoxyCodeLine{22             sec = (end.tv\_sec -\/ start.tv\_sec);}
+\DoxyCodeLine{23             usec = (end.tv\_usec -\/ start.tv\_usec);}
+\DoxyCodeLine{24             \textcolor{keywordflow}{if} (usec < 0)}
+\DoxyCodeLine{25                 usec += 1000000;}
+\DoxyCodeLine{26             printf(\textcolor{stringliteral}{"Prompt End\(\backslash\)nRuntime : \%ld:\%lld(sec:usec)"}, sec, usec);}
+\DoxyCodeLine{27             exit(1);}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (select == 4)}
+\DoxyCodeLine{30         \{}
+\DoxyCodeLine{31             \mbox{\hyperlink{help_8c_a853216ac51aa181669ff4d3de74058a7}{print\_help}}();}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (select == 1)}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (select == 3)}
+\DoxyCodeLine{38         \{}
+\DoxyCodeLine{39             \mbox{\hyperlink{header_8h_aca1cdd2fce0f648b3321e3be6826a839}{find\_file}}();}
+\DoxyCodeLine{40         \}}
+\DoxyCodeLine{41         \textcolor{comment}{/* Initialize to 0 */}}
+\DoxyCodeLine{42         memset(\&\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}));}
+\DoxyCodeLine{43         memset(\&\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}));}
+\DoxyCodeLine{44         memset(\&\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}));}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46     \textcolor{keywordflow}{return} (0);}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

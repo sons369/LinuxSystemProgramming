@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: src/print.c 소스 파일</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'검색');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">print.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/db1/print_8c.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../includes/header.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="../../d6/db1/print_8c.html#aa7e4fe1d0c843e02dfdba34edc69fe91">    3</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/db1/print_8c.html#aa7e4fe1d0c843e02dfdba34edc69fe91">prompt</a>()</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    printf(<span class="stringliteral">&quot;20182624&gt; &quot;</span>);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../d6/db1/print_8c.html#ad1b6991305fb8e3d96e78d58a44620ab">    8</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/db1/print_8c.html#ad1b6991305fb8e3d96e78d58a44620ab">index_prompt</a>()</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    printf(<span class="stringliteral">&quot;&gt;&gt; &quot;</span>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/* Input Functions from User */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../d6/db1/print_8c.html#a8d270f1179408dcd00201a9822daa42c">   14</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="../../d6/db1/print_8c.html#a8d270f1179408dcd00201a9822daa42c">input_function</a>()</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">char</span> *str;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> ((str = (<span class="keywordtype">char</span> *)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * <a class="code" href="../../df/dcb/header_8h.html#a624fd5af921a5266e2d0304a645298ba">BUFF</a>)) == NULL)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        exit(1);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    fgets(str, <a class="code" href="../../df/dcb/header_8h.html#a624fd5af921a5266e2d0304a645298ba">BUFF</a>, stdin);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/* put file&#39;s name and file&#39;s path to g_info struct*/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* put real path to g_info struct */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* if [FILENAME]&#39;s path and [PATH]&#39;s path aren&#39;t available */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* then print error */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d6/db1/print_8c.html#ac15975fba80b47af5f70e1945bdcd646">   28</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/db1/print_8c.html#ac15975fba80b47af5f70e1945bdcd646">get_info</a>(<span class="keywordtype">char</span> *str[])</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> fd;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">char</span> buf[<a class="code" href="../../df/dcb/header_8h.html#a624fd5af921a5266e2d0304a645298ba">BUFF</a>];</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    strcpy(<a class="code" href="../../df/dcb/header_8h.html#a3cf59f56c2c125baa0702e7fe33ebfa4">g_info</a>.<a class="code" href="../../df/dfd/structs__fileinfo.html#a45ff1bbe579d61c588ae4e0a78ff8fe0">filename</a>, str[1]);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    strcpy(<a class="code" href="../../df/dcb/header_8h.html#a3cf59f56c2c125baa0702e7fe33ebfa4">g_info</a>.<a class="code" href="../../df/dfd/structs__fileinfo.html#a9f1c5c0a78aba530e614c6f751064a02">path</a>, str[2]);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    chdir(<a class="code" href="../../df/dcb/header_8h.html#a97e8f56fed89c549c4a39b9070671bd5">g_home_dir</a>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> ((fd = open(str[2], O_RDONLY)) &lt; 0 || (fd = open(str[1], O_RDONLY)) &lt; 0)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        perror(<span class="stringliteral">&quot;open&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (realpath(str[1], buf))</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            strcpy(<a class="code" href="../../df/dcb/header_8h.html#a3cf59f56c2c125baa0702e7fe33ebfa4">g_info</a>.<a class="code" href="../../df/dfd/structs__fileinfo.html#acd082f94272d8d4ebf58dba927be67f9">real_filename</a>, buf);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            strcpy(<a class="code" href="../../df/dcb/header_8h.html#a6eeb71a8c729fad94a96468b75816282">g_dir_path_buf</a>, buf);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (realpath(str[2], buf))</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            strcpy(<a class="code" href="../../df/dcb/header_8h.html#a3cf59f56c2c125baa0702e7fe33ebfa4">g_info</a>.<a class="code" href="../../df/dfd/structs__fileinfo.html#a0d7cc445127136913334b53398732051">real_path</a>, buf);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            strcpy(<a class="code" href="../../df/dcb/header_8h.html#a3cf59f56c2c125baa0702e7fe33ebfa4">g_info</a>.<a class="code" href="../../df/dfd/structs__fileinfo.html#a0d7cc445127136913334b53398732051">real_path</a>, str[2]);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    close(fd);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">for</span> (i = 0; str[i]; i++)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        free(str[i]);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    free(str);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/* case return according user iput */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/* exit =&gt; return 2 */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/* help =&gt; return 4 */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/* input enter with noting =&gt; return 1 */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/* find [FILENAME] [PATH] =&gt; return 3 */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d6/db1/print_8c.html#a6ff48a25efef7babdf1d9c387de10d4e">   74</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d6/db1/print_8c.html#a6ff48a25efef7babdf1d9c387de10d4e">ft_case</a>(<span class="keywordtype">char</span> *str)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">char</span> **result;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> j;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    result = <a class="code" href="../../df/dcb/header_8h.html#adb7b1a9478f407820e3727a50807b347">ft_split</a>(str, <span class="stringliteral">&quot; \n\t&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    j = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">while</span> (result[j])</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        j++;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">if</span> (str[0] == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        free(str);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(result[0], <span class="stringliteral">&quot;exit&quot;</span>) == 0 &amp;&amp; j == 1)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        free(str);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(result[0], <span class="stringliteral">&quot;find&quot;</span>) == 0 &amp;&amp; j == 3)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="../../d6/db1/print_8c.html#ac15975fba80b47af5f70e1945bdcd646">get_info</a>(result);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        free(str);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> 3;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        free(str);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">return</span> 4;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/* print file&#39;s infomation ex) UID, SIZE, CTIME... */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="../../d6/db1/print_8c.html#a098508199d2a4f70f623618450812d0e">  112</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/db1/print_8c.html#a098508199d2a4f70f623618450812d0e">print_file</a>(<a class="code" href="../../dc/d1c/structs__myStat.html">t_myStat</a> file, <span class="keywordtype">int</span> i)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    printf(<span class="stringliteral">&quot;%-6d%-7ld%-11s%-7ld%-6ld%-5d%-7d%-16s%-16s%-16s%-2s\n&quot;</span>, i, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a87accf751d098caf719b1e4a4e533408">st_size</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a53a8d4e02012e53dd4ae507e4574066b">permission</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a68652e874ff604c3c2058ec8f915db03">st_blocks</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a1e9be57b29179ed8d1bdf30d8ec3dbc1">st_nlink</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a82255ddb24217006b50fbeb2cc42b81b">st_uid</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#ad7e3f30b2f80df9c387c1b2f4d84f5e5">st_gid</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a714cb9a6f537789754ac61b629b31812">atim</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#aef31e5a46c07f5411f7907549a86ee5d">ctim</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#ab6d9f4d183deb35259aa234727912043">mtim</a>, file.<a class="code" href="../../dc/d1c/structs__myStat.html#a3de1069c0c13fb5b6be64375091fb777">path_filename</a>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructs__myStat_html_a714cb9a6f537789754ac61b629b31812"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a714cb9a6f537789754ac61b629b31812">s_myStat::atim</a></div><div class="ttdeci">char * atim</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00046">header.h:46</a></div></div>
+<div class="ttc" id="astructs__fileinfo_html_a0d7cc445127136913334b53398732051"><div class="ttname"><a href="../../df/dfd/structs__fileinfo.html#a0d7cc445127136913334b53398732051">s_fileinfo::real_path</a></div><div class="ttdeci">char real_path[PATH_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00027">header.h:27</a></div></div>
+<div class="ttc" id="aprint_8c_html_a6ff48a25efef7babdf1d9c387de10d4e"><div class="ttname"><a href="../../d6/db1/print_8c.html#a6ff48a25efef7babdf1d9c387de10d4e">ft_case</a></div><div class="ttdeci">int ft_case(char *str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db1/print_8c_source.html#l00074">print.c:74</a></div></div>
+<div class="ttc" id="aheader_8h_html_a3cf59f56c2c125baa0702e7fe33ebfa4"><div class="ttname"><a href="../../df/dcb/header_8h.html#a3cf59f56c2c125baa0702e7fe33ebfa4">g_info</a></div><div class="ttdeci">t_fileinfo g_info</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00060">header.h:60</a></div></div>
+<div class="ttc" id="aprint_8c_html_a8d270f1179408dcd00201a9822daa42c"><div class="ttname"><a href="../../d6/db1/print_8c.html#a8d270f1179408dcd00201a9822daa42c">input_function</a></div><div class="ttdeci">char * input_function()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db1/print_8c_source.html#l00014">print.c:14</a></div></div>
+<div class="ttc" id="astructs__myStat_html_a68652e874ff604c3c2058ec8f915db03"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a68652e874ff604c3c2058ec8f915db03">s_myStat::st_blocks</a></div><div class="ttdeci">blkcnt_t st_blocks</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00038">header.h:38</a></div></div>
+<div class="ttc" id="astructs__myStat_html_ad7e3f30b2f80df9c387c1b2f4d84f5e5"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#ad7e3f30b2f80df9c387c1b2f4d84f5e5">s_myStat::st_gid</a></div><div class="ttdeci">gid_t st_gid</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00035">header.h:35</a></div></div>
+<div class="ttc" id="aprint_8c_html_a098508199d2a4f70f623618450812d0e"><div class="ttname"><a href="../../d6/db1/print_8c.html#a098508199d2a4f70f623618450812d0e">print_file</a></div><div class="ttdeci">void print_file(t_myStat file, int i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db1/print_8c_source.html#l00112">print.c:112</a></div></div>
+<div class="ttc" id="aheader_8h_html_a624fd5af921a5266e2d0304a645298ba"><div class="ttname"><a href="../../df/dcb/header_8h.html#a624fd5af921a5266e2d0304a645298ba">BUFF</a></div><div class="ttdeci">#define BUFF</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00019">header.h:19</a></div></div>
+<div class="ttc" id="astructs__myStat_html"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html">s_myStat</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00030">header.h:30</a></div></div>
+<div class="ttc" id="astructs__myStat_html_a1e9be57b29179ed8d1bdf30d8ec3dbc1"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a1e9be57b29179ed8d1bdf30d8ec3dbc1">s_myStat::st_nlink</a></div><div class="ttdeci">nlink_t st_nlink</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00033">header.h:33</a></div></div>
+<div class="ttc" id="aheader_8h_html_adb7b1a9478f407820e3727a50807b347"><div class="ttname"><a href="../../df/dcb/header_8h.html#adb7b1a9478f407820e3727a50807b347">ft_split</a></div><div class="ttdeci">char ** ft_split(char *str, char *charset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/de7/split_8c_source.html#l00091">split.c:91</a></div></div>
+<div class="ttc" id="astructs__myStat_html_a87accf751d098caf719b1e4a4e533408"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a87accf751d098caf719b1e4a4e533408">s_myStat::st_size</a></div><div class="ttdeci">off_t st_size</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00036">header.h:36</a></div></div>
+<div class="ttc" id="aheader_8h_html_a97e8f56fed89c549c4a39b9070671bd5"><div class="ttname"><a href="../../df/dcb/header_8h.html#a97e8f56fed89c549c4a39b9070671bd5">g_home_dir</a></div><div class="ttdeci">char g_home_dir[BUFF]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00073">header.h:73</a></div></div>
+<div class="ttc" id="aheader_8h_html_a6eeb71a8c729fad94a96468b75816282"><div class="ttname"><a href="../../df/dcb/header_8h.html#a6eeb71a8c729fad94a96468b75816282">g_dir_path_buf</a></div><div class="ttdeci">char g_dir_path_buf[BUFF]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00074">header.h:74</a></div></div>
+<div class="ttc" id="astructs__myStat_html_aef31e5a46c07f5411f7907549a86ee5d"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#aef31e5a46c07f5411f7907549a86ee5d">s_myStat::ctim</a></div><div class="ttdeci">char * ctim</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00047">header.h:47</a></div></div>
+<div class="ttc" id="astructs__myStat_html_ab6d9f4d183deb35259aa234727912043"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#ab6d9f4d183deb35259aa234727912043">s_myStat::mtim</a></div><div class="ttdeci">char * mtim</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00048">header.h:48</a></div></div>
+<div class="ttc" id="astructs__fileinfo_html_acd082f94272d8d4ebf58dba927be67f9"><div class="ttname"><a href="../../df/dfd/structs__fileinfo.html#acd082f94272d8d4ebf58dba927be67f9">s_fileinfo::real_filename</a></div><div class="ttdeci">char real_filename[PATH_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00025">header.h:25</a></div></div>
+<div class="ttc" id="aprint_8c_html_ad1b6991305fb8e3d96e78d58a44620ab"><div class="ttname"><a href="../../d6/db1/print_8c.html#ad1b6991305fb8e3d96e78d58a44620ab">index_prompt</a></div><div class="ttdeci">void index_prompt()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db1/print_8c_source.html#l00008">print.c:8</a></div></div>
+<div class="ttc" id="astructs__myStat_html_a3de1069c0c13fb5b6be64375091fb777"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a3de1069c0c13fb5b6be64375091fb777">s_myStat::path_filename</a></div><div class="ttdeci">char path_filename[PATH_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00052">header.h:52</a></div></div>
+<div class="ttc" id="astructs__myStat_html_a53a8d4e02012e53dd4ae507e4574066b"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a53a8d4e02012e53dd4ae507e4574066b">s_myStat::permission</a></div><div class="ttdeci">char * permission</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00049">header.h:49</a></div></div>
+<div class="ttc" id="astructs__fileinfo_html_a45ff1bbe579d61c588ae4e0a78ff8fe0"><div class="ttname"><a href="../../df/dfd/structs__fileinfo.html#a45ff1bbe579d61c588ae4e0a78ff8fe0">s_fileinfo::filename</a></div><div class="ttdeci">char filename[BUFF]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00024">header.h:24</a></div></div>
+<div class="ttc" id="astructs__fileinfo_html_a9f1c5c0a78aba530e614c6f751064a02"><div class="ttname"><a href="../../df/dfd/structs__fileinfo.html#a9f1c5c0a78aba530e614c6f751064a02">s_fileinfo::path</a></div><div class="ttdeci">char path[PATH_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00026">header.h:26</a></div></div>
+<div class="ttc" id="aprint_8c_html_ac15975fba80b47af5f70e1945bdcd646"><div class="ttname"><a href="../../d6/db1/print_8c.html#ac15975fba80b47af5f70e1945bdcd646">get_info</a></div><div class="ttdeci">void get_info(char *str[])</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db1/print_8c_source.html#l00028">print.c:28</a></div></div>
+<div class="ttc" id="aprint_8c_html_aa7e4fe1d0c843e02dfdba34edc69fe91"><div class="ttname"><a href="../../d6/db1/print_8c.html#aa7e4fe1d0c843e02dfdba34edc69fe91">prompt</a></div><div class="ttdeci">void prompt()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db1/print_8c_source.html#l00003">print.c:3</a></div></div>
+<div class="ttc" id="astructs__myStat_html_a82255ddb24217006b50fbeb2cc42b81b"><div class="ttname"><a href="../../dc/d1c/structs__myStat.html#a82255ddb24217006b50fbeb2cc42b81b">s_myStat::st_uid</a></div><div class="ttdeci">uid_t st_uid</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcb/header_8h_source.html#l00034">header.h:34</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+다음에 의해 생성됨 :  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

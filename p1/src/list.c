@@ -11,6 +11,7 @@ void insert(t_myStatptr *sPtr, char *path)
 
     if (newPtr != NULL)
     {
+        /* copy informations to node */
         strcpy(newPtr->real_path, path);
         get_info_file(g_tmp, newPtr);
         if (g_is_zero_dir_flag == 1)

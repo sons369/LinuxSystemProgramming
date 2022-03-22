@@ -1,0 +1,3248 @@
+\hypertarget{header_8h}{}\doxysection{includes/header.h 파일 참조}
+\label{header_8h}\index{includes/header.h@{includes/header.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$libgen.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+header.\+h에 대한 include 의존 그래프
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d0a/header_8h__incl}
+\end{center}
+\end{figure}
+이 그래프는 이 파일을 직/간접적으로 include 하는 파일들을 보여줍니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/d19/header_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{데이터 구조}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__fileinfo}{s\+\_\+fileinfo}}
+\item 
+struct \mbox{\hyperlink{structs__myStat}{s\+\_\+my\+Stat}}
+\end{DoxyCompactItemize}
+\doxysubsection*{매크로}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}~1024
+\item 
+\#define \mbox{\hyperlink{header_8h_ae688d728e1acdfe5988c7db45d6f0166}{P\+A\+T\+H\+\_\+\+M\+AX}}~4096
+\item 
+\#define \mbox{\hyperlink{header_8h_a4ce306737c3153a7e2e99272c0a92ec5}{st\+\_\+atime}}~st\+\_\+atim.\+tv\+\_\+sec /$\ast$ Backward compatibility $\ast$/
+\item 
+\#define \mbox{\hyperlink{header_8h_aecd62777ab7c6c1d6d23e4967632c5ef}{st\+\_\+mtime}}~st\+\_\+mtim.\+tv\+\_\+sec
+\item 
+\#define \mbox{\hyperlink{header_8h_a2dd9b364b84aee095dc6208ff18de4f5}{st\+\_\+ctime}}~st\+\_\+ctim.\+tv\+\_\+sec
+\end{DoxyCompactItemize}
+\doxysubsection*{타입정의}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structs__fileinfo}{s\+\_\+fileinfo}} \mbox{\hyperlink{header_8h_ad8f01a9e4eb26ed9a4bd8e3317edfa1b}{t\+\_\+fileinfo}}
+\item 
+typedef struct \mbox{\hyperlink{structs__myStat}{s\+\_\+my\+Stat}} \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}}
+\item 
+typedef struct stat \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}}
+\item 
+typedef \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} $\ast$ \mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}}
+\end{DoxyCompactItemize}
+\doxysubsection*{함수}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{header_8h_aa7e4fe1d0c843e02dfdba34edc69fe91}{prompt}} ()
+\item 
+void \mbox{\hyperlink{header_8h_ad1b6991305fb8e3d96e78d58a44620ab}{index\+\_\+prompt}} ()
+\item 
+char $\ast$ \mbox{\hyperlink{header_8h_a8d270f1179408dcd00201a9822daa42c}{input\+\_\+function}} ()
+\item 
+void \mbox{\hyperlink{header_8h_ac15975fba80b47af5f70e1945bdcd646}{get\+\_\+info}} (char $\ast$str\mbox{[}$\,$\mbox{]})
+\item 
+int \mbox{\hyperlink{header_8h_a6ff48a25efef7babdf1d9c387de10d4e}{ft\+\_\+case}} (char $\ast$str)
+\item 
+void \mbox{\hyperlink{header_8h_a098508199d2a4f70f623618450812d0e}{print\+\_\+file}} (\mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} file, int i)
+\item 
+int \mbox{\hyperlink{header_8h_a9e3f92eaeefd0c967bb79c9a108e0081}{in\+\_\+sep}} (char c, char $\ast$charset)
+\item 
+int \mbox{\hyperlink{header_8h_a8943274f1c2feba0285ed569bcd8610e}{cnt\+\_\+word}} (char $\ast$str, char $\ast$charset)
+\item 
+int \mbox{\hyperlink{header_8h_a49395c1b02d159956dfd6efb99c35c66}{len\+\_\+word}} (char $\ast$str, char $\ast$charset)
+\item 
+void \mbox{\hyperlink{header_8h_add84278597354389bf0bd24328493fea}{make\+\_\+split}} (char $\ast$$\ast$arr, char $\ast$str, char $\ast$charset, int word\+\_\+cnt)
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\+\_\+split}} (char $\ast$str, char $\ast$charset)
+\item 
+void \mbox{\hyperlink{header_8h_a853216ac51aa181669ff4d3de74058a7}{print\+\_\+help}} ()
+\item 
+char $\ast$ \mbox{\hyperlink{header_8h_a9999b65a55300e3d3989e8184b84b950}{convert\+\_\+path}} (char $\ast$path)
+\item 
+void \mbox{\hyperlink{header_8h_a05b5d50e393d4ad8bf90b7906b628f6a}{print\+\_\+first\+\_\+line}} ()
+\item 
+void \mbox{\hyperlink{header_8h_af68e4a56d4fae1da4c64ec16bb4f3933}{get\+\_\+info\+\_\+file}} (\mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}} st, \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} $\ast$myst)
+\item 
+char $\ast$ \mbox{\hyperlink{header_8h_a0df704af71b427e46377922a58ef3532}{get\+\_\+string\+\_\+time}} (\mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}} st\+\_\+t, int flag)
+\item 
+char $\ast$ \mbox{\hyperlink{header_8h_a22c65229b328a1f81f7155c732326415}{get\+\_\+permission}} (mode\+\_\+t mode)
+\item 
+int \mbox{\hyperlink{header_8h_aca1cdd2fce0f648b3321e3be6826a839}{find\+\_\+file}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a5baa9246fb4f33fb8b1ea135ab5acbb1}{index\+\_\+zero\+\_\+file}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a328dc96d133e4c5601ee50c268b58b51}{index\+\_\+same\+\_\+file}} (char $\ast$name)
+\item 
+int \mbox{\hyperlink{header_8h_a75102b030f4548d98f15d2c383b96f73}{filter}} (const struct dirent $\ast$info)
+\item 
+void \mbox{\hyperlink{header_8h_ad61a29fd886a104ffe1788f50810bfbd}{index\+\_\+same\+\_\+dir}} (char $\ast$name)
+\item 
+long \mbox{\hyperlink{header_8h_a8249f864c8071fdbf4f4b39da55b31fe}{get\+\_\+dir\+\_\+size}} (char $\ast$path)
+\item 
+void \mbox{\hyperlink{header_8h_a451042865bde09f734cbbdb8cc508088}{call\+\_\+dir\+\_\+diff}} ()
+\item 
+int \mbox{\hyperlink{header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0}{input\+\_\+index\+\_\+option}} (char $\ast$str)
+\item 
+void \mbox{\hyperlink{header_8h_a78698417d5ae33b9f864fb4260f8f42b}{make\+\_\+arr\+\_\+from\+\_\+files}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a7b435fa10cfb7780da62151acb4baad3}{find\+\_\+same\+\_\+line}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a66dbc142458a94daf38d1913ba00e763}{verification\+\_\+arr}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a2877e40977e8f83fef4abd41a3df4ac4}{make\+\_\+result\+\_\+arr}} ()
+\item 
+void \mbox{\hyperlink{header_8h_ace132829b602fd83755d5a4a70a448a3}{memset\+\_\+diff\+\_\+global\+\_\+variable}} ()
+\item 
+void \mbox{\hyperlink{header_8h_ad03c28e0bb9241922dbefbe03a9802af}{print\+\_\+diff\+\_\+result}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a0b2c79d1bacef4f4f0c3ec39fb32f614}{print\+\_\+diff\+\_\+add}} (int idx, int start, int end)
+\item 
+void \mbox{\hyperlink{header_8h_a0b413ecc0af20ff656082373ec45f532}{print\+\_\+diff\+\_\+change}} (int n\+\_\+start, int n\+\_\+end, int p\+\_\+start, int p\+\_\+end)
+\item 
+void \mbox{\hyperlink{header_8h_a8fd45f06ad690e68549d69191acc5380}{print\+\_\+diff\+\_\+delete}} (int idx, int start, int end)
+\item 
+void \mbox{\hyperlink{header_8h_a8d0306a0b48f065588732597c3eeabcb}{print\+\_\+diff\+\_\+option\+\_\+q}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a52802e1c441774df5699282e668d4499}{print\+\_\+diff\+\_\+option\+\_\+s}} ()
+\item 
+void \mbox{\hyperlink{header_8h_a43cc121a9454926d7e1504064a637016}{dir\+\_\+make\+\_\+arr\+\_\+from\+\_\+files}} (char $\ast$zero\+\_\+path, char $\ast$idx\+\_\+path)
+\item 
+void \mbox{\hyperlink{header_8h_aefdaa29535746a13f7772a3cf1c9e4a1}{dir\+\_\+find\+\_\+same\+\_\+line}} (char $\ast$zero\+\_\+path, char $\ast$idx\+\_\+path)
+\item 
+void \mbox{\hyperlink{header_8h_aaf330ec15d2741808901fb5d510b817b}{insert}} (\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} $\ast$s\+Ptr, char $\ast$path)
+\item 
+void \mbox{\hyperlink{header_8h_acb79ca82200f39f5df150f8f02893002}{free\+\_\+all\+\_\+node}} (\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} $\ast$s\+Ptr)
+\item 
+void \mbox{\hyperlink{header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\+\_\+node}} (\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} s\+Ptr)
+\item 
+int \mbox{\hyperlink{header_8h_a82b94315529a7484e7325b02d7eb9859}{sort\+\_\+filter}} (char $\ast$s1, char $\ast$s2)
+\item 
+\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\+\_\+idx\+\_\+node}} (int idx)
+\end{DoxyCompactItemize}
+\doxysubsection*{변수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{header_8h_ad8f01a9e4eb26ed9a4bd8e3317edfa1b}{t\+\_\+fileinfo}} \mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\+\_\+info}}
+\item 
+\mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}} \mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\+\_\+tmp}}
+\item 
+\mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\+\_\+zero\+\_\+file}}
+\item 
+\mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\+\_\+mtmp}}
+\item 
+\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} \mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\+\_\+head}}
+\item 
+int \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\+\_\+chk\+\_\+find}}
+\item 
+int \mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\+\_\+index}}
+\item 
+int $\ast$ \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\+\_\+cnt\+\_\+line\+\_\+zero}}
+\item 
+int \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\+\_\+line\+\_\+zero}}
+\item 
+int $\ast$ \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\+\_\+cnt\+\_\+line\+\_\+idx}}
+\item 
+int \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\+\_\+line\+\_\+idx}}
+\item 
+int $\ast$ \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\+\_\+diff\+\_\+result\+\_\+arr}}
+\item 
+int \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\+\_\+diff\+\_\+result\+\_\+arr\+\_\+len}}
+\item 
+char \mbox{\hyperlink{header_8h_a97e8f56fed89c549c4a39b9070671bd5}{g\+\_\+home\+\_\+dir}} \mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}
+\item 
+char \mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\+\_\+dir\+\_\+path\+\_\+buf}} \mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}
+\item 
+char \mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\+\_\+file1\+\_\+content}} \mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}
+\item 
+char \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\+\_\+file2\+\_\+content}} \mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}
+\item 
+bool \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\+\_\+option}} \mbox{[}4\mbox{]}
+\item 
+bool \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\+\_\+used\+\_\+idx}} \mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}
+\item 
+bool \mbox{\hyperlink{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}{g\+\_\+is\+\_\+zero\+\_\+dir\+\_\+flag}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{매크로 문서화}
+\mbox{\Hypertarget{header_8h_a624fd5af921a5266e2d0304a645298ba}\label{header_8h_a624fd5af921a5266e2d0304a645298ba}} 
+\index{header.h@{header.h}!BUFF@{BUFF}}
+\index{BUFF@{BUFF}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{BUFF}{BUFF}}
+{\footnotesize\ttfamily \#define B\+U\+FF~1024}
+
+
+
+header.\+h 파일의 19 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_ae688d728e1acdfe5988c7db45d6f0166}\label{header_8h_ae688d728e1acdfe5988c7db45d6f0166}} 
+\index{header.h@{header.h}!PATH\_MAX@{PATH\_MAX}}
+\index{PATH\_MAX@{PATH\_MAX}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{PATH\_MAX}{PATH\_MAX}}
+{\footnotesize\ttfamily \#define P\+A\+T\+H\+\_\+\+M\+AX~4096}
+
+
+
+header.\+h 파일의 20 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a4ce306737c3153a7e2e99272c0a92ec5}\label{header_8h_a4ce306737c3153a7e2e99272c0a92ec5}} 
+\index{header.h@{header.h}!st\_atime@{st\_atime}}
+\index{st\_atime@{st\_atime}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{st\_atime}{st\_atime}}
+{\footnotesize\ttfamily \#define st\+\_\+atime~st\+\_\+atim.\+tv\+\_\+sec /$\ast$ Backward compatibility $\ast$/}
+
+
+
+header.\+h 파일의 43 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a2dd9b364b84aee095dc6208ff18de4f5}\label{header_8h_a2dd9b364b84aee095dc6208ff18de4f5}} 
+\index{header.h@{header.h}!st\_ctime@{st\_ctime}}
+\index{st\_ctime@{st\_ctime}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{st\_ctime}{st\_ctime}}
+{\footnotesize\ttfamily \#define st\+\_\+ctime~st\+\_\+ctim.\+tv\+\_\+sec}
+
+
+
+header.\+h 파일의 45 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_aecd62777ab7c6c1d6d23e4967632c5ef}\label{header_8h_aecd62777ab7c6c1d6d23e4967632c5ef}} 
+\index{header.h@{header.h}!st\_mtime@{st\_mtime}}
+\index{st\_mtime@{st\_mtime}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{st\_mtime}{st\_mtime}}
+{\footnotesize\ttfamily \#define st\+\_\+mtime~st\+\_\+mtim.\+tv\+\_\+sec}
+
+
+
+header.\+h 파일의 44 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{타입정의 문서화}
+\mbox{\Hypertarget{header_8h_ad8f01a9e4eb26ed9a4bd8e3317edfa1b}\label{header_8h_ad8f01a9e4eb26ed9a4bd8e3317edfa1b}} 
+\index{header.h@{header.h}!t\_fileinfo@{t\_fileinfo}}
+\index{t\_fileinfo@{t\_fileinfo}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{t\_fileinfo}{t\_fileinfo}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structs__fileinfo}{s\+\_\+fileinfo}} \mbox{\hyperlink{header_8h_ad8f01a9e4eb26ed9a4bd8e3317edfa1b}{t\+\_\+fileinfo}}}
+
+\mbox{\Hypertarget{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}\label{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}} 
+\index{header.h@{header.h}!t\_myStat@{t\_myStat}}
+\index{t\_myStat@{t\_myStat}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{t\_myStat}{t\_myStat}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structs__myStat}{s\+\_\+my\+Stat}} \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}}}
+
+\mbox{\Hypertarget{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}\label{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}} 
+\index{header.h@{header.h}!t\_myStatptr@{t\_myStatptr}}
+\index{t\_myStatptr@{t\_myStatptr}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{t\_myStatptr}{t\_myStatptr}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}}$\ast$ \mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}}}
+
+
+
+header.\+h 파일의 57 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}\label{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}} 
+\index{header.h@{header.h}!t\_stat@{t\_stat}}
+\index{t\_stat@{t\_stat}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{t\_stat}{t\_stat}}
+{\footnotesize\ttfamily typedef struct stat \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}}}
+
+
+
+header.\+h 파일의 56 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{함수 문서화}
+\mbox{\Hypertarget{header_8h_a451042865bde09f734cbbdb8cc508088}\label{header_8h_a451042865bde09f734cbbdb8cc508088}} 
+\index{header.h@{header.h}!call\_dir\_diff@{call\_dir\_diff}}
+\index{call\_dir\_diff@{call\_dir\_diff}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{call\_dir\_diff()}{call\_dir\_diff()}}
+{\footnotesize\ttfamily void call\+\_\+dir\+\_\+diff (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 432 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{433 \{}
+\DoxyCodeLine{434     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{435     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} zero\_file;}
+\DoxyCodeLine{436     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} idx\_file;}
+\DoxyCodeLine{437     \textcolor{keywordtype}{int} zero\_cnt;}
+\DoxyCodeLine{438     \textcolor{keywordtype}{int} idx\_cnt;}
+\DoxyCodeLine{439     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{440     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{441     \textcolor{keywordtype}{int} m;}
+\DoxyCodeLine{442     \textcolor{keywordtype}{int} n;}
+\DoxyCodeLine{443     \textcolor{keywordtype}{int} diff\_path1;}
+\DoxyCodeLine{444     \textcolor{keywordtype}{int} diff\_path2;}
+\DoxyCodeLine{445     \textcolor{keyword}{struct }dirent **zero\_namelist;}
+\DoxyCodeLine{446     \textcolor{keyword}{struct }dirent **idx\_namelist;}
+\DoxyCodeLine{447     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{448     \textcolor{keywordtype}{char} buf2[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{449     \textcolor{keywordtype}{char} **path;}
+\DoxyCodeLine{450     \textcolor{keywordtype}{char} **path2;}
+\DoxyCodeLine{451 }
+\DoxyCodeLine{452     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454     \textcolor{keywordflow}{if} ((zero\_cnt = scandir(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \&zero\_namelist, \mbox{\hyperlink{find_8c_a75102b030f4548d98f15d2c383b96f73}{filter}}, alphasort)) == -\/1)}
+\DoxyCodeLine{455     \{}
+\DoxyCodeLine{456         perror(\textcolor{stringliteral}{"zero\_cnt"});}
+\DoxyCodeLine{457         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{458     \}}
+\DoxyCodeLine{459     \textcolor{keywordflow}{if} ((idx\_cnt = scandir(tmp-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \&idx\_namelist, \mbox{\hyperlink{find_8c_a75102b030f4548d98f15d2c383b96f73}{filter}}, alphasort)) == -\/1)}
+\DoxyCodeLine{460     \{}
+\DoxyCodeLine{461         perror(\textcolor{stringliteral}{"idx\_cnt"});}
+\DoxyCodeLine{462         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{463     \}}
+\DoxyCodeLine{464     \textcolor{keywordflow}{if} (zero\_cnt > 0)}
+\DoxyCodeLine{465         zero\_cnt-\/-\/;}
+\DoxyCodeLine{466     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (zero\_cnt <= 0)}
+\DoxyCodeLine{467         zero\_cnt = 0;}
+\DoxyCodeLine{468     \textcolor{keywordflow}{if} (idx\_cnt > 0)}
+\DoxyCodeLine{469         idx\_cnt-\/-\/;}
+\DoxyCodeLine{470     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (idx\_cnt <= 0)}
+\DoxyCodeLine{471         idx\_cnt = 0;}
+\DoxyCodeLine{472 }
+\DoxyCodeLine{473     path = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{474     path2 = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(tmp-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{475     i = 0;}
+\DoxyCodeLine{476     j = 0;}
+\DoxyCodeLine{477     m = 0;}
+\DoxyCodeLine{478     n = 0;}
+\DoxyCodeLine{479     diff\_path1 = 0;}
+\DoxyCodeLine{480     diff\_path2 = 0;}
+\DoxyCodeLine{481     \textcolor{keywordflow}{while} (path[diff\_path1])}
+\DoxyCodeLine{482     \{}
+\DoxyCodeLine{483         m++;}
+\DoxyCodeLine{484         diff\_path1++;}
+\DoxyCodeLine{485     \}}
+\DoxyCodeLine{486     diff\_path1-\/-\/;}
+\DoxyCodeLine{487     \textcolor{keywordflow}{while} (path2[diff\_path2])}
+\DoxyCodeLine{488     \{}
+\DoxyCodeLine{489         n++;}
+\DoxyCodeLine{490         diff\_path2++;}
+\DoxyCodeLine{491     \}}
+\DoxyCodeLine{492     diff\_path2-\/-\/;}
+\DoxyCodeLine{493     \textcolor{comment}{/* 파일 경로 안겹치는 부분까지 반복문 돌리기 */}}
+\DoxyCodeLine{494     \textcolor{keywordflow}{while} (!strcmp(path[diff\_path1], path2[diff\_path2]))}
+\DoxyCodeLine{495     \{}
+\DoxyCodeLine{496         diff\_path1-\/-\/;}
+\DoxyCodeLine{497         diff\_path2-\/-\/;}
+\DoxyCodeLine{498     \}}
+\DoxyCodeLine{499     \textcolor{keywordflow}{while} (i <= zero\_cnt \&\& j <= idx\_cnt)}
+\DoxyCodeLine{500     \{}
+\DoxyCodeLine{501         \textcolor{comment}{/* strcmp가 음수이면 index 0번 디렉토리에만 있는 파일이므로 i 값만 더해주고 정보 출력 */}}
+\DoxyCodeLine{502         \textcolor{keywordflow}{if} (strcmp(zero\_namelist[i]-\/>d\_name, idx\_namelist[j]-\/>d\_name) < 0)}
+\DoxyCodeLine{503         \{}
+\DoxyCodeLine{504             printf(\textcolor{stringliteral}{"Olny in "});}
+\DoxyCodeLine{505             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path1; path[k]; k++)}
+\DoxyCodeLine{506             \{}
+\DoxyCodeLine{507                 printf(\textcolor{stringliteral}{"\%s"}, path[k]);}
+\DoxyCodeLine{508                 \textcolor{keywordflow}{if} (k != m)}
+\DoxyCodeLine{509                 \{}
+\DoxyCodeLine{510                     printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{511                 \}}
+\DoxyCodeLine{512             \}}
+\DoxyCodeLine{513             printf(\textcolor{stringliteral}{": \%s\(\backslash\)n"}, zero\_namelist[i]-\/>d\_name);}
+\DoxyCodeLine{514             i++;}
+\DoxyCodeLine{515         \}}
+\DoxyCodeLine{516         \textcolor{comment}{/* strcmp가 양수이면 입력받은 index 디렉토리에만 있는 파일이므로 j 값만 더해주고 정보 출력 */}}
+\DoxyCodeLine{517         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(zero\_namelist[i]-\/>d\_name, idx\_namelist[j]-\/>d\_name) > 0)}
+\DoxyCodeLine{518         \{}
+\DoxyCodeLine{519             printf(\textcolor{stringliteral}{"Olny in "});}
+\DoxyCodeLine{520             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path2; path2[k]; k++)}
+\DoxyCodeLine{521             \{}
+\DoxyCodeLine{522                 printf(\textcolor{stringliteral}{"\%s"}, path2[k]);}
+\DoxyCodeLine{523                 \textcolor{keywordflow}{if} (k != n)}
+\DoxyCodeLine{524                 \{}
+\DoxyCodeLine{525                     printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{526                 \}}
+\DoxyCodeLine{527             \}}
+\DoxyCodeLine{528             printf(\textcolor{stringliteral}{": \%s\(\backslash\)n"}, idx\_namelist[j]-\/>d\_name);}
+\DoxyCodeLine{529             j++;}
+\DoxyCodeLine{530         \}}
+\DoxyCodeLine{531         \textcolor{comment}{/* 이름이 똑같을 때 비교하고 i값과 j값 동시에 증가*/}}
+\DoxyCodeLine{532         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{533         \{}
+\DoxyCodeLine{534             strcpy(buf, \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}});}
+\DoxyCodeLine{535             strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{536             strcat(buf, zero\_namelist[i]-\/>d\_name);}
+\DoxyCodeLine{537             stat(buf, \&zero\_file);}
+\DoxyCodeLine{538             strcpy(buf2, tmp-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}});}
+\DoxyCodeLine{539             strcat(buf2, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{540             strcat(buf2, idx\_namelist[j]-\/>d\_name);}
+\DoxyCodeLine{541             stat(buf2, \&idx\_file);}
+\DoxyCodeLine{542             \textcolor{comment}{/* 둘 다 디렉토리일 경우 */}}
+\DoxyCodeLine{543             \textcolor{keywordflow}{if} (S\_ISDIR(zero\_file.st\_mode) \&\& S\_ISDIR(idx\_file.st\_mode))}
+\DoxyCodeLine{544             \{}
+\DoxyCodeLine{545                 printf(\textcolor{stringliteral}{"Common subdirectories : "});}
+\DoxyCodeLine{546                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path1; path[k]; k++)}
+\DoxyCodeLine{547                 \{}
+\DoxyCodeLine{548                     printf(\textcolor{stringliteral}{"\%s"}, path[k]);}
+\DoxyCodeLine{549                     \textcolor{keywordflow}{if} (k != m)}
+\DoxyCodeLine{550                     \{}
+\DoxyCodeLine{551                         printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{552                     \}}
+\DoxyCodeLine{553                 \}}
+\DoxyCodeLine{554                 printf(\textcolor{stringliteral}{"\%s and "}, zero\_namelist[i]-\/>d\_name);}
+\DoxyCodeLine{555                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path2; path2[k]; k++)}
+\DoxyCodeLine{556                 \{}
+\DoxyCodeLine{557                     printf(\textcolor{stringliteral}{"\%s"}, path2[k]);}
+\DoxyCodeLine{558                     \textcolor{keywordflow}{if} (k != n)}
+\DoxyCodeLine{559                     \{}
+\DoxyCodeLine{560                         printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{561                     \}}
+\DoxyCodeLine{562                 \}}
+\DoxyCodeLine{563                 printf(\textcolor{stringliteral}{"\%s\(\backslash\)n"}, idx\_namelist[j]-\/>d\_name);}
+\DoxyCodeLine{564             \}}
+\DoxyCodeLine{565             \textcolor{comment}{/* 하나는 정규파일, 하나는 디렉토리일 경우 */}}
+\DoxyCodeLine{566             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((zero\_namelist[i]-\/>d\_type == 4 \&\& idx\_namelist[j]-\/>d\_type == 8) || (zero\_namelist[i]-\/>d\_type == 8 \&\& idx\_namelist[j]-\/>d\_type == 4))}
+\DoxyCodeLine{567             \{}
+\DoxyCodeLine{568                 printf(\textcolor{stringliteral}{"File "});}
+\DoxyCodeLine{569                 \textcolor{keywordflow}{if} (zero\_namelist[i]-\/>d\_type == 4)}
+\DoxyCodeLine{570                 \{}
+\DoxyCodeLine{571                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path1; path[k]; k++)}
+\DoxyCodeLine{572                     \{}
+\DoxyCodeLine{573                         printf(\textcolor{stringliteral}{"\%s"}, path[k]);}
+\DoxyCodeLine{574                         \textcolor{keywordflow}{if} (k != m)}
+\DoxyCodeLine{575                         \{}
+\DoxyCodeLine{576                             printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{577                         \}}
+\DoxyCodeLine{578                     \}}
+\DoxyCodeLine{579                     printf(\textcolor{stringliteral}{"\%s is a directory "}, zero\_namelist[i]-\/>d\_name);}
+\DoxyCodeLine{580                 \}}
+\DoxyCodeLine{581                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (zero\_namelist[i]-\/>d\_type == 8)}
+\DoxyCodeLine{582                 \{}
+\DoxyCodeLine{583                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path1; path[k]; k++)}
+\DoxyCodeLine{584                     \{}
+\DoxyCodeLine{585                         printf(\textcolor{stringliteral}{"\%s"}, path[k]);}
+\DoxyCodeLine{586                         \textcolor{keywordflow}{if} (k != m)}
+\DoxyCodeLine{587                         \{}
+\DoxyCodeLine{588                             printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{589                         \}}
+\DoxyCodeLine{590                     \}}
+\DoxyCodeLine{591                     printf(\textcolor{stringliteral}{"\%s is a regular file "}, zero\_namelist[i]-\/>d\_name);}
+\DoxyCodeLine{592                 \}}
+\DoxyCodeLine{593                 printf(\textcolor{stringliteral}{"while file "});}
+\DoxyCodeLine{594                 \textcolor{keywordflow}{if} (idx\_namelist[j]-\/>d\_type == 4)}
+\DoxyCodeLine{595                 \{}
+\DoxyCodeLine{596                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path2; path2[k]; k++)}
+\DoxyCodeLine{597                     \{}
+\DoxyCodeLine{598                         printf(\textcolor{stringliteral}{"\%s"}, path2[k]);}
+\DoxyCodeLine{599                         \textcolor{keywordflow}{if} (k != n)}
+\DoxyCodeLine{600                         \{}
+\DoxyCodeLine{601                             printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{602                         \}}
+\DoxyCodeLine{603                     \}}
+\DoxyCodeLine{604                     printf(\textcolor{stringliteral}{"\%s is a directory\(\backslash\)n"}, idx\_namelist[j]-\/>d\_name);}
+\DoxyCodeLine{605                 \}}
+\DoxyCodeLine{606                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (idx\_namelist[j]-\/>d\_type == 8)}
+\DoxyCodeLine{607                 \{}
+\DoxyCodeLine{608                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path2; path2[k]; k++)}
+\DoxyCodeLine{609                     \{}
+\DoxyCodeLine{610                         printf(\textcolor{stringliteral}{"\%s"}, path2[k]);}
+\DoxyCodeLine{611                         \textcolor{keywordflow}{if} (k != n)}
+\DoxyCodeLine{612                         \{}
+\DoxyCodeLine{613                             printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{614                         \}}
+\DoxyCodeLine{615                     \}}
+\DoxyCodeLine{616                     printf(\textcolor{stringliteral}{"\%s is a regular file\(\backslash\)n"}, idx\_namelist[j]-\/>d\_name);}
+\DoxyCodeLine{617                 \}}
+\DoxyCodeLine{618             \}}
+\DoxyCodeLine{619             \textcolor{comment}{/* 둘 다 정규파일일 경우 diff 출력 */}}
+\DoxyCodeLine{620             \textcolor{keywordflow}{if} (zero\_namelist[i]-\/>d\_type == 8 \&\& idx\_namelist[j]-\/>d\_type == 8)}
+\DoxyCodeLine{621             \{}
+\DoxyCodeLine{622                 \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{623                 \mbox{\hyperlink{header_8h_ace132829b602fd83755d5a4a70a448a3}{memset\_diff\_global\_variable}}();}
+\DoxyCodeLine{624                 \mbox{\hyperlink{header_8h_a43cc121a9454926d7e1504064a637016}{dir\_make\_arr\_from\_files}}(buf, buf2);}
+\DoxyCodeLine{625                 \mbox{\hyperlink{header_8h_aefdaa29535746a13f7772a3cf1c9e4a1}{dir\_find\_same\_line}}(buf, buf2);}
+\DoxyCodeLine{626                 \mbox{\hyperlink{header_8h_a66dbc142458a94daf38d1913ba00e763}{verification\_arr}}();}
+\DoxyCodeLine{627                 \mbox{\hyperlink{header_8h_a2877e40977e8f83fef4abd41a3df4ac4}{make\_result\_arr}}();}
+\DoxyCodeLine{628                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} q = 0; q < \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\_diff\_result\_arr\_len}}; q++)}
+\DoxyCodeLine{629                 \{}
+\DoxyCodeLine{630                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] != 0)}
+\DoxyCodeLine{631                     \{}
+\DoxyCodeLine{632                         flag = 1;}
+\DoxyCodeLine{633                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{634                     \}}
+\DoxyCodeLine{635                 \}}
+\DoxyCodeLine{636                 \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{637                 \{}
+\DoxyCodeLine{638                     printf(\textcolor{stringliteral}{"diff "});}
+\DoxyCodeLine{639                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path1; path[k]; k++)}
+\DoxyCodeLine{640                     \{}
+\DoxyCodeLine{641                         printf(\textcolor{stringliteral}{"\%s"}, path[k]);}
+\DoxyCodeLine{642                         \textcolor{keywordflow}{if} (k != m)}
+\DoxyCodeLine{643                         \{}
+\DoxyCodeLine{644                             printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{645                         \}}
+\DoxyCodeLine{646                     \}}
+\DoxyCodeLine{647                     printf(\textcolor{stringliteral}{"\%s "}, zero\_namelist[i]-\/>d\_name);}
+\DoxyCodeLine{648                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = diff\_path2; path2[k]; k++)}
+\DoxyCodeLine{649                     \{}
+\DoxyCodeLine{650                         printf(\textcolor{stringliteral}{"\%s"}, path2[k]);}
+\DoxyCodeLine{651                         \textcolor{keywordflow}{if} (k != n)}
+\DoxyCodeLine{652                         \{}
+\DoxyCodeLine{653                             printf(\textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{654                         \}}
+\DoxyCodeLine{655                     \}}
+\DoxyCodeLine{656                     printf(\textcolor{stringliteral}{"\%s\(\backslash\)n"}, idx\_namelist[j]-\/>d\_name);}
+\DoxyCodeLine{657                 \}}
+\DoxyCodeLine{658                 flag = 0;}
+\DoxyCodeLine{659                 \mbox{\hyperlink{header_8h_ad03c28e0bb9241922dbefbe03a9802af}{print\_diff\_result}}();}
+\DoxyCodeLine{660             \}}
+\DoxyCodeLine{661             i++;}
+\DoxyCodeLine{662             j++;}
+\DoxyCodeLine{663         \}}
+\DoxyCodeLine{664     \}}
+\DoxyCodeLine{665 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a451042865bde09f734cbbdb8cc508088_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{df/dcb/header_8h_a451042865bde09f734cbbdb8cc508088_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a8943274f1c2feba0285ed569bcd8610e}\label{header_8h_a8943274f1c2feba0285ed569bcd8610e}} 
+\index{header.h@{header.h}!cnt\_word@{cnt\_word}}
+\index{cnt\_word@{cnt\_word}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{cnt\_word()}{cnt\_word()}}
+{\footnotesize\ttfamily int cnt\+\_\+word (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 20 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     i = 0;}
+\DoxyCodeLine{26     cnt = 0;}
+\DoxyCodeLine{27     \textcolor{keywordflow}{while} (str[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{28     \{}
+\DoxyCodeLine{29         \textcolor{keywordflow}{if} (i == 0 \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{30             cnt++;}
+\DoxyCodeLine{31         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i -\/ 1], charset) \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{32             cnt++;}
+\DoxyCodeLine{33         i++;}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} (cnt);}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{df/dcb/header_8h_a8943274f1c2feba0285ed569bcd8610e_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a8943274f1c2feba0285ed569bcd8610e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a9999b65a55300e3d3989e8184b84b950}\label{header_8h_a9999b65a55300e3d3989e8184b84b950}} 
+\index{header.h@{header.h}!convert\_path@{convert\_path}}
+\index{convert\_path@{convert\_path}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{convert\_path()}{convert\_path()}}
+{\footnotesize\ttfamily char$\ast$ convert\+\_\+path (\begin{DoxyParamCaption}\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 3 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     \textcolor{keywordtype}{char} *real\_path;}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7     \textcolor{keywordflow}{if} ((real\_path = realpath(path, NULL)) == NULL)}
+\DoxyCodeLine{8         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"-\/1"};}
+\DoxyCodeLine{9     \textcolor{keywordflow}{return} real\_path;}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8h_aefdaa29535746a13f7772a3cf1c9e4a1}\label{header_8h_aefdaa29535746a13f7772a3cf1c9e4a1}} 
+\index{header.h@{header.h}!dir\_find\_same\_line@{dir\_find\_same\_line}}
+\index{dir\_find\_same\_line@{dir\_find\_same\_line}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{dir\_find\_same\_line()}{dir\_find\_same\_line()}}
+{\footnotesize\ttfamily void dir\+\_\+find\+\_\+same\+\_\+line (\begin{DoxyParamCaption}\item[{char $\ast$}]{zero\+\_\+path,  }\item[{char $\ast$}]{idx\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 726 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{727 \{}
+\DoxyCodeLine{728     FILE *fp1, *fp2;}
+\DoxyCodeLine{729     \textcolor{keywordtype}{char} buf1[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}], buf2[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{730     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{731     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{732     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{733 }
+\DoxyCodeLine{734     i = 0;}
+\DoxyCodeLine{735     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{736     \textcolor{keywordflow}{if} ((fp1 = fopen(zero\_path, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{737     \{}
+\DoxyCodeLine{738         perror(\textcolor{stringliteral}{"fp1"});}
+\DoxyCodeLine{739         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{740     \}}
+\DoxyCodeLine{741     \textcolor{keywordflow}{if} ((fp2 = fopen(idx\_path, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{742     \{}
+\DoxyCodeLine{743         perror(\textcolor{stringliteral}{"fp2"});}
+\DoxyCodeLine{744         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{745     \}}
+\DoxyCodeLine{746 }
+\DoxyCodeLine{747     \textcolor{keywordflow}{while} (fgets(buf1, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp1))}
+\DoxyCodeLine{748     \{}
+\DoxyCodeLine{749         cnt = 1;}
+\DoxyCodeLine{750         fseek(fp2, 0, SEEK\_SET);}
+\DoxyCodeLine{751         \textcolor{keywordflow}{while} (fgets(buf2, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp2))}
+\DoxyCodeLine{752         \{}
+\DoxyCodeLine{753             \textcolor{keywordflow}{if} (!strcmp(buf1, buf2) \&\& \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] != 1)}
+\DoxyCodeLine{754             \{}
+\DoxyCodeLine{755                 \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] = cnt;}
+\DoxyCodeLine{756                 \textcolor{comment}{/* Check the used line */}}
+\DoxyCodeLine{757                 \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] = 1;}
+\DoxyCodeLine{758                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{759             \}}
+\DoxyCodeLine{760             cnt++;}
+\DoxyCodeLine{761         \}}
+\DoxyCodeLine{762         i++;}
+\DoxyCodeLine{763     \}}
+\DoxyCodeLine{764     memset(\&\mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}, 0, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}});}
+\DoxyCodeLine{765     fclose(fp1);}
+\DoxyCodeLine{766     fclose(fp2);}
+\DoxyCodeLine{767     \textcolor{keywordflow}{if} ((fp1 = fopen(zero\_path, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{768     \{}
+\DoxyCodeLine{769         perror(\textcolor{stringliteral}{"fp1"});}
+\DoxyCodeLine{770         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{771     \}}
+\DoxyCodeLine{772     \textcolor{keywordflow}{if} ((fp2 = fopen(idx\_path, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{773     \{}
+\DoxyCodeLine{774         perror(\textcolor{stringliteral}{"fp2"});}
+\DoxyCodeLine{775         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{776     \}}
+\DoxyCodeLine{777     i = 0;}
+\DoxyCodeLine{778     \textcolor{keywordflow}{while} (fgets(buf1, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp2))}
+\DoxyCodeLine{779     \{}
+\DoxyCodeLine{780         cnt = 1;}
+\DoxyCodeLine{781         fseek(fp1, 0, SEEK\_SET);}
+\DoxyCodeLine{782         \textcolor{keywordflow}{while} (fgets(buf2, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp1))}
+\DoxyCodeLine{783         \{}
+\DoxyCodeLine{784             \textcolor{keywordflow}{if} (!strcmp(buf1, buf2) \&\& \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] != 1)}
+\DoxyCodeLine{785             \{}
+\DoxyCodeLine{786                 \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[i] = cnt;}
+\DoxyCodeLine{787                 \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] = 1;}
+\DoxyCodeLine{788                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{789             \}}
+\DoxyCodeLine{790             cnt++;}
+\DoxyCodeLine{791         \}}
+\DoxyCodeLine{792         i++;}
+\DoxyCodeLine{793     \}}
+\DoxyCodeLine{794     fclose(fp1);}
+\DoxyCodeLine{795     fclose(fp2);}
+\DoxyCodeLine{796     memset(\&\mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}, 0, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}});}
+\DoxyCodeLine{797 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{df/dcb/header_8h_aefdaa29535746a13f7772a3cf1c9e4a1_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_aefdaa29535746a13f7772a3cf1c9e4a1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a43cc121a9454926d7e1504064a637016}\label{header_8h_a43cc121a9454926d7e1504064a637016}} 
+\index{header.h@{header.h}!dir\_make\_arr\_from\_files@{dir\_make\_arr\_from\_files}}
+\index{dir\_make\_arr\_from\_files@{dir\_make\_arr\_from\_files}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{dir\_make\_arr\_from\_files()}{dir\_make\_arr\_from\_files()}}
+{\footnotesize\ttfamily void dir\+\_\+make\+\_\+arr\+\_\+from\+\_\+files (\begin{DoxyParamCaption}\item[{char $\ast$}]{zero\+\_\+path,  }\item[{char $\ast$}]{idx\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 674 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{675 \{}
+\DoxyCodeLine{676     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{677     FILE *fp1, *fp2;}
+\DoxyCodeLine{678     \textcolor{keywordtype}{int} zero\_line;}
+\DoxyCodeLine{679     \textcolor{keywordtype}{int} idx\_line;}
+\DoxyCodeLine{680     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{681 }
+\DoxyCodeLine{682     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{683     zero\_line = 0;}
+\DoxyCodeLine{684     idx\_line = 0;}
+\DoxyCodeLine{685     i = 0;}
+\DoxyCodeLine{686     \textcolor{keywordflow}{if} ((fp1 = fopen(zero\_path, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{687     \{}
+\DoxyCodeLine{688         perror(\textcolor{stringliteral}{"fp1"});}
+\DoxyCodeLine{689         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{690     \}}
+\DoxyCodeLine{691     \textcolor{keywordflow}{if} ((fp2 = fopen(idx\_path, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{692     \{}
+\DoxyCodeLine{693         perror(\textcolor{stringliteral}{"fp2"});}
+\DoxyCodeLine{694         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{695     \}}
+\DoxyCodeLine{696     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{697     \{}
+\DoxyCodeLine{698         \textcolor{comment}{/* count line */}}
+\DoxyCodeLine{699         \textcolor{keywordflow}{while} (fgets(\mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[zero\_line], \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp1))}
+\DoxyCodeLine{700         \{}
+\DoxyCodeLine{701             zero\_line++;}
+\DoxyCodeLine{702         \}}
+\DoxyCodeLine{703         \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}} = zero\_line;}
+\DoxyCodeLine{704         \textcolor{keywordflow}{while} (fgets(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[idx\_line], \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp2))}
+\DoxyCodeLine{705         \{}
+\DoxyCodeLine{706             idx\_line++;}
+\DoxyCodeLine{707         \}}
+\DoxyCodeLine{708         \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}} = idx\_line;}
+\DoxyCodeLine{709     \}}
+\DoxyCodeLine{710     fclose(fp1);}
+\DoxyCodeLine{711     fclose(fp2);}
+\DoxyCodeLine{712     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}} = (\textcolor{keywordtype}{int} *)calloc(zero\_line, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}))) == NULL)}
+\DoxyCodeLine{713     \{}
+\DoxyCodeLine{714         printf(\textcolor{stringliteral}{"malloc err!\(\backslash\)n"});}
+\DoxyCodeLine{715         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{716     \}}
+\DoxyCodeLine{717     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}} = (\textcolor{keywordtype}{int} *)calloc(idx\_line, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}))) == NULL)}
+\DoxyCodeLine{718     \{}
+\DoxyCodeLine{719         printf(\textcolor{stringliteral}{"malloc err!\(\backslash\)n"});}
+\DoxyCodeLine{720         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{721     \}}
+\DoxyCodeLine{722 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{df/dcb/header_8h_a43cc121a9454926d7e1504064a637016_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a43cc121a9454926d7e1504064a637016_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a75102b030f4548d98f15d2c383b96f73}\label{header_8h_a75102b030f4548d98f15d2c383b96f73}} 
+\index{header.h@{header.h}!filter@{filter}}
+\index{filter@{filter}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{filter()}{filter()}}
+{\footnotesize\ttfamily int filter (\begin{DoxyParamCaption}\item[{const struct dirent $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 420 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{421 \{}
+\DoxyCodeLine{422     \textcolor{keywordtype}{char} *except;}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424     strcpy(except, info-\/>d\_name);}
+\DoxyCodeLine{425     \textcolor{keywordflow}{if} (!strcmp(except, \textcolor{stringliteral}{"."}) || !strcmp(except, \textcolor{stringliteral}{".."}))}
+\DoxyCodeLine{426         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{427     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{428         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{429 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a75102b030f4548d98f15d2c383b96f73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_aca1cdd2fce0f648b3321e3be6826a839}\label{header_8h_aca1cdd2fce0f648b3321e3be6826a839}} 
+\index{header.h@{header.h}!find\_file@{find\_file}}
+\index{find\_file@{find\_file}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{find\_file()}{find\_file()}}
+{\footnotesize\ttfamily int find\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 142 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{143 \{}
+\DoxyCodeLine{144     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{145     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{146     \textcolor{keywordtype}{int} select;}
+\DoxyCodeLine{147     \textcolor{keyword}{struct }dirent **namelist;}
+\DoxyCodeLine{148     \textcolor{keyword}{struct }dirent **pathlist;}
+\DoxyCodeLine{149     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} buf;}
+\DoxyCodeLine{150     \textcolor{keywordtype}{char} buff[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     \textcolor{comment}{// input filename type is file}}
+\DoxyCodeLine{153     \textcolor{keywordflow}{if} ((cnt = scandir(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}}, \&namelist, \mbox{\hyperlink{find_8c_a75102b030f4548d98f15d2c383b96f73}{filter}}, alphasort)) == -\/1)}
+\DoxyCodeLine{154     \{}
+\DoxyCodeLine{155         \mbox{\hyperlink{find_8c_a5baa9246fb4f33fb8b1ea135ab5acbb1}{index\_zero\_file}}();                 \textcolor{comment}{// find index zero}}
+\DoxyCodeLine{156         \mbox{\hyperlink{find_8c_a328dc96d133e4c5601ee50c268b58b51}{index\_same\_file}}(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_a0d7cc445127136913334b53398732051}{real\_path}}); \textcolor{comment}{// find same file using idx zero file}}
+\DoxyCodeLine{157         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}} == 0)}
+\DoxyCodeLine{158         \{}
+\DoxyCodeLine{159             printf(\textcolor{stringliteral}{"(None)\(\backslash\)n"});}
+\DoxyCodeLine{160         \}}
+\DoxyCodeLine{161         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{162         \{}
+\DoxyCodeLine{163             \mbox{\hyperlink{header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\_node}}(\mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{164             \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{165             \{}
+\DoxyCodeLine{166                 \mbox{\hyperlink{header_8h_ad1b6991305fb8e3d96e78d58a44620ab}{index\_prompt}}(); \textcolor{comment}{// >>}}
+\DoxyCodeLine{167                 select = \mbox{\hyperlink{header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0}{input\_index\_option}}(\mbox{\hyperlink{header_8h_a8d270f1179408dcd00201a9822daa42c}{input\_function}}());}
+\DoxyCodeLine{168                 \textcolor{keywordflow}{if} (select == 0)}
+\DoxyCodeLine{169                 \{}
+\DoxyCodeLine{170                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{171                 \}}
+\DoxyCodeLine{172                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{173                 \{}
+\DoxyCodeLine{174                     \textcolor{comment}{/* find diff and print */}}
+\DoxyCodeLine{175                     \mbox{\hyperlink{header_8h_ace132829b602fd83755d5a4a70a448a3}{memset\_diff\_global\_variable}}();}
+\DoxyCodeLine{176                     \mbox{\hyperlink{header_8h_a78698417d5ae33b9f864fb4260f8f42b}{make\_arr\_from\_files}}();}
+\DoxyCodeLine{177                     \mbox{\hyperlink{header_8h_a7b435fa10cfb7780da62151acb4baad3}{find\_same\_line}}();}
+\DoxyCodeLine{178                     \mbox{\hyperlink{header_8h_a66dbc142458a94daf38d1913ba00e763}{verification\_arr}}();}
+\DoxyCodeLine{179                     \mbox{\hyperlink{header_8h_a2877e40977e8f83fef4abd41a3df4ac4}{make\_result\_arr}}();}
+\DoxyCodeLine{180                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[0] == 1 \&\& \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[1] == 1)}
+\DoxyCodeLine{181                     \{}
+\DoxyCodeLine{182                         \mbox{\hyperlink{header_8h_a8d0306a0b48f065588732597c3eeabcb}{print\_diff\_option\_q}}();}
+\DoxyCodeLine{183                         \mbox{\hyperlink{header_8h_a52802e1c441774df5699282e668d4499}{print\_diff\_option\_s}}();}
+\DoxyCodeLine{184                         \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[0] = 0;}
+\DoxyCodeLine{185                         \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[1] = 0;}
+\DoxyCodeLine{186                     \}}
+\DoxyCodeLine{187                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[0] == 1)}
+\DoxyCodeLine{188                     \{}
+\DoxyCodeLine{189                         \mbox{\hyperlink{header_8h_a8d0306a0b48f065588732597c3eeabcb}{print\_diff\_option\_q}}();}
+\DoxyCodeLine{190                         \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[0] = 0;}
+\DoxyCodeLine{191                     \}}
+\DoxyCodeLine{192                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[1] == 1)}
+\DoxyCodeLine{193                     \{}
+\DoxyCodeLine{194                         \mbox{\hyperlink{header_8h_a52802e1c441774df5699282e668d4499}{print\_diff\_option\_s}}();}
+\DoxyCodeLine{195                         \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[1] = 0;}
+\DoxyCodeLine{196                     \}}
+\DoxyCodeLine{197                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[0] \&\& !\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[1] \&\& !\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[2] \&\& !\mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[3])}
+\DoxyCodeLine{198                     \{}
+\DoxyCodeLine{199                         \mbox{\hyperlink{header_8h_ad03c28e0bb9241922dbefbe03a9802af}{print\_diff\_result}}();}
+\DoxyCodeLine{200                     \}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{203                 \}}
+\DoxyCodeLine{204             \}}
+\DoxyCodeLine{205             \mbox{\hyperlink{header_8h_acb79ca82200f39f5df150f8f02893002}{free\_all\_node}}(\&\mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{206             \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}} = 0;}
+\DoxyCodeLine{207         \}}
+\DoxyCodeLine{208         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{209     \}}
+\DoxyCodeLine{210     \textcolor{comment}{// input filename type is dir}}
+\DoxyCodeLine{211     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{212     \{}
+\DoxyCodeLine{213         \mbox{\hyperlink{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}{g\_is\_zero\_dir\_flag}} = 1;}
+\DoxyCodeLine{214         \mbox{\hyperlink{find_8c_a5baa9246fb4f33fb8b1ea135ab5acbb1}{index\_zero\_file}}();}
+\DoxyCodeLine{215         \mbox{\hyperlink{find_8c_ad61a29fd886a104ffe1788f50810bfbd}{index\_same\_dir}}(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_a0d7cc445127136913334b53398732051}{real\_path}});}
+\DoxyCodeLine{216         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}} == 0)}
+\DoxyCodeLine{217         \{}
+\DoxyCodeLine{218             printf(\textcolor{stringliteral}{"(None)\(\backslash\)n"});}
+\DoxyCodeLine{219         \}}
+\DoxyCodeLine{220         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{221         \{}
+\DoxyCodeLine{222             \mbox{\hyperlink{header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\_node}}(\mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{223             \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{224             \{}
+\DoxyCodeLine{225                 \mbox{\hyperlink{header_8h_ad1b6991305fb8e3d96e78d58a44620ab}{index\_prompt}}(); \textcolor{comment}{// >>}}
+\DoxyCodeLine{226                 select = \mbox{\hyperlink{header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0}{input\_index\_option}}(\mbox{\hyperlink{header_8h_a8d270f1179408dcd00201a9822daa42c}{input\_function}}());}
+\DoxyCodeLine{227                 \textcolor{keywordflow}{if} (select == 0)}
+\DoxyCodeLine{228                 \{}
+\DoxyCodeLine{229                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{230                 \}}
+\DoxyCodeLine{231                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{232                 \{}
+\DoxyCodeLine{233                     \mbox{\hyperlink{header_8h_ace132829b602fd83755d5a4a70a448a3}{memset\_diff\_global\_variable}}();}
+\DoxyCodeLine{234                     \mbox{\hyperlink{find_8c_a451042865bde09f734cbbdb8cc508088}{call\_dir\_diff}}();}
+\DoxyCodeLine{235                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{236                 \}}
+\DoxyCodeLine{237             \}}
+\DoxyCodeLine{238         \}}
+\DoxyCodeLine{239         \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}} = 0;}
+\DoxyCodeLine{240         \mbox{\hyperlink{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}{g\_is\_zero\_dir\_flag}} = 0;}
+\DoxyCodeLine{241         \mbox{\hyperlink{header_8h_acb79ca82200f39f5df150f8f02893002}{free\_all\_node}}(\&\mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{242         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{243     \}}
+\DoxyCodeLine{244     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{245 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_aca1cdd2fce0f648b3321e3be6826a839_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{df/dcb/header_8h_aca1cdd2fce0f648b3321e3be6826a839_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a7b435fa10cfb7780da62151acb4baad3}\label{header_8h_a7b435fa10cfb7780da62151acb4baad3}} 
+\index{header.h@{header.h}!find\_same\_line@{find\_same\_line}}
+\index{find\_same\_line@{find\_same\_line}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{find\_same\_line()}{find\_same\_line()}}
+{\footnotesize\ttfamily void find\+\_\+same\+\_\+line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 140 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142     FILE *fp1, *fp2;}
+\DoxyCodeLine{143     \textcolor{keywordtype}{char} buf1[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}], buf2[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{144     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{145     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{146     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     i = 0;}
+\DoxyCodeLine{149     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{150     \textcolor{keywordflow}{if} ((fp1 = fopen(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{151     \{}
+\DoxyCodeLine{152         perror(\textcolor{stringliteral}{"fp1"});}
+\DoxyCodeLine{153         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{154     \}}
+\DoxyCodeLine{155     \textcolor{keywordflow}{if} ((fp2 = fopen(tmp-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{156     \{}
+\DoxyCodeLine{157         perror(\textcolor{stringliteral}{"fp2"});}
+\DoxyCodeLine{158         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{159     \}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \textcolor{keywordflow}{while} (fgets(buf1, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp1))}
+\DoxyCodeLine{162     \{}
+\DoxyCodeLine{163         cnt = 1;}
+\DoxyCodeLine{164         fseek(fp2, 0, SEEK\_SET);}
+\DoxyCodeLine{165         \textcolor{keywordflow}{while} (fgets(buf2, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp2))}
+\DoxyCodeLine{166         \{}
+\DoxyCodeLine{167             \textcolor{keywordflow}{if} (!strcmp(buf1, buf2) \&\& \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] != 1)}
+\DoxyCodeLine{168             \{}
+\DoxyCodeLine{169                 \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] = cnt;}
+\DoxyCodeLine{170                 \textcolor{comment}{/* Check the used line */}}
+\DoxyCodeLine{171                 \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] = 1;}
+\DoxyCodeLine{172                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{173             \}}
+\DoxyCodeLine{174             cnt++;}
+\DoxyCodeLine{175         \}}
+\DoxyCodeLine{176         i++;}
+\DoxyCodeLine{177     \}}
+\DoxyCodeLine{178     memset(\&\mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}, 0, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}});}
+\DoxyCodeLine{179     fclose(fp1);}
+\DoxyCodeLine{180     fclose(fp2);}
+\DoxyCodeLine{181     \textcolor{keywordflow}{if} ((fp1 = fopen(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{182     \{}
+\DoxyCodeLine{183         perror(\textcolor{stringliteral}{"fp1"});}
+\DoxyCodeLine{184         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{185     \}}
+\DoxyCodeLine{186     \textcolor{keywordflow}{if} ((fp2 = fopen(tmp-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{187     \{}
+\DoxyCodeLine{188         perror(\textcolor{stringliteral}{"fp2"});}
+\DoxyCodeLine{189         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191     i = 0;}
+\DoxyCodeLine{192     \textcolor{keywordflow}{while} (fgets(buf1, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp2))}
+\DoxyCodeLine{193     \{}
+\DoxyCodeLine{194         cnt = 1;}
+\DoxyCodeLine{195         fseek(fp1, 0, SEEK\_SET);}
+\DoxyCodeLine{196         \textcolor{keywordflow}{while} (fgets(buf2, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp1))}
+\DoxyCodeLine{197         \{}
+\DoxyCodeLine{198             \textcolor{keywordflow}{if} (!strcmp(buf1, buf2) \&\& \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] != 1)}
+\DoxyCodeLine{199             \{}
+\DoxyCodeLine{200                 \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[i] = cnt;}
+\DoxyCodeLine{201                 \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[cnt] = 1;}
+\DoxyCodeLine{202                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{203             \}}
+\DoxyCodeLine{204             cnt++;}
+\DoxyCodeLine{205         \}}
+\DoxyCodeLine{206         i++;}
+\DoxyCodeLine{207     \}}
+\DoxyCodeLine{208     fclose(fp1);}
+\DoxyCodeLine{209     fclose(fp2);}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     memset(\&\mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}, 0, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}});}
+\DoxyCodeLine{212 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{df/dcb/header_8h_a7b435fa10cfb7780da62151acb4baad3_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{df/dcb/header_8h_a7b435fa10cfb7780da62151acb4baad3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_acb79ca82200f39f5df150f8f02893002}\label{header_8h_acb79ca82200f39f5df150f8f02893002}} 
+\index{header.h@{header.h}!free\_all\_node@{free\_all\_node}}
+\index{free\_all\_node@{free\_all\_node}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{free\_all\_node()}{free\_all\_node()}}
+{\footnotesize\ttfamily void free\+\_\+all\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} $\ast$}]{s\+Ptr }\end{DoxyParamCaption})}
+
+
+
+list.\+c 파일의 49 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{keywordflow}{while} (*sPtr != NULL)}
+\DoxyCodeLine{54     \{}
+\DoxyCodeLine{55         tmp = *sPtr;}
+\DoxyCodeLine{56         *sPtr = (*sPtr)-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}};}
+\DoxyCodeLine{57         free(tmp);}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59     *sPtr = NULL;}
+\DoxyCodeLine{60 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{df/dcb/header_8h_acb79ca82200f39f5df150f8f02893002_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a6ff48a25efef7babdf1d9c387de10d4e}\label{header_8h_a6ff48a25efef7babdf1d9c387de10d4e}} 
+\index{header.h@{header.h}!ft\_case@{ft\_case}}
+\index{ft\_case@{ft\_case}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{ft\_case()}{ft\_case()}}
+{\footnotesize\ttfamily int ft\+\_\+case (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+print.\+c 파일의 74 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75 \{}
+\DoxyCodeLine{76     \textcolor{keywordtype}{char} **result;}
+\DoxyCodeLine{77     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{78     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     result = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(str, \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t"});}
+\DoxyCodeLine{81     j = 0;}
+\DoxyCodeLine{82     \textcolor{keywordflow}{while} (result[j])}
+\DoxyCodeLine{83         j++;}
+\DoxyCodeLine{84     \textcolor{keywordflow}{if} (str[0] == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{85     \{}
+\DoxyCodeLine{86         free(str);}
+\DoxyCodeLine{87         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(result[0], \textcolor{stringliteral}{"exit"}) == 0 \&\& j == 1)}
+\DoxyCodeLine{91     \{}
+\DoxyCodeLine{92         free(str);}
+\DoxyCodeLine{93         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(result[0], \textcolor{stringliteral}{"find"}) == 0 \&\& j == 3)}
+\DoxyCodeLine{97     \{}
+\DoxyCodeLine{98         \mbox{\hyperlink{print_8c_ac15975fba80b47af5f70e1945bdcd646}{get\_info}}(result);}
+\DoxyCodeLine{99         free(str);}
+\DoxyCodeLine{100         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         free(str);}
+\DoxyCodeLine{106         \textcolor{keywordflow}{return} 4;}
+\DoxyCodeLine{107     \}}
+\DoxyCodeLine{108     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{109 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a6ff48a25efef7babdf1d9c387de10d4e_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{df/dcb/header_8h_a6ff48a25efef7babdf1d9c387de10d4e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_adb7b1a9478f407820e3727a50807b347}\label{header_8h_adb7b1a9478f407820e3727a50807b347}} 
+\index{header.h@{header.h}!ft\_split@{ft\_split}}
+\index{ft\_split@{ft\_split}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{ft\_split()}{ft\_split()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ ft\+\_\+split (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 91 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92 \{}
+\DoxyCodeLine{93     \textcolor{keywordtype}{char} **voca;}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} word\_cnt;}
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} word\_len;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     word\_cnt = \mbox{\hyperlink{split_8c_a8943274f1c2feba0285ed569bcd8610e}{cnt\_word}}(str, charset);}
+\DoxyCodeLine{100     voca = (\textcolor{keywordtype}{char} **)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * (word\_cnt + 1));}
+\DoxyCodeLine{101     k = 0;}
+\DoxyCodeLine{102     i = 0;}
+\DoxyCodeLine{103     \textcolor{keywordflow}{while} (str[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{if} (i == 0 \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{106         \{}
+\DoxyCodeLine{107             word\_len = \mbox{\hyperlink{split_8c_a49395c1b02d159956dfd6efb99c35c66}{len\_word}}(\&str[i], charset);}
+\DoxyCodeLine{108             voca[k++] = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * (word\_len + 1));}
+\DoxyCodeLine{109         \}}
+\DoxyCodeLine{110         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i -\/ 1], charset) \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{111         \{}
+\DoxyCodeLine{112             word\_len = \mbox{\hyperlink{split_8c_a49395c1b02d159956dfd6efb99c35c66}{len\_word}}(\&str[i], charset);}
+\DoxyCodeLine{113             voca[k++] = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * (word\_len + 1));}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115         i++;}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     \mbox{\hyperlink{split_8c_add84278597354389bf0bd24328493fea}{make\_split}}(voca, str, charset, word\_cnt);}
+\DoxyCodeLine{118     i = 0;}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} (voca);}
+\DoxyCodeLine{120 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{df/dcb/header_8h_adb7b1a9478f407820e3727a50807b347_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_adb7b1a9478f407820e3727a50807b347_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a8249f864c8071fdbf4f4b39da55b31fe}\label{header_8h_a8249f864c8071fdbf4f4b39da55b31fe}} 
+\index{header.h@{header.h}!get\_dir\_size@{get\_dir\_size}}
+\index{get\_dir\_size@{get\_dir\_size}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{get\_dir\_size()}{get\_dir\_size()}}
+{\footnotesize\ttfamily long get\+\_\+dir\+\_\+size (\begin{DoxyParamCaption}\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 58 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60     \textcolor{keywordtype}{long} size;}
+\DoxyCodeLine{61     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} tmp;}
+\DoxyCodeLine{62     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{63     \textcolor{keyword}{struct }dirent *file;}
+\DoxyCodeLine{64     DIR *dir;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     size = 0;}
+\DoxyCodeLine{67     chdir(path);}
+\DoxyCodeLine{68     \textcolor{keywordflow}{if} ((dir = opendir(path)) != NULL)}
+\DoxyCodeLine{69     \{}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         \textcolor{keywordflow}{while} ((file = readdir(dir)) != NULL)}
+\DoxyCodeLine{72         \{}
+\DoxyCodeLine{73             \textcolor{keywordflow}{if} (!strcmp(file-\/>d\_name, \textcolor{stringliteral}{"."}) || !strcmp(file-\/>d\_name, \textcolor{stringliteral}{".."}))}
+\DoxyCodeLine{74             \{}
+\DoxyCodeLine{75                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{76             \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78             \textcolor{keywordflow}{if} (S\_ISLNK(tmp.st\_mode))}
+\DoxyCodeLine{79             \{}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{81             \}}
+\DoxyCodeLine{82             strcpy(buf, path);}
+\DoxyCodeLine{83             strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{84             strcat(buf, file-\/>d\_name);}
+\DoxyCodeLine{85             stat(file-\/>d\_name, \&tmp);}
+\DoxyCodeLine{86             \textcolor{keywordflow}{if} (file-\/>d\_type == 4)}
+\DoxyCodeLine{87             \{}
+\DoxyCodeLine{88                 realpath(file-\/>d\_name, \mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}});}
+\DoxyCodeLine{89                 size += \mbox{\hyperlink{find_8c_a8249f864c8071fdbf4f4b39da55b31fe}{get\_dir\_size}}(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}});}
+\DoxyCodeLine{90             \}}
+\DoxyCodeLine{91             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (file-\/>d\_type == 8)}
+\DoxyCodeLine{92             \{}
+\DoxyCodeLine{93                 size += tmp.st\_size;}
+\DoxyCodeLine{94             \}}
+\DoxyCodeLine{95         \}}
+\DoxyCodeLine{96     \}}
+\DoxyCodeLine{97     closedir(dir);}
+\DoxyCodeLine{98     chdir(\textcolor{stringliteral}{".."});}
+\DoxyCodeLine{99     \textcolor{keywordflow}{return} size;}
+\DoxyCodeLine{100 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a8249f864c8071fdbf4f4b39da55b31fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}\label{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}} 
+\index{header.h@{header.h}!get\_idx\_node@{get\_idx\_node}}
+\index{get\_idx\_node@{get\_idx\_node}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{get\_idx\_node()}{get\_idx\_node()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} get\+\_\+idx\+\_\+node (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+list.\+c 파일의 63 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} sPtr;}
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     i = 1;}
+\DoxyCodeLine{69     sPtr = \mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}};}
+\DoxyCodeLine{70     \textcolor{keywordflow}{while} (i != idx)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         sPtr = sPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}};}
+\DoxyCodeLine{73         i++;}
+\DoxyCodeLine{74     \}}
+\DoxyCodeLine{75     \textcolor{keywordflow}{return} sPtr;}
+\DoxyCodeLine{76 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ac15975fba80b47af5f70e1945bdcd646}\label{header_8h_ac15975fba80b47af5f70e1945bdcd646}} 
+\index{header.h@{header.h}!get\_info@{get\_info}}
+\index{get\_info@{get\_info}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{get\_info()}{get\_info()}}
+{\footnotesize\ttfamily void get\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{str\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+print.\+c 파일의 28 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29 \{}
+\DoxyCodeLine{30     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} fd;}
+\DoxyCodeLine{32     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     strcpy(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_a45ff1bbe579d61c588ae4e0a78ff8fe0}{filename}}, str[1]);}
+\DoxyCodeLine{35     strcpy(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_a9f1c5c0a78aba530e614c6f751064a02}{path}}, str[2]);}
+\DoxyCodeLine{36     chdir(\mbox{\hyperlink{header_8h_a97e8f56fed89c549c4a39b9070671bd5}{g\_home\_dir}});}
+\DoxyCodeLine{37     \textcolor{keywordflow}{if} ((fd = open(str[2], O\_RDONLY)) < 0 || (fd = open(str[1], O\_RDONLY)) < 0)}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         perror(\textcolor{stringliteral}{"open"});}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{42     \}}
+\DoxyCodeLine{43     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{if} (realpath(str[1], buf))}
+\DoxyCodeLine{46         \{}
+\DoxyCodeLine{47             strcpy(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_acd082f94272d8d4ebf58dba927be67f9}{real\_filename}}, buf);}
+\DoxyCodeLine{48             strcpy(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}}, buf);}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} (realpath(str[2], buf))}
+\DoxyCodeLine{52         \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54             strcpy(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_a0d7cc445127136913334b53398732051}{real\_path}}, buf);}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{57         \{}
+\DoxyCodeLine{58             strcpy(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_a0d7cc445127136913334b53398732051}{real\_path}}, str[2]);}
+\DoxyCodeLine{59         \}}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61     close(fd);}
+\DoxyCodeLine{62     \textcolor{keywordflow}{for} (i = 0; str[i]; i++)}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         free(str[i]);}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66     free(str);}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{df/dcb/header_8h_ac15975fba80b47af5f70e1945bdcd646_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_af68e4a56d4fae1da4c64ec16bb4f3933}\label{header_8h_af68e4a56d4fae1da4c64ec16bb4f3933}} 
+\index{header.h@{header.h}!get\_info\_file@{get\_info\_file}}
+\index{get\_info\_file@{get\_info\_file}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{get\_info\_file()}{get\_info\_file()}}
+{\footnotesize\ttfamily void get\+\_\+info\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}}}]{st,  }\item[{\mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} $\ast$}]{myst }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 103 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{106     \textcolor{keywordtype}{long} size;}
+\DoxyCodeLine{107     \textcolor{keywordtype}{char} **split\_file\_name;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     i = 0;}
+\DoxyCodeLine{110     myst-\/>\mbox{\hyperlink{structs__myStat_a2bdea590000ed48687ac20437f4534c2}{st\_mode}} = st.st\_mode;}
+\DoxyCodeLine{111     \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}{g\_is\_zero\_dir\_flag}} == 1)}
+\DoxyCodeLine{112     \{}
+\DoxyCodeLine{113         size = \mbox{\hyperlink{find_8c_a8249f864c8071fdbf4f4b39da55b31fe}{get\_dir\_size}}(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}});}
+\DoxyCodeLine{114         myst-\/>\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} = size;}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{117         myst-\/>\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} = st.st\_size;}
+\DoxyCodeLine{118     myst-\/>\mbox{\hyperlink{structs__myStat_a68652e874ff604c3c2058ec8f915db03}{st\_blocks}} = st.st\_blocks;}
+\DoxyCodeLine{119     myst-\/>\mbox{\hyperlink{structs__myStat_a1e9be57b29179ed8d1bdf30d8ec3dbc1}{st\_nlink}} = st.st\_nlink;}
+\DoxyCodeLine{120     myst-\/>\mbox{\hyperlink{structs__myStat_a82255ddb24217006b50fbeb2cc42b81b}{st\_uid}} = st.st\_uid;}
+\DoxyCodeLine{121     myst-\/>\mbox{\hyperlink{structs__myStat_ad7e3f30b2f80df9c387c1b2f4d84f5e5}{st\_gid}} = st.st\_gid;}
+\DoxyCodeLine{122     myst-\/>\mbox{\hyperlink{structs__myStat_a6eece93b7de0675f99e3e717e263cfaa}{st\_atim}} = st.st\_atim;}
+\DoxyCodeLine{123     myst-\/>\mbox{\hyperlink{structs__myStat_a1ad69e515653d7ee1c9049181e7d2d08}{st\_ctim}} = st.st\_ctim;}
+\DoxyCodeLine{124     myst-\/>\mbox{\hyperlink{structs__myStat_adabfa8de90c6cb122f6c021599752d2e}{st\_mtim}} = st.st\_mtim;}
+\DoxyCodeLine{125     split\_file\_name = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_acd082f94272d8d4ebf58dba927be67f9}{real\_filename}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{126     \textcolor{keywordflow}{while} (split\_file\_name[i])}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         i++;}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130     strcpy(myst-\/>\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}}, split\_file\_name[-\/-\/i]);}
+\DoxyCodeLine{131     strcpy(myst-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, myst-\/>\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}});}
+\DoxyCodeLine{132     strcat(myst-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{133     strcat(myst-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, myst-\/>\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}});}
+\DoxyCodeLine{134 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_af68e4a56d4fae1da4c64ec16bb4f3933_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_af68e4a56d4fae1da4c64ec16bb4f3933_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a22c65229b328a1f81f7155c732326415}\label{header_8h_a22c65229b328a1f81f7155c732326415}} 
+\index{header.h@{header.h}!get\_permission@{get\_permission}}
+\index{get\_permission@{get\_permission}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{get\_permission()}{get\_permission()}}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+permission (\begin{DoxyParamCaption}\item[{mode\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 36 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \textcolor{keywordtype}{char} *per = \textcolor{stringliteral}{"xwr"};}
+\DoxyCodeLine{39     \textcolor{keywordtype}{char} *permission;}
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     permission = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}) * 11);}
+\DoxyCodeLine{43     memset(permission, \textcolor{charliteral}{'-\/'}, 10);}
+\DoxyCodeLine{44     \textcolor{keywordflow}{if} ((mode \& S\_IFMT) == S\_IFDIR)}
+\DoxyCodeLine{45         permission[0] = \textcolor{charliteral}{'d'};}
+\DoxyCodeLine{46     \textcolor{keywordflow}{for} (i = 0; i < 9; i++)}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48         \textcolor{keywordflow}{if} (mode \& (1 << i))}
+\DoxyCodeLine{49             permission[10 -\/ i -\/ 1] = per[i \% 3];}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51     permission[10] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{52     \textcolor{keywordflow}{return} permission;}
+\DoxyCodeLine{53 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a22c65229b328a1f81f7155c732326415_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a0df704af71b427e46377922a58ef3532}\label{header_8h_a0df704af71b427e46377922a58ef3532}} 
+\index{header.h@{header.h}!get\_string\_time@{get\_string\_time}}
+\index{get\_string\_time@{get\_string\_time}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{get\_string\_time()}{get\_string\_time()}}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+string\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}}}]{st\+\_\+t,  }\item[{int}]{flag }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 15 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{char} *s;}
+\DoxyCodeLine{18     \textcolor{keyword}{struct }tm *t;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     s = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}) * 30);}
+\DoxyCodeLine{21     \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{22         t = localtime(\&st\_t.st\_atim.tv\_sec);}
+\DoxyCodeLine{23     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (flag == 2)}
+\DoxyCodeLine{24         t = localtime(\&st\_t.st\_ctim.tv\_sec);}
+\DoxyCodeLine{25     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (flag == 3)}
+\DoxyCodeLine{26         t = localtime(\&st\_t.st\_mtim.tv\_sec);}
+\DoxyCodeLine{27     \textcolor{comment}{// strftime(s, 30, "\%y-\/\%m-\/\%d \%H:\%M", t);}}
+\DoxyCodeLine{28     sprintf(s, \textcolor{stringliteral}{"\%02d-\/\%02d-\/\%02d \%02d:\%02d"},}
+\DoxyCodeLine{29             t-\/>tm\_year -\/ 100, t-\/>tm\_mon + 1, t-\/>tm\_mday,}
+\DoxyCodeLine{30             t-\/>tm\_hour, t-\/>tm\_min);}
+\DoxyCodeLine{31     \textcolor{keywordflow}{return} s;}
+\DoxyCodeLine{32 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a0df704af71b427e46377922a58ef3532_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a9e3f92eaeefd0c967bb79c9a108e0081}\label{header_8h_a9e3f92eaeefd0c967bb79c9a108e0081}} 
+\index{header.h@{header.h}!in\_sep@{in\_sep}}
+\index{in\_sep@{in\_sep}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{in\_sep()}{in\_sep()}}
+{\footnotesize\ttfamily int in\+\_\+sep (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 5 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9     i = 0;}
+\DoxyCodeLine{10     \textcolor{keywordflow}{while} (charset[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12         \textcolor{keywordflow}{if} (c == charset[i])}
+\DoxyCodeLine{13             \textcolor{keywordflow}{return} (1);}
+\DoxyCodeLine{14         i++;}
+\DoxyCodeLine{15     \}}
+\DoxyCodeLine{16     \textcolor{keywordflow}{return} (0);}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a9e3f92eaeefd0c967bb79c9a108e0081_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ad1b6991305fb8e3d96e78d58a44620ab}\label{header_8h_ad1b6991305fb8e3d96e78d58a44620ab}} 
+\index{header.h@{header.h}!index\_prompt@{index\_prompt}}
+\index{index\_prompt@{index\_prompt}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{index\_prompt()}{index\_prompt()}}
+{\footnotesize\ttfamily void index\+\_\+prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+print.\+c 파일의 8 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     printf(\textcolor{stringliteral}{">> "});}
+\DoxyCodeLine{11 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{df/dcb/header_8h_ad1b6991305fb8e3d96e78d58a44620ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ad61a29fd886a104ffe1788f50810bfbd}\label{header_8h_ad61a29fd886a104ffe1788f50810bfbd}} 
+\index{header.h@{header.h}!index\_same\_dir@{index\_same\_dir}}
+\index{index\_same\_dir@{index\_same\_dir}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{index\_same\_dir()}{index\_same\_dir()}}
+{\footnotesize\ttfamily void index\+\_\+same\+\_\+dir (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 278 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{279 \{}
+\DoxyCodeLine{280     DIR *dp;}
+\DoxyCodeLine{281     \textcolor{keyword}{struct }dirent *file;}
+\DoxyCodeLine{282     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} same\_file;}
+\DoxyCodeLine{283     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{284     \textcolor{keywordtype}{long} size;}
+\DoxyCodeLine{285     \textcolor{keywordtype}{char} **split\_file\_name;}
+\DoxyCodeLine{286     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288     \textcolor{keywordflow}{if} ((dp = opendir(name)) != NULL)}
+\DoxyCodeLine{289     \{}
+\DoxyCodeLine{290         chdir(name);}
+\DoxyCodeLine{291         \textcolor{keywordflow}{while} ((file = readdir(dp)) != NULL)}
+\DoxyCodeLine{292         \{}
+\DoxyCodeLine{293             \textcolor{keywordflow}{if} (!strcmp(file-\/>d\_name, \textcolor{stringliteral}{"."}) || !strcmp(file-\/>d\_name, \textcolor{stringliteral}{".."}))}
+\DoxyCodeLine{294                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{295             strcpy(buf, name);}
+\DoxyCodeLine{296             strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{297             strcat(buf, file-\/>d\_name);}
+\DoxyCodeLine{298             stat(buf, \&\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}});}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300             split\_file\_name = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_acd082f94272d8d4ebf58dba927be67f9}{real\_filename}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{301             \textcolor{keywordflow}{while} (split\_file\_name[i])}
+\DoxyCodeLine{302             \{}
+\DoxyCodeLine{303                 i++;}
+\DoxyCodeLine{304             \}}
+\DoxyCodeLine{305             i-\/-\/;}
+\DoxyCodeLine{306             \textcolor{keywordflow}{if} (!strcmp(split\_file\_name[i], file-\/>d\_name))}
+\DoxyCodeLine{307             \{}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309                 strcpy(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}}, buf);}
+\DoxyCodeLine{310                 realpath(name, buf);}
+\DoxyCodeLine{311                 strcpy(\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, buf);}
+\DoxyCodeLine{312                 \textcolor{keywordflow}{if} (file-\/>d\_type == 4)}
+\DoxyCodeLine{313                 \{}
+\DoxyCodeLine{314                     size = \mbox{\hyperlink{find_8c_a8249f864c8071fdbf4f4b39da55b31fe}{get\_dir\_size}}(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}});}
+\DoxyCodeLine{315                     \mbox{\hyperlink{find_8c_af68e4a56d4fae1da4c64ec16bb4f3933}{get\_info\_file}}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, \&\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}});}
+\DoxyCodeLine{316                     \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} = size;}
+\DoxyCodeLine{317                 \}}
+\DoxyCodeLine{318                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} == \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} \&\& strcmp(\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}))}
+\DoxyCodeLine{319                 \{}
+\DoxyCodeLine{320                     \mbox{\hyperlink{header_8h_aaf330ec15d2741808901fb5d510b817b}{insert}}(\&\mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}});}
+\DoxyCodeLine{321                     \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}}++;}
+\DoxyCodeLine{322                 \}}
+\DoxyCodeLine{323             \}}
+\DoxyCodeLine{324             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (file-\/>d\_type == 4)}
+\DoxyCodeLine{325             \{}
+\DoxyCodeLine{326                 strcpy(buf, name);}
+\DoxyCodeLine{327                 strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{328                 strcat(buf, file-\/>d\_name);}
+\DoxyCodeLine{329                 \mbox{\hyperlink{find_8c_ad61a29fd886a104ffe1788f50810bfbd}{index\_same\_dir}}(buf);}
+\DoxyCodeLine{330                 chdir(\textcolor{stringliteral}{".."});}
+\DoxyCodeLine{331             \}}
+\DoxyCodeLine{332         \}}
+\DoxyCodeLine{333         closedir(dp);}
+\DoxyCodeLine{334     \}}
+\DoxyCodeLine{335 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_ad61a29fd886a104ffe1788f50810bfbd_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{df/dcb/header_8h_ad61a29fd886a104ffe1788f50810bfbd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a328dc96d133e4c5601ee50c268b58b51}\label{header_8h_a328dc96d133e4c5601ee50c268b58b51}} 
+\index{header.h@{header.h}!index\_same\_file@{index\_same\_file}}
+\index{index\_same\_file@{index\_same\_file}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{index\_same\_file()}{index\_same\_file()}}
+{\footnotesize\ttfamily void index\+\_\+same\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 340 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{341 \{}
+\DoxyCodeLine{342     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{343     \textcolor{keyword}{struct }dirent **namelist;}
+\DoxyCodeLine{344     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} same\_file;}
+\DoxyCodeLine{345     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}];}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347     \textcolor{keywordflow}{if} (!realpath(name, buf))}
+\DoxyCodeLine{348     \{}
+\DoxyCodeLine{349         perror(\textcolor{stringliteral}{"realpath"});}
+\DoxyCodeLine{350         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{351     \}}
+\DoxyCodeLine{352     \textcolor{comment}{/* change work directory */}}
+\DoxyCodeLine{353     \textcolor{keywordflow}{if} (chdir(buf) < 0)}
+\DoxyCodeLine{354     \{}
+\DoxyCodeLine{355         perror(\textcolor{stringliteral}{"idx\_same\_chdir"});}
+\DoxyCodeLine{356         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{357     \}}
+\DoxyCodeLine{358 }
+\DoxyCodeLine{359     \textcolor{keywordflow}{if} ((cnt = scandir(name, \&namelist, NULL, alphasort)) == -\/1 \& \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}} == 0)}
+\DoxyCodeLine{360     \{}
+\DoxyCodeLine{361         perror(\textcolor{stringliteral}{"scna"});}
+\DoxyCodeLine{362         \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}} = -\/1;}
+\DoxyCodeLine{363         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{364     \}}
+\DoxyCodeLine{365     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{366     \{}
+\DoxyCodeLine{367         \textcolor{keywordflow}{if} (cnt > 0)}
+\DoxyCodeLine{368             cnt-\/-\/;}
+\DoxyCodeLine{369         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cnt <= 0)}
+\DoxyCodeLine{370             cnt = 0;}
+\DoxyCodeLine{371         \textcolor{keywordflow}{while} (cnt != -\/1)}
+\DoxyCodeLine{372         \{}
+\DoxyCodeLine{373             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}; i++)}
+\DoxyCodeLine{374                 buf[i] = 0;}
+\DoxyCodeLine{375             realpath(namelist[cnt]-\/>d\_name, buf);}
+\DoxyCodeLine{376             \textcolor{keywordflow}{if} (!strcmp(namelist[cnt]-\/>d\_name, \textcolor{stringliteral}{"."}) || !strcmp(namelist[cnt]-\/>d\_name, \textcolor{stringliteral}{".."}))}
+\DoxyCodeLine{377             \{}
+\DoxyCodeLine{378                 free(namelist[cnt]);}
+\DoxyCodeLine{379                 cnt-\/-\/;}
+\DoxyCodeLine{380                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{381             \}}
+\DoxyCodeLine{382             lstat(namelist[cnt]-\/>d\_name, \&\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}});}
+\DoxyCodeLine{383             \textcolor{keywordflow}{if} (S\_ISLNK(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}.st\_mode))}
+\DoxyCodeLine{384             \{}
+\DoxyCodeLine{385                 free(namelist[cnt]);}
+\DoxyCodeLine{386                 cnt-\/-\/;}
+\DoxyCodeLine{387                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{388             \}}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{390             \textcolor{comment}{/* if file type, file name are same, path diff, get the file's info */}}
+\DoxyCodeLine{391             \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a2bdea590000ed48687ac20437f4534c2}{st\_mode}} == \mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}.st\_mode \&\& !strcmp(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}}, namelist[cnt]-\/>d\_name) \&\& strcmp(name, \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}))}
+\DoxyCodeLine{392             \{}
+\DoxyCodeLine{393                 strcpy(\mbox{\hyperlink{header_8h_a6eeb71a8c729fad94a96468b75816282}{g\_dir\_path\_buf}}, buf);}
+\DoxyCodeLine{394                 \mbox{\hyperlink{find_8c_af68e4a56d4fae1da4c64ec16bb4f3933}{get\_info\_file}}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, \&\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}});}
+\DoxyCodeLine{395                 realpath(name, buf);}
+\DoxyCodeLine{396                 strcpy(\mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, buf);}
+\DoxyCodeLine{397                 \textcolor{comment}{/*if same size then input linked list node */}}
+\DoxyCodeLine{398                 \textcolor{keywordflow}{if} (strcmp(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}}, \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}}) == 0 \&\& \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} == \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}})}
+\DoxyCodeLine{399                 \{}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401                     \mbox{\hyperlink{header_8h_aaf330ec15d2741808901fb5d510b817b}{insert}}(\&\mbox{\hyperlink{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}});}
+\DoxyCodeLine{402                     \mbox{\hyperlink{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}{g\_chk\_find}}++;}
+\DoxyCodeLine{403                 \}}
+\DoxyCodeLine{404             \}}
+\DoxyCodeLine{405             \textcolor{comment}{/* if namelist[cnt] type dir then DFS */}}
+\DoxyCodeLine{406             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (namelist[cnt]-\/>d\_type == 4 \&\& (\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}.st\_mode \& S\_ISVTX) != 01000 \&\& (\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}.st\_mode \& S\_ISUID) != 04000 \&\& (\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}.st\_mode \& S\_ISGID) != 02000)}
+\DoxyCodeLine{407             \{}
+\DoxyCodeLine{408                 \mbox{\hyperlink{find_8c_a328dc96d133e4c5601ee50c268b58b51}{index\_same\_file}}(buf);}
+\DoxyCodeLine{409                 chdir(\textcolor{stringliteral}{".."});}
+\DoxyCodeLine{410             \}}
+\DoxyCodeLine{411             free(namelist[cnt]);}
+\DoxyCodeLine{412             cnt-\/-\/;}
+\DoxyCodeLine{413         \}}
+\DoxyCodeLine{414         free(namelist);}
+\DoxyCodeLine{415     \}}
+\DoxyCodeLine{416 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a328dc96d133e4c5601ee50c268b58b51_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{df/dcb/header_8h_a328dc96d133e4c5601ee50c268b58b51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a5baa9246fb4f33fb8b1ea135ab5acbb1}\label{header_8h_a5baa9246fb4f33fb8b1ea135ab5acbb1}} 
+\index{header.h@{header.h}!index\_zero\_file@{index\_zero\_file}}
+\index{index\_zero\_file@{index\_zero\_file}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{index\_zero\_file()}{index\_zero\_file()}}
+{\footnotesize\ttfamily void index\+\_\+zero\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 249 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{250 \{}
+\DoxyCodeLine{251     \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\_stat}} zero\_file;}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253     \textcolor{keywordflow}{if} (stat(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_acd082f94272d8d4ebf58dba927be67f9}{real\_filename}}, \&zero\_file) == -\/1)}
+\DoxyCodeLine{254     \{}
+\DoxyCodeLine{255         perror(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{256         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{257     \}}
+\DoxyCodeLine{258     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{259     \{}
+\DoxyCodeLine{260         \textcolor{keywordtype}{char} *str;}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262         memset(\&\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}));}
+\DoxyCodeLine{263         str = strdup(\mbox{\hyperlink{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}{g\_info}}.\mbox{\hyperlink{structs__fileinfo_acd082f94272d8d4ebf58dba927be67f9}{real\_filename}});}
+\DoxyCodeLine{264         strcpy(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, dirname(str));}
+\DoxyCodeLine{265         \mbox{\hyperlink{find_8c_af68e4a56d4fae1da4c64ec16bb4f3933}{get\_info\_file}}(zero\_file, \&\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}});}
+\DoxyCodeLine{266         \mbox{\hyperlink{find_8c_a05b5d50e393d4ad8bf90b7906b628f6a}{print\_first\_line}}();}
+\DoxyCodeLine{267         \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a53a8d4e02012e53dd4ae507e4574066b}{permission}} = \mbox{\hyperlink{find_8c_a22c65229b328a1f81f7155c732326415}{get\_permission}}(zero\_file.st\_mode);}
+\DoxyCodeLine{268         \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a714cb9a6f537789754ac61b629b31812}{atim}} = \mbox{\hyperlink{find_8c_a0df704af71b427e46377922a58ef3532}{get\_string\_time}}(zero\_file, 1);}
+\DoxyCodeLine{269         \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_aef31e5a46c07f5411f7907549a86ee5d}{ctim}} = \mbox{\hyperlink{find_8c_a0df704af71b427e46377922a58ef3532}{get\_string\_time}}(zero\_file, 2);}
+\DoxyCodeLine{270         \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_ab6d9f4d183deb35259aa234727912043}{mtim}} = \mbox{\hyperlink{find_8c_a0df704af71b427e46377922a58ef3532}{get\_string\_time}}(zero\_file, 3);}
+\DoxyCodeLine{271         \mbox{\hyperlink{header_8h_a098508199d2a4f70f623618450812d0e}{print\_file}}(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}, 0);}
+\DoxyCodeLine{272         free(str);}
+\DoxyCodeLine{273     \}}
+\DoxyCodeLine{274 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a5baa9246fb4f33fb8b1ea135ab5acbb1_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{df/dcb/header_8h_a5baa9246fb4f33fb8b1ea135ab5acbb1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a8d270f1179408dcd00201a9822daa42c}\label{header_8h_a8d270f1179408dcd00201a9822daa42c}} 
+\index{header.h@{header.h}!input\_function@{input\_function}}
+\index{input\_function@{input\_function}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{input\_function()}{input\_function()}}
+{\footnotesize\ttfamily char$\ast$ input\+\_\+function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+print.\+c 파일의 14 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keywordtype}{char} *str;}
+\DoxyCodeLine{17     \textcolor{keywordflow}{if} ((str = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}) * \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}})) == NULL)}
+\DoxyCodeLine{18         exit(1);}
+\DoxyCodeLine{19     fgets(str, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, stdin);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordflow}{return} str;}
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{df/dcb/header_8h_a8d270f1179408dcd00201a9822daa42c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0}\label{header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0}} 
+\index{header.h@{header.h}!input\_index\_option@{input\_index\_option}}
+\index{input\_index\_option@{input\_index\_option}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{input\_index\_option()}{input\_index\_option()}}
+{\footnotesize\ttfamily int input\+\_\+index\+\_\+option (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 8 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keywordtype}{char} **result;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} digit;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     result = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(str, \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t"});}
+\DoxyCodeLine{16     free(str);}
+\DoxyCodeLine{17     i = 0;}
+\DoxyCodeLine{18     \textcolor{keywordflow}{while} (result[i])}
+\DoxyCodeLine{19         i++;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     j = 0;}
+\DoxyCodeLine{22     digit = 1;}
+\DoxyCodeLine{23     \textcolor{comment}{/* Index value must be numeric */}}
+\DoxyCodeLine{24     \textcolor{keywordflow}{while} (result[0][j])}
+\DoxyCodeLine{25     \{}
+\DoxyCodeLine{26         \textcolor{keywordflow}{if} (!isdigit(result[0][j]))}
+\DoxyCodeLine{27             digit = 0;}
+\DoxyCodeLine{28         j++;}
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30     \textcolor{keywordflow}{if} (digit == 1 \&\& i <= 5)}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32         \mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}} = atoi(result[0]);}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{35     \{}
+\DoxyCodeLine{36         printf(\textcolor{stringliteral}{"err\(\backslash\)n"});}
+\DoxyCodeLine{37         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{/* processing options */}}
+\DoxyCodeLine{41     \textcolor{keywordflow}{if} (i > 1)}
+\DoxyCodeLine{42     \{}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{keywordflow}{for} (j = 1; result[j]; j++)}
+\DoxyCodeLine{45         \{}
+\DoxyCodeLine{46             \textcolor{keywordflow}{if} (strlen(result[j]) != 1)}
+\DoxyCodeLine{47             \{}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; result[k]; k++)}
+\DoxyCodeLine{49                 \{}
+\DoxyCodeLine{50                     free(result[k]);}
+\DoxyCodeLine{51                 \}}
+\DoxyCodeLine{52                 free(result);}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{54             \}}
+\DoxyCodeLine{55             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(result[j], \textcolor{stringliteral}{"q"}) \&\& strcmp(result[j], \textcolor{stringliteral}{"s"}) \&\& strcmp(result[j], \textcolor{stringliteral}{"i"}) \&\& strcmp(result[j], \textcolor{stringliteral}{"r"}))}
+\DoxyCodeLine{56             \{}
+\DoxyCodeLine{57                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; result[k]; k++)}
+\DoxyCodeLine{58                 \{}
+\DoxyCodeLine{59                     free(result[k]);}
+\DoxyCodeLine{60                 \}}
+\DoxyCodeLine{61                 free(result);}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{63             \}}
+\DoxyCodeLine{64             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{65             \{}
+\DoxyCodeLine{66                 \textcolor{keywordflow}{if} (!strcmp(result[j], \textcolor{stringliteral}{"q"}))}
+\DoxyCodeLine{67                     \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[0] = 1;}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(result[j], \textcolor{stringliteral}{"s"}))}
+\DoxyCodeLine{69                     \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[1] = 1;}
+\DoxyCodeLine{70                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(result[j], \textcolor{stringliteral}{"i"}))}
+\DoxyCodeLine{71                     \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[2] = 1;}
+\DoxyCodeLine{72                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(result[j], \textcolor{stringliteral}{"r"}))}
+\DoxyCodeLine{73                     \mbox{\hyperlink{header_8h_adee3bbe17f627c816a29b5a36a847171}{g\_option}}[3] = 1;}
+\DoxyCodeLine{74             \}}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; result[k]; k++)}
+\DoxyCodeLine{79     \{}
+\DoxyCodeLine{80         free(result[k]);}
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82     free(result);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{85 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_ad4086ff40fc9c176530b16d8ab6ddaa0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_aaf330ec15d2741808901fb5d510b817b}\label{header_8h_aaf330ec15d2741808901fb5d510b817b}} 
+\index{header.h@{header.h}!insert@{insert}}
+\index{insert@{insert}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} $\ast$}]{s\+Ptr,  }\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+list.\+c 파일의 4 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5 \{}
+\DoxyCodeLine{6     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} newPtr;}
+\DoxyCodeLine{7     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} previousPtr;}
+\DoxyCodeLine{8     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} currentPtr;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     newPtr = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structs__myStat}{t\_myStat}}));}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordflow}{if} (newPtr != NULL)}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14         \textcolor{comment}{/* copy informations to node */}}
+\DoxyCodeLine{15         strcpy(newPtr-\/>\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, path);}
+\DoxyCodeLine{16         \mbox{\hyperlink{header_8h_af68e4a56d4fae1da4c64ec16bb4f3933}{get\_info\_file}}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, newPtr);}
+\DoxyCodeLine{17         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}{g\_is\_zero\_dir\_flag}} == 1)}
+\DoxyCodeLine{18         \{}
+\DoxyCodeLine{19             newPtr-\/>\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}} = \mbox{\hyperlink{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}{g\_mtmp}}.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}};}
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21         newPtr-\/>\mbox{\hyperlink{structs__myStat_a53a8d4e02012e53dd4ae507e4574066b}{permission}} = \mbox{\hyperlink{header_8h_a22c65229b328a1f81f7155c732326415}{get\_permission}}(newPtr-\/>\mbox{\hyperlink{structs__myStat_a2bdea590000ed48687ac20437f4534c2}{st\_mode}});}
+\DoxyCodeLine{22         newPtr-\/>\mbox{\hyperlink{structs__myStat_a714cb9a6f537789754ac61b629b31812}{atim}} = \mbox{\hyperlink{header_8h_a0df704af71b427e46377922a58ef3532}{get\_string\_time}}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, 1);}
+\DoxyCodeLine{23         newPtr-\/>\mbox{\hyperlink{structs__myStat_aef31e5a46c07f5411f7907549a86ee5d}{ctim}} = \mbox{\hyperlink{header_8h_a0df704af71b427e46377922a58ef3532}{get\_string\_time}}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, 2);}
+\DoxyCodeLine{24         newPtr-\/>\mbox{\hyperlink{structs__myStat_ab6d9f4d183deb35259aa234727912043}{mtim}} = \mbox{\hyperlink{header_8h_a0df704af71b427e46377922a58ef3532}{get\_string\_time}}(\mbox{\hyperlink{header_8h_aa26633c414d18cbf9aa6bf1da851904a}{g\_tmp}}, 3);}
+\DoxyCodeLine{25         newPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}} = NULL;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         previousPtr = NULL;}
+\DoxyCodeLine{28         currentPtr = *sPtr;}
+\DoxyCodeLine{29         \textcolor{comment}{/*find node position order to ASCII and PATH*/}}
+\DoxyCodeLine{30         \textcolor{keywordflow}{while} (currentPtr != NULL \&\& (\mbox{\hyperlink{list_8c_a82b94315529a7484e7325b02d7eb9859}{sort\_filter}}(path, currentPtr-\/>\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}) > 0 || strcmp(path, currentPtr-\/>\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}) > 0))}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32             previousPtr = currentPtr;}
+\DoxyCodeLine{33             currentPtr = currentPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}};}
+\DoxyCodeLine{34         \}}
+\DoxyCodeLine{35         \textcolor{keywordflow}{if} (previousPtr == NULL)}
+\DoxyCodeLine{36         \{}
+\DoxyCodeLine{37             newPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}} = *sPtr;}
+\DoxyCodeLine{38             *sPtr = newPtr;}
+\DoxyCodeLine{39         \}}
+\DoxyCodeLine{40         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{41         \{}
+\DoxyCodeLine{42             previousPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}} = newPtr;}
+\DoxyCodeLine{43             newPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}} = currentPtr;}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_aaf330ec15d2741808901fb5d510b817b_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_aaf330ec15d2741808901fb5d510b817b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a49395c1b02d159956dfd6efb99c35c66}\label{header_8h_a49395c1b02d159956dfd6efb99c35c66}} 
+\index{header.h@{header.h}!len\_word@{len\_word}}
+\index{len\_word@{len\_word}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{len\_word()}{len\_word()}}
+{\footnotesize\ttfamily int len\+\_\+word (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 39 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{42     \textcolor{keywordtype}{int} len;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     i = 0;}
+\DoxyCodeLine{45     len = 0;}
+\DoxyCodeLine{46     \textcolor{keywordflow}{if} (*charset == 0)}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48         \textcolor{keywordflow}{while} (str[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{49             i++;}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} (i);}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52     \textcolor{keywordflow}{while} (!\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         len++;}
+\DoxyCodeLine{55         i++;}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} (len);}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{df/dcb/header_8h_a49395c1b02d159956dfd6efb99c35c66_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a49395c1b02d159956dfd6efb99c35c66_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a78698417d5ae33b9f864fb4260f8f42b}\label{header_8h_a78698417d5ae33b9f864fb4260f8f42b}} 
+\index{header.h@{header.h}!make\_arr\_from\_files@{make\_arr\_from\_files}}
+\index{make\_arr\_from\_files@{make\_arr\_from\_files}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{make\_arr\_from\_files()}{make\_arr\_from\_files()}}
+{\footnotesize\ttfamily void make\+\_\+arr\+\_\+from\+\_\+files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 88 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{91     FILE *fp1, *fp2;}
+\DoxyCodeLine{92     \textcolor{keywordtype}{int} zero\_line;}
+\DoxyCodeLine{93     \textcolor{keywordtype}{int} idx\_line;}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{97     zero\_line = 0;}
+\DoxyCodeLine{98     idx\_line = 0;}
+\DoxyCodeLine{99     i = 0;}
+\DoxyCodeLine{100     \textcolor{keywordflow}{if} ((fp1 = fopen(\mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{101     \{}
+\DoxyCodeLine{102         perror(\textcolor{stringliteral}{"fp1"});}
+\DoxyCodeLine{103         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{104     \}}
+\DoxyCodeLine{105     \textcolor{keywordflow}{if} ((fp2 = fopen(tmp-\/>\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}}, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{106     \{}
+\DoxyCodeLine{107         perror(\textcolor{stringliteral}{"fp2"});}
+\DoxyCodeLine{108         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{109     \}}
+\DoxyCodeLine{110     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{111     \{}
+\DoxyCodeLine{112         \textcolor{comment}{/* count line */}}
+\DoxyCodeLine{113         \textcolor{keywordflow}{while} (fgets(\mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[zero\_line], \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp1))}
+\DoxyCodeLine{114         \{}
+\DoxyCodeLine{115             zero\_line++;}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{117         \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}} = zero\_line;}
+\DoxyCodeLine{118         \textcolor{keywordflow}{while} (fgets(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[idx\_line], \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}, fp2))}
+\DoxyCodeLine{119         \{}
+\DoxyCodeLine{120             idx\_line++;}
+\DoxyCodeLine{121         \}}
+\DoxyCodeLine{122         \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}} = idx\_line;}
+\DoxyCodeLine{123     \}}
+\DoxyCodeLine{124     fclose(fp1);}
+\DoxyCodeLine{125     fclose(fp2);}
+\DoxyCodeLine{126     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}} = (\textcolor{keywordtype}{int} *)calloc(zero\_line, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}))) == NULL)}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         printf(\textcolor{stringliteral}{"malloc err!\(\backslash\)n"});}
+\DoxyCodeLine{129         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{130     \}}
+\DoxyCodeLine{131     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}} = (\textcolor{keywordtype}{int} *)calloc(idx\_line, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}))) == NULL)}
+\DoxyCodeLine{132     \{}
+\DoxyCodeLine{133         printf(\textcolor{stringliteral}{"malloc err!\(\backslash\)n"});}
+\DoxyCodeLine{134         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{135     \}}
+\DoxyCodeLine{136 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{df/dcb/header_8h_a78698417d5ae33b9f864fb4260f8f42b_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a78698417d5ae33b9f864fb4260f8f42b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a2877e40977e8f83fef4abd41a3df4ac4}\label{header_8h_a2877e40977e8f83fef4abd41a3df4ac4}} 
+\index{header.h@{header.h}!make\_result\_arr@{make\_result\_arr}}
+\index{make\_result\_arr@{make\_result\_arr}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{make\_result\_arr()}{make\_result\_arr()}}
+{\footnotesize\ttfamily void make\+\_\+result\+\_\+arr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 306 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{307 \{}
+\DoxyCodeLine{308     \textcolor{keywordtype}{int} cnt\_zero\_from\_file2;}
+\DoxyCodeLine{309     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{310     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{311     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313     cnt\_zero\_from\_file2 = 0;}
+\DoxyCodeLine{314     \textcolor{keywordflow}{for} (i = 0; i < \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}}; i++)}
+\DoxyCodeLine{315     \{}
+\DoxyCodeLine{316         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[i] == 0)}
+\DoxyCodeLine{317             cnt\_zero\_from\_file2++;}
+\DoxyCodeLine{318     \}}
+\DoxyCodeLine{319     \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\_diff\_result\_arr\_len}} = cnt\_zero\_from\_file2 + \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}};}
+\DoxyCodeLine{320     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}} = (\textcolor{keywordtype}{int} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * (cnt\_zero\_from\_file2 + \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}}))) == NULL)}
+\DoxyCodeLine{321     \{}
+\DoxyCodeLine{322         printf(\textcolor{stringliteral}{"malloc err\(\backslash\)n"});}
+\DoxyCodeLine{323         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{324     \}}
+\DoxyCodeLine{325 }
+\DoxyCodeLine{326     i = 0;}
+\DoxyCodeLine{327     j = 0;}
+\DoxyCodeLine{328     k = 0;}
+\DoxyCodeLine{329     \textcolor{keywordflow}{while} (i < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}} \&\& j < \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}})}
+\DoxyCodeLine{330     \{}
+\DoxyCodeLine{331         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] == 0 \&\& \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] == 0)}
+\DoxyCodeLine{332         \{}
+\DoxyCodeLine{333             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} l = i; !\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[l] \&\& l < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}}; l++)}
+\DoxyCodeLine{334             \{}
+\DoxyCodeLine{335                 \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] = -\/(l + 1);}
+\DoxyCodeLine{336                 k++;}
+\DoxyCodeLine{337                 i++;}
+\DoxyCodeLine{338             \}}
+\DoxyCodeLine{339             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} l = j; !\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[l] \&\& l < \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}}; l++)}
+\DoxyCodeLine{340             \{}
+\DoxyCodeLine{341                 \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] = l + 1;}
+\DoxyCodeLine{342                 k++;}
+\DoxyCodeLine{343                 j++;}
+\DoxyCodeLine{344             \}}
+\DoxyCodeLine{345         \}}
+\DoxyCodeLine{346         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] != 0 \&\& \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] == 0)}
+\DoxyCodeLine{347         \{}
+\DoxyCodeLine{348             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} l = j; !\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[l] \&\& l < \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}}; l++)}
+\DoxyCodeLine{349             \{}
+\DoxyCodeLine{350                 \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] = l + 1;}
+\DoxyCodeLine{351                 k++;}
+\DoxyCodeLine{352                 j++;}
+\DoxyCodeLine{353             \}}
+\DoxyCodeLine{354         \}}
+\DoxyCodeLine{355         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] == 0 \&\& \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] != 0)}
+\DoxyCodeLine{356         \{}
+\DoxyCodeLine{357             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} l = i; !\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[l] \&\& l < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}}; l++)}
+\DoxyCodeLine{358             \{}
+\DoxyCodeLine{359                 \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] = -\/(l + 1);}
+\DoxyCodeLine{360                 k++;}
+\DoxyCodeLine{361                 i++;}
+\DoxyCodeLine{362             \}}
+\DoxyCodeLine{363         \}}
+\DoxyCodeLine{364         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] != 0 \&\& \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] != 0)}
+\DoxyCodeLine{365         \{}
+\DoxyCodeLine{366             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} l = i, m = j; \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[l] \&\& \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[m] \&\& l < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}} \&\& m < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}}; l++, m++)}
+\DoxyCodeLine{367             \{}
+\DoxyCodeLine{368                 \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] = 0;}
+\DoxyCodeLine{369                 k++;}
+\DoxyCodeLine{370                 i++;}
+\DoxyCodeLine{371                 j++;}
+\DoxyCodeLine{372             \}}
+\DoxyCodeLine{373         \}}
+\DoxyCodeLine{374     \}}
+\DoxyCodeLine{375 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a2877e40977e8f83fef4abd41a3df4ac4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_add84278597354389bf0bd24328493fea}\label{header_8h_add84278597354389bf0bd24328493fea}} 
+\index{header.h@{header.h}!make\_split@{make\_split}}
+\index{make\_split@{make\_split}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{make\_split()}{make\_split()}}
+{\footnotesize\ttfamily void make\+\_\+split (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{arr,  }\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset,  }\item[{int}]{word\+\_\+cnt }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 61 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{64     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     i = 0;}
+\DoxyCodeLine{68     j = 0;}
+\DoxyCodeLine{69     k = 0;}
+\DoxyCodeLine{70     \textcolor{keywordflow}{while} (word\_cnt)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         \textcolor{keywordflow}{while} (\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset) \&\& str[i])}
+\DoxyCodeLine{73             i++;}
+\DoxyCodeLine{74         \textcolor{keywordflow}{while} (!\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset) \&\& str[i])}
+\DoxyCodeLine{75         \{}
+\DoxyCodeLine{76             arr[j][k] = str[i];}
+\DoxyCodeLine{77             k++;}
+\DoxyCodeLine{78             i++;}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80         arr[j][k] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{81         k = 0;}
+\DoxyCodeLine{82         j++;}
+\DoxyCodeLine{83         word\_cnt-\/-\/;}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85     arr[j] = 0;}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{df/dcb/header_8h_add84278597354389bf0bd24328493fea_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_add84278597354389bf0bd24328493fea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ace132829b602fd83755d5a4a70a448a3}\label{header_8h_ace132829b602fd83755d5a4a70a448a3}} 
+\index{header.h@{header.h}!memset\_diff\_global\_variable@{memset\_diff\_global\_variable}}
+\index{memset\_diff\_global\_variable@{memset\_diff\_global\_variable}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{memset\_diff\_global\_variable()}{memset\_diff\_global\_variable()}}
+{\footnotesize\ttfamily void memset\+\_\+diff\+\_\+global\+\_\+variable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 378 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{379 \{}
+\DoxyCodeLine{380     memset(\&\mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}, 0, \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}});}
+\DoxyCodeLine{381     free(\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}});}
+\DoxyCodeLine{382     \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}} = NULL;}
+\DoxyCodeLine{383     free(\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}});}
+\DoxyCodeLine{384     \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}} = NULL;}
+\DoxyCodeLine{385     \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}} = 0;}
+\DoxyCodeLine{386     \mbox{\hyperlink{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}{g\_line\_idx}} = 0;}
+\DoxyCodeLine{387     \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\_diff\_result\_arr\_len}} = 0;}
+\DoxyCodeLine{388     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}; i++)}
+\DoxyCodeLine{389     \{}
+\DoxyCodeLine{390         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < \mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{BUFF}}; j++)}
+\DoxyCodeLine{391         \{}
+\DoxyCodeLine{392             \mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[i][j] = 0;}
+\DoxyCodeLine{393             \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i][j] = 0;}
+\DoxyCodeLine{394         \}}
+\DoxyCodeLine{395     \}}
+\DoxyCodeLine{396 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_ace132829b602fd83755d5a4a70a448a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a0b2c79d1bacef4f4f0c3ec39fb32f614}\label{header_8h_a0b2c79d1bacef4f4f0c3ec39fb32f614}} 
+\index{header.h@{header.h}!print\_diff\_add@{print\_diff\_add}}
+\index{print\_diff\_add@{print\_diff\_add}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_diff\_add()}{print\_diff\_add()}}
+{\footnotesize\ttfamily void print\+\_\+diff\+\_\+add (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 493 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{494 \{}
+\DoxyCodeLine{495     printf(\textcolor{stringliteral}{"\%da\%d,\%d\(\backslash\)n"}, idx, start, end);}
+\DoxyCodeLine{496     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = start -\/ 1; i < end; i++)}
+\DoxyCodeLine{497     \{}
+\DoxyCodeLine{498         printf(\textcolor{stringliteral}{"> \%s"}, \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i]);}
+\DoxyCodeLine{499         \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{500         \{}
+\DoxyCodeLine{501             printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{502         \}}
+\DoxyCodeLine{503     \}}
+\DoxyCodeLine{504 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a0b2c79d1bacef4f4f0c3ec39fb32f614_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a0b413ecc0af20ff656082373ec45f532}\label{header_8h_a0b413ecc0af20ff656082373ec45f532}} 
+\index{header.h@{header.h}!print\_diff\_change@{print\_diff\_change}}
+\index{print\_diff\_change@{print\_diff\_change}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_diff\_change()}{print\_diff\_change()}}
+{\footnotesize\ttfamily void print\+\_\+diff\+\_\+change (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+start,  }\item[{int}]{n\+\_\+end,  }\item[{int}]{p\+\_\+start,  }\item[{int}]{p\+\_\+end }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 507 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{508 \{}
+\DoxyCodeLine{509     \textcolor{keywordtype}{char} *sep = \textcolor{stringliteral}{"-\/-\/-\/\(\backslash\)n"};}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511     \textcolor{keywordflow}{if} ((n\_end -\/ n\_start) == 0 \&\& (p\_end -\/ p\_start) == 0)}
+\DoxyCodeLine{512     \{}
+\DoxyCodeLine{513         printf(\textcolor{stringliteral}{"\%dc\%d\(\backslash\)n"}, n\_end, p\_end);}
+\DoxyCodeLine{514         printf(\textcolor{stringliteral}{"< \%s"}, \mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[n\_end -\/ 1]);}
+\DoxyCodeLine{515         \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[n\_end -\/ 1], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{516         \{}
+\DoxyCodeLine{517             printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{518         \}}
+\DoxyCodeLine{519         printf(\textcolor{stringliteral}{"\%s"}, sep);}
+\DoxyCodeLine{520         printf(\textcolor{stringliteral}{"> \%s"}, \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[p\_end -\/ 1]);}
+\DoxyCodeLine{521         \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[p\_end -\/ 1], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{522         \{}
+\DoxyCodeLine{523             printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{524         \}}
+\DoxyCodeLine{525     \}}
+\DoxyCodeLine{526     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((n\_end -\/ n\_start) == 0)}
+\DoxyCodeLine{527     \{}
+\DoxyCodeLine{528         printf(\textcolor{stringliteral}{"\%dc\%d,\%d\(\backslash\)n"}, n\_end, p\_start, p\_end);}
+\DoxyCodeLine{529         printf(\textcolor{stringliteral}{"< \%s"}, \mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[n\_end -\/ 1]);}
+\DoxyCodeLine{530         \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[n\_end -\/ 1], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{531         \{}
+\DoxyCodeLine{532             printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{533         \}}
+\DoxyCodeLine{534         printf(\textcolor{stringliteral}{"\%s"}, sep);}
+\DoxyCodeLine{535         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = p\_start -\/ 1; i < p\_end; i++)}
+\DoxyCodeLine{536         \{}
+\DoxyCodeLine{537             printf(\textcolor{stringliteral}{"> \%s"}, \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i]);}
+\DoxyCodeLine{538             \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{539             \{}
+\DoxyCodeLine{540                 printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{541             \}}
+\DoxyCodeLine{542         \}}
+\DoxyCodeLine{543     \}}
+\DoxyCodeLine{544     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((p\_end -\/ p\_start) == 0)}
+\DoxyCodeLine{545     \{}
+\DoxyCodeLine{546         printf(\textcolor{stringliteral}{"\%d,\%dc\%d\(\backslash\)n"}, n\_start, n\_end, p\_end);}
+\DoxyCodeLine{547         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = n\_start -\/ 1; i < n\_end; i++)}
+\DoxyCodeLine{548         \{}
+\DoxyCodeLine{549             printf(\textcolor{stringliteral}{"< \%s"}, \mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[i]);}
+\DoxyCodeLine{550             \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[i], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{551             \{}
+\DoxyCodeLine{552                 printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{553             \}}
+\DoxyCodeLine{554         \}}
+\DoxyCodeLine{555         printf(\textcolor{stringliteral}{"\%s"}, sep);}
+\DoxyCodeLine{556         printf(\textcolor{stringliteral}{"> \%s"}, \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[p\_end]);}
+\DoxyCodeLine{557         \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[p\_end -\/ 1], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{558         \{}
+\DoxyCodeLine{559             printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{560         \}}
+\DoxyCodeLine{561     \}}
+\DoxyCodeLine{562     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{563     \{}
+\DoxyCodeLine{564         printf(\textcolor{stringliteral}{"\%d,\%dc\%d,\%d\(\backslash\)n"}, n\_start, n\_end, p\_start, p\_end);}
+\DoxyCodeLine{565         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = n\_start -\/ 1; i < n\_end; i++)}
+\DoxyCodeLine{566         \{}
+\DoxyCodeLine{567             printf(\textcolor{stringliteral}{"< \%s"}, \mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[i]);}
+\DoxyCodeLine{568             \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}{g\_file1\_content}}[i], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{569             \{}
+\DoxyCodeLine{570                 printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{571             \}}
+\DoxyCodeLine{572         \}}
+\DoxyCodeLine{573         printf(\textcolor{stringliteral}{"\%s"}, sep);}
+\DoxyCodeLine{574         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = p\_start -\/ 1; i < p\_end; i++)}
+\DoxyCodeLine{575         \{}
+\DoxyCodeLine{576             printf(\textcolor{stringliteral}{"> \%s"}, \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i]);}
+\DoxyCodeLine{577             \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{578             \{}
+\DoxyCodeLine{579                 printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{580             \}}
+\DoxyCodeLine{581         \}}
+\DoxyCodeLine{582     \}}
+\DoxyCodeLine{583 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a0b413ecc0af20ff656082373ec45f532_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a8fd45f06ad690e68549d69191acc5380}\label{header_8h_a8fd45f06ad690e68549d69191acc5380}} 
+\index{header.h@{header.h}!print\_diff\_delete@{print\_diff\_delete}}
+\index{print\_diff\_delete@{print\_diff\_delete}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_diff\_delete()}{print\_diff\_delete()}}
+{\footnotesize\ttfamily void print\+\_\+diff\+\_\+delete (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 586 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{587 \{}
+\DoxyCodeLine{588     printf(\textcolor{stringliteral}{"\%d,\%dd\%d\(\backslash\)n"}, start, end, idx);}
+\DoxyCodeLine{589     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = start -\/ 1; i < end; i++)}
+\DoxyCodeLine{590     \{}
+\DoxyCodeLine{591         printf(\textcolor{stringliteral}{"< \%s"}, \mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i]);}
+\DoxyCodeLine{592         \textcolor{keywordflow}{if} (strchr(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[i], \textcolor{charliteral}{'\(\backslash\)n'}) == NULL)}
+\DoxyCodeLine{593         \{}
+\DoxyCodeLine{594             printf(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)\(\backslash\) No newline at end of file\(\backslash\)n"});}
+\DoxyCodeLine{595         \}}
+\DoxyCodeLine{596     \}}
+\DoxyCodeLine{597 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a8fd45f06ad690e68549d69191acc5380_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a8d0306a0b48f065588732597c3eeabcb}\label{header_8h_a8d0306a0b48f065588732597c3eeabcb}} 
+\index{header.h@{header.h}!print\_diff\_option\_q@{print\_diff\_option\_q}}
+\index{print\_diff\_option\_q@{print\_diff\_option\_q}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_diff\_option\_q()}{print\_diff\_option\_q()}}
+{\footnotesize\ttfamily void print\+\_\+diff\+\_\+option\+\_\+q (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 600 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{601 \{}
+\DoxyCodeLine{602     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{603     \textcolor{keywordtype}{char} **path\_split;}
+\DoxyCodeLine{604     \textcolor{keywordtype}{int} flag;}
+\DoxyCodeLine{605     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{606 }
+\DoxyCodeLine{607     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{608     i = 0;}
+\DoxyCodeLine{609     flag = 0;}
+\DoxyCodeLine{610     path\_split = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(tmp-\/>\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{611     \textcolor{keywordflow}{while} (path\_split[i])}
+\DoxyCodeLine{612     \{}
+\DoxyCodeLine{613         i++;}
+\DoxyCodeLine{614     \}}
+\DoxyCodeLine{615     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\_diff\_result\_arr\_len}}; k++)}
+\DoxyCodeLine{616     \{}
+\DoxyCodeLine{617         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] != 0)}
+\DoxyCodeLine{618         \{}
+\DoxyCodeLine{619             flag = 1;}
+\DoxyCodeLine{620             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{621         \}}
+\DoxyCodeLine{622     \}}
+\DoxyCodeLine{623     \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{624     \{}
+\DoxyCodeLine{625         printf(\textcolor{stringliteral}{"File \%s and \%s/\%s differ\(\backslash\)n"}, \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}}, path\_split[-\/-\/i], tmp-\/>\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}});}
+\DoxyCodeLine{626     \}}
+\DoxyCodeLine{627     i = 0;}
+\DoxyCodeLine{628     \textcolor{keywordflow}{while} (path\_split[i])}
+\DoxyCodeLine{629     \{}
+\DoxyCodeLine{630         free(path\_split[i]);}
+\DoxyCodeLine{631         i++;}
+\DoxyCodeLine{632     \}}
+\DoxyCodeLine{633     free(path\_split);}
+\DoxyCodeLine{634 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a8d0306a0b48f065588732597c3eeabcb_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a8d0306a0b48f065588732597c3eeabcb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a52802e1c441774df5699282e668d4499}\label{header_8h_a52802e1c441774df5699282e668d4499}} 
+\index{header.h@{header.h}!print\_diff\_option\_s@{print\_diff\_option\_s}}
+\index{print\_diff\_option\_s@{print\_diff\_option\_s}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_diff\_option\_s()}{print\_diff\_option\_s()}}
+{\footnotesize\ttfamily void print\+\_\+diff\+\_\+option\+\_\+s (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 637 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{638 \{}
+\DoxyCodeLine{639     \mbox{\hyperlink{structs__myStat}{t\_myStatptr}} tmp;}
+\DoxyCodeLine{640     \textcolor{keywordtype}{char} **path\_split;}
+\DoxyCodeLine{641     \textcolor{keywordtype}{int} flag;}
+\DoxyCodeLine{642     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{643 }
+\DoxyCodeLine{644     tmp = \mbox{\hyperlink{header_8h_a0651bb138a1fde72f8d2cae5ce72c2b6}{get\_idx\_node}}(\mbox{\hyperlink{header_8h_ae2ff487f555f929815e780e0a430da19}{g\_index}});}
+\DoxyCodeLine{645     i = 0;}
+\DoxyCodeLine{646     flag = 0;}
+\DoxyCodeLine{647     path\_split = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(tmp-\/>\mbox{\hyperlink{structs__myStat_a95c0fa8f0bdf7a2f28a4d6927fff87fd}{real\_path}}, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{648     \textcolor{keywordflow}{while} (path\_split[i])}
+\DoxyCodeLine{649     \{}
+\DoxyCodeLine{650         i++;}
+\DoxyCodeLine{651     \}}
+\DoxyCodeLine{652     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\_diff\_result\_arr\_len}}; k++)}
+\DoxyCodeLine{653     \{}
+\DoxyCodeLine{654         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[k] != 0)}
+\DoxyCodeLine{655         \{}
+\DoxyCodeLine{656             flag = 1;}
+\DoxyCodeLine{657             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{658         \}}
+\DoxyCodeLine{659     \}}
+\DoxyCodeLine{660     \textcolor{keywordflow}{if} (flag == 0)}
+\DoxyCodeLine{661     \{}
+\DoxyCodeLine{662         printf(\textcolor{stringliteral}{"File \%s and \%s/\%s are identical\(\backslash\)n"}, \mbox{\hyperlink{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}{g\_zero\_file}}.\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}}, path\_split[-\/-\/i], tmp-\/>\mbox{\hyperlink{structs__myStat_a693422ee6ffc79ccbaccb98eb822ed30}{filename}});}
+\DoxyCodeLine{663     \}}
+\DoxyCodeLine{664     i = 0;}
+\DoxyCodeLine{665     \textcolor{keywordflow}{while} (path\_split[i])}
+\DoxyCodeLine{666     \{}
+\DoxyCodeLine{667         free(path\_split[i]);}
+\DoxyCodeLine{668         i++;}
+\DoxyCodeLine{669     \}}
+\DoxyCodeLine{670     free(path\_split);}
+\DoxyCodeLine{671 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a52802e1c441774df5699282e668d4499_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a52802e1c441774df5699282e668d4499_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ad03c28e0bb9241922dbefbe03a9802af}\label{header_8h_ad03c28e0bb9241922dbefbe03a9802af}} 
+\index{header.h@{header.h}!print\_diff\_result@{print\_diff\_result}}
+\index{print\_diff\_result@{print\_diff\_result}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_diff\_result()}{print\_diff\_result()}}
+{\footnotesize\ttfamily void print\+\_\+diff\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 403 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{404 \{}
+\DoxyCodeLine{405     \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{406     \textcolor{keywordtype}{int} add\_idx = 0;}
+\DoxyCodeLine{407     \textcolor{keywordtype}{int} n\_min = 0;}
+\DoxyCodeLine{408     \textcolor{keywordtype}{int} n\_max = 0;}
+\DoxyCodeLine{409     \textcolor{keywordtype}{int} p\_min = 0;}
+\DoxyCodeLine{410     \textcolor{keywordtype}{int} p\_max = 0;}
+\DoxyCodeLine{411     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{413     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{header_8h_a6644cb5e0a3f9181807de0f1de89738e}{g\_diff\_result\_arr\_len}}; i++)}
+\DoxyCodeLine{414     \{}
+\DoxyCodeLine{415         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] > 0 \&\& flag == 0)}
+\DoxyCodeLine{416         \{}
+\DoxyCodeLine{417             flag = 1;}
+\DoxyCodeLine{418             p\_min = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{419             p\_max = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{420             idx++;}
+\DoxyCodeLine{421         \}}
+\DoxyCodeLine{422         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] > 0 \&\& flag == 1)}
+\DoxyCodeLine{423         \{}
+\DoxyCodeLine{424             p\_max = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{425             idx++;}
+\DoxyCodeLine{426         \}}
+\DoxyCodeLine{427         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] < 0 \&\& flag == 0)}
+\DoxyCodeLine{428         \{}
+\DoxyCodeLine{429             flag = 2;}
+\DoxyCodeLine{430             n\_max = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{431             n\_min = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{432             add\_idx++;}
+\DoxyCodeLine{433         \}}
+\DoxyCodeLine{434         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] < 0 \&\& flag == 2)}
+\DoxyCodeLine{435         \{}
+\DoxyCodeLine{436             n\_max = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{437             add\_idx++;}
+\DoxyCodeLine{438         \}}
+\DoxyCodeLine{439         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] > 0 \&\& flag == 2)}
+\DoxyCodeLine{440         \{}
+\DoxyCodeLine{441             flag = 3;}
+\DoxyCodeLine{442             p\_min = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{443             p\_max = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{444             idx++;}
+\DoxyCodeLine{445         \}}
+\DoxyCodeLine{446         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] > 0 \&\& flag == 3)}
+\DoxyCodeLine{447         \{}
+\DoxyCodeLine{448             p\_max = \mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i];}
+\DoxyCodeLine{449             idx++;}
+\DoxyCodeLine{450         \}}
+\DoxyCodeLine{451         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_ac1a777308e390108654656e50949aca1}{g\_diff\_result\_arr}}[i] == 0)}
+\DoxyCodeLine{452         \{}
+\DoxyCodeLine{453             \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{454             \{}
+\DoxyCodeLine{455                 \mbox{\hyperlink{diff_8c_a0b2c79d1bacef4f4f0c3ec39fb32f614}{print\_diff\_add}}(add\_idx, p\_min, p\_max);}
+\DoxyCodeLine{456             \}}
+\DoxyCodeLine{457             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (flag == 2)}
+\DoxyCodeLine{458             \{}
+\DoxyCodeLine{459                 \mbox{\hyperlink{diff_8c_a8fd45f06ad690e68549d69191acc5380}{print\_diff\_delete}}(idx, -\/n\_min, -\/n\_max);}
+\DoxyCodeLine{460             \}}
+\DoxyCodeLine{461             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (flag == 3)}
+\DoxyCodeLine{462             \{}
+\DoxyCodeLine{463                 \mbox{\hyperlink{diff_8c_a0b413ecc0af20ff656082373ec45f532}{print\_diff\_change}}(-\/n\_min, -\/n\_max, p\_min, p\_max);}
+\DoxyCodeLine{464             \}}
+\DoxyCodeLine{465             flag = 0;}
+\DoxyCodeLine{466             p\_min = 0;}
+\DoxyCodeLine{467             p\_max = 0;}
+\DoxyCodeLine{468             n\_max = 0;}
+\DoxyCodeLine{469             n\_min = 0;}
+\DoxyCodeLine{470             idx++;}
+\DoxyCodeLine{471             add\_idx++;}
+\DoxyCodeLine{472         \}}
+\DoxyCodeLine{473     \}}
+\DoxyCodeLine{474     \textcolor{comment}{/* If there is no zero at the end and the output is not possible, it will be output. */}}
+\DoxyCodeLine{475     \textcolor{keywordflow}{if} (flag != 0)}
+\DoxyCodeLine{476     \{}
+\DoxyCodeLine{477         \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{478         \{}
+\DoxyCodeLine{479             \mbox{\hyperlink{diff_8c_a0b2c79d1bacef4f4f0c3ec39fb32f614}{print\_diff\_add}}(p\_min -\/ 1, p\_min, p\_max);}
+\DoxyCodeLine{480         \}}
+\DoxyCodeLine{481         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (flag == 2)}
+\DoxyCodeLine{482         \{}
+\DoxyCodeLine{483             \mbox{\hyperlink{diff_8c_a8fd45f06ad690e68549d69191acc5380}{print\_diff\_delete}}(idx, -\/n\_min, -\/n\_max);}
+\DoxyCodeLine{484         \}}
+\DoxyCodeLine{485         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (flag == 3)}
+\DoxyCodeLine{486         \{}
+\DoxyCodeLine{487             \mbox{\hyperlink{diff_8c_a0b413ecc0af20ff656082373ec45f532}{print\_diff\_change}}(-\/n\_min, -\/n\_max, p\_min, p\_max);}
+\DoxyCodeLine{488         \}}
+\DoxyCodeLine{489     \}}
+\DoxyCodeLine{490 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{df/dcb/header_8h_ad03c28e0bb9241922dbefbe03a9802af_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_ad03c28e0bb9241922dbefbe03a9802af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a098508199d2a4f70f623618450812d0e}\label{header_8h_a098508199d2a4f70f623618450812d0e}} 
+\index{header.h@{header.h}!print\_file@{print\_file}}
+\index{print\_file@{print\_file}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_file()}{print\_file()}}
+{\footnotesize\ttfamily void print\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}}}]{file,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+print.\+c 파일의 112 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114     printf(\textcolor{stringliteral}{"\%-\/6d\%-\/7ld\%-\/11s\%-\/7ld\%-\/6ld\%-\/5d\%-\/7d\%-\/16s\%-\/16s\%-\/16s\%-\/2s\(\backslash\)n"}, i, file.\mbox{\hyperlink{structs__myStat_a87accf751d098caf719b1e4a4e533408}{st\_size}}, file.\mbox{\hyperlink{structs__myStat_a53a8d4e02012e53dd4ae507e4574066b}{permission}}, file.\mbox{\hyperlink{structs__myStat_a68652e874ff604c3c2058ec8f915db03}{st\_blocks}}, file.\mbox{\hyperlink{structs__myStat_a1e9be57b29179ed8d1bdf30d8ec3dbc1}{st\_nlink}}, file.\mbox{\hyperlink{structs__myStat_a82255ddb24217006b50fbeb2cc42b81b}{st\_uid}}, file.\mbox{\hyperlink{structs__myStat_ad7e3f30b2f80df9c387c1b2f4d84f5e5}{st\_gid}}, file.\mbox{\hyperlink{structs__myStat_a714cb9a6f537789754ac61b629b31812}{atim}}, file.\mbox{\hyperlink{structs__myStat_aef31e5a46c07f5411f7907549a86ee5d}{ctim}}, file.\mbox{\hyperlink{structs__myStat_ab6d9f4d183deb35259aa234727912043}{mtim}}, file.\mbox{\hyperlink{structs__myStat_a3de1069c0c13fb5b6be64375091fb777}{path\_filename}});}
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a098508199d2a4f70f623618450812d0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a05b5d50e393d4ad8bf90b7906b628f6a}\label{header_8h_a05b5d50e393d4ad8bf90b7906b628f6a}} 
+\index{header.h@{header.h}!print\_first\_line@{print\_first\_line}}
+\index{print\_first\_line@{print\_first\_line}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_first\_line()}{print\_first\_line()}}
+{\footnotesize\ttfamily void print\+\_\+first\+\_\+line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+find.\+c 파일의 136 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{137 \{}
+\DoxyCodeLine{138     printf(\textcolor{stringliteral}{"Index Size   Mode       Blocks Links UID  GID    Access          Change          Modify          Path\(\backslash\)n"});}
+\DoxyCodeLine{139 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a05b5d50e393d4ad8bf90b7906b628f6a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a853216ac51aa181669ff4d3de74058a7}\label{header_8h_a853216ac51aa181669ff4d3de74058a7}} 
+\index{header.h@{header.h}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily void print\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+help.\+c 파일의 4 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5 \{}
+\DoxyCodeLine{6     printf(\textcolor{stringliteral}{"Usage:\(\backslash\)n"});}
+\DoxyCodeLine{7     printf(\textcolor{stringliteral}{"\(\backslash\)t> find [FILENAME] [PATH]\(\backslash\)n"});}
+\DoxyCodeLine{8     printf(\textcolor{stringliteral}{"\(\backslash\)t> help\(\backslash\)n"});}
+\DoxyCodeLine{9     printf(\textcolor{stringliteral}{"\(\backslash\)t> exit\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{10     printf(\textcolor{stringliteral}{"\(\backslash\)t[OPTION ... ]\(\backslash\)n"});}
+\DoxyCodeLine{11     printf(\textcolor{stringliteral}{"\(\backslash\)tq : report only when files differ\(\backslash\)n"});}
+\DoxyCodeLine{12     printf(\textcolor{stringliteral}{"\(\backslash\)ts : report when two files are the same\(\backslash\)n"});}
+\DoxyCodeLine{13     printf(\textcolor{stringliteral}{"\(\backslash\)ti : ignore case differences in file contents\(\backslash\)n"});}
+\DoxyCodeLine{14     printf(\textcolor{stringliteral}{"\(\backslash\)tr : recursively compare any subdirectories found\(\backslash\)n"});}
+\DoxyCodeLine{15 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{df/dcb/header_8h_a853216ac51aa181669ff4d3de74058a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}\label{header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}} 
+\index{header.h@{header.h}!print\_node@{print\_node}}
+\index{print\_node@{print\_node}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_node()}{print\_node()}}
+{\footnotesize\ttfamily void print\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}}}]{s\+Ptr }\end{DoxyParamCaption})}
+
+
+
+list.\+c 파일의 78 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79 \{}
+\DoxyCodeLine{80     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     i = 1;}
+\DoxyCodeLine{83     \textcolor{keywordflow}{while} (sPtr != NULL)}
+\DoxyCodeLine{84     \{}
+\DoxyCodeLine{85         \mbox{\hyperlink{header_8h_a098508199d2a4f70f623618450812d0e}{print\_file}}(*sPtr, i);}
+\DoxyCodeLine{86         i++;}
+\DoxyCodeLine{87         sPtr = sPtr-\/>\mbox{\hyperlink{structs__myStat_ac5ecaa101f697de425723bc19c358b94}{next}};}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{df/dcb/header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{df/dcb/header_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_aa7e4fe1d0c843e02dfdba34edc69fe91}\label{header_8h_aa7e4fe1d0c843e02dfdba34edc69fe91}} 
+\index{header.h@{header.h}!prompt@{prompt}}
+\index{prompt@{prompt}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{prompt()}{prompt()}}
+{\footnotesize\ttfamily void prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+print.\+c 파일의 3 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     printf(\textcolor{stringliteral}{"20182624> "});}
+\DoxyCodeLine{6 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{df/dcb/header_8h_aa7e4fe1d0c843e02dfdba34edc69fe91_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a82b94315529a7484e7325b02d7eb9859}\label{header_8h_a82b94315529a7484e7325b02d7eb9859}} 
+\index{header.h@{header.h}!sort\_filter@{sort\_filter}}
+\index{sort\_filter@{sort\_filter}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{sort\_filter()}{sort\_filter()}}
+{\footnotesize\ttfamily int sort\+\_\+filter (\begin{DoxyParamCaption}\item[{char $\ast$}]{s1,  }\item[{char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+
+
+list.\+c 파일의 93 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94 \{}
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} cnt1;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} cnt2;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     i = 0;}
+\DoxyCodeLine{100     cnt1 = 0;}
+\DoxyCodeLine{101     cnt2 = 0;}
+\DoxyCodeLine{102     \textcolor{keywordflow}{while} (s1[i])}
+\DoxyCodeLine{103     \{}
+\DoxyCodeLine{104         \textcolor{keywordflow}{if} (s1[i] == \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{105             cnt1++;}
+\DoxyCodeLine{106         i++;}
+\DoxyCodeLine{107     \}}
+\DoxyCodeLine{108     i = 0;}
+\DoxyCodeLine{109     \textcolor{keywordflow}{while} (s2[i])}
+\DoxyCodeLine{110     \{}
+\DoxyCodeLine{111         \textcolor{keywordflow}{if} (s2[i] == \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{112             cnt2++;}
+\DoxyCodeLine{113         i++;}
+\DoxyCodeLine{114     \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{keywordflow}{return} (cnt1 -\/ cnt2);}
+\DoxyCodeLine{117 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a82b94315529a7484e7325b02d7eb9859_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a66dbc142458a94daf38d1913ba00e763}\label{header_8h_a66dbc142458a94daf38d1913ba00e763}} 
+\index{header.h@{header.h}!verification\_arr@{verification\_arr}}
+\index{verification\_arr@{verification\_arr}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{verification\_arr()}{verification\_arr()}}
+{\footnotesize\ttfamily void verification\+\_\+arr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+diff.\+c 파일의 224 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{225 \{}
+\DoxyCodeLine{226     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{227     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{228     \textcolor{keywordtype}{int} flag;}
+\DoxyCodeLine{229     \textcolor{keywordtype}{int} max;}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231     i = 0;}
+\DoxyCodeLine{232     j = 0;}
+\DoxyCodeLine{233     flag = 0;}
+\DoxyCodeLine{234     max = 0;}
+\DoxyCodeLine{235     \textcolor{comment}{/*필요한 인덱스 번호들만 남기게끔 검증하는 부분 */}}
+\DoxyCodeLine{236     \textcolor{keywordflow}{for} (i = 0; i < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}}; i++)}
+\DoxyCodeLine{237     \{}
+\DoxyCodeLine{238         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] > 0)}
+\DoxyCodeLine{239         \{}
+\DoxyCodeLine{240             \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] == 1)}
+\DoxyCodeLine{241             \{}
+\DoxyCodeLine{242                 \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] -\/ 1] = 1;}
+\DoxyCodeLine{243             \}}
+\DoxyCodeLine{244             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{245             \{}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247                 \textcolor{keywordflow}{for} (j = \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] -\/ 2; j >= 0; j-\/-\/)}
+\DoxyCodeLine{248                 \{}
+\DoxyCodeLine{249                     \textcolor{keywordflow}{if} (strcmp(\mbox{\hyperlink{header_8h_a4a100ac20822b931bcccd13bef002e5e}{g\_file2\_content}}[j], \textcolor{stringliteral}{"\(\backslash\)n"}) \&\& \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] > 0 \&\& \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[j] == 0)}
+\DoxyCodeLine{250                     \{}
+\DoxyCodeLine{251                         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] > \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] -\/ 1])}
+\DoxyCodeLine{252                         \{}
+\DoxyCodeLine{253                             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} l = \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] -\/ 2; l > i; l-\/-\/)}
+\DoxyCodeLine{254                             \{}
+\DoxyCodeLine{255                                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] -\/ 1] < \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[l])}
+\DoxyCodeLine{256                                 \{}
+\DoxyCodeLine{257                                     flag = 2;}
+\DoxyCodeLine{258                                     \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[\mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] -\/ 1] = 0;}
+\DoxyCodeLine{259                                     \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[j] = 0;}
+\DoxyCodeLine{260                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{261                                 \}}
+\DoxyCodeLine{262                             \}}
+\DoxyCodeLine{263                         \}}
+\DoxyCodeLine{264                         \textcolor{keywordflow}{if} (flag == 0)}
+\DoxyCodeLine{265                         \{}
+\DoxyCodeLine{266                             flag = 1;}
+\DoxyCodeLine{267                             \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] -\/ 1] = 0;}
+\DoxyCodeLine{268                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{269                         \}}
+\DoxyCodeLine{270                     \}}
+\DoxyCodeLine{271                 \}}
+\DoxyCodeLine{272             \}}
+\DoxyCodeLine{273             \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{274             \{}
+\DoxyCodeLine{275                 \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] = 0;}
+\DoxyCodeLine{276             \}}
+\DoxyCodeLine{277             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{278             \{}
+\DoxyCodeLine{279                 \mbox{\hyperlink{header_8h_a9581495ac20ce9210be4cdea23037fff}{g\_used\_idx}}[\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] -\/ 1] = 1;}
+\DoxyCodeLine{280             \}}
+\DoxyCodeLine{281         \}}
+\DoxyCodeLine{282         flag = 0;}
+\DoxyCodeLine{283     \}}
+\DoxyCodeLine{284     \textcolor{comment}{/* 처리안된 개행 처리 해주는 부분 */}}
+\DoxyCodeLine{285     \textcolor{keywordflow}{for} (i = 0; i < \mbox{\hyperlink{header_8h_a09f81b18403a6779930bd2465926cbfc}{g\_line\_zero}}; i++)}
+\DoxyCodeLine{286     \{}
+\DoxyCodeLine{287         \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] > 0)}
+\DoxyCodeLine{288         \{}
+\DoxyCodeLine{289             max = max < \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] ? \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] : max;}
+\DoxyCodeLine{290             \textcolor{keywordflow}{if} (\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] < max)}
+\DoxyCodeLine{291             \{}
+\DoxyCodeLine{292                 \mbox{\hyperlink{header_8h_a24c8a4fc779b4265bb6473cea0564662}{g\_cnt\_line\_idx}}[\mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] -\/ 1] = 0;}
+\DoxyCodeLine{293                 \mbox{\hyperlink{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}{g\_cnt\_line\_zero}}[i] = 0;}
+\DoxyCodeLine{294             \}}
+\DoxyCodeLine{295         \}}
+\DoxyCodeLine{296     \}}
+\DoxyCodeLine{297 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dcb/header_8h_a66dbc142458a94daf38d1913ba00e763_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{변수 문서화}
+\mbox{\Hypertarget{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}\label{header_8h_a4e3bee17c64a213bd8c74fa5734487a0}} 
+\index{header.h@{header.h}!g\_chk\_find@{g\_chk\_find}}
+\index{g\_chk\_find@{g\_chk\_find}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_chk\_find}{g\_chk\_find}}
+{\footnotesize\ttfamily int g\+\_\+chk\+\_\+find}
+
+
+
+header.\+h 파일의 65 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a24c8a4fc779b4265bb6473cea0564662}\label{header_8h_a24c8a4fc779b4265bb6473cea0564662}} 
+\index{header.h@{header.h}!g\_cnt\_line\_idx@{g\_cnt\_line\_idx}}
+\index{g\_cnt\_line\_idx@{g\_cnt\_line\_idx}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_cnt\_line\_idx}{g\_cnt\_line\_idx}}
+{\footnotesize\ttfamily int$\ast$ g\+\_\+cnt\+\_\+line\+\_\+idx}
+
+
+
+header.\+h 파일의 69 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}\label{header_8h_a1a8efd4ce6bac623fca6bbf3650136c5}} 
+\index{header.h@{header.h}!g\_cnt\_line\_zero@{g\_cnt\_line\_zero}}
+\index{g\_cnt\_line\_zero@{g\_cnt\_line\_zero}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_cnt\_line\_zero}{g\_cnt\_line\_zero}}
+{\footnotesize\ttfamily int$\ast$ g\+\_\+cnt\+\_\+line\+\_\+zero}
+
+
+
+header.\+h 파일의 67 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_ac1a777308e390108654656e50949aca1}\label{header_8h_ac1a777308e390108654656e50949aca1}} 
+\index{header.h@{header.h}!g\_diff\_result\_arr@{g\_diff\_result\_arr}}
+\index{g\_diff\_result\_arr@{g\_diff\_result\_arr}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_diff\_result\_arr}{g\_diff\_result\_arr}}
+{\footnotesize\ttfamily int$\ast$ g\+\_\+diff\+\_\+result\+\_\+arr}
+
+
+
+header.\+h 파일의 71 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a6644cb5e0a3f9181807de0f1de89738e}\label{header_8h_a6644cb5e0a3f9181807de0f1de89738e}} 
+\index{header.h@{header.h}!g\_diff\_result\_arr\_len@{g\_diff\_result\_arr\_len}}
+\index{g\_diff\_result\_arr\_len@{g\_diff\_result\_arr\_len}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_diff\_result\_arr\_len}{g\_diff\_result\_arr\_len}}
+{\footnotesize\ttfamily int g\+\_\+diff\+\_\+result\+\_\+arr\+\_\+len}
+
+
+
+header.\+h 파일의 72 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a6eeb71a8c729fad94a96468b75816282}\label{header_8h_a6eeb71a8c729fad94a96468b75816282}} 
+\index{header.h@{header.h}!g\_dir\_path\_buf@{g\_dir\_path\_buf}}
+\index{g\_dir\_path\_buf@{g\_dir\_path\_buf}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_dir\_path\_buf}{g\_dir\_path\_buf}}
+{\footnotesize\ttfamily char g\+\_\+dir\+\_\+path\+\_\+buf\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}}
+
+
+
+header.\+h 파일의 74 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}\label{header_8h_a6ab53bb04c486dddb1bd25aa3b6358cc}} 
+\index{header.h@{header.h}!g\_file1\_content@{g\_file1\_content}}
+\index{g\_file1\_content@{g\_file1\_content}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_file1\_content}{g\_file1\_content}}
+{\footnotesize\ttfamily char g\+\_\+file1\+\_\+content\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}}
+
+
+
+header.\+h 파일의 75 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a4a100ac20822b931bcccd13bef002e5e}\label{header_8h_a4a100ac20822b931bcccd13bef002e5e}} 
+\index{header.h@{header.h}!g\_file2\_content@{g\_file2\_content}}
+\index{g\_file2\_content@{g\_file2\_content}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_file2\_content}{g\_file2\_content}}
+{\footnotesize\ttfamily char g\+\_\+file2\+\_\+content\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}}
+
+
+
+header.\+h 파일의 76 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}\label{header_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}} 
+\index{header.h@{header.h}!g\_head@{g\_head}}
+\index{g\_head@{g\_head}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_head}{g\_head}}
+{\footnotesize\ttfamily \mbox{\hyperlink{header_8h_a1e7ef8a6a45c8b58cf8af7b01957ff8e}{t\+\_\+my\+Statptr}} g\+\_\+head}
+
+
+
+header.\+h 파일의 64 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a97e8f56fed89c549c4a39b9070671bd5}\label{header_8h_a97e8f56fed89c549c4a39b9070671bd5}} 
+\index{header.h@{header.h}!g\_home\_dir@{g\_home\_dir}}
+\index{g\_home\_dir@{g\_home\_dir}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_home\_dir}{g\_home\_dir}}
+{\footnotesize\ttfamily char g\+\_\+home\+\_\+dir\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}}
+
+
+
+header.\+h 파일의 73 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_ae2ff487f555f929815e780e0a430da19}\label{header_8h_ae2ff487f555f929815e780e0a430da19}} 
+\index{header.h@{header.h}!g\_index@{g\_index}}
+\index{g\_index@{g\_index}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_index}{g\_index}}
+{\footnotesize\ttfamily int g\+\_\+index}
+
+
+
+header.\+h 파일의 66 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}\label{header_8h_a3cf59f56c2c125baa0702e7fe33ebfa4}} 
+\index{header.h@{header.h}!g\_info@{g\_info}}
+\index{g\_info@{g\_info}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_info}{g\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{header_8h_ad8f01a9e4eb26ed9a4bd8e3317edfa1b}{t\+\_\+fileinfo}} g\+\_\+info}
+
+
+
+header.\+h 파일의 60 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}\label{header_8h_a0d95e43a62500d99060a17bd3f2f5b20}} 
+\index{header.h@{header.h}!g\_is\_zero\_dir\_flag@{g\_is\_zero\_dir\_flag}}
+\index{g\_is\_zero\_dir\_flag@{g\_is\_zero\_dir\_flag}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_is\_zero\_dir\_flag}{g\_is\_zero\_dir\_flag}}
+{\footnotesize\ttfamily bool g\+\_\+is\+\_\+zero\+\_\+dir\+\_\+flag}
+
+
+
+header.\+h 파일의 79 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}\label{header_8h_a8c770abcf4ad4eac098ce2a8ada95547}} 
+\index{header.h@{header.h}!g\_line\_idx@{g\_line\_idx}}
+\index{g\_line\_idx@{g\_line\_idx}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_line\_idx}{g\_line\_idx}}
+{\footnotesize\ttfamily int g\+\_\+line\+\_\+idx}
+
+
+
+header.\+h 파일의 70 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a09f81b18403a6779930bd2465926cbfc}\label{header_8h_a09f81b18403a6779930bd2465926cbfc}} 
+\index{header.h@{header.h}!g\_line\_zero@{g\_line\_zero}}
+\index{g\_line\_zero@{g\_line\_zero}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_line\_zero}{g\_line\_zero}}
+{\footnotesize\ttfamily int g\+\_\+line\+\_\+zero}
+
+
+
+header.\+h 파일의 68 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}\label{header_8h_a9f9aefa3728c6e1ed91e44d4a4c31d14}} 
+\index{header.h@{header.h}!g\_mtmp@{g\_mtmp}}
+\index{g\_mtmp@{g\_mtmp}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_mtmp}{g\_mtmp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} g\+\_\+mtmp}
+
+
+
+header.\+h 파일의 63 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_adee3bbe17f627c816a29b5a36a847171}\label{header_8h_adee3bbe17f627c816a29b5a36a847171}} 
+\index{header.h@{header.h}!g\_option@{g\_option}}
+\index{g\_option@{g\_option}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_option}{g\_option}}
+{\footnotesize\ttfamily bool g\+\_\+option\mbox{[}4\mbox{]}}
+
+
+
+header.\+h 파일의 77 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_aa26633c414d18cbf9aa6bf1da851904a}\label{header_8h_aa26633c414d18cbf9aa6bf1da851904a}} 
+\index{header.h@{header.h}!g\_tmp@{g\_tmp}}
+\index{g\_tmp@{g\_tmp}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_tmp}{g\_tmp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{header_8h_a8bb340cfe09e5ab98433b6012a0a0c3e}{t\+\_\+stat}} g\+\_\+tmp}
+
+
+
+header.\+h 파일의 61 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a9581495ac20ce9210be4cdea23037fff}\label{header_8h_a9581495ac20ce9210be4cdea23037fff}} 
+\index{header.h@{header.h}!g\_used\_idx@{g\_used\_idx}}
+\index{g\_used\_idx@{g\_used\_idx}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_used\_idx}{g\_used\_idx}}
+{\footnotesize\ttfamily bool g\+\_\+used\+\_\+idx\mbox{[}\mbox{\hyperlink{header_8h_a624fd5af921a5266e2d0304a645298ba}{B\+U\+FF}}\mbox{]}}
+
+
+
+header.\+h 파일의 78 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}\label{header_8h_a64e0b71fadf7eae8a01d516479e6cc44}} 
+\index{header.h@{header.h}!g\_zero\_file@{g\_zero\_file}}
+\index{g\_zero\_file@{g\_zero\_file}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_zero\_file}{g\_zero\_file}}
+{\footnotesize\ttfamily \mbox{\hyperlink{header_8h_a0dae4e27e7a3fe1e426f12e7c17d104c}{t\+\_\+my\+Stat}} g\+\_\+zero\+\_\+file}
+
+
+
+header.\+h 파일의 62 번째 라인에서 정의되었습니다.
+
