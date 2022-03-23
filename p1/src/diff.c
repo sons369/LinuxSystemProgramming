@@ -249,7 +249,6 @@ void verification_arr()
             }
             else
             {
-
                 for (j = g_cnt_line_zero[i] - 2; j >= 0; j--)
                 {
                     if (strcmp(g_file2_content[j], "\n") && g_cnt_line_idx[j] > 0 && g_used_idx[j] == 0)
@@ -377,6 +376,10 @@ void make_result_arr()
                 j++;
             }
         }
+        if (i == g_line_zero - 1 && j == g_line_idx - 1)
+        {
+            break;
+        }
     }
 }
 
@@ -498,7 +501,12 @@ void print_diff_result()
 /* print add */
 void print_diff_add(int idx, int start, int end)
 {
-    printf("%da%d,%d\n", idx, start, end);
+    if (start == end)
+    {
+        printf("%da%d\n", idx, start);
+    }
+    else
+        printf("%da%d,%d\n", idx, start, end);
     for (int i = start - 1; i < end; i++)
     {
         printf("> %s", g_file2_content[i]);
@@ -591,7 +599,12 @@ void print_diff_change(int n_start, int n_end, int p_start, int p_end)
 /* print delete */
 void print_diff_delete(int idx, int start, int end)
 {
-    printf("%d,%dd%d\n", start, end, idx);
+    if (start == end)
+    {
+        printf("%dd%d\n", start, idx);
+    }
+    else
+        printf("%d,%dd%d\n", start, end, idx);
     for (int i = start - 1; i < end; i++)
     {
         printf("< %s", g_file1_content[i]);
