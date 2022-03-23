@@ -123,11 +123,13 @@ void make_arr_from_files()
     }
     fclose(fp1);
     fclose(fp2);
+
     if ((g_cnt_line_zero = (int *)calloc(zero_line, sizeof(int))) == NULL)
     {
         printf("malloc err!\n");
         return;
     }
+
     if ((g_cnt_line_idx = (int *)calloc(idx_line, sizeof(int))) == NULL)
     {
         printf("malloc err!\n");
@@ -237,7 +239,11 @@ void verification_arr()
     {
         if (g_cnt_line_zero[i] > 0)
         {
-            if (g_cnt_line_zero[i] == 1)
+            if (g_line_zero == 1 && !strcmp(g_file1_content[0], "\0"))
+            {
+                continue;
+            }
+            else if (g_cnt_line_zero[i] == 1)
             {
                 g_used_idx[g_cnt_line_zero[i] - 1] = 1;
             }
@@ -588,8 +594,8 @@ void print_diff_delete(int idx, int start, int end)
     printf("%d,%dd%d\n", start, end, idx);
     for (int i = start - 1; i < end; i++)
     {
-        printf("< %s", g_file2_content[i]);
-        if (strchr(g_file2_content[i], '\n') == NULL)
+        printf("< %s", g_file1_content[i]);
+        if (strchr(g_file1_content[i], '\n') == NULL)
         {
             printf("\n\\ No newline at end of file\n");
         }
@@ -709,12 +715,22 @@ void dir_make_arr_from_files(char *zero_path, char *idx_path)
     }
     fclose(fp1);
     fclose(fp2);
-    if ((g_cnt_line_zero = (int *)calloc(zero_line, sizeof(int))) == NULL)
+    if (g_line_zero == 0)
+    {
+        g_cnt_line_zero = (int *)calloc(1, sizeof(int));
+        g_line_zero = 1;
+    }
+    else if ((g_cnt_line_zero = (int *)calloc(zero_line, sizeof(int))) == NULL)
     {
         printf("malloc err!\n");
         return;
     }
-    if ((g_cnt_line_idx = (int *)calloc(idx_line, sizeof(int))) == NULL)
+    if (g_line_idx == 0)
+    {
+        g_cnt_line_idx = (int *)calloc(1, sizeof(int));
+        g_line_idx = 1;
+    }
+    else if ((g_cnt_line_idx = (int *)calloc(idx_line, sizeof(int))) == NULL)
     {
         printf("malloc err!\n");
         return;
@@ -791,6 +807,10 @@ void dir_find_same_line(char *zero_path, char *idx_path)
         }
         i++;
     }
+    if (g_line_zero == 1 && !strcmp(g_file1_content[0], "\0"))
+        g_cnt_line_zero[0] = 1050;
+    if (g_line_idx == 1 && !strcmp(g_file2_content[0], "\0"))
+        g_cnt_line_idx[0] = 1050;
     fclose(fp1);
     fclose(fp2);
     memset(&g_used_idx, 0, BUFF);
