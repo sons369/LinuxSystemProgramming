@@ -3,6 +3,6 @@
 
 int main()
 {
-	printf("Good afternoon?");
-	_exit(0);
+    printf("Good afternoon");
+    exit(0);
 }
