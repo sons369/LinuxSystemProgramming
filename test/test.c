@@ -3,6 +3,6 @@
 
 int main()
 {
-	printf("Good afternoon?");
+	printf("%f\n", atof("15..5"));
 	_exit(0);
 }
