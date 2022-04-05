@@ -35,7 +35,6 @@ int main(void)
                     exit(1);
                 }
                 child = wait(&status);
-                printf("parent pid : %d\n", getpid());
             }
         }
 
@@ -58,7 +57,6 @@ int main(void)
                 exit(1);
             }
             child = wait(&status);
-            printf("parent pid : %d\n", getpid());
         }
         if (*split)
         {

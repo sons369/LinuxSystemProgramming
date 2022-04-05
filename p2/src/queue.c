@@ -1,5 +1,14 @@
 #include "../includes/md5_header.h"
-#include "../includes/sha1_header.h"
+//#include "../includes/sha1_header.h"
+
+t_Qtype *create_queue_link(void)
+{
+    t_Qtype *q;
+    q = (t_Qtype *)malloc(sizeof(t_Qtype));
+    q->front = NULL;
+    q->rear = NULL;
+    return q;
+}
 
 int is_queue_empty(t_Qtype *q)
 {
@@ -30,7 +39,7 @@ void enqueue(t_Qtype *q, char *dirpath)
 
 char *delqueue(t_Qtype *q)
 {
-    t_Qnode *del;
+    t_Qnode *del = q->front;
     char *path;
 
     if (is_queue_empty(q))

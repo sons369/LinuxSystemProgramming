@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <pwd.h>
 #include <sys/types.h>
+#include <unistd.h>
 #include <string.h>
 #include <time.h>
 #include <errno.h>

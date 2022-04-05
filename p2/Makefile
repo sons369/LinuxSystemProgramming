@@ -21,7 +21,7 @@ $(HELP) :
 	$(CC)	$(HELP_SRC) -o $(HELP)
 
 $(MD5) :
-	$(CC)	$(MD5_SRC) -o $(MD5) -include $(MD5_INCLUDE)
+	$(CC)	$(MD5_SRC) -o $(MD5) -include $(MD5_INCLUDE) -lcrypto
 
 clean :
 	$(RM) *.o
