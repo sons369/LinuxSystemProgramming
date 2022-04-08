@@ -1,4 +1,4 @@
-#include "../includes/header.h"
+//#include "../includes/header.h"
 
 /* check char c in sperator */
 /* if c is sep then return 1 */

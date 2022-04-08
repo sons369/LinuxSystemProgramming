@@ -34,15 +34,37 @@ void enqueue(t_Qtype *Q, char *dirpath);
 char *delqueue(t_Qtype *Q);
 #endif
 
+typedef struct s_myStat
+{
+    off_t st_size;
+    char *atim;
+    char *mtim;
+    char *md5;
+    char *sha1;
+    char real_path[PATH_MAX];
+    struct s_myStat *next;
+} t_myStat;
+
+typedef struct stat t_stat;
+typedef t_myStat *t_myStatptr;
+
 /* global variable */
 long g_min_size;
 long g_max_size;
+long g_file_cnt;
+long g_file;
+t_myStatptr g_head;
 
 /* ssu_find-md5.c function */
 void convert_file_size(char *min, char *max);
-int filter(const struct dirent *info);
-void pt(unsigned char *md);
-void do_md5(FILE *fp);
-int search_same_file(char *path);
+void do_md5(FILE *fp, char *path, long fsize);
+int search_same_file(char *path, char *ext);
+
+/* split.c function */
+int in_sep(char c, char *charset);
+int cnt_word(char *str, char *charset);
+int len_word(char *str, char *charset);
+void make_split(char **arr, char *str, char *charset, int word_cnt);
+char **ft_split(char *str, char *charset);
 
 #endif

@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <pwd.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
@@ -16,6 +17,19 @@
 
 #define BUFF_SIZE 1025
 #define PATH_MAX 4097
+
+typedef struct s_myStat
+{
+    off_t st_size;
+    char *atim;
+    char *mtim;
+    char *md5;
+    char *sha1;
+    char real_path[PATH_MAX];
+    struct s_myStat *next;
+} t_myStat;
+
+typedef t_myStat *t_myStatptr;
 
 /* global variable */
 char g_homedir_path[PATH_MAX];
