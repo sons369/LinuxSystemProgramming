@@ -90,7 +90,6 @@ int search_same_file(char *path, char *ext)
         {
             for (i = 0; i < count; i++)
             {
-                printf("name[%d] : %s\n", i, namelist[i]->d_name);
                 strcpy(buf2, dir_path);
                 if (strcmp(buf2, "/"))
                     strcat(buf2, "/");

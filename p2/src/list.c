@@ -25,10 +25,15 @@ void insert(t_myStatptr *sPtr, char *path, char *hash, long size)
         previousPtr = NULL;
         currentPtr = *sPtr;
         /*find node position order to ASCII and PATH*/
-        while (currentPtr != NULL && (newPtr->size > currentPtr->size || strcmp(hash, currentPtr->hash) > 0 || sort_filter(path, currentPtr->real_path) > 0 || strcmp(path, currentPtr->real_path) > 0))
+        while (currentPtr != NULL && newPtr->size > currentPtr->size)
         {
             previousPtr = currentPtr;
             currentPtr = currentPtr->next;
+            while (currentPtr != NULL && !strcmp(newPtr->hash, currentPtr->hash) && (sort_filter(newPtr->real_path, currentPtr->real_path) > 0 || strcmp(newPtr->real_path, currentPtr->real_path) > 0))
+            {
+                previousPtr = currentPtr;
+                currentPtr = currentPtr->next;
+            }
         }
         if (previousPtr == NULL)
         {
@@ -92,16 +97,38 @@ int is_hash(char *hash)
 
 void print_node(t_myStatptr sPtr)
 {
+    int flag;
+    char hash_buf[50];
+    char atol_num[30];
+    long size_buf;
+    int set;
+    int i;
+
+    flag = 0;
+    set = 1;
     while (sPtr != NULL)
     {
-        print_file(*sPtr);
+        if (flag == 0)
+        {
+            make_comma_num(sPtr->size, atol_num);
+            printf("\n---- Identical files #%d (%s bytes - %s) ----\n", set, atol_num, sPtr->hash);
+            flag = 1;
+            i = 1;
+            set++;
+        }
+        if (sPtr->next != NULL && strcmp(sPtr->hash, sPtr->next->hash))
+        {
+            flag = 0;
+        }
+        print_file(*sPtr, i);
+        i++;
         sPtr = sPtr->next;
     }
 }
 
-void print_file(t_myStat file)
+void print_file(t_myStat file, int i)
 {
-    printf("[%d] %s (mtime : %s) (atime : %s)\n", 1, file.real_path, file.mtim, file.atim);
+    printf("[%d] %s (mtime : %s) (atime : %s)\n", i, file.real_path, file.mtim, file.atim);
 }
 
 /* Linked list sort filter */
@@ -147,4 +174,35 @@ char *get_string_time(t_stat st_t, int flag)
             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
             t->tm_hour, t->tm_min, t->tm_sec);
     return s;
+}
+
+void make_comma_num(long num, char *result)
+{
+    long i;
+    char str[30], *p;
+
+    if (num < 0)
+    {
+        num *= -1;
+        *result++ = '-';
+    }
+    else if (num == 0)
+    {
+        *result++ = '0';
+        *result = 0;
+        return;
+    }
+
+    p = str;
+    for (i = 0; i < 16 && num > 0; i++)
+    {
+        if (i && (i % 3) == 0)
+            *p++ = ',';
+        *p++ = (num % 10) + '0';
+        num /= 10;
+    }
+    p--;
+    while (p >= str)
+        *result++ = *p--;
+    *result = 0;
 }

@@ -61,7 +61,8 @@ void print_node(t_myStatptr sPtr);
 int sort_filter(char *s1, char *s2);
 char *get_string_time(t_stat st_t, int flag);
 int is_hash(char *hash);
-void print_file(t_myStat file);
+void print_file(t_myStat file, int i);
+void make_comma_num(long num, char *result);
 #endif
 
 /* global variable */
