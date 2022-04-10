@@ -145,6 +145,8 @@ int input_error(int argc, char **split)
         {
             return 0;
         }
+        if (strcmp(split[3], split[2]) < 0)
+            return 0;
     }
 
     if (split[4])

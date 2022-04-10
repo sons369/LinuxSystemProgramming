@@ -8,7 +8,7 @@ INCLUDE = ./includes/header.h
 SRC = ./src/split.c ./src/ssu_sdup.c 
 HELP_SRC = ./src/ssu_help.c
 MD5_INCLUDE = ./includes/md5_header.h
-MD5_SRC = ./src/queue.c ./src/ssu_find-md5.c ./src/split.c
+MD5_SRC = ./src/queue.c ./src/ssu_find-md5.c ./src/split.c ./src/list.c
 SHA1_INCLUDE = ./includes/sha1_header.h
 SHA1_SRC = ./src/queue.c
 OBJS = $(SRC:.c=.o)

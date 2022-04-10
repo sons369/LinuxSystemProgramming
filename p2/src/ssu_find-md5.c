@@ -7,6 +7,11 @@ int main(int argc, char *argv[])
     extension = strrchr(argv[1], '.');
     convert_file_size(argv[2], argv[3]);
     search_same_file(argv[4], extension);
+    check_same_file();
+    if (g_head != NULL)
+    {
+        print_node(g_head);
+    }
 
     exit(0);
 }
@@ -179,4 +184,57 @@ void do_md5(FILE *fp, char *path, long fsize)
         fprintf(fp2, "|%s|%ld\n", path, fsize);
     }
     fclose(fp2);
+}
+
+void check_same_file(void)
+{
+    FILE *fp;
+    char md_buf1[33];
+    char md_buf2[33];
+    char path_buf1[PATH_MAX];
+    char path_buf2[PATH_MAX];
+    char size_buf1[15];
+    char size_buf2[15];
+    long current;
+    int flag;
+
+    current = 0;
+    flag = 0;
+    if ((fp = fopen("./buf.txt", "r+")) < 0)
+    {
+        printf("asdsaderorr\n");
+    }
+    if ((fp = fopen("./buf.txt", "r+")) != NULL)
+    {
+        while (fscanf(fp, "%[^|]|%[^|]|%[^\n]\n", md_buf1, path_buf1, size_buf1) != EOF)
+        {
+            current = ftell(fp);
+            printf("cr: %ld\nmd: %s \npath: %s \nsize: %ld\n", current, md_buf1, path_buf1, atol(size_buf1));
+            if (!is_hash(md_buf1))
+            {
+                while (fscanf(fp, "%[^|]|%[^|]|%[^\n]\n", md_buf2, path_buf2, size_buf2) != EOF)
+                {
+                    if (!strcmp(md_buf1, md_buf2))
+                    {
+                        printf("insert!!\n");
+                        insert(&g_head, path_buf2, md_buf2, atol(size_buf2));
+                        flag = 1;
+                    }
+                    memset(md_buf2, 0, 33);
+                    memset(path_buf2, 0, PATH_MAX);
+                    memset(size_buf2, 0, 15);
+                }
+            }
+            if (flag == 1)
+            {
+                insert(&g_head, path_buf1, md_buf1, atol(size_buf1));
+            }
+            flag = 0;
+            fseek(fp, current, SEEK_SET);
+            memset(md_buf1, 0, 33);
+            memset(path_buf1, 0, PATH_MAX);
+            memset(size_buf1, 0, 15);
+        }
+    }
+    fclose(fp);
 }
