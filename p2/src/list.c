@@ -13,7 +13,8 @@ void insert(t_myStatptr *sPtr, char *path, char *hash, long size)
     if (newPtr != NULL)
     {
         /* copy informations to node */
-        stat(path, &statbuf);
+        if ((stat(path, &statbuf)) == -1)
+            perror("stat link");
         strcpy(newPtr->real_path, path);
         strcpy(newPtr->hash, hash);
         newPtr->atim = get_string_time(statbuf, 1);

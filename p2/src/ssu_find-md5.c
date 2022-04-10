@@ -3,7 +3,9 @@
 int main(int argc, char *argv[])
 {
     char *extension;
+    struct timeval start, end;
 
+    gettimeofday(&start, NULL);
     extension = strrchr(argv[1], '.');
     convert_file_size(argv[2], argv[3]);
     search_same_file(argv[4], extension);
@@ -12,6 +14,15 @@ int main(int argc, char *argv[])
     {
         print_node(g_head);
     }
+    gettimeofday(&end, NULL);
+    end.tv_sec -= start.tv_sec;
+    if (end.tv_sec < start.tv_usec)
+    {
+        end.tv_sec--;
+        end.tv_usec += 1000000;
+    }
+    end.tv_usec -= start.tv_usec;
+    printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
 
     exit(0);
 }
@@ -216,7 +227,7 @@ void check_same_file(void)
                 {
                     if (!strcmp(md_buf1, md_buf2))
                     {
-                        printf("insert!!\n");
+                        printf("insert!! path: %s\n", path_buf2);
                         insert(&g_head, path_buf2, md_buf2, atol(size_buf2));
                         flag = 1;
                     }

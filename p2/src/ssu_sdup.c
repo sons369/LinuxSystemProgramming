@@ -10,7 +10,6 @@ int main(void)
     int child;
     pid_t pid;
 
-    gettimeofday(&start, NULL);
     while (1)
     {
         printf("20182624> ");
@@ -64,13 +63,6 @@ int main(void)
                 free(split[i]);
             free(split);
         }
-    }
-    gettimeofday(&end, NULL);
-    end.tv_sec -= start.tv_sec;
-    if (end.tv_sec < start.tv_usec)
-    {
-        end.tv_sec--;
-        end.tv_usec += 1000000;
     }
 
     exit(0);

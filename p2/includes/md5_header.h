@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <time.h>
+#include <sys/time.h>
 
 #ifndef PATH_MAX
 #define PATH_MAX 4097
@@ -44,8 +45,7 @@ typedef struct s_myStat
     off_t size;
     char *atim;
     char *mtim;
-    char *hash;
-    char *sha1;
+    char hash[60];
     char real_path[PATH_MAX];
     struct s_myStat *next;
 } t_myStat;
