@@ -11,12 +11,14 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <sys/time.h>
+#include <ctype.h>
 
 #ifndef PATH_MAX
 #define PATH_MAX 4097
 #endif
 #define FILE_MAX 256
 #define BUFSIZE 1024 * 16
+#define BUFF_SIZE 1024
 
 #ifndef QUEUE_H
 #define QUEUE_H
@@ -43,6 +45,8 @@ char *delqueue(t_Qtype *Q);
 typedef struct s_myStat
 {
     off_t size;
+    int set;
+    int idx;
     char *atim;
     char *mtim;
     char hash[60];
@@ -56,13 +60,17 @@ typedef t_myStat *t_myStatptr;
 /* list.c function */
 void insert(t_myStatptr *sPtr, char *path, char *hash, long size);
 void free_all_node(t_myStatptr *sPtr);
-t_myStatptr get_idx_node(int idx);
+int is_set_idx_node(int set, int idx);
 void print_node(t_myStatptr sPtr);
+int is_set_node(int set);
 int sort_filter(char *s1, char *s2);
 char *get_string_time(t_stat st_t, int flag);
 int is_hash(char *hash);
 void print_file(t_myStat file, int i);
 void make_comma_num(long num, char *result);
+void cnt_set_idx_num(t_myStatptr sPtr);
+char *delete_node(t_myStatptr *sPtr, int set, int idx);
+int cnt_hash(char *hash);
 #endif
 
 /* global variable */
@@ -71,6 +79,8 @@ long g_max_size;
 long g_file_cnt;
 long g_file;
 int g_cnt_same_file;
+int g_total_set;
+int g_total_node;
 t_myStatptr g_head;
 
 /* ssu_find-md5.c function */
@@ -78,6 +88,9 @@ void convert_file_size(char *min, char *max);
 void do_md5(FILE *fp, char *path, long fsize);
 int search_same_file(char *path, char *ext);
 void check_same_file(void);
+int input_error(int argc, char **split);
+int user_input(char buf[], char ***split);
+void option_d(int set, int idx);
 
 #ifndef SPLIT
 #define SPLIT

@@ -176,7 +176,6 @@ int input_error(int argc, char **split)
             memset(g_target_dir, 0, PATH_MAX);
             strcpy(g_target_dir, buf);
         }
-        printf("home: %s target: %s\n", g_homedir_path, g_target_dir);
         if ((i = open(g_target_dir, O_RDONLY)) < 0)
         {
             perror("open");

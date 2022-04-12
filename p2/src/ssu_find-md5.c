@@ -3,8 +3,12 @@
 int main(int argc, char *argv[])
 {
     char *extension;
+    char **split;
+    char buf[BUFF_SIZE];
     struct timeval start, end;
+    int argc2;
 
+    printf("path: %s\n", argv[4]);
     gettimeofday(&start, NULL);
     extension = strrchr(argv[1], '.');
     convert_file_size(argv[2], argv[3]);
@@ -13,10 +17,26 @@ int main(int argc, char *argv[])
     if (g_head != NULL)
     {
         print_node(g_head);
+        cnt_set_idx_num(g_head);
+        printf("total set:%d total node:%d\n", g_total_set, g_total_node);
+    }
+    else
+    {
+        printf("No duplicates in %s\n", argv[4]);
+        gettimeofday(&end, NULL);
+        end.tv_sec -= start.tv_sec;
+        if (end.tv_usec < start.tv_usec)
+        {
+            end.tv_sec--;
+            end.tv_usec += 1000000;
+        }
+        end.tv_usec -= start.tv_usec;
+        printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
+        exit(1);
     }
     gettimeofday(&end, NULL);
     end.tv_sec -= start.tv_sec;
-    if (end.tv_sec < start.tv_usec)
+    if (end.tv_usec < start.tv_usec)
     {
         end.tv_sec--;
         end.tv_usec += 1000000;
@@ -24,13 +44,109 @@ int main(int argc, char *argv[])
     end.tv_usec -= start.tv_usec;
     printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
 
+    while (1)
+    {
+        if (g_total_node == g_total_set)
+        {
+            free_all_node(&g_head);
+            break;
+        }
+        printf(">> ");
+        fgets(buf, BUFF_SIZE, stdin);
+        argc2 = user_input(buf, &split);
+        if (argc2 == 0)
+            continue;
+        if (!input_error(argc2, split))
+        {
+            printf("Input Error!!\n");
+        }
+        else
+        {
+            if (!strcmp(split[0], "exit"))
+            {
+                if (*split)
+                {
+                    for (int i = 0; split[i]; i++)
+                        free(split[i]);
+                    free(split);
+                }
+                free_all_node(&g_head);
+                printf(">> Back to Prompt\n");
+                break;
+            }
+            else if (!strcmp(split[1], "d"))
+            {
+                option_d(atoi(split[0]), atoi(split[2]));
+                print_node(g_head);
+                printf("total set:%d total node:%d\n", g_total_set, g_total_node);
+            }
+        }
+        if (*split)
+        {
+            for (int i = 0; split[i]; i++)
+                free(split[i]);
+            free(split);
+        }
+    }
     exit(0);
+}
+
+int user_input(char buf[], char ***split)
+{
+    int argc;
+
+    argc = 0;
+    *split = ft_split(buf, " \n\t");
+    while ((*split)[argc])
+        argc++;
+    return argc;
+}
+
+int input_error(int argc, char **split)
+{
+    if (argc > 3)
+        return 0;
+    else if (argc == 3)
+    {
+        for (int i = 0; split[0][i]; i++)
+        {
+            if (!isdigit(split[0][i]))
+                return 0;
+        }
+        for (int i = 0; split[2][i]; i++)
+        {
+            if (!isdigit(split[2][i]))
+                return 0;
+        }
+        if (strcmp(split[1], "d"))
+            return 0;
+        if (!is_set_idx_node(atoi(split[0]), atoi(split[2])))
+            return 0;
+    }
+    else if (argc == 2)
+    {
+        for (int i = 0; split[0][i]; i++)
+        {
+            if (!isdigit(split[0][i]))
+                return 0;
+        }
+        if (strcmp(split[1], "i") && strcmp(split[1], "f") && strcmp(split[1], "t"))
+            return 0;
+        if (!is_set_node(atoi(split[0])))
+            return 0;
+    }
+    else if (argc == 1)
+    {
+        if (strcmp(split[0], "exit"))
+            return 0;
+    }
+    return 1;
 }
 
 void convert_file_size(char *min, char *max)
 {
     if (strchr(min, '~'))
-        g_min_size = 0;
+        g_min_size = 1;
     else if (strstr(min, "KB") || strstr(min, "kb"))
     {
         g_min_size = atof(min) * 1024;
@@ -210,24 +326,19 @@ void check_same_file(void)
 
     current = 0;
     flag = 0;
-    if ((fp = fopen("./buf.txt", "r+")) < 0)
-    {
-        printf("asdsaderorr\n");
-    }
     if ((fp = fopen("./buf.txt", "r+")) != NULL)
     {
         while (fscanf(fp, "%[^|]|%[^|]|%[^\n]\n", md_buf1, path_buf1, size_buf1) != EOF)
         {
             current = ftell(fp);
-            printf("cr: %ld\nmd: %s \npath: %s \nsize: %ld\n", current, md_buf1, path_buf1, atol(size_buf1));
             if (!is_hash(md_buf1))
             {
                 while (fscanf(fp, "%[^|]|%[^|]|%[^\n]\n", md_buf2, path_buf2, size_buf2) != EOF)
                 {
                     if (!strcmp(md_buf1, md_buf2))
                     {
-                        printf("insert!! path: %s\n", path_buf2);
                         insert(&g_head, path_buf2, md_buf2, atol(size_buf2));
+                        g_cnt_same_file++;
                         flag = 1;
                     }
                     memset(md_buf2, 0, 33);
@@ -238,6 +349,7 @@ void check_same_file(void)
             if (flag == 1)
             {
                 insert(&g_head, path_buf1, md_buf1, atol(size_buf1));
+                g_cnt_same_file++;
             }
             flag = 0;
             fseek(fp, current, SEEK_SET);
@@ -245,6 +357,20 @@ void check_same_file(void)
             memset(path_buf1, 0, PATH_MAX);
             memset(size_buf1, 0, 15);
         }
+        fclose(fp);
+        remove("./buf.txt");
     }
-    fclose(fp);
+    else
+    {
+        return;
+    }
+}
+
+void option_d(int set, int idx)
+{
+    char *path;
+
+    path = delete_node(&g_head, set, idx);
+    printf("\"%s\" has been deleted in #%d\n", path, set);
+    cnt_set_idx_num(g_head);
 }

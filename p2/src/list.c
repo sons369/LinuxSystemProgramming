@@ -29,11 +29,11 @@ void insert(t_myStatptr *sPtr, char *path, char *hash, long size)
         {
             previousPtr = currentPtr;
             currentPtr = currentPtr->next;
-            while (currentPtr != NULL && !strcmp(newPtr->hash, currentPtr->hash) && (sort_filter(newPtr->real_path, currentPtr->real_path) > 0 || strcmp(newPtr->real_path, currentPtr->real_path) > 0))
-            {
-                previousPtr = currentPtr;
-                currentPtr = currentPtr->next;
-            }
+        }
+        while (currentPtr != NULL && !strcmp(newPtr->hash, currentPtr->hash) && (sort_filter(newPtr->real_path, currentPtr->real_path) > 0 || strcmp(newPtr->real_path, currentPtr->real_path) > 0))
+        {
+            previousPtr = currentPtr;
+            currentPtr = currentPtr->next;
         }
         if (previousPtr == NULL)
         {
@@ -65,19 +65,32 @@ void free_all_node(t_myStatptr *sPtr)
 }
 
 /* if user input index then get idx's node */
-t_myStatptr get_idx_node(int idx)
+int is_set_idx_node(int set, int idx)
 {
     t_myStatptr sPtr;
-    int i;
 
-    i = 1;
     sPtr = g_head;
-    while (i != idx)
+    while (sPtr != NULL)
     {
+        if (sPtr->set == set && sPtr->idx == idx)
+            return 1;
         sPtr = sPtr->next;
-        i++;
     }
-    return sPtr;
+    return 0;
+}
+
+int is_set_node(int set)
+{
+    t_myStatptr sPtr;
+
+    sPtr = g_head;
+    while (sPtr != NULL)
+    {
+        if (sPtr->set == set)
+            return 1;
+        sPtr = sPtr->next;
+    }
+    return 0;
 }
 
 int is_hash(char *hash)
@@ -95,6 +108,24 @@ int is_hash(char *hash)
     return 0;
 }
 
+int cnt_hash(char *hash)
+{
+    t_myStatptr sPtr;
+    int cnt;
+
+    cnt = 0;
+    sPtr = g_head;
+    if (sPtr == NULL)
+        return 0;
+    while (sPtr != NULL)
+    {
+        if (!strcmp(sPtr->hash, hash))
+            cnt++;
+        sPtr = sPtr->next;
+    }
+    return cnt;
+}
+
 void print_node(t_myStatptr sPtr)
 {
     int flag;
@@ -103,11 +134,20 @@ void print_node(t_myStatptr sPtr)
     long size_buf;
     int set;
     int i;
+    t_myStat tmp;
 
     flag = 0;
     set = 1;
     while (sPtr != NULL)
     {
+        tmp = *sPtr;
+        if (cnt_hash(tmp.hash) == 1)
+        {
+            sPtr = sPtr->next;
+            tmp.set = 0;
+            tmp.idx = 0;
+            continue;
+        }
         if (flag == 0)
         {
             make_comma_num(sPtr->size, atol_num);
@@ -116,6 +156,8 @@ void print_node(t_myStatptr sPtr)
             i = 1;
             set++;
         }
+        sPtr->set = set - 1;
+        sPtr->idx = i;
         if (sPtr->next != NULL && strcmp(sPtr->hash, sPtr->next->hash))
         {
             flag = 0;
@@ -128,7 +170,7 @@ void print_node(t_myStatptr sPtr)
 
 void print_file(t_myStat file, int i)
 {
-    printf("[%d] %s (mtime : %s) (atime : %s)\n", i, file.real_path, file.mtim, file.atim);
+    printf("[%d] %s (mtime : %s) (atime : %s)%d %d\n", i, file.real_path, file.mtim, file.atim, file.set, file.idx);
 }
 
 /* Linked list sort filter */
@@ -205,4 +247,68 @@ void make_comma_num(long num, char *result)
     while (p >= str)
         *result++ = *p--;
     *result = 0;
+}
+
+void cnt_set_idx_num(t_myStatptr sPtr)
+{
+    int flag;
+
+    flag = 0;
+    g_total_set = 0;
+    g_total_node = 0;
+    while (sPtr != NULL)
+    {
+        if (flag == 0)
+        {
+            g_total_set++;
+            flag = 1;
+        }
+        if (sPtr->next != NULL && strcmp(sPtr->hash, sPtr->next->hash))
+        {
+            flag = 0;
+        }
+        g_total_node++;
+        sPtr = sPtr->next;
+    }
+}
+
+char *delete_node(t_myStatptr *sPtr, int set, int idx)
+{
+    t_myStatptr previous;
+    t_myStatptr current;
+    t_myStatptr temp;
+    char *path;
+
+    path = (char *)malloc(4048);
+    if ((*sPtr)->set == set && (*sPtr)->idx == idx)
+    {
+        temp = *sPtr;
+        strcpy(path, temp->real_path);
+        *sPtr = (*sPtr)->next;
+        free(temp->atim);
+        free(temp->mtim);
+        free(temp);
+        return path;
+    }
+    else
+    {
+        previous = *sPtr;
+        current = (*sPtr)->next;
+        while (current != NULL && (current->set != set || current->idx != idx))
+        {
+            previous = current;
+            current = current->next;
+        }
+        if (current != NULL)
+        {
+            temp = current;
+            strcpy(path, temp->real_path);
+            previous->next = current->next;
+            free(temp->atim);
+            free(temp->mtim);
+            free(temp);
+            return path;
+        }
+    }
+    return NULL;
 }
