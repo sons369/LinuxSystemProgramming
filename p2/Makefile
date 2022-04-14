@@ -30,6 +30,6 @@ clean :
 	$(RM) *.o
 
 fclean :
-	$(RM) $(NAME) $(HELP) $(MD5)
+	$(RM) $(NAME) $(HELP) $(MD5) $(SHA1)
 
 re : fclean all

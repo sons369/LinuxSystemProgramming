@@ -100,6 +100,7 @@ int input_error(int argc, char **split)
     int i;
     int flag;
     int is_float;
+    int is_float2;
     char *homedir;
 
     if (argc != 5)
@@ -125,6 +126,8 @@ int input_error(int argc, char **split)
             return 0;
         if (flag > 2)
             return 0;
+        if (is_float == 1 && flag == 0)
+            return 0;
         if (flag == 2 && !(strstr(split[2], "MB") || strstr(split[2], "mb") || strstr(split[2], "kb") || strstr(split[2], "KB") || strstr(split[2], "GB") || strstr(split[2], "gb")))
         {
             return 0;
@@ -132,7 +135,7 @@ int input_error(int argc, char **split)
     }
     if (split[3])
     {
-        is_float = 0;
+        is_float2 = 0;
         flag = 0;
         if (strlen(split[3]) > 1 && strchr(split[3], '~'))
             return 0;
@@ -141,13 +144,15 @@ int input_error(int argc, char **split)
             if (isdigit(split[3][i]) || split[3][0] == '~')
                 continue;
             else if (split[3][i] == '.')
-                is_float++;
+                is_float2++;
             else if (isalpha(split[3][i]))
                 flag++;
         }
-        if (is_float > 1)
+        if (is_float2 > 1)
             return 0;
         if (flag > 2)
+            return 0;
+        if (is_float2 == 1 && flag == 0)
             return 0;
         if (flag == 2 && !(strstr(split[3], "MB") || strstr(split[3], "mb") || strstr(split[3], "kb") || strstr(split[3], "KB") || strstr(split[3], "GB") || strstr(split[3], "gb")))
         {
