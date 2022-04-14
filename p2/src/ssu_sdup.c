@@ -39,6 +39,22 @@ int main(void)
 
         else if (strcmp(split[0], "fsha1") == 0)
         {
+            if (!input_error(argc, split))
+            {
+                printf("error\n");
+            }
+            else
+            {
+                if ((pid = fork()) < 0)
+                    perror("fork error\n");
+                else if (pid == 0)
+                {
+                    execl("./fsha1", "./fsha1", split[1], split[2], split[3], g_target_dir, (char *)NULL);
+                    fprintf(stderr, "Error\n");
+                    exit(1);
+                }
+                child = wait(&status);
+            }
         }
         else if (strcmp(split[0], "exit") == 0)
         {

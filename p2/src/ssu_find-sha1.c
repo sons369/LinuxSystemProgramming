@@ -1,4 +1,4 @@
-#include "../includes/md5_header.h"
+#include "../includes/sha1_header.h"
 
 int main(int argc, char *argv[])
 {
@@ -281,7 +281,7 @@ int search_same_file(char *path, char *ext)
                             perror("file open");
                         }
                         else
-                            do_md5(fp, buf, tmp.st_size);
+                            do_sha1(fp, buf, tmp.st_size);
                         fclose(fp);
                     }
                 }
@@ -293,28 +293,28 @@ int search_same_file(char *path, char *ext)
     }
 }
 
-void do_md5(FILE *fp, char *path, long fsize)
+void do_sha1(FILE *fp, char *path, long fsize)
 {
-    MD5_CTX c;
-    unsigned char md[MD5_DIGEST_LENGTH];
+    SHA_CTX c;
+    unsigned char md[SHA_DIGEST_LENGTH];
     int fd;
     int i;
     static unsigned char buf[BUFSIZE];
     FILE *fp2;
 
     fd = fileno(fp);
-    MD5_Init(&c);
+    SHA1_Init(&c);
     for (;;)
     {
         i = read(fd, buf, BUFSIZE);
         if (i <= 0)
             break;
-        MD5_Update(&c, buf, (unsigned long)i);
+        SHA1_Update(&c, buf, (unsigned long)i);
     }
-    MD5_Final(&(md[0]), &c);
+    SHA1_Final(&(md[0]), &c);
     if ((fp2 = fopen("./buf.txt", "a+")) != NULL)
     {
-        for (int i = 0; i < MD5_DIGEST_LENGTH; i++)
+        for (int i = 0; i < SHA_DIGEST_LENGTH; i++)
             fprintf(fp2, "%02x", md[i]);
         fprintf(fp2, "|%s|%ld\n", path, fsize);
     }

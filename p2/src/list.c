@@ -108,6 +108,26 @@ int is_hash(char *hash)
     return 0;
 }
 
+int cnt_set_node(int set)
+{
+    t_myStatptr sPtr;
+    int cnt;
+
+    cnt = 0;
+    sPtr = g_head;
+    if (sPtr == NULL)
+        return 0;
+    while (sPtr != NULL)
+    {
+        if (sPtr->set == set)
+        {
+            cnt++;
+        }
+        sPtr = sPtr->next;
+    }
+    return cnt;
+}
+
 int cnt_hash(char *hash)
 {
     t_myStatptr sPtr;
@@ -134,18 +154,16 @@ void print_node(t_myStatptr sPtr)
     long size_buf;
     int set;
     int i;
-    t_myStat tmp;
 
     flag = 0;
     set = 1;
     while (sPtr != NULL)
     {
-        tmp = *sPtr;
-        if (cnt_hash(tmp.hash) == 1)
+        if (cnt_hash(sPtr->hash) == 1)
         {
+            sPtr->set = 0;
+            sPtr->idx = 0;
             sPtr = sPtr->next;
-            tmp.set = 0;
-            tmp.idx = 0;
             continue;
         }
         if (flag == 0)
@@ -170,7 +188,7 @@ void print_node(t_myStatptr sPtr)
 
 void print_file(t_myStat file, int i)
 {
-    printf("[%d] %s (mtime : %s) (atime : %s)%d %d\n", i, file.real_path, file.mtim, file.atim, file.set, file.idx);
+    printf("[%d] %s (mtime : %s) (atime : %s)\n", i, file.real_path, file.mtim, file.atim);
 }
 
 /* Linked list sort filter */
@@ -272,6 +290,25 @@ void cnt_set_idx_num(t_myStatptr sPtr)
     }
 }
 
+char *get_node_path(int set, int idx)
+{
+    t_myStatptr sPtr;
+    char *path;
+
+    sPtr = g_head;
+    while (sPtr != NULL)
+    {
+        if (sPtr->set == set && sPtr->idx == idx)
+        {
+            path = (char *)malloc(4048);
+            strcpy(path, sPtr->real_path);
+            return path;
+        }
+        sPtr = sPtr->next;
+    }
+    return NULL;
+}
+
 char *delete_node(t_myStatptr *sPtr, int set, int idx)
 {
     t_myStatptr previous;
@@ -311,4 +348,51 @@ char *delete_node(t_myStatptr *sPtr, int set, int idx)
         }
     }
     return NULL;
+}
+
+int get_latest_mtim_idx(int set)
+{
+    t_myStatptr sPtr;
+    char latest[20];
+    int idx;
+
+    idx = 1;
+    sPtr = g_head;
+    memset(latest, 0, 20);
+    while (sPtr != NULL)
+    {
+        if (sPtr->set == set)
+        {
+            if (strcmp(latest, sPtr->mtim) < 0)
+                strcpy(latest, sPtr->mtim);
+        }
+        sPtr = sPtr->next;
+    }
+    sPtr = g_head;
+    while (sPtr != NULL)
+    {
+        if (sPtr->set == set)
+        {
+            if (!strcmp(latest, sPtr->mtim))
+                break;
+        }
+        sPtr = sPtr->next;
+    }
+    return sPtr->idx;
+}
+
+char *get_latest_mtim(int set, int idx)
+{
+    t_myStatptr sPtr;
+    char *latest;
+
+    sPtr = g_head;
+    latest = (char *)malloc(20);
+    while (sPtr != NULL)
+    {
+        if (sPtr->set == set && sPtr->idx == idx)
+            strcpy(latest, sPtr->mtim);
+        sPtr = sPtr->next;
+    }
+    return latest;
 }

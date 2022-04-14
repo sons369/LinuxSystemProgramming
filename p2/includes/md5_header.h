@@ -71,6 +71,10 @@ void make_comma_num(long num, char *result);
 void cnt_set_idx_num(t_myStatptr sPtr);
 char *delete_node(t_myStatptr *sPtr, int set, int idx);
 int cnt_hash(char *hash);
+int cnt_set_node(int set);
+char *get_node_path(int set, int idx);
+int get_latest_mtim_idx(int set);
+char *get_latest_mtim(int set, int idx);
 #endif
 
 /* global variable */
@@ -91,6 +95,8 @@ void check_same_file(void);
 int input_error(int argc, char **split);
 int user_input(char buf[], char ***split);
 void option_d(int set, int idx);
+int option_i(int set);
+void option_f_t(int set, int flag);
 
 #ifndef SPLIT
 #define SPLIT
