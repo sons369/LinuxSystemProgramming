@@ -1,0 +1,412 @@
+\hypertarget{header_8h}{}\doxysection{includes/header.h 파일 참조}
+\label{header_8h}\index{includes/header.h@{includes/header.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$pwd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+header.\+h에 대한 include 의존 그래프
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d0a/header_8h__incl}
+\end{center}
+\end{figure}
+이 그래프는 이 파일을 직/간접적으로 include 하는 파일들을 보여줍니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{d8/d19/header_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{매크로}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{header_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{B\+U\+F\+F\+\_\+\+S\+I\+ZE}}~1025
+\item 
+\#define \mbox{\hyperlink{header_8h_ae688d728e1acdfe5988c7db45d6f0166}{P\+A\+T\+H\+\_\+\+M\+AX}}~4097
+\item 
+\#define \mbox{\hyperlink{header_8h_ab9b059654b97e4d2d1ec92692e49dace}{S\+P\+L\+IT}}
+\end{DoxyCompactItemize}
+\doxysubsection*{함수}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{header_8h_aefaafb95d747127b208d3dfafdd9cc9e}{user\+\_\+input}} (char buf\mbox{[}$\,$\mbox{]}, char $\ast$$\ast$$\ast$split)
+\item 
+int \mbox{\hyperlink{header_8h_a97c33d5098c37d84fed81e38ad95329e}{input\+\_\+error}} (int argc, char $\ast$$\ast$split)
+\item 
+int \mbox{\hyperlink{header_8h_a9e3f92eaeefd0c967bb79c9a108e0081}{in\+\_\+sep}} (char c, char $\ast$charset)
+\item 
+int \mbox{\hyperlink{header_8h_a8943274f1c2feba0285ed569bcd8610e}{cnt\+\_\+word}} (char $\ast$str, char $\ast$charset)
+\item 
+int \mbox{\hyperlink{header_8h_a49395c1b02d159956dfd6efb99c35c66}{len\+\_\+word}} (char $\ast$str, char $\ast$charset)
+\item 
+void \mbox{\hyperlink{header_8h_add84278597354389bf0bd24328493fea}{make\+\_\+split}} (char $\ast$$\ast$arr, char $\ast$str, char $\ast$charset, int word\+\_\+cnt)
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\+\_\+split}} (char $\ast$str, char $\ast$charset)
+\item 
+void \mbox{\hyperlink{header_8h_a853216ac51aa181669ff4d3de74058a7}{print\+\_\+help}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{변수}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{header_8h_a87fa8336db51d28b26ab3006c908519c}{g\+\_\+homedir\+\_\+path}} \mbox{[}\mbox{\hyperlink{sha1__header_8h_ae688d728e1acdfe5988c7db45d6f0166}{P\+A\+T\+H\+\_\+\+M\+AX}}\mbox{]}
+\item 
+char \mbox{\hyperlink{header_8h_a2a4325d258ad8ea880f2f315560167d2}{g\+\_\+target\+\_\+dir}} \mbox{[}\mbox{\hyperlink{sha1__header_8h_ae688d728e1acdfe5988c7db45d6f0166}{P\+A\+T\+H\+\_\+\+M\+AX}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{매크로 문서화}
+\mbox{\Hypertarget{header_8h_a6c7cd32e1bac137f05e4a752b4ad10af}\label{header_8h_a6c7cd32e1bac137f05e4a752b4ad10af}} 
+\index{header.h@{header.h}!BUFF\_SIZE@{BUFF\_SIZE}}
+\index{BUFF\_SIZE@{BUFF\_SIZE}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{BUFF\_SIZE}{BUFF\_SIZE}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+\_\+\+S\+I\+ZE~1025}
+
+
+
+header.\+h 파일의 16 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_ae688d728e1acdfe5988c7db45d6f0166}\label{header_8h_ae688d728e1acdfe5988c7db45d6f0166}} 
+\index{header.h@{header.h}!PATH\_MAX@{PATH\_MAX}}
+\index{PATH\_MAX@{PATH\_MAX}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{PATH\_MAX}{PATH\_MAX}}
+{\footnotesize\ttfamily \#define P\+A\+T\+H\+\_\+\+M\+AX~4097}
+
+
+
+header.\+h 파일의 18 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_ab9b059654b97e4d2d1ec92692e49dace}\label{header_8h_ab9b059654b97e4d2d1ec92692e49dace}} 
+\index{header.h@{header.h}!SPLIT@{SPLIT}}
+\index{SPLIT@{SPLIT}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{SPLIT}{SPLIT}}
+{\footnotesize\ttfamily \#define S\+P\+L\+IT}
+
+
+
+header.\+h 파일의 30 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{함수 문서화}
+\mbox{\Hypertarget{header_8h_a8943274f1c2feba0285ed569bcd8610e}\label{header_8h_a8943274f1c2feba0285ed569bcd8610e}} 
+\index{header.h@{header.h}!cnt\_word@{cnt\_word}}
+\index{cnt\_word@{cnt\_word}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{cnt\_word()}{cnt\_word()}}
+{\footnotesize\ttfamily int cnt\+\_\+word (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 20 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     i = 0;}
+\DoxyCodeLine{26     cnt = 0;}
+\DoxyCodeLine{27     \textcolor{keywordflow}{while} (str[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{28     \{}
+\DoxyCodeLine{29         \textcolor{keywordflow}{if} (i == 0 \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{30             cnt++;}
+\DoxyCodeLine{31         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i -\/ 1], charset) \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{32             cnt++;}
+\DoxyCodeLine{33         i++;}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} (cnt);}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8h_adb7b1a9478f407820e3727a50807b347}\label{header_8h_adb7b1a9478f407820e3727a50807b347}} 
+\index{header.h@{header.h}!ft\_split@{ft\_split}}
+\index{ft\_split@{ft\_split}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{ft\_split()}{ft\_split()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ ft\+\_\+split (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 91 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92 \{}
+\DoxyCodeLine{93     \textcolor{keywordtype}{char} **voca;}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} word\_cnt;}
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} word\_len;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     word\_cnt = \mbox{\hyperlink{split_8c_a8943274f1c2feba0285ed569bcd8610e}{cnt\_word}}(str, charset);}
+\DoxyCodeLine{100     voca = (\textcolor{keywordtype}{char} **)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * (word\_cnt + 1));}
+\DoxyCodeLine{101     k = 0;}
+\DoxyCodeLine{102     i = 0;}
+\DoxyCodeLine{103     \textcolor{keywordflow}{while} (str[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{if} (i == 0 \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{106         \{}
+\DoxyCodeLine{107             word\_len = \mbox{\hyperlink{split_8c_a49395c1b02d159956dfd6efb99c35c66}{len\_word}}(\&str[i], charset);}
+\DoxyCodeLine{108             voca[k++] = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * (word\_len + 1));}
+\DoxyCodeLine{109         \}}
+\DoxyCodeLine{110         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i -\/ 1], charset) \&\& !\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{111         \{}
+\DoxyCodeLine{112             word\_len = \mbox{\hyperlink{split_8c_a49395c1b02d159956dfd6efb99c35c66}{len\_word}}(\&str[i], charset);}
+\DoxyCodeLine{113             voca[k++] = (\textcolor{keywordtype}{char} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * (word\_len + 1));}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115         i++;}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     \mbox{\hyperlink{split_8c_add84278597354389bf0bd24328493fea}{make\_split}}(voca, str, charset, word\_cnt);}
+\DoxyCodeLine{118     i = 0;}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} (voca);}
+\DoxyCodeLine{120 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{df/dcb/header_8h_adb7b1a9478f407820e3727a50807b347_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_a9e3f92eaeefd0c967bb79c9a108e0081}\label{header_8h_a9e3f92eaeefd0c967bb79c9a108e0081}} 
+\index{header.h@{header.h}!in\_sep@{in\_sep}}
+\index{in\_sep@{in\_sep}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{in\_sep()}{in\_sep()}}
+{\footnotesize\ttfamily int in\+\_\+sep (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 5 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9     i = 0;}
+\DoxyCodeLine{10     \textcolor{keywordflow}{while} (charset[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12         \textcolor{keywordflow}{if} (c == charset[i])}
+\DoxyCodeLine{13             \textcolor{keywordflow}{return} (1);}
+\DoxyCodeLine{14         i++;}
+\DoxyCodeLine{15     \}}
+\DoxyCodeLine{16     \textcolor{keywordflow}{return} (0);}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8h_a97c33d5098c37d84fed81e38ad95329e}\label{header_8h_a97c33d5098c37d84fed81e38ad95329e}} 
+\index{header.h@{header.h}!input\_error@{input\_error}}
+\index{input\_error@{input\_error}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{input\_error()}{input\_error()}}
+{\footnotesize\ttfamily int input\+\_\+error (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{split }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+find-\/md5.\+c 파일의 114 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116     \textcolor{keywordflow}{if} (argc > 3)}
+\DoxyCodeLine{117         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{118     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 3)}
+\DoxyCodeLine{119     \{}
+\DoxyCodeLine{120         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split[0][i]; i++)}
+\DoxyCodeLine{121         \{}
+\DoxyCodeLine{122             \textcolor{keywordflow}{if} (!isdigit(split[0][i]))}
+\DoxyCodeLine{123                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{124         \}}
+\DoxyCodeLine{125         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split[2][i]; i++)}
+\DoxyCodeLine{126         \{}
+\DoxyCodeLine{127             \textcolor{keywordflow}{if} (!isdigit(split[2][i]))}
+\DoxyCodeLine{128                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{129         \}}
+\DoxyCodeLine{130         \textcolor{keywordflow}{if} (strcmp(split[1], \textcolor{stringliteral}{"d"}))}
+\DoxyCodeLine{131             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{132         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{md5__header_8h_a09e8278e409f31509c805b0cd968ca5d}{is\_set\_idx\_node}}(atoi(split[0]), atoi(split[2])))}
+\DoxyCodeLine{133             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{134     \}}
+\DoxyCodeLine{135     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 2)}
+\DoxyCodeLine{136     \{}
+\DoxyCodeLine{137         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split[0][i]; i++)}
+\DoxyCodeLine{138         \{}
+\DoxyCodeLine{139             \textcolor{keywordflow}{if} (!isdigit(split[0][i]))}
+\DoxyCodeLine{140                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{141         \}}
+\DoxyCodeLine{142         \textcolor{keywordflow}{if} (strcmp(split[1], \textcolor{stringliteral}{"i"}) \&\& strcmp(split[1], \textcolor{stringliteral}{"f"}) \&\& strcmp(split[1], \textcolor{stringliteral}{"t"}))}
+\DoxyCodeLine{143             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{144         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{md5__header_8h_af2d29e47fbdc75484b61e25aa3fc436c}{is\_set\_node}}(atoi(split[0])))}
+\DoxyCodeLine{145             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{146     \}}
+\DoxyCodeLine{147     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 1)}
+\DoxyCodeLine{148     \{}
+\DoxyCodeLine{149         \textcolor{keywordflow}{if} (strcmp(split[0], \textcolor{stringliteral}{"exit"}))}
+\DoxyCodeLine{150             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{153 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8h_a49395c1b02d159956dfd6efb99c35c66}\label{header_8h_a49395c1b02d159956dfd6efb99c35c66}} 
+\index{header.h@{header.h}!len\_word@{len\_word}}
+\index{len\_word@{len\_word}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{len\_word()}{len\_word()}}
+{\footnotesize\ttfamily int len\+\_\+word (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 39 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{42     \textcolor{keywordtype}{int} len;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     i = 0;}
+\DoxyCodeLine{45     len = 0;}
+\DoxyCodeLine{46     \textcolor{keywordflow}{if} (*charset == 0)}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48         \textcolor{keywordflow}{while} (str[i] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{49             i++;}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} (i);}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52     \textcolor{keywordflow}{while} (!\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset))}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         len++;}
+\DoxyCodeLine{55         i++;}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} (len);}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8h_add84278597354389bf0bd24328493fea}\label{header_8h_add84278597354389bf0bd24328493fea}} 
+\index{header.h@{header.h}!make\_split@{make\_split}}
+\index{make\_split@{make\_split}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{make\_split()}{make\_split()}}
+{\footnotesize\ttfamily void make\+\_\+split (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{arr,  }\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{charset,  }\item[{int}]{word\+\_\+cnt }\end{DoxyParamCaption})}
+
+
+
+split.\+c 파일의 61 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{64     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     i = 0;}
+\DoxyCodeLine{68     j = 0;}
+\DoxyCodeLine{69     k = 0;}
+\DoxyCodeLine{70     \textcolor{keywordflow}{while} (word\_cnt)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         \textcolor{keywordflow}{while} (\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset) \&\& str[i])}
+\DoxyCodeLine{73             i++;}
+\DoxyCodeLine{74         \textcolor{keywordflow}{while} (!\mbox{\hyperlink{split_8c_a9e3f92eaeefd0c967bb79c9a108e0081}{in\_sep}}(str[i], charset) \&\& str[i])}
+\DoxyCodeLine{75         \{}
+\DoxyCodeLine{76             arr[j][k] = str[i];}
+\DoxyCodeLine{77             k++;}
+\DoxyCodeLine{78             i++;}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80         arr[j][k] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{81         k = 0;}
+\DoxyCodeLine{82         j++;}
+\DoxyCodeLine{83         word\_cnt-\/-\/;}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85     arr[j] = 0;}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8h_a853216ac51aa181669ff4d3de74058a7}\label{header_8h_a853216ac51aa181669ff4d3de74058a7}} 
+\index{header.h@{header.h}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily void print\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+help.\+c 파일의 15 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     printf(\textcolor{stringliteral}{"Usage:\(\backslash\)n"});}
+\DoxyCodeLine{18     printf(\textcolor{stringliteral}{"\(\backslash\)t> fmd5/fsha1 [FILE\_EXTENSION] [MINSIZE] [MAXSIZE] [TARGET\_DIRECTORY]\(\backslash\)n"});}
+\DoxyCodeLine{19     printf(\textcolor{stringliteral}{"\(\backslash\)t  >> [SET\_INDEX] [OPTION ...]\(\backslash\)n"});}
+\DoxyCodeLine{20     printf(\textcolor{stringliteral}{"\(\backslash\)t     [OPTION ...]\(\backslash\)n"});}
+\DoxyCodeLine{21     printf(\textcolor{stringliteral}{"\(\backslash\)t     d [LIST\_IDX] : delete [LIST\_IDX] file\(\backslash\)n"});}
+\DoxyCodeLine{22     printf(\textcolor{stringliteral}{"\(\backslash\)t     i : ask for confirmation before delete\(\backslash\)n"});}
+\DoxyCodeLine{23     printf(\textcolor{stringliteral}{"\(\backslash\)t     f : force delete except the recently modified file\(\backslash\)n"});}
+\DoxyCodeLine{24     printf(\textcolor{stringliteral}{"\(\backslash\)t     t : force move to Trash except the recently modified file\(\backslash\)n"});}
+\DoxyCodeLine{25     printf(\textcolor{stringliteral}{"\(\backslash\)t> help\(\backslash\)n"});}
+\DoxyCodeLine{26     printf(\textcolor{stringliteral}{"\(\backslash\)t> exit\(\backslash\)n"});}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{df/dcb/header_8h_a853216ac51aa181669ff4d3de74058a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{header_8h_aefaafb95d747127b208d3dfafdd9cc9e}\label{header_8h_aefaafb95d747127b208d3dfafdd9cc9e}} 
+\index{header.h@{header.h}!user\_input@{user\_input}}
+\index{user\_input@{user\_input}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{user\_input()}{user\_input()}}
+{\footnotesize\ttfamily int user\+\_\+input (\begin{DoxyParamCaption}\item[{char}]{buf\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$$\ast$$\ast$}]{split }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+find-\/md5.\+c 파일의 103 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} argc;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     argc = 0;}
+\DoxyCodeLine{108     *split = \mbox{\hyperlink{header_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(buf, \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t"});}
+\DoxyCodeLine{109     \textcolor{keywordflow}{while} ((*split)[argc])}
+\DoxyCodeLine{110         argc++;}
+\DoxyCodeLine{111     \textcolor{keywordflow}{return} argc;}
+\DoxyCodeLine{112 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{변수 문서화}
+\mbox{\Hypertarget{header_8h_a87fa8336db51d28b26ab3006c908519c}\label{header_8h_a87fa8336db51d28b26ab3006c908519c}} 
+\index{header.h@{header.h}!g\_homedir\_path@{g\_homedir\_path}}
+\index{g\_homedir\_path@{g\_homedir\_path}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_homedir\_path}{g\_homedir\_path}}
+{\footnotesize\ttfamily char g\+\_\+homedir\+\_\+path\mbox{[}\mbox{\hyperlink{sha1__header_8h_ae688d728e1acdfe5988c7db45d6f0166}{P\+A\+T\+H\+\_\+\+M\+AX}}\mbox{]}}
+
+
+
+header.\+h 파일의 22 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{header_8h_a2a4325d258ad8ea880f2f315560167d2}\label{header_8h_a2a4325d258ad8ea880f2f315560167d2}} 
+\index{header.h@{header.h}!g\_target\_dir@{g\_target\_dir}}
+\index{g\_target\_dir@{g\_target\_dir}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{g\_target\_dir}{g\_target\_dir}}
+{\footnotesize\ttfamily char g\+\_\+target\+\_\+dir\mbox{[}\mbox{\hyperlink{sha1__header_8h_ae688d728e1acdfe5988c7db45d6f0166}{P\+A\+T\+H\+\_\+\+M\+AX}}\mbox{]}}
+
+
+
+header.\+h 파일의 23 번째 라인에서 정의되었습니다.
+

@@ -383,7 +383,7 @@ void option_d(int set, int idx)
 
     path = delete_node(&g_head, set, idx);
     printf("\"%s\" has been deleted in #%d\n", path, set);
-    // remove(path);
+    remove(path);
     cnt_set_idx_num(g_head);
     free(path);
 }
@@ -405,7 +405,7 @@ int option_i(int set)
         if (!strcmp(buf, "y\n") || !strcmp(buf, "Y\n"))
         {
             path = delete_node(&g_head, set, i);
-            // remove(path);
+            remove(path);
             free(path);
         }
         else if (!strcmp(buf, "n\n") || !strcmp(buf, "N\n"))
@@ -444,7 +444,7 @@ void option_f_t(int set, int flag)
         if (flag == 0)
         {
             path = delete_node(&g_head, set, i);
-            // remove(path);
+            remove(path);
             free(path);
         }
         if (flag == 1)
@@ -454,7 +454,7 @@ void option_f_t(int set, int flag)
             strcpy(buf, "./trashcan/");
             strcat(buf, strchr(path, '/'));
             link(path, buf);
-            // unlink(path);
+            unlink(path);
             free(path);
         }
     }
