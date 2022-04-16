@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    struct timeval start, end;
     char buf[BUFF_SIZE];
     char **split;
     int argc;
@@ -15,8 +14,10 @@ int main(void)
         printf("20182624> ");
         fgets(buf, BUFF_SIZE, stdin);
         argc = user_input(buf, &split);
+        // input enter
         if (argc == 0)
             continue;
+        // if input 'fmd5' then, fork process and exec fmd5
         else if (strcmp(split[0], "fmd5") == 0)
         {
             if (!input_error(argc, split))
@@ -36,7 +37,7 @@ int main(void)
                 child = wait(&status);
             }
         }
-
+        // if input 'fsha1' then, fork process and exec fsha1
         else if (strcmp(split[0], "fsha1") == 0)
         {
             if (!input_error(argc, split))
@@ -56,11 +57,13 @@ int main(void)
                 child = wait(&status);
             }
         }
+        // input 'exit' then exit program
         else if (strcmp(split[0], "exit") == 0)
         {
             printf("\nPrompt End\n");
             break;
         }
+        // input others then print help
         else
         {
             if ((pid = fork()) < 0)
@@ -84,6 +87,8 @@ int main(void)
     exit(0);
 }
 
+/* Get input argc, argv and split it. */
+/* Then, return it */
 int user_input(char buf[], char ***split)
 {
     int argc;
@@ -95,10 +100,12 @@ int user_input(char buf[], char ***split)
     return argc;
 }
 
+/* 사용자 입력에서 예외 처리 */
 int input_error(int argc, char **split)
 {
     int i;
     int flag;
+    int flag2;
     int is_float;
     int is_float2;
     char *homedir;
@@ -107,6 +114,7 @@ int input_error(int argc, char **split)
         return 0;
     if ((strlen(split[1]) > 1 && !(split[1][0] == '*' && split[1][1] == '.')) || (strlen(split[1]) == 1 && !strchr(split[1], '*')))
         return 0;
+    // MIN_SIZE 예외처리. 정수, ~, kb, mb, gb에서 소수점 처리 그외 입력시 에러
     if (split[2])
     {
         is_float = 0;
@@ -122,21 +130,25 @@ int input_error(int argc, char **split)
             else if (isalpha(split[2][i]))
                 flag++;
         }
+
         if (is_float > 1)
             return 0;
         if (flag > 2)
             return 0;
-        if (is_float == 1 && flag == 0)
+        if (is_float == 1 && flag != 2)
             return 0;
+
         if (flag == 2 && !(strstr(split[2], "MB") || strstr(split[2], "mb") || strstr(split[2], "kb") || strstr(split[2], "KB") || strstr(split[2], "GB") || strstr(split[2], "gb")))
         {
             return 0;
         }
     }
+    // MAX_SIZE 예외처리. 정수, ~, kb, mb, gb에서 소수점 처리 그외 입력시 에러
     if (split[3])
     {
+
         is_float2 = 0;
-        flag = 0;
+        flag2 = 0;
         if (strlen(split[3]) > 1 && strchr(split[3], '~'))
             return 0;
         for (i = 0; split[3][i]; i++)
@@ -146,22 +158,20 @@ int input_error(int argc, char **split)
             else if (split[3][i] == '.')
                 is_float2++;
             else if (isalpha(split[3][i]))
-                flag++;
+                flag2++;
         }
         if (is_float2 > 1)
             return 0;
-        if (flag > 2)
+        if (flag2 > 2)
             return 0;
-        if (is_float2 == 1 && flag == 0)
+        if (is_float2 == 1 && flag2 != 2)
             return 0;
-        if (flag == 2 && !(strstr(split[3], "MB") || strstr(split[3], "mb") || strstr(split[3], "kb") || strstr(split[3], "KB") || strstr(split[3], "GB") || strstr(split[3], "gb")))
+        if (flag2 == 2 && !(strstr(split[3], "MB") || strstr(split[3], "mb") || strstr(split[3], "kb") || strstr(split[3], "KB") || strstr(split[3], "GB") || strstr(split[3], "gb")))
         {
             return 0;
         }
-        if (strcmp(split[3], split[2]) < 0)
-            return 0;
     }
-
+    // ~ 입력시 홈 디렉토리 얻고, 그외 경로 입력시 해당 절대경로를 넘겨줌
     if (split[4])
     {
         if (split[4][0] == '~')

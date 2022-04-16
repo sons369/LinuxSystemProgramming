@@ -1,6 +1,7 @@
 #include "../includes/md5_header.h"
 //#include "../includes/sha1_header.h"
 
+/* 큐 초기화 */
 t_Qtype *create_queue_link(void)
 {
     t_Qtype *q;
@@ -10,6 +11,7 @@ t_Qtype *create_queue_link(void)
     return q;
 }
 
+/* 만약 큐가 비어있으면 1 리턴 */
 int is_queue_empty(t_Qtype *q)
 {
     if (q->front == NULL)
@@ -18,6 +20,7 @@ int is_queue_empty(t_Qtype *q)
         return 0;
 }
 
+/* 디렉토리path를 인자로 받아서 큐에 삽입해줌 */
 void enqueue(t_Qtype *q, char *dirpath)
 {
     t_Qnode *new;
@@ -37,6 +40,7 @@ void enqueue(t_Qtype *q, char *dirpath)
     }
 }
 
+/* 삽입된 큐를 꺼내줌. 디렉토리 path를 리턴해줌 */
 char *delqueue(t_Qtype *q)
 {
     t_Qnode *del = q->front;

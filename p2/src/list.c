@@ -79,6 +79,7 @@ int is_set_idx_node(int set, int idx)
     return 0;
 }
 
+/* 해당 세트번호가 링크드리스트에 있는지 체크 */
 int is_set_node(int set)
 {
     t_myStatptr sPtr;
@@ -93,6 +94,7 @@ int is_set_node(int set)
     return 0;
 }
 
+/* 해당 해쉬값이 링크드 리스트에 있는지 체크 */
 int is_hash(char *hash)
 {
     t_myStatptr sPtr;
@@ -108,6 +110,7 @@ int is_hash(char *hash)
     return 0;
 }
 
+/* 해당 세트에 몇개의 노드가 있는지 세어줌 */
 int cnt_set_node(int set)
 {
     t_myStatptr sPtr;
@@ -128,6 +131,7 @@ int cnt_set_node(int set)
     return cnt;
 }
 
+/* 해당 해쉬값이 몇개인지 세어줌 */
 int cnt_hash(char *hash)
 {
     t_myStatptr sPtr;
@@ -146,6 +150,8 @@ int cnt_hash(char *hash)
     return cnt;
 }
 
+/* 노드 출력 */
+/* 만약 해쉬값이 1개뿐이라면 set와 idx값을 0으로 바꿔주고 출력에서 생략 */
 void print_node(t_myStatptr sPtr)
 {
     int flag;
@@ -219,6 +225,7 @@ int sort_filter(char *s1, char *s2)
     return (cnt1 - cnt2);
 }
 
+/* mtim, atim을 출력 양식으로 바꿔줌 */
 char *get_string_time(t_stat st_t, int flag)
 {
     char *s;
@@ -236,6 +243,7 @@ char *get_string_time(t_stat st_t, int flag)
     return s;
 }
 
+/* 파일 사이즈 3자리마다 , 찍어주는 함수 */
 void make_comma_num(long num, char *result)
 {
     long i;
@@ -267,6 +275,7 @@ void make_comma_num(long num, char *result)
     *result = 0;
 }
 
+/* 총 세트 갯수와 노드 갯수를 세어줌 */
 void cnt_set_idx_num(t_myStatptr sPtr)
 {
     int flag;
@@ -290,6 +299,7 @@ void cnt_set_idx_num(t_myStatptr sPtr)
     }
 }
 
+/* 해당 세트의 인덱스 노드의 path 정보를 건네주는 함수 */
 char *get_node_path(int set, int idx)
 {
     t_myStatptr sPtr;
@@ -309,6 +319,7 @@ char *get_node_path(int set, int idx)
     return NULL;
 }
 
+/* 링크드 리스트 노드 제거 */
 char *delete_node(t_myStatptr *sPtr, int set, int idx)
 {
     t_myStatptr previous;
@@ -350,6 +361,7 @@ char *delete_node(t_myStatptr *sPtr, int set, int idx)
     return NULL;
 }
 
+/* 가장 최근에 변경된 파일의 idx값을 넘겨줌 */
 int get_latest_mtim_idx(int set)
 {
     t_myStatptr sPtr;
@@ -381,6 +393,7 @@ int get_latest_mtim_idx(int set)
     return sPtr->idx;
 }
 
+/* 해당 세트의 해당 노드의 mtim 값을 넘겨줌 */
 char *get_latest_mtim(int set, int idx)
 {
     t_myStatptr sPtr;

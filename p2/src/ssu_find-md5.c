@@ -11,6 +11,12 @@ int main(int argc, char *argv[])
     gettimeofday(&start, NULL);
     extension = strrchr(argv[1], '.');
     convert_file_size(argv[2], argv[3]);
+    // max가 min보다 작을 때
+    if (g_max_size < g_min_size)
+    {
+        printf("size error\n");
+        exit(2);
+    }
     search_same_file(argv[4], extension);
     check_same_file();
     if (g_head != NULL)
@@ -19,7 +25,7 @@ int main(int argc, char *argv[])
         cnt_set_idx_num(g_head);
     }
     else
-    {
+    { //동일 파일이 없을 경우
         printf("No duplicates in %s\n", argv[4]);
         gettimeofday(&end, NULL);
         end.tv_sec -= start.tv_sec;
@@ -111,6 +117,10 @@ int user_input(char buf[], char ***split)
     return argc;
 }
 
+/* 사용자 입력 예외처리 해주는 함수 */
+/* argc가 3이라면 무조건 숫자 d 숫자 형태여야함 */
+/* argc가 2라면 무조건 숫자 i 혹은 t 혹은 f가 와야함 */
+/* 해당 세트나 인덱스 번호도 링크드 리스트에 있는지 체크 */
 int input_error(int argc, char **split)
 {
     if (argc > 3)
@@ -152,6 +162,7 @@ int input_error(int argc, char **split)
     return 1;
 }
 
+/* 사용자가 인자로 넘겨준 사이즈를 정수로 변환해주는 함수 */
 void convert_file_size(char *min, char *max)
 {
     if (strchr(min, '~'))
@@ -191,6 +202,12 @@ void convert_file_size(char *min, char *max)
         g_max_size = atof(max);
 }
 
+/* 입력받은 path로 부터 bfs로 탐색을 시작함 */
+/* 입력받은 확장자 파일을 찾으면 일단 암호화를 함 */
+/* /proc, /sys, /run 디렉토리는 스킵 */
+/* 만약 디렉토리 파일을 만나면 큐에 삽입 */
+/* 입력받은 확장자에 부합한 정규 파일을 만날 경우, 사이즈 비교를 통해서 */
+/* 사이즈도 입력값 사이라면 암호화를 하고 해당 정보를 buf.txt에 저장 */
 int search_same_file(char *path, char *ext)
 {
     char buf[PATH_MAX];
@@ -295,6 +312,8 @@ int search_same_file(char *path, char *ext)
     }
 }
 
+// md5 암호화 함수
+// buf.txt파일에 md5값과 경로 그리고 파일 사이즈를 넣어줌
 void do_md5(FILE *fp, char *path, long fsize)
 {
     MD5_CTX c;
@@ -323,6 +342,9 @@ void do_md5(FILE *fp, char *path, long fsize)
     fclose(fp2);
 }
 
+/* buf.txt파일에 저장된 정보들을 읽어오면서 같은 파일이 있는지 확인함 */
+/* 만약 같은 파일이 있으면 링크드리스트에 넣어줌. */
+/* buf.txt파일을 다 읽었다면 buf.txt파일을 삭제해줌 */
 void check_same_file(void)
 {
     FILE *fp;
@@ -377,6 +399,7 @@ void check_same_file(void)
     }
 }
 
+/* 해당 세트의 해당 인덱스 노드를 지워주고 해당 파일도 삭제 */
 void option_d(int set, int idx)
 {
     char *path;
@@ -388,6 +411,7 @@ void option_d(int set, int idx)
     free(path);
 }
 
+/* 삭제할 때 Y/y 혹은 N/n 값을 입력받아서 Y/y 입력시에만 삭제 */
 int option_i(int set)
 {
     char *path;
@@ -430,9 +454,13 @@ void option_f_t(int set, int flag)
     char *latest_mtim_path;
     char *latest_mtim;
     char buf[PATH_MAX];
+    char numbuf[4000];
+    struct dirent **namelist;
+    int cnt;
     int latest_mtim_idx;
     int total_node;
 
+    //가장 최근에 수정한 파일의 인덱스 번호, 경로, 수정한 날짜를 얻어옴
     latest_mtim_idx = get_latest_mtim_idx(set);
     latest_mtim_path = get_node_path(set, latest_mtim_idx);
     latest_mtim = get_latest_mtim(set, latest_mtim_idx);
@@ -447,15 +475,26 @@ void option_f_t(int set, int flag)
             remove(path);
             free(path);
         }
+        //만약 휴지통이 없으면 해당 실행 디렉토리 위치에 휴지통을 만들고 거기에 파일을 링크해줌.
+        //원본 파일은 unlink를 해줌
         if (flag == 1)
         {
             mkdir("./trashcan", 0775);
+            if ((cnt = scandir("./trashcan", &namelist, NULL, alphasort)) == -1)
+            {
+                fprintf(stderr, "trashcan Directory Scan Error\n");
+            }
+            sprintf(numbuf, "%d", cnt);
             path = delete_node(&g_head, set, i);
             strcpy(buf, "./trashcan/");
-            strcat(buf, strchr(path, '/'));
+            strcat(buf, strrchr(path, '/'));
+            strcat(buf, numbuf);
             link(path, buf);
             unlink(path);
             free(path);
+            for (int i = 0; i < cnt; i++)
+                free(namelist[i]);
+            free(namelist);
         }
     }
     if (flag == 0)
