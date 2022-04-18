@@ -30,10 +30,16 @@ void insert(t_myStatptr *sPtr, char *path, char *hash, long size)
             previousPtr = currentPtr;
             currentPtr = currentPtr->next;
         }
-        while (currentPtr != NULL && !strcmp(newPtr->hash, currentPtr->hash) && (sort_filter(newPtr->real_path, currentPtr->real_path) > 0 || strcmp(newPtr->real_path, currentPtr->real_path) > 0))
+        while (currentPtr != NULL && sort_filter(newPtr->real_path, currentPtr->real_path) > 0)
         {
-            previousPtr = currentPtr;
-            currentPtr = currentPtr->next;
+
+            if (!strcmp(newPtr->hash, currentPtr->hash))
+            {
+                previousPtr = currentPtr;
+                currentPtr = currentPtr->next;
+            }
+            else
+                break;
         }
         if (previousPtr == NULL)
         {

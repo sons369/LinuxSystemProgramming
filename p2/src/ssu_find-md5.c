@@ -419,7 +419,6 @@ int option_i(int set)
     int total_node;
 
     total_node = cnt_set_node(set);
-    printf("total node: %d\n", total_node);
     for (int i = 1; i <= total_node; i++)
     {
         path = get_node_path(set, i);
