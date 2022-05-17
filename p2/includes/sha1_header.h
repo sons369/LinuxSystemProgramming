@@ -87,7 +87,7 @@ int g_total_set;
 int g_total_node;
 t_myStatptr g_head;
 
-/* ssu_find-md5.c function */
+/* ssu_find-sha1.c function */
 void convert_file_size(char *min, char *max);
 void do_sha1(FILE *fp, char *path, long fsize);
 int search_same_file(char *path, char *ext);
