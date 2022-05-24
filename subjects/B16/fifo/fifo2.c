@@ -16,6 +16,8 @@ int main(void)
     int fd;
     int length;
 
+    //디바이스 파일을 생성할 때 사용
+    // S_IFIFO 플래그를 같이 넣어서 FIFO파일을 생성할 수 있다.
     mknod(FIFO_NAME, S_IFIFO | 0666, 0);
     printf("waiting for writers... \n");
 
@@ -28,11 +30,13 @@ int main(void)
 
     do
     {
+        // FIFO파일에 쓰여진 데이터를 읽어온다.
         if ((length = read(fd, buf, BUFFER_SIZE)) == -1)
         {
             fprintf(stderr, "read error\n");
             exit(1);
         }
+        //몇 바이트를 읽었는지, 무슨 문자를 읽었는지 출력
         else
         {
             buf[length] = '\0';

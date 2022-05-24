@@ -17,6 +17,7 @@ int main(void)
     int fd;
     int length;
 
+    // FIFO파일을 만들어줌
     mkfifo(FIFO_NAME, FILE_MODE);
     printf("waiting for readers... \n");
     if ((fd = open(FIFO_NAME, O_WRONLY)) < 0)
@@ -27,11 +28,13 @@ int main(void)
     printf("got a reader--type some stuff\n");
     while (fgets(buf, BUFFER_SIZE, stdin), !feof(stdin))
     {
+        // FIFO 파일에 데이터를 쓴다.(개행은 제외)
         if ((length = write(fd, buf, strlen(buf) - 1)) == -1)
         {
             fprintf(stderr, "write error\n");
             exit(1);
         }
+        // 몇바이트를 썼는지 출력해준다.
         else
             printf("speak : wrote %d bytes\n", length);
     }
