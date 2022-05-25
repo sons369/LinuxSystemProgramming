@@ -1,0 +1,1427 @@
+\hypertarget{ssu__sfinder_8c}{}\doxysection{src/ssu\+\_\+sfinder.c 파일 참조}
+\label{ssu__sfinder_8c}\index{src/ssu\_sfinder.c@{src/ssu\_sfinder.c}}
+{\ttfamily \#include \char`\"{}../includes/ssu\+\_\+sfinder.\+h\char`\"{}}\newline
+ssu\+\_\+sfinder.\+c에 대한 include 의존 그래프
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d32/ssu__sfinder_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{함수}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a}{clear\+\_\+g\+\_\+var}} ()
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e}{user\+\_\+input}} (char buf\mbox{[}$\,$\mbox{]}, char $\ast$$\ast$$\ast$split)
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}{get\+\_\+opt}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_a853216ac51aa181669ff4d3de74058a7}{print\+\_\+help}} ()
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_a76984c6f2979700ce105c66439ea996f}{chk\+\_\+arg\+\_\+error}} ()
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_aa8545a94ef437bd56b78fa70bdc5c692}{convert\+\_\+file\+\_\+size}} (char $\ast$min, char $\ast$max)
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3}{search\+\_\+same\+\_\+file}} (char $\ast$path, char $\ast$ext)
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_ab8ac10d0ee3eb9d24c194af6ce6ade91}{do\+\_\+md5}} (F\+I\+LE $\ast$fp, char $\ast$path, long fsize)
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_a4a6e2c272f1402e3a079172c56789622}{do\+\_\+sha1}} (F\+I\+LE $\ast$fp, char $\ast$path, long fsize)
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297}{check\+\_\+same\+\_\+file}} (void)
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9}{option\+\_\+d}} (int set, int idx)
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8}{option\+\_\+i}} (int set)
+\item 
+void \mbox{\hyperlink{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}{option\+\_\+f\+\_\+t}} (int set, int flag)
+\item 
+int \mbox{\hyperlink{ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e}{input\+\_\+error}} (int argc, char $\ast$$\ast$split)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{함수 문서화}
+\mbox{\Hypertarget{ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297}\label{ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!check\_same\_file@{check\_same\_file}}
+\index{check\_same\_file@{check\_same\_file}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{check\_same\_file()}{check\_same\_file()}}
+{\footnotesize\ttfamily void check\+\_\+same\+\_\+file (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 788 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{789 \{}
+\DoxyCodeLine{790     FILE *fp;}
+\DoxyCodeLine{791     \textcolor{keywordtype}{char} md\_buf1[33];}
+\DoxyCodeLine{792     \textcolor{keywordtype}{char} md\_buf2[33];}
+\DoxyCodeLine{793     \textcolor{keywordtype}{char} path\_buf1[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{794     \textcolor{keywordtype}{char} path\_buf2[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{795     \textcolor{keywordtype}{char} size\_buf1[15];}
+\DoxyCodeLine{796     \textcolor{keywordtype}{char} size\_buf2[15];}
+\DoxyCodeLine{797     \textcolor{keywordtype}{long} current;}
+\DoxyCodeLine{798     \textcolor{keywordtype}{int} flag;}
+\DoxyCodeLine{799 }
+\DoxyCodeLine{800     current = 0;}
+\DoxyCodeLine{801     flag = 0;}
+\DoxyCodeLine{802     \textcolor{keywordflow}{if} ((fp = fopen(\textcolor{stringliteral}{"./buf.txt"}, \textcolor{stringliteral}{"r+"})) != NULL)}
+\DoxyCodeLine{803     \{}
+\DoxyCodeLine{804         \textcolor{keywordflow}{while} (fscanf(fp, \textcolor{stringliteral}{"\%[\string^|]|\%[\string^|]|\%[\string^\(\backslash\)n]\(\backslash\)n"}, md\_buf1, path\_buf1, size\_buf1) != EOF)}
+\DoxyCodeLine{805         \{}
+\DoxyCodeLine{806             current = ftell(fp);}
+\DoxyCodeLine{807             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{ssu__sfinder_8h_aeb5b7086fe4152f37d5cd237abc33ab9}{is\_hash}}(md\_buf1))}
+\DoxyCodeLine{808             \{}
+\DoxyCodeLine{809                 \textcolor{keywordflow}{while} (fscanf(fp, \textcolor{stringliteral}{"\%[\string^|]|\%[\string^|]|\%[\string^\(\backslash\)n]\(\backslash\)n"}, md\_buf2, path\_buf2, size\_buf2) != EOF)}
+\DoxyCodeLine{810                 \{}
+\DoxyCodeLine{811                     \textcolor{keywordflow}{if} (!strcmp(md\_buf1, md\_buf2))}
+\DoxyCodeLine{812                     \{}
+\DoxyCodeLine{813                         \mbox{\hyperlink{ssu__sfinder_8h_ac31745c0e328269dac08feae8ef546cc}{insert}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, path\_buf2, md\_buf2, atol(size\_buf2));}
+\DoxyCodeLine{814                         \mbox{\hyperlink{ssu__sfinder_8h_a4779dddce8c1bcc118e744adacbb1743}{g\_cnt\_same\_file}}++;}
+\DoxyCodeLine{815                         flag = 1;}
+\DoxyCodeLine{816                     \}}
+\DoxyCodeLine{817                     memset(md\_buf2, 0, 33);}
+\DoxyCodeLine{818                     memset(path\_buf2, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{819                     memset(size\_buf2, 0, 15);}
+\DoxyCodeLine{820                 \}}
+\DoxyCodeLine{821             \}}
+\DoxyCodeLine{822             \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{823             \{}
+\DoxyCodeLine{824                 \mbox{\hyperlink{ssu__sfinder_8h_ac31745c0e328269dac08feae8ef546cc}{insert}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, path\_buf1, md\_buf1, atol(size\_buf1));}
+\DoxyCodeLine{825                 \mbox{\hyperlink{ssu__sfinder_8h_a4779dddce8c1bcc118e744adacbb1743}{g\_cnt\_same\_file}}++;}
+\DoxyCodeLine{826             \}}
+\DoxyCodeLine{827             flag = 0;}
+\DoxyCodeLine{828             fseek(fp, current, SEEK\_SET);}
+\DoxyCodeLine{829             memset(md\_buf1, 0, 33);}
+\DoxyCodeLine{830             memset(path\_buf1, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{831             memset(size\_buf1, 0, 15);}
+\DoxyCodeLine{832         \}}
+\DoxyCodeLine{833         fclose(fp);}
+\DoxyCodeLine{834         remove(\textcolor{stringliteral}{"./buf.txt"});}
+\DoxyCodeLine{835     \}}
+\DoxyCodeLine{836     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{837     \{}
+\DoxyCodeLine{838         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{839     \}}
+\DoxyCodeLine{840 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d7e/ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{db/d7e/ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a76984c6f2979700ce105c66439ea996f}\label{ssu__sfinder_8c_a76984c6f2979700ce105c66439ea996f}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!chk\_arg\_error@{chk\_arg\_error}}
+\index{chk\_arg\_error@{chk\_arg\_error}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{chk\_arg\_error()}{chk\_arg\_error()}}
+{\footnotesize\ttfamily int chk\+\_\+arg\+\_\+error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 486 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{487 \{}
+\DoxyCodeLine{488     \textcolor{keywordtype}{int} is\_float = 0;}
+\DoxyCodeLine{489     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{490     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{491     \textcolor{keywordtype}{char} *homedir;}
+\DoxyCodeLine{492 }
+\DoxyCodeLine{493     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}[0] != \textcolor{charliteral}{'*'})}
+\DoxyCodeLine{494         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{495     \textcolor{keywordflow}{if} (strlen(\mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}) > 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}[1] != \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{496         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{497     \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"\string~"}))}
+\DoxyCodeLine{498     \{}
+\DoxyCodeLine{499         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = 1;}
+\DoxyCodeLine{500     \}}
+\DoxyCodeLine{501     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{502     \{}
+\DoxyCodeLine{503         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; \mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}[i]; i++)}
+\DoxyCodeLine{504         \{}
+\DoxyCodeLine{505             \textcolor{keywordflow}{if} (isdigit(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}[i]))}
+\DoxyCodeLine{506                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{507             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}[i] == \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{508                 is\_float++;}
+\DoxyCodeLine{509             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{510                 flag++;}
+\DoxyCodeLine{511         \}}
+\DoxyCodeLine{512         printf(\textcolor{stringliteral}{"float : \%d flag : \%d\(\backslash\)n"}, is\_float, flag);}
+\DoxyCodeLine{513         \textcolor{keywordflow}{if} (is\_float > 1)}
+\DoxyCodeLine{514             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{515         \textcolor{keywordflow}{if} (flag > 2)}
+\DoxyCodeLine{516             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{517         \textcolor{keywordflow}{if} (flag == 2 \&\& !(strstr(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"MB"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"mb"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"kb"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"KB"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"GB"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \textcolor{stringliteral}{"gb"})))}
+\DoxyCodeLine{518             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{519     \}}
+\DoxyCodeLine{520     is\_float = 0;}
+\DoxyCodeLine{521     flag = 0;}
+\DoxyCodeLine{522     \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"\string~"}))}
+\DoxyCodeLine{523     \{}
+\DoxyCodeLine{524         \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = 2048000000000;}
+\DoxyCodeLine{525     \}}
+\DoxyCodeLine{526     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{527     \{}
+\DoxyCodeLine{528         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; \mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}[i]; i++)}
+\DoxyCodeLine{529         \{}
+\DoxyCodeLine{530             \textcolor{keywordflow}{if} (isdigit(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}[i]))}
+\DoxyCodeLine{531                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{532             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}[i] == \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{533                 is\_float++;}
+\DoxyCodeLine{534             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{535                 flag++;}
+\DoxyCodeLine{536         \}}
+\DoxyCodeLine{537         printf(\textcolor{stringliteral}{"float : \%d flag : \%d\(\backslash\)n"}, is\_float, flag);}
+\DoxyCodeLine{538         \textcolor{keywordflow}{if} (is\_float > 1)}
+\DoxyCodeLine{539             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{540         \textcolor{keywordflow}{if} (flag > 3)}
+\DoxyCodeLine{541             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{542         \textcolor{keywordflow}{if} (flag == 2 \&\& !(strstr(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"MB"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"mb"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"kb"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"KB"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"GB"}) || strstr(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, \textcolor{stringliteral}{"gb"})))}
+\DoxyCodeLine{543             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{544     \}}
+\DoxyCodeLine{545     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a2f9fc9dc41c9a2c0dc228fa42e286659}{g\_dir\_arg}}[0] == \textcolor{charliteral}{'\string~'})}
+\DoxyCodeLine{546     \{}
+\DoxyCodeLine{547         uid\_t uid = getuid();}
+\DoxyCodeLine{548         \textcolor{keyword}{struct }passwd *pw = getpwuid(uid);}
+\DoxyCodeLine{549         memset(\mbox{\hyperlink{ssu__sfinder_8h_a40ceb3da1efa58d4478b88ea4b7bab04}{g\_home\_dir}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{550         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a40ceb3da1efa58d4478b88ea4b7bab04}{g\_home\_dir}}, pw-\/>pw\_dir);}
+\DoxyCodeLine{551         memset(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{552         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, \mbox{\hyperlink{ssu__sfinder_8h_a40ceb3da1efa58d4478b88ea4b7bab04}{g\_home\_dir}});}
+\DoxyCodeLine{553         strcat(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, \&\mbox{\hyperlink{ssu__sfinder_8h_a2f9fc9dc41c9a2c0dc228fa42e286659}{g\_dir\_arg}}[1]);}
+\DoxyCodeLine{554     \}}
+\DoxyCodeLine{555     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{556     \{}
+\DoxyCodeLine{557         \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{558         realpath(\mbox{\hyperlink{ssu__sfinder_8h_a2f9fc9dc41c9a2c0dc228fa42e286659}{g\_dir\_arg}}, buf);}
+\DoxyCodeLine{559         memset(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{560         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, buf);}
+\DoxyCodeLine{561     \}}
+\DoxyCodeLine{562     \textcolor{keywordflow}{if} ((i = open(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, O\_RDONLY)) < 0)}
+\DoxyCodeLine{563     \{}
+\DoxyCodeLine{564         perror(\textcolor{stringliteral}{"path error"});}
+\DoxyCodeLine{565         close(i);}
+\DoxyCodeLine{566         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{567     \}}
+\DoxyCodeLine{568     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{569 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{db/d7e/ssu__sfinder_8c_a76984c6f2979700ce105c66439ea996f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a}\label{ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!clear\_g\_var@{clear\_g\_var}}
+\index{clear\_g\_var@{clear\_g\_var}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{clear\_g\_var()}{clear\_g\_var()}}
+{\footnotesize\ttfamily void clear\+\_\+g\+\_\+var (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 341 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{342 \{}
+\DoxyCodeLine{343     memset(\mbox{\hyperlink{ssu__sfinder_8h_a2f9fc9dc41c9a2c0dc228fa42e286659}{g\_dir\_arg}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{344     memset(\mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{345     memset(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{346     memset(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{347     memset(\mbox{\hyperlink{ssu__sfinder_8h_a9c978b665ba4cdaefa8d5e47f313cb70}{g\_opt\_c\_arg}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{348     memset(\mbox{\hyperlink{ssu__sfinder_8h_a6265c88017030bc289c97af04ff6b3ae}{g\_opt\_l\_arg}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{349     memset(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{350     \mbox{\hyperlink{ssu__sfinder_8h_a4efcebf8be485c9fcd68707709634514}{g\_opt\_o\_arg}} = 0;}
+\DoxyCodeLine{351     \mbox{\hyperlink{ssu__sfinder_8h_a1429afa0260071b500b224cccc3f5f7d}{g\_thread}} = 0;}
+\DoxyCodeLine{352     \mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} = 0;}
+\DoxyCodeLine{353     \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = 0;}
+\DoxyCodeLine{354     \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = 0;}
+\DoxyCodeLine{355     \mbox{\hyperlink{ssu__sfinder_8h_a6829d00e0f0a1a530326f9ab1455ead9}{g\_file}} = 0;}
+\DoxyCodeLine{356     \mbox{\hyperlink{ssu__sfinder_8h_a4779dddce8c1bcc118e744adacbb1743}{g\_cnt\_same\_file}} = 0;}
+\DoxyCodeLine{357     optind = 0;}
+\DoxyCodeLine{358 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{db/d7e/ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_aa8545a94ef437bd56b78fa70bdc5c692}\label{ssu__sfinder_8c_aa8545a94ef437bd56b78fa70bdc5c692}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!convert\_file\_size@{convert\_file\_size}}
+\index{convert\_file\_size@{convert\_file\_size}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{convert\_file\_size()}{convert\_file\_size()}}
+{\footnotesize\ttfamily void convert\+\_\+file\+\_\+size (\begin{DoxyParamCaption}\item[{char $\ast$}]{min,  }\item[{char $\ast$}]{max }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 571 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{572 \{}
+\DoxyCodeLine{573     \textcolor{keywordflow}{if} (strchr(min, \textcolor{charliteral}{'\string~'}))}
+\DoxyCodeLine{574         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = 1;}
+\DoxyCodeLine{575     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strstr(min, \textcolor{stringliteral}{"KB"}) || strstr(min, \textcolor{stringliteral}{"kb"}))}
+\DoxyCodeLine{576     \{}
+\DoxyCodeLine{577         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = atof(min) * 1024;}
+\DoxyCodeLine{578     \}}
+\DoxyCodeLine{579     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strstr(min, \textcolor{stringliteral}{"MB"}) || strstr(min, \textcolor{stringliteral}{"mb"}))}
+\DoxyCodeLine{580     \{}
+\DoxyCodeLine{581         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = atof(min) * 1024 * 1024;}
+\DoxyCodeLine{582     \}}
+\DoxyCodeLine{583     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strstr(min, \textcolor{stringliteral}{"GB"}) || strstr(min, \textcolor{stringliteral}{"gb"}))}
+\DoxyCodeLine{584     \{}
+\DoxyCodeLine{585         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = atof(min) * 1024 * 1024 * 1024;}
+\DoxyCodeLine{586     \}}
+\DoxyCodeLine{587     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (atof(min) == 0)}
+\DoxyCodeLine{588         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = 1;}
+\DoxyCodeLine{589     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{590         \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} = atof(min);}
+\DoxyCodeLine{591 }
+\DoxyCodeLine{592     \textcolor{keywordflow}{if} (strchr(max, \textcolor{charliteral}{'\string~'}))}
+\DoxyCodeLine{593         \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = 2048000000000;}
+\DoxyCodeLine{594     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strstr(max, \textcolor{stringliteral}{"KB"}) || strstr(max, \textcolor{stringliteral}{"kb"}))}
+\DoxyCodeLine{595     \{}
+\DoxyCodeLine{596         \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = atof(max) * 1024;}
+\DoxyCodeLine{597     \}}
+\DoxyCodeLine{598     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strstr(max, \textcolor{stringliteral}{"MB"}) || strstr(max, \textcolor{stringliteral}{"mb"}))}
+\DoxyCodeLine{599     \{}
+\DoxyCodeLine{600         \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = atof(max) * 1024 * 1024;}
+\DoxyCodeLine{601     \}}
+\DoxyCodeLine{602     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strstr(max, \textcolor{stringliteral}{"GB"}) || strstr(max, \textcolor{stringliteral}{"gb"}))}
+\DoxyCodeLine{603     \{}
+\DoxyCodeLine{604         \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = atof(max) * 1024 * 1024 * 1024;}
+\DoxyCodeLine{605     \}}
+\DoxyCodeLine{606     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{607         \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} = atof(max);}
+\DoxyCodeLine{608 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{db/d7e/ssu__sfinder_8c_aa8545a94ef437bd56b78fa70bdc5c692_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_ab8ac10d0ee3eb9d24c194af6ce6ade91}\label{ssu__sfinder_8c_ab8ac10d0ee3eb9d24c194af6ce6ade91}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!do\_md5@{do\_md5}}
+\index{do\_md5@{do\_md5}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{do\_md5()}{do\_md5()}}
+{\footnotesize\ttfamily void do\+\_\+md5 (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{char $\ast$}]{path,  }\item[{long}]{fsize }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 727 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{728 \{}
+\DoxyCodeLine{729     MD5\_CTX c;}
+\DoxyCodeLine{730     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} md[MD5\_DIGEST\_LENGTH];}
+\DoxyCodeLine{731     \textcolor{keywordtype}{int} fd;}
+\DoxyCodeLine{732     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{733     \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{734     FILE *fp2;}
+\DoxyCodeLine{735 }
+\DoxyCodeLine{736     fd = fileno(fp);}
+\DoxyCodeLine{737     MD5\_Init(\&c);}
+\DoxyCodeLine{738     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{739     \{}
+\DoxyCodeLine{740         i = read(fd, buf, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{741         \textcolor{keywordflow}{if} (i <= 0)}
+\DoxyCodeLine{742             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{743         MD5\_Update(\&c, buf, (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long})i);}
+\DoxyCodeLine{744     \}}
+\DoxyCodeLine{745     MD5\_Final(\&(md[0]), \&c);}
+\DoxyCodeLine{746     \textcolor{keywordflow}{if} ((fp2 = fopen(\textcolor{stringliteral}{"./buf.txt"}, \textcolor{stringliteral}{"a+"})) != NULL)}
+\DoxyCodeLine{747     \{}
+\DoxyCodeLine{748         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < MD5\_DIGEST\_LENGTH; i++)}
+\DoxyCodeLine{749             fprintf(fp2, \textcolor{stringliteral}{"\%02x"}, md[i]);}
+\DoxyCodeLine{750         fprintf(fp2, \textcolor{stringliteral}{"|\%s|\%ld\(\backslash\)n"}, path, fsize);}
+\DoxyCodeLine{751     \}}
+\DoxyCodeLine{752     fclose(fp2);}
+\DoxyCodeLine{753 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d7e/ssu__sfinder_8c_ab8ac10d0ee3eb9d24c194af6ce6ade91_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a4a6e2c272f1402e3a079172c56789622}\label{ssu__sfinder_8c_a4a6e2c272f1402e3a079172c56789622}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!do\_sha1@{do\_sha1}}
+\index{do\_sha1@{do\_sha1}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{do\_sha1()}{do\_sha1()}}
+{\footnotesize\ttfamily void do\+\_\+sha1 (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{char $\ast$}]{path,  }\item[{long}]{fsize }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 757 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{758 \{}
+\DoxyCodeLine{759     SHA\_CTX c;}
+\DoxyCodeLine{760     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} md[SHA\_DIGEST\_LENGTH];}
+\DoxyCodeLine{761     \textcolor{keywordtype}{int} fd;}
+\DoxyCodeLine{762     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{763     \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{764     FILE *fp2;}
+\DoxyCodeLine{765 }
+\DoxyCodeLine{766     fd = fileno(fp);}
+\DoxyCodeLine{767     SHA1\_Init(\&c);}
+\DoxyCodeLine{768     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{769     \{}
+\DoxyCodeLine{770         i = read(fd, buf, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{771         \textcolor{keywordflow}{if} (i <= 0)}
+\DoxyCodeLine{772             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{773         SHA1\_Update(\&c, buf, (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long})i);}
+\DoxyCodeLine{774     \}}
+\DoxyCodeLine{775     SHA1\_Final(\&(md[0]), \&c);}
+\DoxyCodeLine{776     \textcolor{keywordflow}{if} ((fp2 = fopen(\textcolor{stringliteral}{"./buf.txt"}, \textcolor{stringliteral}{"a+"})) != NULL)}
+\DoxyCodeLine{777     \{}
+\DoxyCodeLine{778         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < SHA\_DIGEST\_LENGTH; i++)}
+\DoxyCodeLine{779             fprintf(fp2, \textcolor{stringliteral}{"\%02x"}, md[i]);}
+\DoxyCodeLine{780         fprintf(fp2, \textcolor{stringliteral}{"|\%s|\%ld\(\backslash\)n"}, path, fsize);}
+\DoxyCodeLine{781     \}}
+\DoxyCodeLine{782     fclose(fp2);}
+\DoxyCodeLine{783 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d7e/ssu__sfinder_8c_a4a6e2c272f1402e3a079172c56789622_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}\label{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!get\_opt@{get\_opt}}
+\index{get\_opt@{get\_opt}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{get\_opt()}{get\_opt()}}
+{\footnotesize\ttfamily int get\+\_\+opt (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 371 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{372 \{}
+\DoxyCodeLine{373     \textcolor{keywordtype}{int} opt;}
+\DoxyCodeLine{374     \textcolor{keywordtype}{int} is\_e = 0;}
+\DoxyCodeLine{375     \textcolor{keywordtype}{int} is\_l = 0; \textcolor{comment}{// list, fmd5, fsha1}}
+\DoxyCodeLine{376     \textcolor{keywordtype}{int} is\_h = 0;}
+\DoxyCodeLine{377     \textcolor{keywordtype}{int} is\_d = 0;}
+\DoxyCodeLine{378     \textcolor{keywordtype}{int} is\_t = 0;}
+\DoxyCodeLine{379     \textcolor{keywordtype}{int} is\_c = 0; \textcolor{comment}{// list, trash}}
+\DoxyCodeLine{380     \textcolor{keywordtype}{int} is\_o = 0; \textcolor{comment}{// list, trash}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{382     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} == 1 || \mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} == 2)}
+\DoxyCodeLine{383     \{}
+\DoxyCodeLine{384         \textcolor{keywordflow}{while} ((opt = getopt(argc, argv, \textcolor{stringliteral}{"e:l:h:d:t:"})) != -\/1)}
+\DoxyCodeLine{385         \{}
+\DoxyCodeLine{386             \textcolor{keywordflow}{switch} (opt)}
+\DoxyCodeLine{387             \{}
+\DoxyCodeLine{388             \textcolor{keywordflow}{case} \textcolor{charliteral}{'e'}:}
+\DoxyCodeLine{389                 is\_e = 1;}
+\DoxyCodeLine{390                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}, optarg);}
+\DoxyCodeLine{391                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{392             \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:}
+\DoxyCodeLine{393                 is\_l = 1;}
+\DoxyCodeLine{394                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, optarg);}
+\DoxyCodeLine{395                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{396             \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{397                 is\_h = 1;}
+\DoxyCodeLine{398                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}}, optarg);}
+\DoxyCodeLine{399                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{400             \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}:}
+\DoxyCodeLine{401                 is\_d = 1;}
+\DoxyCodeLine{402                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a2f9fc9dc41c9a2c0dc228fa42e286659}{g\_dir\_arg}}, optarg);}
+\DoxyCodeLine{403                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{404             \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}:}
+\DoxyCodeLine{405                 is\_t = 1;}
+\DoxyCodeLine{406                 \mbox{\hyperlink{ssu__sfinder_8h_a1429afa0260071b500b224cccc3f5f7d}{g\_thread}} = atoi(optarg);}
+\DoxyCodeLine{407                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{408             \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:}
+\DoxyCodeLine{409                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{410             \}}
+\DoxyCodeLine{411         \}}
+\DoxyCodeLine{412         \textcolor{keywordflow}{if} (!is\_t)}
+\DoxyCodeLine{413             \mbox{\hyperlink{ssu__sfinder_8h_a1429afa0260071b500b224cccc3f5f7d}{g\_thread}} = 1;}
+\DoxyCodeLine{414         \textcolor{keywordflow}{if} (!is\_e || !is\_l || !is\_h || !is\_d)}
+\DoxyCodeLine{415             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{416     \}}
+\DoxyCodeLine{417     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} == 3)}
+\DoxyCodeLine{418     \{}
+\DoxyCodeLine{419         \textcolor{keywordflow}{while} ((opt = getopt(argc, argv, \textcolor{stringliteral}{"l:c:o:"})) != -\/1)}
+\DoxyCodeLine{420         \{}
+\DoxyCodeLine{421             \textcolor{keywordflow}{switch} (opt)}
+\DoxyCodeLine{422             \{}
+\DoxyCodeLine{423             \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:}
+\DoxyCodeLine{424                 is\_l = 1;}
+\DoxyCodeLine{425                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a6265c88017030bc289c97af04ff6b3ae}{g\_opt\_l\_arg}}, optarg);}
+\DoxyCodeLine{426                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{427             \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:}
+\DoxyCodeLine{428                 is\_c = 1;}
+\DoxyCodeLine{429                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a9c978b665ba4cdaefa8d5e47f313cb70}{g\_opt\_c\_arg}}, optarg);}
+\DoxyCodeLine{430                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{431             \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:}
+\DoxyCodeLine{432                 is\_o = 1;}
+\DoxyCodeLine{433                 \mbox{\hyperlink{ssu__sfinder_8h_a4efcebf8be485c9fcd68707709634514}{g\_opt\_o\_arg}} = atoi(optarg);}
+\DoxyCodeLine{434                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{435             \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:}
+\DoxyCodeLine{436                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{437             \}}
+\DoxyCodeLine{438         \}}
+\DoxyCodeLine{439         \textcolor{keywordflow}{if} (!is\_l)}
+\DoxyCodeLine{440             strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a6265c88017030bc289c97af04ff6b3ae}{g\_opt\_l\_arg}}, \textcolor{stringliteral}{"fileset"});}
+\DoxyCodeLine{441         \textcolor{keywordflow}{if} (!is\_c)}
+\DoxyCodeLine{442             strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a9c978b665ba4cdaefa8d5e47f313cb70}{g\_opt\_c\_arg}}, \textcolor{stringliteral}{"size"});}
+\DoxyCodeLine{443         \textcolor{keywordflow}{if} (!is\_o)}
+\DoxyCodeLine{444             \mbox{\hyperlink{ssu__sfinder_8h_a4efcebf8be485c9fcd68707709634514}{g\_opt\_o\_arg}} = 1;}
+\DoxyCodeLine{445     \}}
+\DoxyCodeLine{446     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} == 4)}
+\DoxyCodeLine{447     \{}
+\DoxyCodeLine{448         \textcolor{keywordflow}{while} ((opt = getopt(argc, argv, \textcolor{stringliteral}{"c:o:"})) != -\/1)}
+\DoxyCodeLine{449         \{}
+\DoxyCodeLine{450             \textcolor{keywordflow}{while} ((opt = getopt(argc, argv, \textcolor{stringliteral}{"l:c:o:"})) != -\/1)}
+\DoxyCodeLine{451             \{}
+\DoxyCodeLine{452                 \textcolor{keywordflow}{switch} (opt)}
+\DoxyCodeLine{453                 \{}
+\DoxyCodeLine{454                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:}
+\DoxyCodeLine{455                     is\_c = 1;}
+\DoxyCodeLine{456                     strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a9c978b665ba4cdaefa8d5e47f313cb70}{g\_opt\_c\_arg}}, optarg);}
+\DoxyCodeLine{457                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{458                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:}
+\DoxyCodeLine{459                     is\_o = 1;}
+\DoxyCodeLine{460                     \mbox{\hyperlink{ssu__sfinder_8h_a4efcebf8be485c9fcd68707709634514}{g\_opt\_o\_arg}} = atoi(optarg);}
+\DoxyCodeLine{461                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{462                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:}
+\DoxyCodeLine{463                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{464                 \}}
+\DoxyCodeLine{465             \}}
+\DoxyCodeLine{466             \textcolor{keywordflow}{if} (!is\_c)}
+\DoxyCodeLine{467                 strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a9c978b665ba4cdaefa8d5e47f313cb70}{g\_opt\_c\_arg}}, \textcolor{stringliteral}{"size"});}
+\DoxyCodeLine{468             \textcolor{keywordflow}{if} (!is\_o)}
+\DoxyCodeLine{469                 \mbox{\hyperlink{ssu__sfinder_8h_a4efcebf8be485c9fcd68707709634514}{g\_opt\_o\_arg}} = 1;}
+\DoxyCodeLine{470         \}}
+\DoxyCodeLine{471     \}}
+\DoxyCodeLine{472     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{473 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{db/d7e/ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e}\label{ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!input\_error@{input\_error}}
+\index{input\_error@{input\_error}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{input\_error()}{input\_error()}}
+{\footnotesize\ttfamily int input\+\_\+error (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{split }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 993 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{994 \{}
+\DoxyCodeLine{995     \textcolor{keywordtype}{int} opt;}
+\DoxyCodeLine{996     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{997     optind = 0;}
+\DoxyCodeLine{998     \mbox{\hyperlink{ssu__sfinder_8h_a16afde3979c7bb0e67f414bd8885ec8b}{g\_del\_idx}} = 0;}
+\DoxyCodeLine{999     \mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}} = 0;}
+\DoxyCodeLine{1000     \mbox{\hyperlink{ssu__sfinder_8h_a43daf4bb27f2a92236fbd576ca3c13eb}{g\_del\_opt\_d}} = 0;}
+\DoxyCodeLine{1001     \mbox{\hyperlink{ssu__sfinder_8h_a3c8ac8b86a115b7508088b37b69fc01b}{g\_del\_opt\_f}} = 0;}
+\DoxyCodeLine{1002     \mbox{\hyperlink{ssu__sfinder_8h_ac006f2378bc96e938602cbf28b951ddc}{g\_del\_opt\_i}} = 0;}
+\DoxyCodeLine{1003     \mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} = 0;}
+\DoxyCodeLine{1004     \mbox{\hyperlink{ssu__sfinder_8h_ae1f340560d5f362a1d9d71e6ca19e737}{g\_del\_opt\_t}} = 0;}
+\DoxyCodeLine{1005 }
+\DoxyCodeLine{1006     \textcolor{keywordflow}{while} ((opt = getopt(argc, split, \textcolor{stringliteral}{"l:d:ift"})) != -\/1)}
+\DoxyCodeLine{1007     \{}
+\DoxyCodeLine{1008         \textcolor{keywordflow}{switch} (opt)}
+\DoxyCodeLine{1009         \{}
+\DoxyCodeLine{1010         \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:}
+\DoxyCodeLine{1011             \mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} = 1;}
+\DoxyCodeLine{1012             \mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}} = atoi(optarg);}
+\DoxyCodeLine{1013             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{ssu__sfinder_8h_af2d29e47fbdc75484b61e25aa3fc436c}{is\_set\_node}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}))}
+\DoxyCodeLine{1014                 flag = 1;}
+\DoxyCodeLine{1015             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{1016 }
+\DoxyCodeLine{1017         \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}:}
+\DoxyCodeLine{1018             \mbox{\hyperlink{ssu__sfinder_8h_a43daf4bb27f2a92236fbd576ca3c13eb}{g\_del\_opt\_d}} = 1;}
+\DoxyCodeLine{1019             \mbox{\hyperlink{ssu__sfinder_8h_a16afde3979c7bb0e67f414bd8885ec8b}{g\_del\_idx}} = atoi(optarg);}
+\DoxyCodeLine{1020             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{ssu__sfinder_8h_a09e8278e409f31509c805b0cd968ca5d}{is\_set\_idx\_node}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, \mbox{\hyperlink{ssu__sfinder_8h_a16afde3979c7bb0e67f414bd8885ec8b}{g\_del\_idx}}))}
+\DoxyCodeLine{1021                 flag = 1;}
+\DoxyCodeLine{1022             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{1023 }
+\DoxyCodeLine{1024         \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:}
+\DoxyCodeLine{1025             \mbox{\hyperlink{ssu__sfinder_8h_ac006f2378bc96e938602cbf28b951ddc}{g\_del\_opt\_i}} = 1;}
+\DoxyCodeLine{1026             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{1027 }
+\DoxyCodeLine{1028         \textcolor{keywordflow}{case} \textcolor{charliteral}{'f'}:}
+\DoxyCodeLine{1029             \mbox{\hyperlink{ssu__sfinder_8h_a3c8ac8b86a115b7508088b37b69fc01b}{g\_del\_opt\_f}} = 1;}
+\DoxyCodeLine{1030             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{1031 }
+\DoxyCodeLine{1032         \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}:}
+\DoxyCodeLine{1033             \mbox{\hyperlink{ssu__sfinder_8h_ae1f340560d5f362a1d9d71e6ca19e737}{g\_del\_opt\_t}} = 1;}
+\DoxyCodeLine{1034             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{1035 }
+\DoxyCodeLine{1036         \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:}
+\DoxyCodeLine{1037             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{1038         \}}
+\DoxyCodeLine{1039     \}}
+\DoxyCodeLine{1040 }
+\DoxyCodeLine{1041     \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{1042     \{}
+\DoxyCodeLine{1043         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{1044     \}}
+\DoxyCodeLine{1045     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{1046 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{db/d7e/ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{db/d7e/ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{ssu__sfinder_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!main@{main}}
+\index{main@{main}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 3 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{6     \textcolor{keywordtype}{char} **split, **split2;}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} argc, argc2;}
+\DoxyCodeLine{8     pthread\_t thid[5];}
+\DoxyCodeLine{9     uid\_t uid = getuid();}
+\DoxyCodeLine{10     \textcolor{keyword}{struct }passwd *pw = getpwuid(uid);}
+\DoxyCodeLine{11     strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a781c108e12733d6b71ef8ba56ea91de0}{g\_user\_name}}, pw-\/>pw\_name);}
+\DoxyCodeLine{12     \textcolor{comment}{// printf("user : \%s\(\backslash\)n", g\_user\_name);}}
+\DoxyCodeLine{13     \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{ssu__sfinder_8h_a781c108e12733d6b71ef8ba56ea91de0}{g\_user\_name}}, \textcolor{stringliteral}{"root"}))}
+\DoxyCodeLine{14     \{}
+\DoxyCodeLine{15         \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{16         \textcolor{keywordtype}{char} buf2[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{17         \textcolor{keywordtype}{char} buf3[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{18         FILE *fp;}
+\DoxyCodeLine{19         memset(buf, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{20         strcpy(buf, pw-\/>pw\_dir);}
+\DoxyCodeLine{21         strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{22         strcpy(buf2, buf);}
+\DoxyCodeLine{23         strcpy(buf3, buf);}
+\DoxyCodeLine{24         strcat(buf3, \textcolor{stringliteral}{".duplicate\_20182624.log"});}
+\DoxyCodeLine{25         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a11eff748cecc689036d77664bd1b33a0}{g\_duplicat\_log}}, buf3);}
+\DoxyCodeLine{26         \textcolor{keywordflow}{if} ((fp = fopen(buf3, \textcolor{stringliteral}{"a+"})) != NULL)}
+\DoxyCodeLine{27             fclose(fp);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         strcat(buf, \textcolor{stringliteral}{".Trash"});}
+\DoxyCodeLine{30         mkdir(buf, 0775);}
+\DoxyCodeLine{31         strcat(buf, \textcolor{stringliteral}{"/files/"});}
+\DoxyCodeLine{32         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a683bf5fb105503d67c911916edd677e3}{g\_trash\_file\_path}}, buf);}
+\DoxyCodeLine{33         strcat(buf2, \textcolor{stringliteral}{".Trash/info"});}
+\DoxyCodeLine{34         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a4ce025892fb351a0c421421792ccffd2}{g\_trash\_info\_path}}, buf2);}
+\DoxyCodeLine{35         mkdir(buf, 0775);}
+\DoxyCodeLine{36         mkdir(buf2, 0775);}
+\DoxyCodeLine{37     \}}
+\DoxyCodeLine{38     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{39     \{}
+\DoxyCodeLine{40         \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{41         \textcolor{keywordtype}{char} buf2[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{42         \textcolor{keywordtype}{char} buf3[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{43         FILE *fp;}
+\DoxyCodeLine{44         memset(buf, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{45         strcpy(buf, pw-\/>pw\_dir);}
+\DoxyCodeLine{46         strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{47         strcpy(buf2, buf);}
+\DoxyCodeLine{48         strcpy(buf3, buf);}
+\DoxyCodeLine{49         strcat(buf3, \textcolor{stringliteral}{".duplicate\_20182624.log"});}
+\DoxyCodeLine{50         strcpy(\mbox{\hyperlink{ssu__sfinder_8h_a11eff748cecc689036d77664bd1b33a0}{g\_duplicat\_log}}, buf3);}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} ((fp = fopen(buf3, \textcolor{stringliteral}{"a+"})) != NULL)}
+\DoxyCodeLine{52             fclose(fp);}
+\DoxyCodeLine{53         strcat(buf, \textcolor{stringliteral}{".Trash"});}
+\DoxyCodeLine{54         mkdir(buf, 0775);}
+\DoxyCodeLine{55         strcat(buf, \textcolor{stringliteral}{"/files/"});}
+\DoxyCodeLine{56         \mbox{\hyperlink{ssu__sfinder_8h_a683bf5fb105503d67c911916edd677e3}{g\_trash\_file\_path}} = buf;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58         strcat(buf2, \textcolor{stringliteral}{".Trash/info"});}
+\DoxyCodeLine{59         \mbox{\hyperlink{ssu__sfinder_8h_a4ce025892fb351a0c421421792ccffd2}{g\_trash\_info\_path}} = buf2;}
+\DoxyCodeLine{60         mkdir(buf, 0775);}
+\DoxyCodeLine{61         mkdir(buf2, 0775);}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63     \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}} = \mbox{\hyperlink{ssu__sfinder_8h_a50f0113f5c1d8212024f1c1e26de0e56}{create\_queue\_link}}();}
+\DoxyCodeLine{64     \textcolor{keyword}{struct }timeval start, end;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{67     \{}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         printf(\textcolor{stringliteral}{"20182624> "});}
+\DoxyCodeLine{70         fgets(buf, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}, stdin);}
+\DoxyCodeLine{71         argc = \mbox{\hyperlink{ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e}{user\_input}}(buf, \&split);}
+\DoxyCodeLine{72         \textcolor{comment}{/*for (int i = 0; i < argc; i++)}}
+\DoxyCodeLine{73 \textcolor{comment}{        \{}}
+\DoxyCodeLine{74 \textcolor{comment}{            printf("\%s\(\backslash\)n", split[i]);}}
+\DoxyCodeLine{75 \textcolor{comment}{        \}*/}}
+\DoxyCodeLine{76         \textcolor{keywordflow}{if} (argc == 0)}
+\DoxyCodeLine{77         \{}
+\DoxyCodeLine{78             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strncmp(split[0], \textcolor{stringliteral}{"fmd5"}, 4))}
+\DoxyCodeLine{82         \{}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84             \mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} = 1;}
+\DoxyCodeLine{85             \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}{get\_opt}}(argc, split) \&\& \mbox{\hyperlink{ssu__sfinder_8c_a76984c6f2979700ce105c66439ea996f}{chk\_arg\_error}}())}
+\DoxyCodeLine{86             \{}
+\DoxyCodeLine{87                 \textcolor{keywordtype}{char} *ext;}
+\DoxyCodeLine{88                 \mbox{\hyperlink{ssu__sfinder_8c_aa8545a94ef437bd56b78fa70bdc5c692}{convert\_file\_size}}(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}});}
+\DoxyCodeLine{89                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} < \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}})}
+\DoxyCodeLine{90                 \{}
+\DoxyCodeLine{91                     printf(\textcolor{stringliteral}{"size error\(\backslash\)n"});}
+\DoxyCodeLine{92                 \}}
+\DoxyCodeLine{93                 \textcolor{comment}{// printf("ext: \%s min : \%ld max : \%ld dir: \%s home: \%s\(\backslash\)n", g\_ext\_arg, g\_minsize, g\_maxsize, g\_real\_path, g\_home\_dir);}}
+\DoxyCodeLine{94                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{95                 \{}
+\DoxyCodeLine{96                     gettimeofday(\&start, NULL);}
+\DoxyCodeLine{97                     ext = strrchr(\mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}, \textcolor{charliteral}{'.'});}
+\DoxyCodeLine{98                     \textcolor{comment}{// printf("\%s\(\backslash\)n", ext);}}
+\DoxyCodeLine{99                     \mbox{\hyperlink{ssu__sfinder_8h_aaeba323ed71005bdee404f7345974ac1}{enqueue}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}, \mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}});}
+\DoxyCodeLine{100                     \mbox{\hyperlink{ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3}{search\_same\_file}}(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, ext);}
+\DoxyCodeLine{101                     \mbox{\hyperlink{ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297}{check\_same\_file}}();}
+\DoxyCodeLine{102                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}} != NULL)}
+\DoxyCodeLine{103                     \{}
+\DoxyCodeLine{104                         \mbox{\hyperlink{ssu__sfinder_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\_node}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{105                         \mbox{\hyperlink{ssu__sfinder_8h_a3f92694c773953cd1617c40861ed033a}{cnt\_set\_idx\_num}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{106                     \}}
+\DoxyCodeLine{107                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{108                     \{ \textcolor{comment}{//동일 파일이 없을 경우}}
+\DoxyCodeLine{109                         printf(\textcolor{stringliteral}{"No duplicates in \%s\(\backslash\)n"}, \mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}});}
+\DoxyCodeLine{110                         gettimeofday(\&end, NULL);}
+\DoxyCodeLine{111                         end.tv\_sec -\/= start.tv\_sec;}
+\DoxyCodeLine{112                         \textcolor{keywordflow}{if} (end.tv\_usec < start.tv\_usec)}
+\DoxyCodeLine{113                         \{}
+\DoxyCodeLine{114                             end.tv\_sec-\/-\/;}
+\DoxyCodeLine{115                             end.tv\_usec += 1000000;}
+\DoxyCodeLine{116                         \}}
+\DoxyCodeLine{117                         end.tv\_usec -\/= start.tv\_usec;}
+\DoxyCodeLine{118                         printf(\textcolor{stringliteral}{"Searching time: \%ld:\%06ld(sec:usec)\(\backslash\)n"}, end.tv\_sec, end.tv\_usec);}
+\DoxyCodeLine{119                         \mbox{\hyperlink{ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a}{clear\_g\_var}}();}
+\DoxyCodeLine{120                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{121                     \}}
+\DoxyCodeLine{122                     gettimeofday(\&end, NULL);}
+\DoxyCodeLine{123                     end.tv\_sec -\/= start.tv\_sec;}
+\DoxyCodeLine{124                     \textcolor{keywordflow}{if} (end.tv\_usec < start.tv\_usec)}
+\DoxyCodeLine{125                     \{}
+\DoxyCodeLine{126                         end.tv\_sec-\/-\/;}
+\DoxyCodeLine{127                         end.tv\_usec += 1000000;}
+\DoxyCodeLine{128                     \}}
+\DoxyCodeLine{129                     end.tv\_usec -\/= start.tv\_usec;}
+\DoxyCodeLine{130                     printf(\textcolor{stringliteral}{"Searching time: \%ld:\%06ld(sec:usec)\(\backslash\)n"}, end.tv\_sec, end.tv\_usec);}
+\DoxyCodeLine{131                     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{132                     \{}
+\DoxyCodeLine{133                         \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a507d2bed738afcbd8d98e51c3c811d44}{g\_total\_node}} == \mbox{\hyperlink{ssu__sfinder_8h_a76bc4c7dfaeca7710dd5802d3e48f3d4}{g\_total\_set}})}
+\DoxyCodeLine{134                         \{}
+\DoxyCodeLine{135                             \mbox{\hyperlink{ssu__sfinder_8h_acb79ca82200f39f5df150f8f02893002}{free\_all\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{136                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{137                         \}}
+\DoxyCodeLine{138                         printf(\textcolor{stringliteral}{">> "});}
+\DoxyCodeLine{139                         fgets(buf, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}, stdin);}
+\DoxyCodeLine{140                         argc2 = \mbox{\hyperlink{ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e}{user\_input}}(buf, \&split2);}
+\DoxyCodeLine{141                         \textcolor{keywordflow}{if} (argc2 == 0)}
+\DoxyCodeLine{142                             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{143                         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e}{input\_error}}(argc2, split2))}
+\DoxyCodeLine{144                         \{}
+\DoxyCodeLine{145                             printf(\textcolor{stringliteral}{"Input Error!!\(\backslash\)n"});}
+\DoxyCodeLine{146                         \}}
+\DoxyCodeLine{147                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{148                         \{}
+\DoxyCodeLine{149                             \textcolor{keywordflow}{if} (!strcmp(split2[0], \textcolor{stringliteral}{"exit"}))}
+\DoxyCodeLine{150                             \{}
+\DoxyCodeLine{151                                 \textcolor{keywordflow}{if} (*split2)}
+\DoxyCodeLine{152                                 \{}
+\DoxyCodeLine{153                                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split2[i]; i++)}
+\DoxyCodeLine{154                                         free(split2[i]);}
+\DoxyCodeLine{155                                     free(split2);}
+\DoxyCodeLine{156                                 \}}
+\DoxyCodeLine{157                                 \mbox{\hyperlink{ssu__sfinder_8h_acb79ca82200f39f5df150f8f02893002}{free\_all\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{158                                 printf(\textcolor{stringliteral}{">> Back to Prompt\(\backslash\)n"});}
+\DoxyCodeLine{159                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{160                             \}}
+\DoxyCodeLine{161                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_a43daf4bb27f2a92236fbd576ca3c13eb}{g\_del\_opt\_d}} == 1)}
+\DoxyCodeLine{162                             \{}
+\DoxyCodeLine{163                                 \mbox{\hyperlink{ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9}{option\_d}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, \mbox{\hyperlink{ssu__sfinder_8h_a16afde3979c7bb0e67f414bd8885ec8b}{g\_del\_idx}});}
+\DoxyCodeLine{164                             \}}
+\DoxyCodeLine{165                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_ac006f2378bc96e938602cbf28b951ddc}{g\_del\_opt\_i}} == 1)}
+\DoxyCodeLine{166                             \{}
+\DoxyCodeLine{167                                 \mbox{\hyperlink{ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8}{option\_i}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}});}
+\DoxyCodeLine{168                             \}}
+\DoxyCodeLine{169                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_a3c8ac8b86a115b7508088b37b69fc01b}{g\_del\_opt\_f}} == 1)}
+\DoxyCodeLine{170                             \{}
+\DoxyCodeLine{171                                 \mbox{\hyperlink{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}{option\_f\_t}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, 0);}
+\DoxyCodeLine{172                             \}}
+\DoxyCodeLine{173                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_ae1f340560d5f362a1d9d71e6ca19e737}{g\_del\_opt\_t}} == 1)}
+\DoxyCodeLine{174                             \{}
+\DoxyCodeLine{175                                 \mbox{\hyperlink{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}{option\_f\_t}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, 1);}
+\DoxyCodeLine{176                             \}}
+\DoxyCodeLine{177                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{178                             \{}
+\DoxyCodeLine{179                                 printf(\textcolor{stringliteral}{"error!\(\backslash\)n"});}
+\DoxyCodeLine{180                             \}}
+\DoxyCodeLine{181                         \}}
+\DoxyCodeLine{182                         \textcolor{keywordflow}{if} (*split2)}
+\DoxyCodeLine{183                         \{}
+\DoxyCodeLine{184                             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split2[i]; i++)}
+\DoxyCodeLine{185                                 free(split2[i]);}
+\DoxyCodeLine{186                             free(split2);}
+\DoxyCodeLine{187                         \}}
+\DoxyCodeLine{188                         \mbox{\hyperlink{ssu__sfinder_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\_node}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{189                     \}}
+\DoxyCodeLine{190                 \}}
+\DoxyCodeLine{191             \}}
+\DoxyCodeLine{192         \}}
+\DoxyCodeLine{193         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strncmp(split[0], \textcolor{stringliteral}{"fsha1"}, 5))}
+\DoxyCodeLine{194         \{}
+\DoxyCodeLine{195             \mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} = 2;}
+\DoxyCodeLine{196             \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}{get\_opt}}(argc, split) \&\& \mbox{\hyperlink{ssu__sfinder_8c_a76984c6f2979700ce105c66439ea996f}{chk\_arg\_error}}())}
+\DoxyCodeLine{197             \{}
+\DoxyCodeLine{198                 \textcolor{keywordtype}{char} *ext;}
+\DoxyCodeLine{199                 \mbox{\hyperlink{ssu__sfinder_8c_aa8545a94ef437bd56b78fa70bdc5c692}{convert\_file\_size}}(\mbox{\hyperlink{ssu__sfinder_8h_a6f7e29d26a5812be2ef774fd8dcf7d59}{g\_min\_size}}, \mbox{\hyperlink{ssu__sfinder_8h_a52e04c1fd4bf3c0f4c0ae0c44f420d31}{g\_max\_size}});}
+\DoxyCodeLine{200                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}} < \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}})}
+\DoxyCodeLine{201                 \{}
+\DoxyCodeLine{202                     printf(\textcolor{stringliteral}{"size error\(\backslash\)n"});}
+\DoxyCodeLine{203                 \}}
+\DoxyCodeLine{204                 \textcolor{comment}{// printf("ext: \%s min : \%ld max : \%ld dir: \%s home: \%s\(\backslash\)n", g\_ext\_arg, g\_minsize, g\_maxsize, g\_real\_path, g\_home\_dir);}}
+\DoxyCodeLine{205                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{206                 \{}
+\DoxyCodeLine{207                     gettimeofday(\&start, NULL);}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209                     ext = strrchr(\mbox{\hyperlink{ssu__sfinder_8h_a688e0bca263340e47ee829df377de275}{g\_ext\_arg}}, \textcolor{charliteral}{'.'});}
+\DoxyCodeLine{210                     \mbox{\hyperlink{ssu__sfinder_8h_aaeba323ed71005bdee404f7345974ac1}{enqueue}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}, \mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}});}
+\DoxyCodeLine{211                     \mbox{\hyperlink{ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3}{search\_same\_file}}(\mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}}, ext);}
+\DoxyCodeLine{212                     \mbox{\hyperlink{ssu__sfinder_8c_a5df526875d84fcf3663e9fe84c0a2297}{check\_same\_file}}();}
+\DoxyCodeLine{213                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}} != NULL)}
+\DoxyCodeLine{214                     \{}
+\DoxyCodeLine{215                         \mbox{\hyperlink{ssu__sfinder_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\_node}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{216                         \mbox{\hyperlink{ssu__sfinder_8h_a3f92694c773953cd1617c40861ed033a}{cnt\_set\_idx\_num}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{217                     \}}
+\DoxyCodeLine{218                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{219                     \{ \textcolor{comment}{//동일 파일이 없을 경우}}
+\DoxyCodeLine{220                         printf(\textcolor{stringliteral}{"No duplicates in \%s\(\backslash\)n"}, \mbox{\hyperlink{ssu__sfinder_8h_aa0f61d4f444828083c0760a3a26830a4}{g\_real\_path}});}
+\DoxyCodeLine{221                         gettimeofday(\&end, NULL);}
+\DoxyCodeLine{222                         end.tv\_sec -\/= start.tv\_sec;}
+\DoxyCodeLine{223                         \textcolor{keywordflow}{if} (end.tv\_usec < start.tv\_usec)}
+\DoxyCodeLine{224                         \{}
+\DoxyCodeLine{225                             end.tv\_sec-\/-\/;}
+\DoxyCodeLine{226                             end.tv\_usec += 1000000;}
+\DoxyCodeLine{227                         \}}
+\DoxyCodeLine{228                         end.tv\_usec -\/= start.tv\_usec;}
+\DoxyCodeLine{229                         printf(\textcolor{stringliteral}{"Searching time: \%ld:\%06ld(sec:usec)\(\backslash\)n"}, end.tv\_sec, end.tv\_usec);}
+\DoxyCodeLine{230                         \mbox{\hyperlink{ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a}{clear\_g\_var}}();}
+\DoxyCodeLine{231                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{232                     \}}
+\DoxyCodeLine{233                     gettimeofday(\&end, NULL);}
+\DoxyCodeLine{234                     end.tv\_sec -\/= start.tv\_sec;}
+\DoxyCodeLine{235                     \textcolor{keywordflow}{if} (end.tv\_usec < start.tv\_usec)}
+\DoxyCodeLine{236                     \{}
+\DoxyCodeLine{237                         end.tv\_sec-\/-\/;}
+\DoxyCodeLine{238                         end.tv\_usec += 1000000;}
+\DoxyCodeLine{239                     \}}
+\DoxyCodeLine{240                     end.tv\_usec -\/= start.tv\_usec;}
+\DoxyCodeLine{241                     printf(\textcolor{stringliteral}{"Searching time: \%ld:\%06ld(sec:usec)\(\backslash\)n"}, end.tv\_sec, end.tv\_usec);}
+\DoxyCodeLine{242                     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{243                     \{}
+\DoxyCodeLine{244                         \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a507d2bed738afcbd8d98e51c3c811d44}{g\_total\_node}} == \mbox{\hyperlink{ssu__sfinder_8h_a76bc4c7dfaeca7710dd5802d3e48f3d4}{g\_total\_set}})}
+\DoxyCodeLine{245                         \{}
+\DoxyCodeLine{246                             \mbox{\hyperlink{ssu__sfinder_8h_acb79ca82200f39f5df150f8f02893002}{free\_all\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{247                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{248                         \}}
+\DoxyCodeLine{249                         printf(\textcolor{stringliteral}{">> "});}
+\DoxyCodeLine{250                         fgets(buf, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}, stdin);}
+\DoxyCodeLine{251                         argc2 = \mbox{\hyperlink{ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e}{user\_input}}(buf, \&split2);}
+\DoxyCodeLine{252                         \textcolor{keywordflow}{if} (argc2 == 0)}
+\DoxyCodeLine{253                             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{254                         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{ssu__sfinder_8c_a97c33d5098c37d84fed81e38ad95329e}{input\_error}}(argc2, split2))}
+\DoxyCodeLine{255                         \{}
+\DoxyCodeLine{256                             printf(\textcolor{stringliteral}{"Input Error!!\(\backslash\)n"});}
+\DoxyCodeLine{257                         \}}
+\DoxyCodeLine{258                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{259                         \{}
+\DoxyCodeLine{260                             \textcolor{keywordflow}{if} (!strcmp(split2[0], \textcolor{stringliteral}{"exit"}))}
+\DoxyCodeLine{261                             \{}
+\DoxyCodeLine{262                                 \textcolor{keywordflow}{if} (*split2)}
+\DoxyCodeLine{263                                 \{}
+\DoxyCodeLine{264                                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split2[i]; i++)}
+\DoxyCodeLine{265                                         free(split2[i]);}
+\DoxyCodeLine{266                                     free(split2);}
+\DoxyCodeLine{267                                 \}}
+\DoxyCodeLine{268                                 \mbox{\hyperlink{ssu__sfinder_8h_acb79ca82200f39f5df150f8f02893002}{free\_all\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{269                                 printf(\textcolor{stringliteral}{">> Back to Prompt\(\backslash\)n"});}
+\DoxyCodeLine{270                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{271                             \}}
+\DoxyCodeLine{272                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_a43daf4bb27f2a92236fbd576ca3c13eb}{g\_del\_opt\_d}} == 1)}
+\DoxyCodeLine{273                             \{}
+\DoxyCodeLine{274                                 \mbox{\hyperlink{ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9}{option\_d}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, \mbox{\hyperlink{ssu__sfinder_8h_a16afde3979c7bb0e67f414bd8885ec8b}{g\_del\_idx}});}
+\DoxyCodeLine{275                             \}}
+\DoxyCodeLine{276                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_ac006f2378bc96e938602cbf28b951ddc}{g\_del\_opt\_i}} == 1)}
+\DoxyCodeLine{277                             \{}
+\DoxyCodeLine{278                                 \mbox{\hyperlink{ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8}{option\_i}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}});}
+\DoxyCodeLine{279                             \}}
+\DoxyCodeLine{280                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_a3c8ac8b86a115b7508088b37b69fc01b}{g\_del\_opt\_f}} == 1)}
+\DoxyCodeLine{281                             \{}
+\DoxyCodeLine{282                                 \mbox{\hyperlink{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}{option\_f\_t}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, 0);}
+\DoxyCodeLine{283                             \}}
+\DoxyCodeLine{284                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a65de898133ab39aa41baff0a9f21809c}{g\_del\_opt\_l}} == 1 \&\& \mbox{\hyperlink{ssu__sfinder_8h_ae1f340560d5f362a1d9d71e6ca19e737}{g\_del\_opt\_t}} == 1)}
+\DoxyCodeLine{285                             \{}
+\DoxyCodeLine{286                                 \mbox{\hyperlink{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}{option\_f\_t}}(\mbox{\hyperlink{ssu__sfinder_8h_aebc7344f80c6fd234273d28e0579a9d6}{g\_del\_set}}, 1);}
+\DoxyCodeLine{287                             \}}
+\DoxyCodeLine{288                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{289                             \{}
+\DoxyCodeLine{290                                 printf(\textcolor{stringliteral}{"error!\(\backslash\)n"});}
+\DoxyCodeLine{291                             \}}
+\DoxyCodeLine{292                         \}}
+\DoxyCodeLine{293                         \textcolor{keywordflow}{if} (*split2)}
+\DoxyCodeLine{294                         \{}
+\DoxyCodeLine{295                             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split2[i]; i++)}
+\DoxyCodeLine{296                                 free(split2[i]);}
+\DoxyCodeLine{297                             free(split2);}
+\DoxyCodeLine{298                         \}}
+\DoxyCodeLine{299                         \mbox{\hyperlink{ssu__sfinder_8h_ae0cf5c8d3c37d3a3b7167b97c3ccc37d}{print\_node}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{300                     \}}
+\DoxyCodeLine{301                 \}}
+\DoxyCodeLine{302             \}}
+\DoxyCodeLine{303         \}}
+\DoxyCodeLine{304         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strncmp(split[0], \textcolor{stringliteral}{"list"}, 4))}
+\DoxyCodeLine{305         \{}
+\DoxyCodeLine{306             \mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} = 3;}
+\DoxyCodeLine{307             \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}{get\_opt}}(argc, split))}
+\DoxyCodeLine{308             \{}
+\DoxyCodeLine{309             \}}
+\DoxyCodeLine{310         \}}
+\DoxyCodeLine{311         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strncmp(split[0], \textcolor{stringliteral}{"trash"}, 5))}
+\DoxyCodeLine{312         \{}
+\DoxyCodeLine{313             \mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} = 4;}
+\DoxyCodeLine{314             \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8c_a8b95dd202084d1f3c860a738cfb8b38a}{get\_opt}}(argc, split))}
+\DoxyCodeLine{315             \{}
+\DoxyCodeLine{316             \}}
+\DoxyCodeLine{317         \}}
+\DoxyCodeLine{318         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strncmp(split[0], \textcolor{stringliteral}{"restore"}, 7))}
+\DoxyCodeLine{319         \{}
+\DoxyCodeLine{320         \}}
+\DoxyCodeLine{321         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strncmp(split[0], \textcolor{stringliteral}{"exit"}, 4))}
+\DoxyCodeLine{322         \{}
+\DoxyCodeLine{323             printf(\textcolor{stringliteral}{"Prompt End\(\backslash\)n"});}
+\DoxyCodeLine{324             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{325         \}}
+\DoxyCodeLine{326         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{327         \{}
+\DoxyCodeLine{328             \mbox{\hyperlink{ssu__sfinder_8c_a853216ac51aa181669ff4d3de74058a7}{print\_help}}();}
+\DoxyCodeLine{329         \}}
+\DoxyCodeLine{330         \textcolor{comment}{// printf("fun: \%d ext : \%s min : \%s max : \%s dest : \%s t : \%d\(\backslash\)n", g\_function, g\_ext\_arg, g\_min\_size, g\_max\_size, g\_dir\_arg, g\_thread);}}
+\DoxyCodeLine{331         \mbox{\hyperlink{ssu__sfinder_8c_a03c5c0ee4d373d767571e505fd2eb71a}{clear\_g\_var}}();}
+\DoxyCodeLine{332         \textcolor{keywordflow}{if} (*split)}
+\DoxyCodeLine{333         \{}
+\DoxyCodeLine{334             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; split[i]; i++)}
+\DoxyCodeLine{335                 free(split[i]);}
+\DoxyCodeLine{336             free(split);}
+\DoxyCodeLine{337         \}}
+\DoxyCodeLine{338     \}}
+\DoxyCodeLine{339 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d7e/ssu__sfinder_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9}\label{ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!option\_d@{option\_d}}
+\index{option\_d@{option\_d}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{option\_d()}{option\_d()}}
+{\footnotesize\ttfamily void option\+\_\+d (\begin{DoxyParamCaption}\item[{int}]{set,  }\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 843 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{844 \{}
+\DoxyCodeLine{845     \textcolor{keywordtype}{char} *path;}
+\DoxyCodeLine{846     FILE *fp;}
+\DoxyCodeLine{847     \textcolor{keywordtype}{char} logbuf[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{848     \textcolor{keywordtype}{char} times[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{849     time\_t timer = time(NULL);}
+\DoxyCodeLine{850     \textcolor{keyword}{struct }tm *t = localtime(\&timer);}
+\DoxyCodeLine{851     sprintf(times, \textcolor{stringliteral}{"\%d-\/\%d-\/\%d \%d:\%d:\%d "}, t-\/>tm\_year + 1900, t-\/>tm\_mon + 1, t-\/>tm\_mday, t-\/>tm\_hour, t-\/>tm\_min, t-\/>tm\_sec);}
+\DoxyCodeLine{852     fp = fopen(\mbox{\hyperlink{ssu__sfinder_8h_a11eff748cecc689036d77664bd1b33a0}{g\_duplicat\_log}}, \textcolor{stringliteral}{"a+"});}
+\DoxyCodeLine{853 }
+\DoxyCodeLine{854     path = \mbox{\hyperlink{ssu__sfinder_8h_a7629992787b4550e6ef8fa9c808adf85}{delete\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, set, idx);}
+\DoxyCodeLine{855     printf(\textcolor{stringliteral}{"\(\backslash\)"\%s\(\backslash\)" has been deleted in \#\%d\(\backslash\)n"}, path, set);}
+\DoxyCodeLine{856     strcpy(logbuf, \textcolor{stringliteral}{"[DELETE] "});}
+\DoxyCodeLine{857     strcat(logbuf, path);}
+\DoxyCodeLine{858     strcat(logbuf, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{859     strcat(logbuf, times);}
+\DoxyCodeLine{860     strcat(logbuf, \mbox{\hyperlink{ssu__sfinder_8h_a781c108e12733d6b71ef8ba56ea91de0}{g\_user\_name}});}
+\DoxyCodeLine{861     fprintf(fp, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, logbuf);}
+\DoxyCodeLine{862     remove(path);}
+\DoxyCodeLine{863     \mbox{\hyperlink{ssu__sfinder_8h_a3f92694c773953cd1617c40861ed033a}{cnt\_set\_idx\_num}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{864     free(path);}
+\DoxyCodeLine{865     fclose(fp);}
+\DoxyCodeLine{866 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{db/d7e/ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{db/d7e/ssu__sfinder_8c_aff656aedd9d1cdcf7e241ae555390bb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}\label{ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!option\_f\_t@{option\_f\_t}}
+\index{option\_f\_t@{option\_f\_t}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{option\_f\_t()}{option\_f\_t()}}
+{\footnotesize\ttfamily void option\+\_\+f\+\_\+t (\begin{DoxyParamCaption}\item[{int}]{set,  }\item[{int}]{flag }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 919 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{920 \{}
+\DoxyCodeLine{921     \textcolor{keywordtype}{char} *path;}
+\DoxyCodeLine{922     \textcolor{keywordtype}{char} *latest\_mtim\_path;}
+\DoxyCodeLine{923     \textcolor{keywordtype}{char} *latest\_mtim;}
+\DoxyCodeLine{924     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{925     \textcolor{keyword}{struct }dirent **namelist;}
+\DoxyCodeLine{926     \textcolor{keywordtype}{int} cnt;}
+\DoxyCodeLine{927     \textcolor{keywordtype}{int} latest\_mtim\_idx;}
+\DoxyCodeLine{928     \textcolor{keywordtype}{int} total\_node;}
+\DoxyCodeLine{929     FILE *fp;}
+\DoxyCodeLine{930     \textcolor{keywordtype}{char} logbuf[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{931     \textcolor{keywordtype}{char} times[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{932     time\_t timer = time(NULL);}
+\DoxyCodeLine{933     \textcolor{keyword}{struct }tm *t = localtime(\&timer);}
+\DoxyCodeLine{934     sprintf(times, \textcolor{stringliteral}{"\%d-\/\%d-\/\%d \%d:\%d:\%d "}, t-\/>tm\_year + 1900, t-\/>tm\_mon + 1, t-\/>tm\_mday, t-\/>tm\_hour, t-\/>tm\_min, t-\/>tm\_sec);}
+\DoxyCodeLine{935     fp = fopen(\mbox{\hyperlink{ssu__sfinder_8h_a11eff748cecc689036d77664bd1b33a0}{g\_duplicat\_log}}, \textcolor{stringliteral}{"a+"});}
+\DoxyCodeLine{936 }
+\DoxyCodeLine{937     \textcolor{comment}{//가장 최근에 수정한 파일의 인덱스 번호, 경로, 수정한 날짜를 얻어옴}}
+\DoxyCodeLine{938     latest\_mtim\_idx = \mbox{\hyperlink{ssu__sfinder_8h_ad17e311b8a3341e7c7754ed6db8a9c51}{get\_latest\_mtim\_idx}}(set);}
+\DoxyCodeLine{939     latest\_mtim\_path = \mbox{\hyperlink{ssu__sfinder_8h_aed7551c7f259c88ec2cc28c8e36c4d40}{get\_node\_path}}(set, latest\_mtim\_idx);}
+\DoxyCodeLine{940     latest\_mtim = \mbox{\hyperlink{ssu__sfinder_8h_a57d0c91faee0b63ca16dbeea423c88d3}{get\_latest\_mtim}}(set, latest\_mtim\_idx);}
+\DoxyCodeLine{941     total\_node = \mbox{\hyperlink{ssu__sfinder_8h_ad04d0ac50102797c21878e589f6e9e0b}{cnt\_set\_node}}(set);}
+\DoxyCodeLine{942     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= total\_node; i++)}
+\DoxyCodeLine{943     \{}
+\DoxyCodeLine{944         \textcolor{keywordflow}{if} (i == latest\_mtim\_idx)}
+\DoxyCodeLine{945             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{946         \textcolor{keywordflow}{if} (flag == 0)}
+\DoxyCodeLine{947         \{}
+\DoxyCodeLine{948             memset(logbuf, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{949             path = \mbox{\hyperlink{ssu__sfinder_8h_a7629992787b4550e6ef8fa9c808adf85}{delete\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, set, i);}
+\DoxyCodeLine{950             strcpy(logbuf, \textcolor{stringliteral}{"[DELETE] "});}
+\DoxyCodeLine{951             strcat(logbuf, path);}
+\DoxyCodeLine{952             strcat(logbuf, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{953             strcat(logbuf, times);}
+\DoxyCodeLine{954             strcat(logbuf, \mbox{\hyperlink{ssu__sfinder_8h_a781c108e12733d6b71ef8ba56ea91de0}{g\_user\_name}});}
+\DoxyCodeLine{955             fprintf(fp, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, logbuf);}
+\DoxyCodeLine{956             remove(path);}
+\DoxyCodeLine{957             free(path);}
+\DoxyCodeLine{958         \}}
+\DoxyCodeLine{959         \textcolor{comment}{//만약 휴지통이 없으면 해당 실행 디렉토리 위치에 휴지통을 만들고 거기에 파일을 링크해줌.}}
+\DoxyCodeLine{960         \textcolor{comment}{//원본 파일은 unlink를 해줌}}
+\DoxyCodeLine{961         \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{962         \{}
+\DoxyCodeLine{963             memset(logbuf, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{964             path = \mbox{\hyperlink{ssu__sfinder_8h_a7629992787b4550e6ef8fa9c808adf85}{delete\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, set, i);}
+\DoxyCodeLine{965             strcpy(buf, \mbox{\hyperlink{ssu__sfinder_8h_a683bf5fb105503d67c911916edd677e3}{g\_trash\_file\_path}});}
+\DoxyCodeLine{966             strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{967             strcat(buf, strrchr(path, \textcolor{charliteral}{'/'}));}
+\DoxyCodeLine{968             strcpy(logbuf, \textcolor{stringliteral}{"[REMOVE] "});}
+\DoxyCodeLine{969             strcat(logbuf, path);}
+\DoxyCodeLine{970             strcat(logbuf, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{971             strcat(logbuf, times);}
+\DoxyCodeLine{972             strcat(logbuf, \mbox{\hyperlink{ssu__sfinder_8h_a781c108e12733d6b71ef8ba56ea91de0}{g\_user\_name}});}
+\DoxyCodeLine{973             fprintf(fp, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, logbuf);}
+\DoxyCodeLine{974             link(path, buf);}
+\DoxyCodeLine{975             unlink(path);}
+\DoxyCodeLine{976             free(path);}
+\DoxyCodeLine{977         \}}
+\DoxyCodeLine{978     \}}
+\DoxyCodeLine{979     \textcolor{keywordflow}{if} (flag == 0)}
+\DoxyCodeLine{980         printf(\textcolor{stringliteral}{"Left file in \#\%d : \%s (\%s)\(\backslash\)n\(\backslash\)n"}, set, latest\_mtim\_path, latest\_mtim);}
+\DoxyCodeLine{981     \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{982         printf(\textcolor{stringliteral}{"All files in \#\%d have moved to Trash except \(\backslash\)"\%s\(\backslash\)" (\%s)\(\backslash\)n\(\backslash\)n"}, set, latest\_mtim\_path, latest\_mtim);}
+\DoxyCodeLine{983     free(latest\_mtim);}
+\DoxyCodeLine{984     free(latest\_mtim\_path);}
+\DoxyCodeLine{985     \mbox{\hyperlink{ssu__sfinder_8h_a3f92694c773953cd1617c40861ed033a}{cnt\_set\_idx\_num}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{986     fclose(fp);}
+\DoxyCodeLine{987 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{db/d7e/ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{db/d7e/ssu__sfinder_8c_a7310fa5c33b6bc5e834f09169fb22818_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8}\label{ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!option\_i@{option\_i}}
+\index{option\_i@{option\_i}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{option\_i()}{option\_i()}}
+{\footnotesize\ttfamily int option\+\_\+i (\begin{DoxyParamCaption}\item[{int}]{set }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 869 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{870 \{}
+\DoxyCodeLine{871     \textcolor{keywordtype}{char} *path;}
+\DoxyCodeLine{872     \textcolor{keywordtype}{char} buf[5];}
+\DoxyCodeLine{873     \textcolor{keywordtype}{int} total\_node;}
+\DoxyCodeLine{874     FILE *fp;}
+\DoxyCodeLine{875     \textcolor{keywordtype}{char} logbuf[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{876     \textcolor{keywordtype}{char} times[\mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}}];}
+\DoxyCodeLine{877     time\_t timer = time(NULL);}
+\DoxyCodeLine{878     \textcolor{keyword}{struct }tm *t = localtime(\&timer);}
+\DoxyCodeLine{879     sprintf(times, \textcolor{stringliteral}{"\%d-\/\%d-\/\%d \%d:\%d:\%d "}, t-\/>tm\_year + 1900, t-\/>tm\_mon + 1, t-\/>tm\_mday, t-\/>tm\_hour, t-\/>tm\_min, t-\/>tm\_sec);}
+\DoxyCodeLine{880 }
+\DoxyCodeLine{881     total\_node = \mbox{\hyperlink{ssu__sfinder_8h_ad04d0ac50102797c21878e589f6e9e0b}{cnt\_set\_node}}(set);}
+\DoxyCodeLine{882     fp = fopen(\mbox{\hyperlink{ssu__sfinder_8h_a11eff748cecc689036d77664bd1b33a0}{g\_duplicat\_log}}, \textcolor{stringliteral}{"a+"});}
+\DoxyCodeLine{883     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= total\_node; i++)}
+\DoxyCodeLine{884     \{}
+\DoxyCodeLine{885         path = \mbox{\hyperlink{ssu__sfinder_8h_aed7551c7f259c88ec2cc28c8e36c4d40}{get\_node\_path}}(set, i);}
+\DoxyCodeLine{886         printf(\textcolor{stringliteral}{"Delete \(\backslash\)"\%s\(\backslash\)"? [y/n] "}, path);}
+\DoxyCodeLine{887         free(path);}
+\DoxyCodeLine{888         fgets(buf, 5, stdin);}
+\DoxyCodeLine{889         \textcolor{keywordflow}{if} (!strcmp(buf, \textcolor{stringliteral}{"y\(\backslash\)n"}) || !strcmp(buf, \textcolor{stringliteral}{"Y\(\backslash\)n"}))}
+\DoxyCodeLine{890         \{}
+\DoxyCodeLine{891             memset(logbuf, 0, \mbox{\hyperlink{ssu__sfinder_8h_a6c7cd32e1bac137f05e4a752b4ad10af}{BUFF\_SIZE}});}
+\DoxyCodeLine{892             path = \mbox{\hyperlink{ssu__sfinder_8h_a7629992787b4550e6ef8fa9c808adf85}{delete\_node}}(\&\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}}, set, i);}
+\DoxyCodeLine{893             strcpy(logbuf, \textcolor{stringliteral}{"[DELETE] "});}
+\DoxyCodeLine{894             strcat(logbuf, path);}
+\DoxyCodeLine{895             strcat(logbuf, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{896             strcat(logbuf, times);}
+\DoxyCodeLine{897             strcat(logbuf, \mbox{\hyperlink{ssu__sfinder_8h_a781c108e12733d6b71ef8ba56ea91de0}{g\_user\_name}});}
+\DoxyCodeLine{898             fprintf(fp, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, logbuf);}
+\DoxyCodeLine{899             remove(path);}
+\DoxyCodeLine{900             free(path);}
+\DoxyCodeLine{901         \}}
+\DoxyCodeLine{902         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(buf, \textcolor{stringliteral}{"n\(\backslash\)n"}) || !strcmp(buf, \textcolor{stringliteral}{"N\(\backslash\)n"}))}
+\DoxyCodeLine{903         \{}
+\DoxyCodeLine{904             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{905         \}}
+\DoxyCodeLine{906         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{907         \{}
+\DoxyCodeLine{908             printf(\textcolor{stringliteral}{"Input error!!\(\backslash\)n"});}
+\DoxyCodeLine{909             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{910         \}}
+\DoxyCodeLine{911     \}}
+\DoxyCodeLine{912     \mbox{\hyperlink{ssu__sfinder_8h_a3f92694c773953cd1617c40861ed033a}{cnt\_set\_idx\_num}}(\mbox{\hyperlink{ssu__sfinder_8h_a1bd308c3e2b40d2f6776c9d11bdb4851}{g\_head}});}
+\DoxyCodeLine{913     fclose(fp);}
+\DoxyCodeLine{914     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{915 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{db/d7e/ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{db/d7e/ssu__sfinder_8c_aeaec8a40d63f9240dbe72476d86b23a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a853216ac51aa181669ff4d3de74058a7}\label{ssu__sfinder_8c_a853216ac51aa181669ff4d3de74058a7}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily void print\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 475 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{476 \{}
+\DoxyCodeLine{477     printf(\textcolor{stringliteral}{"Usage:\(\backslash\)n"});}
+\DoxyCodeLine{478     printf(\textcolor{stringliteral}{"  >  fmd5/fsha1 -\/e [FILE\_EXTENSION] -\/l [MINSIZE] -\/h [MAXSIZE] -\/d [TARGET\_DIRECTORY] -\/t [THREAD\_NUM]\(\backslash\)n"});}
+\DoxyCodeLine{479     printf(\textcolor{stringliteral}{"        >> delete -\/l [SET\_INDEX] -\/d [OPTARG] -\/i -\/f-\/ t\(\backslash\)n"});}
+\DoxyCodeLine{480     printf(\textcolor{stringliteral}{"  > trash -\/c [CATEGORY] -\/o [ORDER]\(\backslash\)n"});}
+\DoxyCodeLine{481     printf(\textcolor{stringliteral}{"  > restore [RESTORE\_INDEX]\(\backslash\)n"});}
+\DoxyCodeLine{482     printf(\textcolor{stringliteral}{"  > help\(\backslash\)n"});}
+\DoxyCodeLine{483     printf(\textcolor{stringliteral}{"  > exit\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{484 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{db/d7e/ssu__sfinder_8c_a853216ac51aa181669ff4d3de74058a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3}\label{ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!search\_same\_file@{search\_same\_file}}
+\index{search\_same\_file@{search\_same\_file}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{search\_same\_file()}{search\_same\_file()}}
+{\footnotesize\ttfamily int search\+\_\+same\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{char $\ast$}]{ext }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 616 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{617 \{}
+\DoxyCodeLine{618     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{619     \textcolor{keywordtype}{char} buf2[\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}}];}
+\DoxyCodeLine{620     \textcolor{keywordtype}{char} *dir\_path;}
+\DoxyCodeLine{621     FILE *fp;}
+\DoxyCodeLine{622     \textcolor{keyword}{struct }dirent **namelist;}
+\DoxyCodeLine{623     \textcolor{keyword}{struct }stat tmp;}
+\DoxyCodeLine{624     \textcolor{keywordtype}{int} count;}
+\DoxyCodeLine{625     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{626 }
+\DoxyCodeLine{627     \textcolor{keywordflow}{while} (!\mbox{\hyperlink{ssu__sfinder_8h_abf63bcaa6564ce901e51a13814d7787e}{is\_queue\_empty}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}))}
+\DoxyCodeLine{628     \{}
+\DoxyCodeLine{629         dir\_path = \mbox{\hyperlink{ssu__sfinder_8h_a4595f97c7610ecafe4c5c20ae503ac70}{delqueue}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}});}
+\DoxyCodeLine{630         \textcolor{keywordflow}{if} ((count = scandir(dir\_path, \&namelist, NULL, alphasort)) == -\/1)}
+\DoxyCodeLine{631         \{}
+\DoxyCodeLine{632             fprintf(stderr, \textcolor{stringliteral}{"failed open \%s\(\backslash\)n"}, dir\_path);}
+\DoxyCodeLine{633             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{634         \}}
+\DoxyCodeLine{635         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{636         \{}
+\DoxyCodeLine{637             \textcolor{keywordflow}{for} (i = 0; i < count; i++)}
+\DoxyCodeLine{638             \{}
+\DoxyCodeLine{639                 strcpy(buf2, dir\_path);}
+\DoxyCodeLine{640                 \textcolor{keywordflow}{if} (strcmp(buf2, \textcolor{stringliteral}{"/"}))}
+\DoxyCodeLine{641                     strcat(buf2, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{642                 strcat(buf2, namelist[i]-\/>d\_name);}
+\DoxyCodeLine{643                 lstat(buf2, \&tmp);}
+\DoxyCodeLine{644                 \textcolor{keywordflow}{if} (!strcmp(dir\_path, \textcolor{stringliteral}{"/"}) \&\& (!strcmp(namelist[i]-\/>d\_name, \textcolor{stringliteral}{"proc"}) || !strcmp(namelist[i]-\/>d\_name, \textcolor{stringliteral}{"sys"}) || !strcmp(namelist[i]-\/>d\_name, \textcolor{stringliteral}{"run"})))}
+\DoxyCodeLine{645                 \{}
+\DoxyCodeLine{646                     free(namelist[i]);}
+\DoxyCodeLine{647                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{648                 \}}
+\DoxyCodeLine{649                 \textcolor{keywordflow}{if} (!strcmp(namelist[i]-\/>d\_name, \textcolor{stringliteral}{"."}) || !strcmp(namelist[i]-\/>d\_name, \textcolor{stringliteral}{".."}) || !strcmp(namelist[i]-\/>d\_name, \textcolor{stringliteral}{"trashcan"}))}
+\DoxyCodeLine{650                 \{}
+\DoxyCodeLine{651                     free(namelist[i]);}
+\DoxyCodeLine{652                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{653                 \}}
+\DoxyCodeLine{654                 \textcolor{keywordflow}{if} (namelist[i]-\/>d\_type == 4 \&\& (tmp.st\_mode \& S\_ISVTX) != 01000 \&\& (tmp.st\_mode \& S\_ISUID) != 04000 \&\& (tmp.st\_mode \& S\_ISGID) != 02000)}
+\DoxyCodeLine{655                 \{}
+\DoxyCodeLine{656                     \textcolor{keywordflow}{if} (!strcmp(dir\_path, \textcolor{stringliteral}{"/"}))}
+\DoxyCodeLine{657                     \{}
+\DoxyCodeLine{658                         strcpy(buf, dir\_path);}
+\DoxyCodeLine{659                         strcat(buf, namelist[i]-\/>d\_name);}
+\DoxyCodeLine{660                         \mbox{\hyperlink{ssu__sfinder_8h_aaeba323ed71005bdee404f7345974ac1}{enqueue}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}, buf);}
+\DoxyCodeLine{661                     \}}
+\DoxyCodeLine{662                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{663                     \{}
+\DoxyCodeLine{664                         strcpy(buf, dir\_path);}
+\DoxyCodeLine{665                         strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{666                         strcat(buf, namelist[i]-\/>d\_name);}
+\DoxyCodeLine{667                         \mbox{\hyperlink{ssu__sfinder_8h_aaeba323ed71005bdee404f7345974ac1}{enqueue}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}, buf);}
+\DoxyCodeLine{668                     \}}
+\DoxyCodeLine{669                 \}}
+\DoxyCodeLine{670                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (S\_ISREG(tmp.st\_mode) \&\& tmp.st\_size >= \mbox{\hyperlink{ssu__sfinder_8h_a60cb0a925cd994a4631b37b0203e9dde}{g\_minsize}} \&\& tmp.st\_size <= \mbox{\hyperlink{ssu__sfinder_8h_ae17846d66282482bc9fed4b965cad855}{g\_maxsize}})}
+\DoxyCodeLine{671                 \{}
+\DoxyCodeLine{672                     \textcolor{keywordtype}{char} *ex, cpy[\mbox{\hyperlink{ssu__sfinder_8h_a4d71bd743114c866e342b82481760d80}{FILE\_MAX}}];}
+\DoxyCodeLine{673                     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{674 }
+\DoxyCodeLine{675                     \textcolor{keywordflow}{if} (ext == NULL)}
+\DoxyCodeLine{676                         flag = 1;}
+\DoxyCodeLine{677 }
+\DoxyCodeLine{678                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{679                     \{}
+\DoxyCodeLine{680                         strcpy(cpy, namelist[i]-\/>d\_name);}
+\DoxyCodeLine{681                         ex = strrchr(cpy, \textcolor{charliteral}{'.'});}
+\DoxyCodeLine{682                         \textcolor{keywordflow}{if} (ex == NULL)}
+\DoxyCodeLine{683                         \{}
+\DoxyCodeLine{684                             flag = 0;}
+\DoxyCodeLine{685                         \}}
+\DoxyCodeLine{686 }
+\DoxyCodeLine{687                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(ex, ext))}
+\DoxyCodeLine{688                             flag = 1;}
+\DoxyCodeLine{689                     \}}
+\DoxyCodeLine{690                     \textcolor{keywordflow}{if} (flag == 1)}
+\DoxyCodeLine{691                     \{}
+\DoxyCodeLine{692                         \textcolor{keywordflow}{if} (!strcmp(dir\_path, \textcolor{stringliteral}{"/"}))}
+\DoxyCodeLine{693                         \{}
+\DoxyCodeLine{694                             strcpy(buf, dir\_path);}
+\DoxyCodeLine{695                             strcat(buf, namelist[i]-\/>d\_name);}
+\DoxyCodeLine{696                         \}}
+\DoxyCodeLine{697                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{698                         \{}
+\DoxyCodeLine{699                             strcpy(buf, dir\_path);}
+\DoxyCodeLine{700                             strcat(buf, \textcolor{stringliteral}{"/"});}
+\DoxyCodeLine{701                             strcat(buf, namelist[i]-\/>d\_name);}
+\DoxyCodeLine{702                         \}}
+\DoxyCodeLine{703                         \textcolor{keywordflow}{if} ((fp = fopen(buf, \textcolor{stringliteral}{"r"})) == NULL)}
+\DoxyCodeLine{704                         \{}
+\DoxyCodeLine{705                             perror(\textcolor{stringliteral}{"file open"});}
+\DoxyCodeLine{706                         \}}
+\DoxyCodeLine{707                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{708                         \{}
+\DoxyCodeLine{709                             \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} == 2)}
+\DoxyCodeLine{710                                 \mbox{\hyperlink{ssu__sfinder_8c_a4a6e2c272f1402e3a079172c56789622}{do\_sha1}}(fp, buf, tmp.st\_size);}
+\DoxyCodeLine{711                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_ab85d4dcef285e4f8392427ad667e4fca}{g\_function}} == 1)}
+\DoxyCodeLine{712                                 \mbox{\hyperlink{ssu__sfinder_8c_ab8ac10d0ee3eb9d24c194af6ce6ade91}{do\_md5}}(fp, buf, tmp.st\_size);}
+\DoxyCodeLine{713                         \}}
+\DoxyCodeLine{714                         fclose(fp);}
+\DoxyCodeLine{715                     \}}
+\DoxyCodeLine{716                 \}}
+\DoxyCodeLine{717                 memset(buf, 0, \mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}});}
+\DoxyCodeLine{718                 free(namelist[i]);}
+\DoxyCodeLine{719             \}}
+\DoxyCodeLine{720         \}}
+\DoxyCodeLine{721         free(dir\_path);}
+\DoxyCodeLine{722     \}}
+\DoxyCodeLine{723 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d7e/ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{db/d7e/ssu__sfinder_8c_a6b9498fa2d4d1a8d09fd5f45470ce5f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e}\label{ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e}} 
+\index{ssu\_sfinder.c@{ssu\_sfinder.c}!user\_input@{user\_input}}
+\index{user\_input@{user\_input}!ssu\_sfinder.c@{ssu\_sfinder.c}}
+\doxysubsubsection{\texorpdfstring{user\_input()}{user\_input()}}
+{\footnotesize\ttfamily int user\+\_\+input (\begin{DoxyParamCaption}\item[{char}]{buf\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$$\ast$$\ast$}]{split }\end{DoxyParamCaption})}
+
+
+
+ssu\+\_\+sfinder.\+c 파일의 360 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{361 \{}
+\DoxyCodeLine{362     \textcolor{keywordtype}{int} argc;}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{364     argc = 0;}
+\DoxyCodeLine{365     *split = \mbox{\hyperlink{ssu__sfinder_8h_adb7b1a9478f407820e3727a50807b347}{ft\_split}}(buf, \textcolor{stringliteral}{" \(\backslash\)n"});}
+\DoxyCodeLine{366     \textcolor{keywordflow}{while} ((*split)[argc])}
+\DoxyCodeLine{367         argc++;}
+\DoxyCodeLine{368     \textcolor{keywordflow}{return} argc;}
+\DoxyCodeLine{369 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d7e/ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{db/d7e/ssu__sfinder_8c_aefaafb95d747127b208d3dfafdd9cc9e_icgraph}
+\end{center}
+\end{figure}

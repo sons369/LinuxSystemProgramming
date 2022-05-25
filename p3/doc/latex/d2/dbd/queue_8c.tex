@@ -1,0 +1,174 @@
+\hypertarget{queue_8c}{}\doxysection{src/queue.c 파일 참조}
+\label{queue_8c}\index{src/queue.c@{src/queue.c}}
+{\ttfamily \#include \char`\"{}../includes/ssu\+\_\+sfinder.\+h\char`\"{}}\newline
+queue.\+c에 대한 include 의존 그래프
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d50/queue_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$ \mbox{\hyperlink{queue_8c_a50f0113f5c1d8212024f1c1e26de0e56}{create\+\_\+queue\+\_\+link}} (void)
+\item 
+int \mbox{\hyperlink{queue_8c_aa5626134108979b69154a4ba62dfdfe7}{is\+\_\+queue\+\_\+empty}} (\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}})
+\item 
+void \mbox{\hyperlink{queue_8c_a31693a3fc1fcb67463da340327c7a1ec}{enqueue}} (\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}, char $\ast$dirpath)
+\item 
+char $\ast$ \mbox{\hyperlink{queue_8c_a691af8afcd650874b5936370fe344c0a}{delqueue}} (\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{함수 문서화}
+\mbox{\Hypertarget{queue_8c_a50f0113f5c1d8212024f1c1e26de0e56}\label{queue_8c_a50f0113f5c1d8212024f1c1e26de0e56}} 
+\index{queue.c@{queue.c}!create\_queue\_link@{create\_queue\_link}}
+\index{create\_queue\_link@{create\_queue\_link}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{create\_queue\_link()}{create\_queue\_link()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}}$\ast$ create\+\_\+queue\+\_\+link (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+queue.\+c 파일의 5 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{structt__Qtype}{t\_Qtype}} *\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}};}
+\DoxyCodeLine{8     \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}} = (\mbox{\hyperlink{structt__Qtype}{t\_Qtype}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structt__Qtype}{t\_Qtype}}));}
+\DoxyCodeLine{9     \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}} = NULL;}
+\DoxyCodeLine{10     \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_a0cdd759c26e6de89114e8670672534f0}{rear}} = NULL;}
+\DoxyCodeLine{11     \textcolor{keywordflow}{return} \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}};}
+\DoxyCodeLine{12 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{d2/dbd/queue_8c_a50f0113f5c1d8212024f1c1e26de0e56_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_a691af8afcd650874b5936370fe344c0a}\label{queue_8c_a691af8afcd650874b5936370fe344c0a}} 
+\index{queue.c@{queue.c}!delqueue@{delqueue}}
+\index{delqueue@{delqueue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{delqueue()}{delqueue()}}
+{\footnotesize\ttfamily char$\ast$ delqueue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$}]{q }\end{DoxyParamCaption})}
+
+
+
+queue.\+c 파일의 44 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46     \mbox{\hyperlink{structQnode}{t\_Qnode}} *del = \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}};}
+\DoxyCodeLine{47     \textcolor{keywordtype}{char} *path;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keywordflow}{if} (\mbox{\hyperlink{queue_8c_aa5626134108979b69154a4ba62dfdfe7}{is\_queue\_empty}}(\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}))}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{51     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{52     \{}
+\DoxyCodeLine{53         \textcolor{keywordflow}{if} ((path = (\textcolor{keywordtype}{char} *)malloc(\mbox{\hyperlink{ssu__sfinder_8h_ae688d728e1acdfe5988c7db45d6f0166}{PATH\_MAX}})) == NULL)}
+\DoxyCodeLine{54         \{}
+\DoxyCodeLine{55             printf(\textcolor{stringliteral}{"malloc error\(\backslash\)n"});}
+\DoxyCodeLine{56             \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58         strcpy(path, del-\/>\mbox{\hyperlink{structQnode_ad54836816fc5b507d7861e791be02f51}{dirpath}});}
+\DoxyCodeLine{59         \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}} = \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}}-\/>\mbox{\hyperlink{structQnode_ac75b521701cb8b47cb4d2c44f4306241}{link}};}
+\DoxyCodeLine{60         \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}} == NULL)}
+\DoxyCodeLine{61         \{}
+\DoxyCodeLine{62             \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_a0cdd759c26e6de89114e8670672534f0}{rear}} = NULL;}
+\DoxyCodeLine{63         \}}
+\DoxyCodeLine{64         free(del);}
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} path;}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{d2/dbd/queue_8c_a691af8afcd650874b5936370fe344c0a_cgraph}
+\end{center}
+\end{figure}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/dbd/queue_8c_a691af8afcd650874b5936370fe344c0a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_a31693a3fc1fcb67463da340327c7a1ec}\label{queue_8c_a31693a3fc1fcb67463da340327c7a1ec}} 
+\index{queue.c@{queue.c}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{enqueue()}{enqueue()}}
+{\footnotesize\ttfamily void enqueue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$}]{q,  }\item[{char $\ast$}]{dirpath }\end{DoxyParamCaption})}
+
+
+
+queue.\+c 파일의 24 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     \mbox{\hyperlink{structQnode}{t\_Qnode}} *\textcolor{keyword}{new};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{new} = (\mbox{\hyperlink{structQnode}{t\_Qnode}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structQnode}{t\_Qnode}}));}
+\DoxyCodeLine{29     strcpy(new-\/>dirpath, dirpath);}
+\DoxyCodeLine{30     \textcolor{keyword}{new}-\/>link = NULL;}
+\DoxyCodeLine{31     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}} == NULL)}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{34         \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_a0cdd759c26e6de89114e8670672534f0}{rear}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{37     \{}
+\DoxyCodeLine{38         \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_a0cdd759c26e6de89114e8670672534f0}{rear}}-\/>\mbox{\hyperlink{structQnode_ac75b521701cb8b47cb4d2c44f4306241}{link}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{39         \mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_a0cdd759c26e6de89114e8670672534f0}{rear}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/dbd/queue_8c_a31693a3fc1fcb67463da340327c7a1ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_aa5626134108979b69154a4ba62dfdfe7}\label{queue_8c_aa5626134108979b69154a4ba62dfdfe7}} 
+\index{queue.c@{queue.c}!is\_queue\_empty@{is\_queue\_empty}}
+\index{is\_queue\_empty@{is\_queue\_empty}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{is\_queue\_empty()}{is\_queue\_empty()}}
+{\footnotesize\ttfamily int is\+\_\+queue\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__Qtype}{t\+\_\+\+Qtype}} $\ast$}]{q }\end{DoxyParamCaption})}
+
+
+
+queue.\+c 파일의 15 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keywordflow}{if} (\mbox{\hyperlink{ssu__sfinder_8h_a441645292db5b6dcac53079becdf6075}{q}}-\/>\mbox{\hyperlink{structt__Qtype_abd7be275f1c7b89a7baa89cb6cad123f}{front}} == NULL)}
+\DoxyCodeLine{18         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{19     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{20         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/dbd/queue_8c_aa5626134108979b69154a4ba62dfdfe7_icgraph}
+\end{center}
+\end{figure}

@@ -3,13 +3,63 @@
 int main(void)
 {
     char buf[BUFF_SIZE];
-    char **split;
-    int argc;
-
+    char **split, **split2;
+    int argc, argc2;
+    pthread_t thid[5];
     uid_t uid = getuid();
     struct passwd *pw = getpwuid(uid);
     strcpy(g_user_name, pw->pw_name);
-    printf("user : %s\n", g_user_name);
+    // printf("user : %s\n", g_user_name);
+    if (!strcmp(g_user_name, "root"))
+    {
+        char buf[PATH_MAX];
+        char buf2[PATH_MAX];
+        char buf3[PATH_MAX];
+        FILE *fp;
+        memset(buf, 0, PATH_MAX);
+        strcpy(buf, pw->pw_dir);
+        strcat(buf, "/");
+        strcpy(buf2, buf);
+        strcpy(buf3, buf);
+        strcat(buf3, ".duplicate_20182624.log");
+        strcpy(g_duplicat_log, buf3);
+        if ((fp = fopen(buf3, "a+")) != NULL)
+            fclose(fp);
+
+        strcat(buf, ".Trash");
+        mkdir(buf, 0775);
+        strcat(buf, "/files/");
+        strcpy(g_trash_file_path, buf);
+        strcat(buf2, ".Trash/info");
+        strcpy(g_trash_info_path, buf2);
+        mkdir(buf, 0775);
+        mkdir(buf2, 0775);
+    }
+    else
+    {
+        char buf[PATH_MAX];
+        char buf2[PATH_MAX];
+        char buf3[PATH_MAX];
+        FILE *fp;
+        memset(buf, 0, PATH_MAX);
+        strcpy(buf, pw->pw_dir);
+        strcat(buf, "/");
+        strcpy(buf2, buf);
+        strcpy(buf3, buf);
+        strcat(buf3, ".duplicate_20182624.log");
+        strcpy(g_duplicat_log, buf3);
+        if ((fp = fopen(buf3, "a+")) != NULL)
+            fclose(fp);
+        strcat(buf, ".Trash");
+        mkdir(buf, 0775);
+        strcat(buf, "/files/");
+        g_trash_file_path = buf;
+
+        strcat(buf2, ".Trash/info");
+        g_trash_info_path = buf2;
+        mkdir(buf, 0775);
+        mkdir(buf2, 0775);
+    }
     q = create_queue_link();
     struct timeval start, end;
 
@@ -34,7 +84,7 @@ int main(void)
             g_function = 1;
             if (get_opt(argc, split) && chk_arg_error())
             {
-                char *ext = malloc(strlen(g_ext_arg));
+                char *ext;
                 convert_file_size(g_min_size, g_max_size);
                 if (g_maxsize < g_minsize)
                 {
@@ -44,13 +94,10 @@ int main(void)
                 else
                 {
                     gettimeofday(&start, NULL);
-                    if (!strcmp(g_ext_arg, "*"))
-                        ext[0] = 0;
-                    else
-                        ext = strrchr(g_ext_arg, '.');
-                    printf("%s\n", ext);
+                    ext = strrchr(g_ext_arg, '.');
+                    // printf("%s\n", ext);
                     enqueue(q, g_real_path);
-                    search_same_file(ext);
+                    search_same_file(g_real_path, ext);
                     check_same_file();
                     if (g_head != NULL)
                     {
@@ -69,7 +116,8 @@ int main(void)
                         }
                         end.tv_usec -= start.tv_usec;
                         printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
-                        exit(1);
+                        clear_g_var();
+                        continue;
                     }
                     gettimeofday(&end, NULL);
                     end.tv_sec -= start.tv_sec;
@@ -80,8 +128,66 @@ int main(void)
                     }
                     end.tv_usec -= start.tv_usec;
                     printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
+                    while (1)
+                    {
+                        if (g_total_node == g_total_set)
+                        {
+                            free_all_node(&g_head);
+                            break;
+                        }
+                        printf(">> ");
+                        fgets(buf, BUFF_SIZE, stdin);
+                        argc2 = user_input(buf, &split2);
+                        if (argc2 == 0)
+                            continue;
+                        if (!input_error(argc2, split2))
+                        {
+                            printf("Input Error!!\n");
+                        }
+                        else
+                        {
+                            if (!strcmp(split2[0], "exit"))
+                            {
+                                if (*split2)
+                                {
+                                    for (int i = 0; split2[i]; i++)
+                                        free(split2[i]);
+                                    free(split2);
+                                }
+                                free_all_node(&g_head);
+                                printf(">> Back to Prompt\n");
+                                break;
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_d == 1)
+                            {
+                                option_d(g_del_set, g_del_idx);
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_i == 1)
+                            {
+                                option_i(g_del_set);
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_f == 1)
+                            {
+                                option_f_t(g_del_set, 0);
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_t == 1)
+                            {
+                                option_f_t(g_del_set, 1);
+                            }
+                            else
+                            {
+                                printf("error!\n");
+                            }
+                        }
+                        if (*split2)
+                        {
+                            for (int i = 0; split2[i]; i++)
+                                free(split2[i]);
+                            free(split2);
+                        }
+                        print_node(g_head);
+                    }
                 }
-                free(ext);
             }
         }
         else if (!strncmp(split[0], "fsha1", 5))
@@ -89,7 +195,7 @@ int main(void)
             g_function = 2;
             if (get_opt(argc, split) && chk_arg_error())
             {
-                char *ext = malloc(strlen(g_ext_arg));
+                char *ext;
                 convert_file_size(g_min_size, g_max_size);
                 if (g_maxsize < g_minsize)
                 {
@@ -99,12 +205,10 @@ int main(void)
                 else
                 {
                     gettimeofday(&start, NULL);
-                    if (!strcmp(g_ext_arg, "*"))
-                        ext[0] = 0;
-                    else
-                        ext = strrchr(g_ext_arg, '.');
+
+                    ext = strrchr(g_ext_arg, '.');
                     enqueue(q, g_real_path);
-                    search_same_file(ext);
+                    search_same_file(g_real_path, ext);
                     check_same_file();
                     if (g_head != NULL)
                     {
@@ -123,7 +227,8 @@ int main(void)
                         }
                         end.tv_usec -= start.tv_usec;
                         printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
-                        exit(1);
+                        clear_g_var();
+                        continue;
                     }
                     gettimeofday(&end, NULL);
                     end.tv_sec -= start.tv_sec;
@@ -134,8 +239,66 @@ int main(void)
                     }
                     end.tv_usec -= start.tv_usec;
                     printf("Searching time: %ld:%06ld(sec:usec)\n", end.tv_sec, end.tv_usec);
+                    while (1)
+                    {
+                        if (g_total_node == g_total_set)
+                        {
+                            free_all_node(&g_head);
+                            break;
+                        }
+                        printf(">> ");
+                        fgets(buf, BUFF_SIZE, stdin);
+                        argc2 = user_input(buf, &split2);
+                        if (argc2 == 0)
+                            continue;
+                        if (!input_error(argc2, split2))
+                        {
+                            printf("Input Error!!\n");
+                        }
+                        else
+                        {
+                            if (!strcmp(split2[0], "exit"))
+                            {
+                                if (*split2)
+                                {
+                                    for (int i = 0; split2[i]; i++)
+                                        free(split2[i]);
+                                    free(split2);
+                                }
+                                free_all_node(&g_head);
+                                printf(">> Back to Prompt\n");
+                                break;
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_d == 1)
+                            {
+                                option_d(g_del_set, g_del_idx);
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_i == 1)
+                            {
+                                option_i(g_del_set);
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_f == 1)
+                            {
+                                option_f_t(g_del_set, 0);
+                            }
+                            else if (g_del_opt_l == 1 && g_del_opt_t == 1)
+                            {
+                                option_f_t(g_del_set, 1);
+                            }
+                            else
+                            {
+                                printf("error!\n");
+                            }
+                        }
+                        if (*split2)
+                        {
+                            for (int i = 0; split2[i]; i++)
+                                free(split2[i]);
+                            free(split2);
+                        }
+                        print_node(g_head);
+                    }
                 }
-                free(ext);
             }
         }
         else if (!strncmp(split[0], "list", 4))
@@ -152,6 +315,9 @@ int main(void)
             {
             }
         }
+        else if (!strncmp(split[0], "restore", 7))
+        {
+        }
         else if (!strncmp(split[0], "exit", 4))
         {
             printf("Prompt End\n");
@@ -161,7 +327,7 @@ int main(void)
         {
             print_help();
         }
-        printf("fun: %d ext : %s min : %s max : %s dest : %s t : %d\n", g_function, g_ext_arg, g_min_size, g_max_size, g_dir_arg, g_thread);
+        // printf("fun: %d ext : %s min : %s max : %s dest : %s t : %d\n", g_function, g_ext_arg, g_min_size, g_max_size, g_dir_arg, g_thread);
         clear_g_var();
         if (*split)
         {
@@ -447,115 +613,113 @@ void convert_file_size(char *min, char *max)
 /* 만약 디렉토리 파일을 만나면 큐에 삽입 */
 /* 입력받은 확장자에 부합한 정규 파일을 만날 경우, 사이즈 비교를 통해서 */
 /* 사이즈도 입력값 사이라면 암호화를 하고 해당 정보를 buf.txt에 저장 */
-int search_same_file(char *ext)
+int search_same_file(char *path, char *ext)
 {
     char buf[PATH_MAX];
     char buf2[PATH_MAX];
     char *dir_path;
-
     FILE *fp;
     struct dirent **namelist;
     struct stat tmp;
     int count;
     int i;
-    if (is_queue_empty(q))
-    {
-        return 0;
-    }
 
-    dir_path = delqueue(q);
-    printf("dir : %s\n", dir_path);
-    if ((count = scandir(dir_path, &namelist, NULL, alphasort)) == -1)
+    while (!is_queue_empty(q))
     {
-        fprintf(stderr, "failed open %s\n", dir_path);
-        return 0;
-    }
-    else
-    {
-        for (i = 0; i < count; i++)
+        dir_path = delqueue(q);
+        if ((count = scandir(dir_path, &namelist, NULL, alphasort)) == -1)
         {
-            strcpy(buf2, dir_path);
-            if (strcmp(buf2, "/"))
-                strcat(buf2, "/");
-            strcat(buf2, namelist[i]->d_name);
-            lstat(buf2, &tmp);
-            if (!strcmp(dir_path, "/") && (!strcmp(namelist[i]->d_name, "proc") || !strcmp(namelist[i]->d_name, "sys") || !strcmp(namelist[i]->d_name, "run")))
+            fprintf(stderr, "failed open %s\n", dir_path);
+            return 0;
+        }
+        else
+        {
+            for (i = 0; i < count; i++)
             {
-                free(namelist[i]);
-                continue;
-            }
-            if (!strcmp(namelist[i]->d_name, ".") || !strcmp(namelist[i]->d_name, "..") || !strcmp(namelist[i]->d_name, "trashcan"))
-            {
-                free(namelist[i]);
-                continue;
-            }
-            if (namelist[i]->d_type == 4 && (tmp.st_mode & S_ISVTX) != 01000 && (tmp.st_mode & S_ISUID) != 04000 && (tmp.st_mode & S_ISGID) != 02000)
-            {
-                if (!strcmp(dir_path, "/"))
+                strcpy(buf2, dir_path);
+                if (strcmp(buf2, "/"))
+                    strcat(buf2, "/");
+                strcat(buf2, namelist[i]->d_name);
+                lstat(buf2, &tmp);
+                if (!strcmp(dir_path, "/") && (!strcmp(namelist[i]->d_name, "proc") || !strcmp(namelist[i]->d_name, "sys") || !strcmp(namelist[i]->d_name, "run")))
                 {
-                    strcpy(buf, dir_path);
-                    strcat(buf, namelist[i]->d_name);
-                    enqueue(q, buf);
+                    free(namelist[i]);
+                    continue;
                 }
-                else
+                if (!strcmp(namelist[i]->d_name, ".") || !strcmp(namelist[i]->d_name, "..") || !strcmp(namelist[i]->d_name, "trashcan"))
                 {
-                    strcpy(buf, dir_path);
-                    strcat(buf, "/");
-                    strcat(buf, namelist[i]->d_name);
-                    enqueue(q, buf);
+                    free(namelist[i]);
+                    continue;
                 }
-            }
-            else if (S_ISREG(tmp.st_mode) && tmp.st_size >= g_minsize && tmp.st_size <= g_maxsize)
-            {
-                char *ex, cpy[FILE_MAX];
-                int flag = 0;
-
-                if (ext == NULL)
-                    flag = 1;
-
-                else
-                {
-                    strcpy(cpy, namelist[i]->d_name);
-                    ex = strrchr(cpy, '.');
-                    if (ex == NULL)
-                        flag = 0;
-                    else if (!strcmp(ex, ext))
-                        flag = 1;
-                }
-                if (flag == 1)
+                if (namelist[i]->d_type == 4 && (tmp.st_mode & S_ISVTX) != 01000 && (tmp.st_mode & S_ISUID) != 04000 && (tmp.st_mode & S_ISGID) != 02000)
                 {
                     if (!strcmp(dir_path, "/"))
                     {
                         strcpy(buf, dir_path);
                         strcat(buf, namelist[i]->d_name);
+                        enqueue(q, buf);
                     }
                     else
                     {
                         strcpy(buf, dir_path);
                         strcat(buf, "/");
                         strcat(buf, namelist[i]->d_name);
+                        enqueue(q, buf);
                     }
-                    if ((fp = fopen(buf, "r")) == NULL)
-                    {
-                        perror("file open");
-                    }
+                }
+                else if (S_ISREG(tmp.st_mode) && tmp.st_size >= g_minsize && tmp.st_size <= g_maxsize)
+                {
+                    char *ex, cpy[FILE_MAX];
+                    int flag = 0;
+
+                    if (ext == NULL)
+                        flag = 1;
+
                     else
                     {
-                        if (g_function == 2)
-                            do_sha1(fp, buf, tmp.st_size);
-                        else if (g_function == 1)
-                            do_md5(fp, buf, tmp.st_size);
+                        strcpy(cpy, namelist[i]->d_name);
+                        ex = strrchr(cpy, '.');
+                        if (ex == NULL)
+                        {
+                            flag = 0;
+                        }
+
+                        else if (!strcmp(ex, ext))
+                            flag = 1;
                     }
-                    fclose(fp);
+                    if (flag == 1)
+                    {
+                        if (!strcmp(dir_path, "/"))
+                        {
+                            strcpy(buf, dir_path);
+                            strcat(buf, namelist[i]->d_name);
+                        }
+                        else
+                        {
+                            strcpy(buf, dir_path);
+                            strcat(buf, "/");
+                            strcat(buf, namelist[i]->d_name);
+                        }
+                        if ((fp = fopen(buf, "r")) == NULL)
+                        {
+                            perror("file open");
+                        }
+                        else
+                        {
+                            if (g_function == 2)
+                                do_sha1(fp, buf, tmp.st_size);
+                            else if (g_function == 1)
+                                do_md5(fp, buf, tmp.st_size);
+                        }
+                        fclose(fp);
+                    }
                 }
+                memset(buf, 0, PATH_MAX);
+                free(namelist[i]);
             }
-            memset(buf, 0, PATH_MAX);
-            free(namelist[i]);
         }
+        free(dir_path);
     }
-    free(dir_path);
-    if (q->front != NULL)
-        search_same_file(ext);
 }
 
 // md5 암호화 함수
@@ -679,12 +843,26 @@ void check_same_file(void)
 void option_d(int set, int idx)
 {
     char *path;
+    FILE *fp;
+    char logbuf[BUFF_SIZE];
+    char times[BUFF_SIZE];
+    time_t timer = time(NULL);
+    struct tm *t = localtime(&timer);
+    sprintf(times, "%d-%d-%d %d:%d:%d ", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
+    fp = fopen(g_duplicat_log, "a+");
 
     path = delete_node(&g_head, set, idx);
     printf("\"%s\" has been deleted in #%d\n", path, set);
+    strcpy(logbuf, "[DELETE] ");
+    strcat(logbuf, path);
+    strcat(logbuf, " ");
+    strcat(logbuf, times);
+    strcat(logbuf, g_user_name);
+    fprintf(fp, "%s\n", logbuf);
     remove(path);
     cnt_set_idx_num(g_head);
     free(path);
+    fclose(fp);
 }
 
 /* 삭제할 때 Y/y 혹은 N/n 값을 입력받아서 Y/y 입력시에만 삭제 */
@@ -693,8 +871,15 @@ int option_i(int set)
     char *path;
     char buf[5];
     int total_node;
+    FILE *fp;
+    char logbuf[BUFF_SIZE];
+    char times[BUFF_SIZE];
+    time_t timer = time(NULL);
+    struct tm *t = localtime(&timer);
+    sprintf(times, "%d-%d-%d %d:%d:%d ", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
 
     total_node = cnt_set_node(set);
+    fp = fopen(g_duplicat_log, "a+");
     for (int i = 1; i <= total_node; i++)
     {
         path = get_node_path(set, i);
@@ -703,7 +888,14 @@ int option_i(int set)
         fgets(buf, 5, stdin);
         if (!strcmp(buf, "y\n") || !strcmp(buf, "Y\n"))
         {
+            memset(logbuf, 0, BUFF_SIZE);
             path = delete_node(&g_head, set, i);
+            strcpy(logbuf, "[DELETE] ");
+            strcat(logbuf, path);
+            strcat(logbuf, " ");
+            strcat(logbuf, times);
+            strcat(logbuf, g_user_name);
+            fprintf(fp, "%s\n", logbuf);
             remove(path);
             free(path);
         }
@@ -718,6 +910,7 @@ int option_i(int set)
         }
     }
     cnt_set_idx_num(g_head);
+    fclose(fp);
     return 0;
 }
 
@@ -729,11 +922,17 @@ void option_f_t(int set, int flag)
     char *latest_mtim_path;
     char *latest_mtim;
     char buf[PATH_MAX];
-    char numbuf[4000];
     struct dirent **namelist;
     int cnt;
     int latest_mtim_idx;
     int total_node;
+    FILE *fp;
+    char logbuf[BUFF_SIZE];
+    char times[BUFF_SIZE];
+    time_t timer = time(NULL);
+    struct tm *t = localtime(&timer);
+    sprintf(times, "%d-%d-%d %d:%d:%d ", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
+    fp = fopen(g_duplicat_log, "a+");
 
     //가장 최근에 수정한 파일의 인덱스 번호, 경로, 수정한 날짜를 얻어옴
     latest_mtim_idx = get_latest_mtim_idx(set);
@@ -746,7 +945,14 @@ void option_f_t(int set, int flag)
             continue;
         if (flag == 0)
         {
+            memset(logbuf, 0, BUFF_SIZE);
             path = delete_node(&g_head, set, i);
+            strcpy(logbuf, "[DELETE] ");
+            strcat(logbuf, path);
+            strcat(logbuf, " ");
+            strcat(logbuf, times);
+            strcat(logbuf, g_user_name);
+            fprintf(fp, "%s\n", logbuf);
             remove(path);
             free(path);
         }
@@ -754,22 +960,20 @@ void option_f_t(int set, int flag)
         //원본 파일은 unlink를 해줌
         if (flag == 1)
         {
-            mkdir("./trashcan", 0775);
-            if ((cnt = scandir("./trashcan", &namelist, NULL, alphasort)) == -1)
-            {
-                fprintf(stderr, "trashcan Directory Scan Error\n");
-            }
-            sprintf(numbuf, "%d", cnt);
+            memset(logbuf, 0, BUFF_SIZE);
             path = delete_node(&g_head, set, i);
-            strcpy(buf, "./trashcan/");
+            strcpy(buf, g_trash_file_path);
+            strcat(buf, "/");
             strcat(buf, strrchr(path, '/'));
-            strcat(buf, numbuf);
+            strcpy(logbuf, "[REMOVE] ");
+            strcat(logbuf, path);
+            strcat(logbuf, " ");
+            strcat(logbuf, times);
+            strcat(logbuf, g_user_name);
+            fprintf(fp, "%s\n", logbuf);
             link(path, buf);
             unlink(path);
             free(path);
-            for (int i = 0; i < cnt; i++)
-                free(namelist[i]);
-            free(namelist);
         }
     }
     if (flag == 0)
@@ -779,4 +983,64 @@ void option_f_t(int set, int flag)
     free(latest_mtim);
     free(latest_mtim_path);
     cnt_set_idx_num(g_head);
+    fclose(fp);
+}
+
+/* 사용자 입력 예외처리 해주는 함수 */
+/* argc가 3이라면 무조건 숫자 d 숫자 형태여야함 */
+/* argc가 2라면 무조건 숫자 i 혹은 t 혹은 f가 와야함 */
+/* 해당 세트나 인덱스 번호도 링크드 리스트에 있는지 체크 */
+int input_error(int argc, char **split)
+{
+    int opt;
+    int flag = 0;
+    optind = 0;
+    g_del_idx = 0;
+    g_del_set = 0;
+    g_del_opt_d = 0;
+    g_del_opt_f = 0;
+    g_del_opt_i = 0;
+    g_del_opt_l = 0;
+    g_del_opt_t = 0;
+
+    while ((opt = getopt(argc, split, "l:d:ift")) != -1)
+    {
+        switch (opt)
+        {
+        case 'l':
+            g_del_opt_l = 1;
+            g_del_set = atoi(optarg);
+            if (!is_set_node(g_del_set))
+                flag = 1;
+            break;
+
+        case 'd':
+            g_del_opt_d = 1;
+            g_del_idx = atoi(optarg);
+            if (!is_set_idx_node(g_del_set, g_del_idx))
+                flag = 1;
+            break;
+
+        case 'i':
+            g_del_opt_i = 1;
+            break;
+
+        case 'f':
+            g_del_opt_f = 1;
+            break;
+
+        case 't':
+            g_del_opt_t = 1;
+            break;
+
+        case '?':
+            return 0;
+        }
+    }
+
+    if (flag == 1)
+    {
+        return 0;
+    }
+    return 1;
 }

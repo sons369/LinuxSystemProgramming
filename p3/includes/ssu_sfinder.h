@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <pthread.h>
 #include <openssl/md5.h>
 #include <openssl/sha.h>
 #include <sys/time.h>
@@ -42,8 +43,9 @@ typedef struct s_myStat
     off_t size;
     int set;
     int idx;
-    int gid;
-    int mode;
+    gid_t gid;
+    uid_t uid;
+    mode_t mode;
     char *atim;
     char *mtim;
     char hash[60];
@@ -64,6 +66,9 @@ char g_opt_l_arg[BUFF_SIZE];
 char g_home_dir[PATH_MAX];
 char g_real_path[PATH_MAX];
 char g_user_name[BUFF_SIZE];
+char *g_trash_file_path;
+char *g_trash_info_path;
+char g_duplicat_log[BUFF_SIZE];
 long g_minsize;
 long g_maxsize;
 long g_file;
@@ -73,6 +78,14 @@ int g_thread;
 int g_function; // 1=> fmd5 | 2=> fsha1 | 3=> list | 4=> trash
 int g_total_node;
 int g_total_set;
+int g_del_opt_l;
+int g_del_opt_d;
+int g_del_opt_i;
+int g_del_opt_f;
+int g_del_opt_t;
+int g_del_set;
+int g_del_idx;
+
 t_Qtype *q;
 t_myStatptr g_head;
 
@@ -116,11 +129,12 @@ void clear_g_var();
 void convert_file_size(char *min, char *max);
 int chk_arg_error();
 void do_md5(FILE *fp, char *path, long fsize);
-int search_same_file(char *ext);
+int search_same_file(char *path, char *ext);
 void check_same_file(void);
 void option_d(int set, int idx);
 int option_i(int set);
 void do_sha1(FILE *fp, char *path, long fsize);
 void option_f_t(int set, int flag);
+int input_error(int argc, char **split);
 
 #endif

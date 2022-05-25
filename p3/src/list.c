@@ -20,6 +20,9 @@ void insert(t_myStatptr *sPtr, char *path, char *hash, long size)
         newPtr->atim = get_string_time(statbuf, 1);
         newPtr->mtim = get_string_time(statbuf, 2);
         newPtr->size = size;
+        newPtr->mode = statbuf.st_mode;
+        newPtr->gid = statbuf.st_gid;
+        newPtr->uid = statbuf.st_uid;
         newPtr->next = NULL;
 
         previousPtr = NULL;
@@ -200,7 +203,7 @@ void print_node(t_myStatptr sPtr)
 
 void print_file(t_myStat file, int i)
 {
-    printf("[%d] %s (mtime : %s) (atime : %s)\n", i, file.real_path, file.mtim, file.atim);
+    printf("[%d] %s (mtime : %s) (atime : %s) (uid : %d) (gid : %d) (mode : %d)\n", i, file.real_path, file.mtim, file.atim, file.uid, file.gid, file.mode);
 }
 
 /* Linked list sort filter */
